@@ -1,3 +1,6 @@
 [submodule "BnsBinTool"]
 	path = BnsBinTool
 	url = https://github.com/XyliaUp/BnsBinTool
+[submodule "BnsDatTool"]
+	path = BnsDatTool
+	url = https://github.com/XyliaUp/BnsDatTool
