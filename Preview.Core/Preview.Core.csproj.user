@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>publish\</PublishUrlHistory>
+    <InstallUrlHistory />
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>zh-CN</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Common\Interface\PreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Data\Package\SoundWave\MusicPlayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\ContentPanel\ContentPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\ContentPanel\ContentPanel_Paint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Forms\PreviewFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\Currency\PriceCell.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\ItemIconCell.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\ItemNameCell.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\ItemShowCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\List\Cell\InfoListCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\List\Cell\ItemListCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\List\Cell\ListCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\List\ListPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Panel\List\PageSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Tooltip\TestTooltip2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\ScrollBar\HideScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\ScrollBar\ScrollBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\ScrollBar\ScrollBarPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\ContentPanel\UserControl1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Treeview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Controls\Combox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene2\Editor\CustomRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene2\Editor\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene2\Editor\PublicSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_Auction\Game_AuctionScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeListRewardPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_Intension\IntensionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_Intension\IntensionResetConfirmPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_Intension\Game_IntensionScene\OptionList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_Intension\SuccessionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\ItemGrowth2Page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\ItemSpiritPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FeedItemIconCell.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FixedIngredientPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\MoneyCostPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\ResultWeaponPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\SubIngredientPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\WarningPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\EquipmentGuidePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemGrowth2\EquipmentGuideScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemStore\Game_ItemStoreScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_Map\Game_MapScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\DescPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\TaskPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_RandomStore\Game_RandomStoreScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Base\TitleContentPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Base\TitlePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\DurabilityPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\EventTimePreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\ExchangePreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\ProcessComparisonCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\GemAbility\AttributeInfoCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\GemAbility\AttributePreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\JobStyleSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Reward\RewardCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Reward\RewardPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SealPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\Gem\GemCircle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\Gem\GemPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\SetItemEffect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\SetItemPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Skill\SkillByEquipmentTooltip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Skill\SkillModifyCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Skill\SkillTooltipPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SlateScroll\SlateScrollCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SlateScroll\SlateScrollTooltip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\DataGridScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\UserOperPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Searcher\SearcherScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\GroupBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\BonusRewardPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\Base\PriceBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\Base\RewardCellBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\FixedItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\HonorExp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\Money.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\OptionaItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\CaseInfoPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\MissionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\MissionStepPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Completed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\QuestPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillTooltipPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\SkillBook3_IconView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\SkillTraitPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\TraitTier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\TraitTierCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Searcher\SearcherStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\StoreScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\ItemDisplayListCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\BuyPriceCell.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\Store2ItemCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="GameUI\Scene\Game_ItemGrowth2\ItemGrowth2Page.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\Gem\GemPreview.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\AnalyseSection\DataRes.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Resource_Common.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="GameUI\Controls\ContentPanel\UserControl1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

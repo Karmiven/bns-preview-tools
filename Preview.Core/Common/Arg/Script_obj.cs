@@ -1,0 +1,22 @@
+﻿namespace Xylia.bns.Modules
+{
+	/// <summary>
+	/// 目标表达式
+	/// </summary>
+	public struct Script_obj
+	{
+		#region 构造
+		public Script_obj(string Text) => this.Temp = Text;
+		#endregion
+
+		/// <summary>
+		/// 表达式整体
+		/// </summary>
+		public string Temp;
+
+
+
+
+		//public object Object;
+	}
+}

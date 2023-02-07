@@ -1,0 +1,3 @@
+[submodule "BnsBinTool"]
+	path = BnsBinTool
+	url = https://github.com/XyliaUp/BnsBinTool
