@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 
 using CUE4Parse.UE4.Assets.Exports;
@@ -21,7 +23,7 @@ namespace Xylia.Preview.Data.Package.Pak
 	{
 		public static UObject GetUObject(this string Path) => FileCache.PakData.GetObject(Path);
 
-		public static UObject GetUObject(this FSoftObjectPath Path) => FileCache.PakData.GetObject(Path.ToString());
+		public static UObject GetUObject(this FSoftObjectPath Path) => FileCache.PakData.GetObject(Path.AssetPathName.Text);
 
 		public static UObject GetUObject(this UObject obj) => FileCache.PakData.GetObject(obj);
 
@@ -109,8 +111,11 @@ namespace Xylia.Preview.Data.Package.Pak
 
 		public static byte[] GetWave(this UObject Object, int ReferenceIdx = 0)
 		{
+			//System.Diagnostics.Debug.WriteLine(Object.GetPathName_Bns());
+
+
 			if (Object is null) return null;
-			else if (Object is USoundWave)
+			else if (Object is USoundWave soundWave)
 			{
 				Object.Decode(true, out var audioFormat, out var data);
 				return data;
@@ -122,8 +127,7 @@ namespace Xylia.Preview.Data.Package.Pak
 				foreach (var ChildNode in ChildNodes)
 				{
 					var obj = ChildNode.GetUObject();
-					var SoundWaveAssetPtr = obj.GetOrDefault<FSoftObjectPath>("SoundWaveAssetPtr");
-					return SoundWaveAssetPtr.GetUObject().GetWave();
+					return obj.GetOrDefault<FSoftObjectPath>("SoundWaveAssetPtr").GetUObject().GetWave();
 				}
 			}
 			else if (Object.ExportType == "ShowSoundKey") return Object.GetOrDefault<UObject>("SoundCue").GetUObject().GetWave();

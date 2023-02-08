@@ -36,9 +36,6 @@ namespace Xylia.Preview.Data.Definition
 			if (AttrDef.Seq != null)
 				attribute.Sequence.AddRange(AttrDef.Seq?.Select(seq => seq.Alias));
 
-
-			
-		
 			switch (attribute.Type)
 			{
 				case AttributeType.TSeq:

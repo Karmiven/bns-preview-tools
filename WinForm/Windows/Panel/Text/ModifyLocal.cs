@@ -10,7 +10,6 @@ using NPOI.SS.UserModel;
 
 using Xylia.Configure;
 using Xylia.Extension;
-using Xylia.Files;
 using Xylia.Files.Excel;
 using Xylia.Preview.Data.Helper;
 
@@ -83,12 +82,8 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			}
 			else if (File.Exists(TextBox1.Text))
 			{
-				var frmWith = new FrmWithOKCancel1
-				{
-					Text = "继续操作会覆盖汉化数据，请更名或备份数据！如已完成，请点击确认。"
-				};
-
-				if (frmWith.ShowDialog() != DialogResult.OK)
+				var result = MessageBox.Show("继续操作会覆盖数据，请更名或备份数据！如已完成，请点击确认。", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				if (result != DialogResult.OK)
 				{
 					FrmTips.ShowTipsSuccess(null, "用户结束操作");
 					return;

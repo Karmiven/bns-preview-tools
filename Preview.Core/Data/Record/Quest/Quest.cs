@@ -456,7 +456,7 @@ namespace Xylia.Preview.Data.Record
 					ContentType.Festival => IsRepeat ? Map_Festival_repeat_start : Map_Festival_start,
 					ContentType.Duel or ContentType.PartyBattle => IsRepeat ? Map_Faction_repeat_start : Map_Faction_start,
 					ContentType.SideEpisode => Map_side_episode_start,
-					ContentType.Special => Map_Special_start,
+					ContentType.Special => Map_Job_Start,
 
 					_ => IsRepeat ? Map_Repeat_start : Map_Normal_Start,
 				};

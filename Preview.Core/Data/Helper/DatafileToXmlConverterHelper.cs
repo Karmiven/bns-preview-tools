@@ -48,87 +48,99 @@ namespace Xylia.Preview.Data.Helper
 			if (tableDef.IsEmpty)
 				return;
 
-			var typeDictionary = new Dictionary<short, List<RecordModel>>();
-
 			// Split table by subtypes
-			foreach (var record in table.Records)
+			var typeDictionary = new Dictionary<short, List<RecordModel>>();
+			if (true && !table.IsCompressed) typeDictionary[-1] = table.Records;
+			else
 			{
-				if (!typeDictionary.TryGetValue(record.SubclassType, out var typeRecords))
+				foreach (var record in table.Records)
 				{
-					typeRecords = new List<RecordModel>();
-					typeDictionary[record.SubclassType] = typeRecords;
-				}
+					if (!typeDictionary.TryGetValue(record.SubclassType, out var typeRecords))
+					{
+						typeRecords = new List<RecordModel>();
+						typeDictionary[record.SubclassType] = typeRecords;
+					}
 
-				typeRecords.Add(record);
+					typeRecords.Add(record);
+				}
 			}
 
 			var hasMany = typeDictionary.Count > 1;
 
-			foreach (var (type, records) in typeDictionary)
+
+			try
 			{
-				var memory = new MemoryStream();
-
-				using var writer = new XmlTextWriter(memory, Encoding.UTF8)
+				foreach (var group in typeDictionary)
 				{
-					Formatting = Formatting.Indented,
-					Indentation = 4
-				};
+					var name = tableDef.Name.TitleCase() + "Data";
 
-				ITableDefinition subtableDef;
-				if (true && type >= tableDef.Subtables.Count)
-					continue;
-
-				if (type == -1)
-					subtableDef = tableDef;
-				else
-					subtableDef = tableDef.Subtables[type];
+					var memory = new MemoryStream();
+					using var writer = new XmlTextWriter(memory, Encoding.UTF8)
+					{
+						Formatting = Formatting.Indented,
+						Indentation = 4
+					};
 
 
+					writer.WriteStartDocument();
+					writer.WriteStartElement("table");
+					writer.WriteAttributeString("release-module", "LocalizationData");
+					writer.WriteAttributeString("release-side", "client");
+					writer.WriteAttributeString("type", tableDef.Name);
+					writer.WriteAttributeString("version", table.MajorVersion + "." + table.MinorVersion);
+					writer.WriteComment($" {name}.xml ");
 
-				#region 创建文档
-				writer.WriteStartDocument();
-				writer.WriteStartElement("table");
-				writer.WriteAttributeString("release-module", "LocalizationData");
-				writer.WriteAttributeString("release-side", "client");
-				writer.WriteAttributeString("type", tableDef.Name);
-				writer.WriteAttributeString("version", table.MajorVersion + "." + table.MinorVersion);
-				writer.WriteComment(" ");
+					foreach (var record in group.Value)
+					{
+						writer.WriteStartElement("record");
 
+						ITableDefinition subtableDef;
+						var type = record.SubclassType;
+						if (type == -1) subtableDef = tableDef;
+						else if (type >= tableDef.Subtables.Count)
+						{
+							//continue;
+							subtableDef = tableDef;
+							writer.WriteAttributeString("type", type.ToString());
+						}
+						else
+						{
+							subtableDef = tableDef.Subtables[type];
+							writer.WriteAttributeString("type", subtableDef.Name);
+						}
 
-				foreach (var record in records)
-				{
-					writer.WriteStartElement("record");
-					if (subtableDef.SubclassType >= 0)
-						writer.WriteAttributeString("type", subtableDef.Name);
+						ConvertRecord(writer, record, subtableDef.ExpandedAttributes);
+						writer.WriteEndElement();
+					}
 
-					ConvertRecord(writer, record, subtableDef.ExpandedAttributes);
 					writer.WriteEndElement();
-				}
-
-				writer.WriteEndElement();
-				writer.WriteEndDocument();
-				writer.Flush();
-				#endregion
+					writer.WriteEndDocument();
+					writer.Flush();
 
 
-				Span<byte> data = memory.GetBuffer()[..(int)memory.Length];
 
-				var name = tableDef.Name;
+					Span<byte> data = memory.GetBuffer()[..(int)memory.Length];
 
-				if (!hasMany) Directory.CreateDirectory(_outputPath);
-				else
-				{
-					Directory.CreateDirectory($"{_outputPath}\\{name}");
-					name = $"{name}\\{(type >= 0 ? tableDef.Subtables[type].Name : $"base_{name}")}";
-				}
+					if (!hasMany) Directory.CreateDirectory(_outputPath);
+					else
+					{
+						Directory.CreateDirectory($"{_outputPath}\\{name}");
 
+						string sub = group.Key >= 0 ?
+							group.Key >= tableDef.Subtables.Count ? group.Key.ToString() : tableDef.Subtables[group.Key].Name :
+							$"base_{name}";
 
-				using (var fstream = File.Open(_outputPath + $"\\{name}.xml",
-						   FileMode.Create, FileAccess.Write, FileShare.Read))
-				{
+						name = $"{name}\\{sub}";
+					}
+
+					using var fstream = File.Open(_outputPath + $"\\{name}.xml", FileMode.Create, FileAccess.Write, FileShare.Read);
 					fstream.Write(data);
 					fstream.Close();
 				}
+			}
+			catch
+			{
+				System.Diagnostics.Debug.WriteLine("[ProcessTable] " + tableDef.Name);
 			}
 		}
 
@@ -144,7 +156,6 @@ namespace Xylia.Preview.Data.Helper
 		{
 			if (_noValidate && attribute.Offset >= record.DataSize)
 				return null;
-
 
 			string value;
 

@@ -74,21 +74,14 @@ namespace Xylia.Match.Windows
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			FrmWithOKCancel1 frmWith = new()
-			{
-				Text = "您正在关闭应用程序，是否确认这么做吗？"
-			};
-
-			if (frmWith.ShowDialog() != DialogResult.OK)
+			var result = MessageBox.Show("您正在关闭应用程序，是否确认这么做吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+			if (result != DialogResult.OK)
 			{
 				e.Cancel = true;
 				return;
 			}
 
-
 			this.Hide();
-			Log.Write("用户退出主程序");
-
 			Environment.Exit(0);
 		}
 

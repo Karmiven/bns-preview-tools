@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using CUE4Parse.UE4.AssetRegistry.Readers;
 using CUE4Parse.UE4.Objects.UObject;
@@ -7,7 +6,7 @@ using CUE4Parse.UE4.Objects.UObject;
 
 namespace CUE4Parse.UE4.AssetRegistry.Objects
 {
-	public class FAssetData_Bns 
+	public class FAssetData_Bns
 	{
 		public FName ObjectPath;
 		public FName PackagePath;
@@ -31,11 +30,21 @@ namespace CUE4Parse.UE4.AssetRegistry.Objects
 			PackageName = Ar.ReadFName();
 			AssetName = Ar.ReadFName();
 
-			if (!Simple) ;  //Ar.SerializeTagsAndBundles(this);
-			else
+			this.SerializeTagsAndBundles(Ar, Simple);
+
+			ChunkIDs2 = Ar.ReadArray<long>();
+			ObjectPath2 = Ar.ReadFString();
+		}
+
+
+		public void SerializeTagsAndBundles(FAssetRegistryArchive Ar, bool Simple)
+		{
+			int num = Ar.Read<int>();
+			Dictionary<FName, string> dictionary = new Dictionary<FName, string>();
+			for (int i = 0; i < num; i++)
 			{
-				var size = Ar.Read<int>();
-				for (var i = 0; i < size; i++)
+				if (!Simple) dictionary[Ar.ReadFName()] = Ar.ReadFString();
+				else
 				{
 					Ar.Position += 8;
 
@@ -44,8 +53,8 @@ namespace CUE4Parse.UE4.AssetRegistry.Objects
 				}
 			}
 
-			ChunkIDs2 = Ar.ReadArray<long>();
-			ObjectPath2 = Ar.ReadFString();
+			this.TagsAndValues = dictionary;
+			this.TaggedAssetBundles = new FAssetBundleData();
 		}
 	}
 }

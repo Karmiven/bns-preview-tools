@@ -172,7 +172,7 @@ namespace Xylia.Match.Windows.Panel
 		private void SendMessage(string Msg, bool IsError = false) => this.Invoke(() =>
 		{
 			if (IsError) FrmTips.ShowTipsError(null, Msg);
-			else FrmTips.ShowTipsInfo(null, Msg);
+			else FrmTips.ShowTipsSuccess(null, Msg);
 		});
 
 		private void TabControl_KeyDown(object sender, KeyEventArgs e)

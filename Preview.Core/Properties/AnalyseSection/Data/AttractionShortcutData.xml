@@ -3,6 +3,7 @@
 	<list module="ItemData" type="attraction-shortcut" version="0.35" >
 		<record alias="type" type="type" >
 			<case alias="dungeon" />
+
 			<case alias="raid-dungeon" />
 		</record>
 

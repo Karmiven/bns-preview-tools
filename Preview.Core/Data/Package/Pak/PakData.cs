@@ -5,16 +5,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 using CUE4Parse.Encryption.Aes;
 using CUE4Parse.FileProvider;
 using CUE4Parse.UE4.AssetRegistry;
-using CUE4Parse.UE4.AssetRegistry.Objects;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Core.Misc;
-
-using NPOI.SS.Formula.Functions;
 
 using Xylia.Preview.Properties;
 
@@ -40,7 +36,13 @@ namespace Xylia.Preview.Data.Package.Pak
 			if (this._provider != null)
 				return;
 
-			lock (this._provider = new DefaultFileProvider(GameDirectory ?? CommonPath.GameFolder, SearchOption.AllDirectories, true))
+			var version = new CUE4Parse.UE4.Versions.VersionContainer()
+			{
+				//会影响 USoundWave.bStreaming 的获取 
+				Game = CUE4Parse.UE4.Versions.EGame.GAME_UE4_21,
+			};
+
+			lock (this._provider = new DefaultFileProvider(GameDirectory ?? CommonPath.GameFolder, SearchOption.AllDirectories, true, version))
 			{
 				DateTime dt = DateTime.Now;
 
@@ -63,10 +65,8 @@ namespace Xylia.Preview.Data.Package.Pak
 			if (_provider.TryCreateReader("BNSR/AssetRegistry.bin", out var archive))
 			{
 				var AssetRegistry = new FAssetRegistryState_Bns(archive);
-				foreach (FAssetData_Bns asset in AssetRegistry.PreallocatedAssetDataBuffers)
-				{
+				foreach (var asset in AssetRegistry.PreallocatedAssetDataBuffers)
 					ObjectRef[asset.ObjectPath2] = asset.ObjectPath.Text;
-				}
 			}
 
 			Debug.WriteLine($"[Debug] 初始化资产注册表，耗时 { (DateTime.Now - dt).Seconds }s");
@@ -126,7 +126,8 @@ namespace Xylia.Preview.Data.Package.Pak
 				{
 					//使用公共处理
 					if (ObjectRef.IsEmpty && true) lock (this.ObjectRef) LoadAssetRegistry();
-					if (this.ObjectRef.ContainsKey(filePath)) return GetObject(this.ObjectRef[filePath]);
+					if (this.ObjectRef.TryGetValue(filePath, out Ue4Path))
+						return GetObject(Ue4Path);
 
 					Debug.WriteLine("无法读取的路径: " + filePath);
 					return null;

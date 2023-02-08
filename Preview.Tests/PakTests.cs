@@ -12,10 +12,10 @@ using Xylia.Preview.Data.Package.Pak;
 
 namespace Xylia.Preview.Tests
 {
-	//[TestClass]
+	[TestClass]
 	public class PakTests
 	{
-		[TestMethod]
+		//[TestMethod]
 		public void GetScene()
 		{
 			string OutDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\scene\\";
@@ -56,6 +56,14 @@ namespace Xylia.Preview.Tests
 					}
 				}
 			}
+		}
+
+		//[TestMethod]
+		public void TestMethod()
+		{
+			PakData pak = new();
+			pak.Initialize();
+			pak.LoadAssetRegistry();
 		}
 	}
 }

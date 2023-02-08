@@ -234,7 +234,8 @@ namespace Xylia.Match.Windows.Panel
 			// 结束任务 
 			if (Thread_ItemIcon != null)
 			{
-				if (new FrmWithOKCancel1() { Text = "是否确认强制结束？" }.ShowDialog() != DialogResult.OK) return;
+				var result = MessageBox.Show("是否确认强制结束？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				if (result != DialogResult.OK) return;
 
 				Thread_ItemIcon.Interrupt();
 				Thread_ItemIcon = null;

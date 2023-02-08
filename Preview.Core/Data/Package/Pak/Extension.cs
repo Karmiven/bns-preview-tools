@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
