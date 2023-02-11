@@ -30,40 +30,42 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
         /// </summary>
         private void InitializeComponent()
         {
-			this.ucDataGridView1 = new HZH_Controls.Controls.UCDataGridView();
+			this.dataGridView = new HZH_Controls.Controls.UCDataGridView();
 			this.SuspendLayout();
 			// 
-			// ucDataGridView1
+			// dataGridView
 			// 
-			this.ucDataGridView1.AutoScroll = true;
-			this.ucDataGridView1.BackColor = System.Drawing.Color.White;
-			this.ucDataGridView1.Columns = null;
-			this.ucDataGridView1.DataSource = null;
-			this.ucDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ucDataGridView1.HeadFont = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-			this.ucDataGridView1.HeadHeight = 40;
-			this.ucDataGridView1.HeadPadingLeft = 0;
-			this.ucDataGridView1.HeadTextColor = System.Drawing.Color.Black;
-			this.ucDataGridView1.IsShowCheckBox = false;
-			this.ucDataGridView1.IsShowHead = true;
-			this.ucDataGridView1.Location = new System.Drawing.Point(0, 0);
-			this.ucDataGridView1.Name = "ucDataGridView1";
-			this.ucDataGridView1.RowHeight = 40;
-			this.ucDataGridView1.RowType = typeof(HZH_Controls.Controls.UCDataGridViewRow);
-			this.ucDataGridView1.Size = new System.Drawing.Size(720, 422);
-			this.ucDataGridView1.TabIndex = 0;
+			this.dataGridView.BackColor = System.Drawing.Color.White;
+			this.dataGridView.Columns = null;
+			this.dataGridView.DataSource = null;
+			this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridView.HeadFont = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.dataGridView.HeadHeight = 40;
+			this.dataGridView.HeadPadingLeft = 0;
+			this.dataGridView.HeadTextColor = System.Drawing.Color.Black;
+			this.dataGridView.IsShowCheckBox = false;
+			this.dataGridView.IsShowHead = true;
+			this.dataGridView.Location = new System.Drawing.Point(0, 0);
+			this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.dataGridView.Name = "dataGridView";
+			this.dataGridView.Padding = new System.Windows.Forms.Padding(0, 57, 0, 0);
+			this.dataGridView.RowHeight = 40;
+			this.dataGridView.RowType = typeof(HZH_Controls.Controls.UCDataGridViewRow);
+			this.dataGridView.Size = new System.Drawing.Size(863, 598);
+			this.dataGridView.TabIndex = 0;
 			// 
 			// DataGridScene
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(720, 422);
-			this.Controls.Add(this.ucDataGridView1);
+			this.ClientSize = new System.Drawing.Size(863, 598);
+			this.Controls.Add(this.dataGridView);
 			this.DoubleBuffered = true;
 			this.ForeColor = System.Drawing.Color.DimGray;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "DataGridScene";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "查看字段";
@@ -74,7 +76,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 		private ItemNameCell itemNameCell1;
-		private HZH_Controls.Controls.UCDataGridView ucDataGridView1;
+		private HZH_Controls.Controls.UCDataGridView dataGridView;
 	}
 }
 

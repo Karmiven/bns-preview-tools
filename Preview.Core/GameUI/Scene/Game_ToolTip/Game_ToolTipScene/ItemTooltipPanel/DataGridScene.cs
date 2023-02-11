@@ -15,27 +15,30 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		{
 			this.InitializeComponent();
 
-			this.ucDataGridView1.Columns = new List<DataGridViewColumnEntity>
+			string field1 = "key";
+			string field2 = "value";
+
+			this.dataGridView.Columns = new List<DataGridViewColumnEntity>
 			{
-				new() { DataField = "key", HeadText = "字段", Width = 40, WidthType = SizeType.Percent , Format = o => ParamTable.Convert(o) },
-				new() { DataField = "value", HeadText = "数值", Width = 60, WidthType = SizeType.Percent },
+				new() { DataField = field1, HeadText = "字段", Width = 40, WidthType = SizeType.Percent , Format = o => ParamTable.Convert(o) },
+				new() { DataField = field2, HeadText = "数值", Width = 60, WidthType = SizeType.Percent },
 			};
 
 
 			DataTable dt = new();
-			dt.Columns.Add("key");
-			dt.Columns.Add("value");
+			dt.Columns.Add(field1);
+			dt.Columns.Add(field2);
 
 			foreach(var a in Attributes)
 			{
 				DataRow dr = dt.NewRow();
-				dr["key"] = a.Key;
-				dr["value"] = a.Value;
+				dr[field1] = a.Key;
+				dr[field2] = a.Value;
 
 				dt.Rows.Add(dr);
 			}
 
-			this.ucDataGridView1.DataSource = dt;
+			this.dataGridView.DataSource = dt;
 		}
 
 

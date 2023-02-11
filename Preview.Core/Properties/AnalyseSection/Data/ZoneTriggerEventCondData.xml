@@ -30,8 +30,8 @@
 			<case alias="fri" />
 			<case alias="sat" />
 			<case alias="thu-fri" />
-			<case alias="unk1" />
-			<case alias="unk2" />
+			<case alias="weekday" />
+			<case alias="fri-sat-sun" />
 			<case alias="weekend" />
 			<case alias="entire-week" />
     </record>

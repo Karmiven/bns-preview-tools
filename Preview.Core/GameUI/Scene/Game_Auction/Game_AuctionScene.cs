@@ -85,13 +85,134 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			data[MarketCategory2Seq.EquipGem].Add(MarketCategory3Seq.Gon6);
 			data[MarketCategory2Seq.EquipGem].Add(MarketCategory3Seq.Tae7);
 			data[MarketCategory2Seq.EquipGem].Add(MarketCategory3Seq.Geon8);
-			#endregion															
+			#endregion
 
 			#region	Accessory
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Ring);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Earring);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Necklace);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Belt);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Bracelet);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Soul);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Soul2);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Gloves);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Pet1);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Nova);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Rune1);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Rune2);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.Vehicle);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.NamePlate);
+			data[MarketCategory2Seq.Accessory].Add(MarketCategory3Seq.SpeechBubble);
+			#endregion
+
+			#region	Dress
+			data[MarketCategory2Seq.Dress].Add(MarketCategory3Seq.Costume);
+			data[MarketCategory2Seq.Dress].Add(MarketCategory3Seq.HeadAttach);
+			data[MarketCategory2Seq.Dress].Add(MarketCategory3Seq.FaceAttach);
+			data[MarketCategory2Seq.Dress].Add(MarketCategory3Seq.CostumeAttach);
+			data[MarketCategory2Seq.Dress].Add(MarketCategory3Seq.SummonedPetCostume);
+			data[MarketCategory2Seq.Dress].Add(MarketCategory3Seq.SummonedPetHat);
+			data[MarketCategory2Seq.Dress].Add(MarketCategory3Seq.SummonedPetAttach);
+			#endregion
+
+			#region	WeaponGem
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Ruby);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Topaz);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Sapphire);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Jade);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Amethyst);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Emerald);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Diamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Obsidian);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Amber);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Garnet);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Aquamarine);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.RubyDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.TopazDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.SapphireDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.JadeDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.AmethystDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.EmeraldDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.AquamarineDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.AmberDiamond);
+			data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.ObsidianGarnet);
+			#endregion
+
+			#region	Medicine
+
+			#endregion
+
+			#region	Food
+
+			#endregion
+
+			#region	BuildUpStone
+			data[MarketCategory2Seq.BuildUpStone].Add(MarketCategory3Seq.SkillStone1);
+			data[MarketCategory2Seq.BuildUpStone].Add(MarketCategory3Seq.SkillStone2);
+			#endregion
+
+			#region	Talisman
+
+			#endregion
+
+			#region	Tool
+
+			#endregion
+
+			#region	EquipMaterial
+			data[MarketCategory2Seq.EquipMaterial].Add(MarketCategory3Seq.GrowthMaterial);
+			data[MarketCategory2Seq.EquipMaterial].Add(MarketCategory3Seq.HolyMaterial);
+			#endregion
+
+			#region	UnionMaterial
+			data[MarketCategory2Seq.UnionMaterial].Add(MarketCategory3Seq.ProductionMaterial);
+			data[MarketCategory2Seq.UnionMaterial].Add(MarketCategory3Seq.HypermoveMaterial);
+			#endregion
+
+			#region	DressMaterial
+			data[MarketCategory2Seq.DressMaterial].Add(MarketCategory3Seq.ColorMaterial);
+			data[MarketCategory2Seq.DressMaterial].Add(MarketCategory3Seq.Cloth);
+			#endregion
+
+			#region	EtcMaterial
+			data[MarketCategory2Seq.EtcMaterial].Add(MarketCategory3Seq.SpecialMaterial);	
+			data[MarketCategory2Seq.EtcMaterial].Add(MarketCategory3Seq.NormalMaterial);
+			#endregion
+
+			#region	Coin
+
+			#endregion
+
+			#region	Deed
+			data[MarketCategory2Seq.Deed].Add(MarketCategory3Seq.NormalDeed);
+			data[MarketCategory2Seq.Deed].Add(MarketCategory3Seq.SkillTakeDeed);
+			#endregion
+
+			#region	Quest
+
+			#endregion
+
+			#region	EtcChange
+			data[MarketCategory2Seq.EtcChange].Add(MarketCategory3Seq.SundryItem);
+			data[MarketCategory2Seq.EtcChange].Add(MarketCategory3Seq.ChackItem);
+			#endregion
+
+			#region	EtcBox
+			data[MarketCategory2Seq.EtcBox].Add(MarketCategory3Seq.NormalEtcBox);
+			#endregion
+
+			#region	Badge
 
 			#endregion
 
 
+
+			//data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Void10);
+			//data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Void11);
+			//data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Void12);
+			//data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Void13);
+			//data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Void14);
+			//data[MarketCategory2Seq.WeaponGem].Add(MarketCategory3Seq.Void15);
 
 
 			return data;
@@ -123,7 +244,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			#endregion
 
 
-
 			new Thread(t =>
 			{
 				BlockingCollection<Item> lst = new();
@@ -131,8 +251,8 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 				{
 					if (!IsAll)
 					{
-						if (category2 != default && category2 != o.MarketCategory2) return;
 						if (category3 != default && category3 != o.MarketCategory3) return;
+						else if (category2 != default && category2 != o.MarketCategory2) return;
 					}
 
 
