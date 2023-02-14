@@ -12,20 +12,18 @@ namespace Xylia.Match.Windows.Panel
 {
 	[DesignTimeVisible(false)]
 	public partial class ModifyLoading : UserControl
-	{
-		/// <summary>
-		/// 定义静态资源
-		/// </summary>
-		protected class Static
-		{
-			public static string pwd = "abcde12#";
-		}
+	{			
+		readonly bool isRun = false;
 
+		public static string pwd = "abcde12#";
 
 		public ModifyLoading()
 		{
 			InitializeComponent();
 		}
+
+
+
 
 		private void ucBtnFillet1_BtnClick(object sender, EventArgs e)
 		{
@@ -41,8 +39,6 @@ namespace Xylia.Match.Windows.Panel
 				filePath.Text = fileDialog.FileName;
 			}
 		}
-
-		readonly bool isRun = false;
 
 		private void ucBtnFillet2_BtnClick(object sender, EventArgs e)
 		{

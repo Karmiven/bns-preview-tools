@@ -508,7 +508,7 @@
 		<Folder Include="GameUI\Scene\Game_ItemMap\Game_ItemMapScene\" />
 		<Folder Include="GameUI\Scene\Game_ItemPreview\Game_ItemPreviewScene\" />
 		<Folder Include="GameUI\Scene\Game_ItemTransform\Game_ItemTransformScene\" />
-		<Folder Include="GameUI\Scene\Game_JumpingLevel\Game_JumpingLevel\" />
+		<Folder Include="GameUI\Scene\Game_JumpingLevel\" />
 		<Folder Include="GameUI\Scene\Game_LevelDownload\" />
 		<Folder Include="GameUI\Scene\Game_Loading\Loading_ConfirmScene\" />
 		<Folder Include="GameUI\Scene\Game_Loading\Loding\" />

@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.Btn_StartMatch = new HZH_Controls.Controls.UCBtnExt();
+			this.Confirm = new HZH_Controls.Controls.UCBtnExt();
 			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
@@ -42,31 +42,31 @@
 			this.textBox1.Size = new System.Drawing.Size(400, 25);
 			this.textBox1.TabIndex = 0;
 			// 
-			// Btn_StartMatch
+			// Confirm
 			// 
-			this.Btn_StartMatch.BtnBackColor = System.Drawing.Color.Empty;
-			this.Btn_StartMatch.BtnFont = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.Btn_StartMatch.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.Btn_StartMatch.BtnText = "确定";
-			this.Btn_StartMatch.ConerRadius = 8;
-			this.Btn_StartMatch.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.Btn_StartMatch.EnabledMouseEffect = false;
-			this.Btn_StartMatch.FillColor = System.Drawing.Color.White;
-			this.Btn_StartMatch.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-			this.Btn_StartMatch.IsRadius = true;
-			this.Btn_StartMatch.IsShowRect = true;
-			this.Btn_StartMatch.IsShowTips = false;
-			this.Btn_StartMatch.Location = new System.Drawing.Point(327, 87);
-			this.Btn_StartMatch.Margin = new System.Windows.Forms.Padding(0);
-			this.Btn_StartMatch.Name = "Btn_StartMatch";
-			this.Btn_StartMatch.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.Btn_StartMatch.RectWidth = 1;
-			this.Btn_StartMatch.Size = new System.Drawing.Size(90, 38);
-			this.Btn_StartMatch.TabIndex = 100;
-			this.Btn_StartMatch.TabStop = false;
-			this.Btn_StartMatch.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-			this.Btn_StartMatch.TipsText = "";
-			this.Btn_StartMatch.BtnClick += new System.EventHandler(this.Btn_StartMatch_BtnClick);
+			this.Confirm.BtnBackColor = System.Drawing.Color.Empty;
+			this.Confirm.BtnFont = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.Confirm.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.Confirm.BtnText = "确定";
+			this.Confirm.ConerRadius = 8;
+			this.Confirm.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.Confirm.EnabledMouseEffect = false;
+			this.Confirm.FillColor = System.Drawing.Color.White;
+			this.Confirm.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+			this.Confirm.IsRadius = true;
+			this.Confirm.IsShowRect = true;
+			this.Confirm.IsShowTips = false;
+			this.Confirm.Location = new System.Drawing.Point(327, 87);
+			this.Confirm.Margin = new System.Windows.Forms.Padding(0);
+			this.Confirm.Name = "Confirm";
+			this.Confirm.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.Confirm.RectWidth = 1;
+			this.Confirm.Size = new System.Drawing.Size(90, 38);
+			this.Confirm.TabIndex = 100;
+			this.Confirm.TabStop = false;
+			this.Confirm.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+			this.Confirm.TipsText = "";
+			this.Confirm.BtnClick += new System.EventHandler(this.Confirm_BtnClick);
 			// 
 			// label1
 			// 
@@ -75,34 +75,33 @@
 			this.label1.Location = new System.Drawing.Point(13, 13);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(107, 20);
+			this.label1.Size = new System.Drawing.Size(276, 20);
 			this.label1.TabIndex = 101;
-			this.label1.Text = "请输入筛选条件";
+			this.label1.Text = "请输入筛选条件 (引用对象输入alias或者id)";
 			// 
-			// Searcher
+			// SearcherStore
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoSize = true;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(444, 156);
+			this.ClientSize = new System.Drawing.Size(438, 141);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.Btn_StartMatch);
+			this.Controls.Add(this.Confirm);
 			this.Controls.Add(this.textBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.KeyPreview = true;
 			this.Margin = new System.Windows.Forms.Padding(4);
-			this.Name = "Searcher";
+			this.Name = "SearcherStore";
 			this.Padding = new System.Windows.Forms.Padding(23, 85, 23, 28);
 			this.Text = "筛选";
-			this.Load += new System.EventHandler(this.Searcher_Load);
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Searcher_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-		private HZH_Controls.Controls.UCBtnExt Btn_StartMatch;
+		private HZH_Controls.Controls.UCBtnExt Confirm;
 		public System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label1;
 	}

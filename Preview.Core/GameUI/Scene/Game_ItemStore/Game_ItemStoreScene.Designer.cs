@@ -40,9 +40,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			// ListPreview
 			// 
 			this.ListPreview.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ListPreview.Location = new System.Drawing.Point(399, 54);
+			this.ListPreview.Location = new System.Drawing.Point(399, 45);
 			this.ListPreview.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-			this.ListPreview.Size = new System.Drawing.Size(401, 561);
+			this.ListPreview.Size = new System.Drawing.Size(401, 570);
 			// 
 			// TreeView
 			// 
@@ -108,8 +108,8 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			this.JobSelector.Size = new System.Drawing.Size(97, 33);
 			this.JobSelector.Source.Add("剑士");
 			this.JobSelector.TabIndex = 119;
-			this.JobSelector.TextValue = "全部";
 			this.JobSelector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.JobSelector.TextValue = "全部";
 			this.JobSelector.TriangleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
 			this.JobSelector.SelectedChangedEvent += new System.EventHandler(this.JobSelector_SelectedChangedEvent);
 			// 

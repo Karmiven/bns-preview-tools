@@ -4,7 +4,6 @@ using System.Threading;
 using System.Windows.Forms;
 
 using Xylia.Extension;
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Scene.Searcher;
 
@@ -23,32 +22,24 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		#endregion
 
 		#region 字段
-		/// <summary>
-		/// 缓存
-		/// </summary>
 		internal Dictionary<TreeNode, NodeInfo> TreeNodeInfo = new();
 
-		/// <summary>
-		/// 筛选信息
-		/// </summary>
-		public readonly FilterList Filter = new();
-
+		public readonly List<FilterInfo> _filter = new();
 
 		public string StoreAlias;
+
+		private Thread thread;
 		#endregion
 
 
 		#region 控件方法
-		private void Store2Frm_Load(object sender, EventArgs e)	=> this.LoadData();
-
-
-		private Thread thread;
+		private void Store2Frm_Load(object sender, EventArgs e) => this.LoadData();
 
 		public void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			if (TreeView.SelectedNode is null || !TreeNodeInfo.ContainsKey(TreeView.SelectedNode)) return;
-			
-			thread = new Thread(act => this.ShowStoreContent(this.StoreAlias = TreeNodeInfo[TreeView.SelectedNode].AliasText));
+			if (TreeView.SelectedNode is null || !TreeNodeInfo.TryGetValue(TreeView.SelectedNode, out var info)) return;
+
+			thread = new Thread(act => this.Show(this.StoreAlias = info.RecordAlias));
 			thread.SetApartmentState(ApartmentState.STA);
 			thread.Start();
 		}
@@ -61,111 +52,46 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			this.ListPreview.Width = Math.Max(TempWidth, 315);
 		}
 
-		/// <summary>
-		/// 筛选内容
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
+		private void CancelFilter_Click(object sender, EventArgs e) => Filter(null);
+
 		private void ModifyFilterRule_Click(object sender, EventArgs e)
 		{
-			var Searcher = new SearcherStore(Filter?.FilterInfo);
-			if (Searcher.ShowDialog() == DialogResult.OK)
-			{
-				string SearchRule = Searcher.textBox1.Text;
-				this.ShowStoreList(SearchRule);
-			}
-		}
+			var Searcher = new SearcherStore(_filter);
+			if (Searcher.ShowDialog() != DialogResult.OK) return;
 
-		private void CancelFilter_Click(object sender, EventArgs e)
-		{
-			this.ShowStoreList();
+			Filter(Searcher.textBox1.Text, Searcher.filters);
 		}
 		#endregion
 
+
 		#region 方法
-		/// <summary>
-		/// 载入数据
-		/// </summary>
 		protected virtual void LoadData() { }
 
-		/// <summary>
-		/// 展示指定商店内容
-		/// </summary>
-		protected virtual void ShowStoreContent(string StoreAlias) { }
+		protected virtual void Show(string StoreAlias) { }
 
-		/// <summary>
-		/// 切换显示商店列表
-		/// </summary>
-		/// <param name="FilterRule"></param>
-		internal void ShowStoreList(string FilterRule = null)
+
+
+		private void Filter(string rule, IEnumerable<FilterInfo> filters = null)
 		{
-			//清理节点内容
-			foreach (TreeNode CurNode in this.TreeView.Nodes) CurNode.Nodes.Clear();
+			foreach (TreeNode CurNode in this.TreeView.Nodes)
+				CurNode.Nodes.Clear();
 
-			bool HasFilter = !string.IsNullOrWhiteSpace(FilterRule);
-
-			//尝试获取记录器对象
-			BaseRecord RecordEntity = null;
-			if (HasFilter)
+			var records = SearcherStore.Filter(rule, filters);
+			foreach (var (node, info) in this.TreeNodeInfo)
 			{
-				if (this.Filter.Contains(FilterTag.Item)) RecordEntity = FilterRule.GetItemInfo();
-				RecordEntity = FileCache.Data.Npc[FilterRule];
-
-				System.Diagnostics.Debug.WriteLine(RecordEntity?.Attributes);
-			}
-
+				bool flag = false;
+				if (string.IsNullOrWhiteSpace(rule)) flag = true;
+				else if (node.Text.MyContains(rule)) flag = true;
+				else if (records != null && Filter(info, records)) flag = true;
 
 
-			//恢复符合规则的子节点
-			foreach (var Node in this.TreeNodeInfo)
-			{
-				if (!HasFilter ||
-					Node.Key.Text.MyContains(FilterRule) ||     //判断节点文本
-					this.FilterNode(Node.Value, RecordEntity))  //特殊规则判断
-				{
-					Node.Value.ParentNode.Nodes.Add(Node.Key);
-				}
+				if (flag) info.ParentNode.Nodes.Add(node);
 			}
 
 			this.TreeView.ExpandAll();
 		}
 
-		/// <summary>
-		/// 在筛选时，指示此节点是否符合条件
-		/// </summary>
-		/// <param name="NodeInfo"></param>
-		/// <param name="FilterRule">搜索规则，可以为文本或者实例对象</param>
-		/// <returns></returns>
-		protected virtual bool FilterNode(NodeInfo NodeInfo, object FilterRule) => false;
+		protected virtual bool Filter(NodeInfo NodeInfo, List<BaseRecord> FilterRule) => false;
 		#endregion
-
-	}
-
-	/// <summary>
-	/// 节点信息
-	/// </summary>
-	public class NodeInfo
-	{
-		public NodeInfo(string AliasText, TreeNode TreeNode)
-		{
-			this.AliasText = AliasText;
-			this.TreeNode = TreeNode;
-			this.ParentNode = TreeNode.Parent;
-		}
-
-		/// <summary>
-		/// 母节点，用于筛选时
-		/// </summary>
-		public TreeNode ParentNode;
-
-		/// <summary>
-		/// 节点
-		/// </summary>
-		public TreeNode TreeNode;
-
-		/// <summary>
-		/// 文本
-		/// </summary>
-		public string AliasText;
 	}
 }

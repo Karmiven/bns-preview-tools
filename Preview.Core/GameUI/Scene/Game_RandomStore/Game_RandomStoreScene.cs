@@ -20,11 +20,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 		public Game_RandomStoreScene() : base()
 		{
 			this.InitializeComponent();
-
-
-			//this.ListPreview.MainMenu.Items.Add("设置当前组合概率");
-			//this.ListPreview.MainMenu.Items.Add("新增聚灵阁组合");
-
 			this.TreeView.Nodes.Clear();
 			this.MainNode.Clear();
 
@@ -35,6 +30,13 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 
 				MainNode.Add(seq, TreeNode);
 			}
+
+
+			//this.ListPreview.MainMenu.Items.Add("设置当前组合概率");
+			//this.ListPreview.MainMenu.Items.Add("新增聚灵阁组合");
+
+
+			_filter.Add(new(typeof(Item), "物品"));
 		}
 		#endregion
 
@@ -84,16 +86,15 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 			this.MainNode[GroupType.Rare].ExpandAll();
 		}
 
-		protected override void ShowStoreContent(string GroupAlias)
+		protected override void Show(string GroupAlias)
 		{
-			#region 初始化数据
 			if (!RandomStoreItemGroups.ContainsKey(GroupAlias)) return;
 
 			this.ListPreview.Name = GroupAlias;
 			var CurRandomStoreItems = this.RandomStoreItemGroups[GroupAlias];
-			#endregion
 
-			#region 显示内容
+
+
 			var Cells = new List<ListCell>();
 			foreach (var RandomStoreItem in CurRandomStoreItems.Values)
 			{
@@ -123,19 +124,19 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 			}
 
 			this.ListPreview.Invoke(() => this.ListPreview.Cells = Cells);
-			#endregion
 		}
 
-		protected override bool FilterNode(NodeInfo NodeInfo, object FilterRule)
+		protected override bool Filter(NodeInfo NodeInfo, List<BaseRecord> FilterRule)
 		{
-			//如果搜索条件是物品信息，那么再搜索可购买物品
-			if (FilterRule is Item FilterItem)
+			foreach (var rule in FilterRule)
 			{
-				//遍历可购买物品字段
-				foreach (var ItemGroup in this.RandomStoreItemGroups[NodeInfo.AliasText].Values)
+				if (rule is Item item)
 				{
-					var item = FileCache.Data.Item[ItemGroup.Item];
-					if (item != null && item.alias == FilterItem.alias) return true;
+					foreach (var ItemGroup in this.RandomStoreItemGroups[NodeInfo.RecordAlias].Values)
+					{
+						var ItemInfo = FileCache.Data.Item[ItemGroup.Item];
+						if (ItemInfo != null && ItemInfo == item) return true;
+					}
 				}
 			}
 

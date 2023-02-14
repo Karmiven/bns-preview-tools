@@ -4,14 +4,12 @@ using System.Linq;
 using System.Windows.Forms;
 
 using Xylia.Configure;
-using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Controls.List;
 using Xylia.Preview.GameUI.Scene.Searcher;
 
-using NpcData = Xylia.Preview.Data.Record.Npc;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 {
@@ -39,17 +37,16 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			#region 获取职业信息
 			var Source = Job.GetPcJobName();
 			Source.Insert(0, "全部");
-			this.JobSelector.Source = Source; 
+			this.JobSelector.Source = Source;
 
 			var LastJobSelect = Ini.ReadValue("Preview", "JobFilter");
 			this.JobSelector.TextValue = Source.Contains(LastJobSelect) ? LastJobSelect : this.JobSelector.Source.FirstOrDefault();
 			#endregion
 
 
-			#region 设置筛选内容
-			this.Filter.Add(new FilterInfo(FilterTag.Text, "商店名", true));
-			this.Filter.Add(new FilterInfo(FilterTag.Item, "出售物品", true));
-			#endregion
+			_filter.Add(new(typeof(Text), "商店名"));
+			_filter.Add(new(typeof(Item), "出售物品"));
+			_filter.Add(new(typeof(Npc), "出售对象", false));
 		}
 		#endregion
 
@@ -70,7 +67,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 			#region 读取数据
 			var StoreInfoList = new List<StoreInfo>();
-			foreach(var Store2 in FileCache.Data.Store2)
+			foreach (var Store2 in FileCache.Data.Store2)
 			{
 				#region 初始化
 				var Store2Alias = Store2.alias;
@@ -125,18 +122,13 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 					var CurNode = Nodes[Info.StoreType].Nodes.Add(Info.Name);
 					this.TreeNodeInfo.Add(CurNode, new NodeInfo(Info.Alias, CurNode));
 				}
-				//不显示SoulBoost商店
-				else if (Info.StoreType != Store2Type.SoulBoostStore)
-				{
-					Console.WriteLine("不支持的商店类型：" + Info.StoreType);
-				}
 			}
-			#endregion
 
 			TreeView.Nodes[0].ExpandAll();
+			#endregion
 		}
 
-		protected override void ShowStoreContent(string StoreAlias)
+		protected override void Show(string StoreAlias)
 		{
 			#region 初始化数据
 			var Store2 = FileCache.Data.Store2[StoreAlias];
@@ -163,7 +155,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 				if (!ItemInfo.CheckEquipJob(SelectedJob)) continue;
 
 				var ItemBuyPrice = FileCache.Data.ItemBuyPrice[BuyPrice];
-				this.ListPreview.Invoke(() => Cells.Add(new Store2ItemCell(ItemInfo, ItemBuyPrice)));  
+				this.ListPreview.Invoke(() => Cells.Add(new Store2ItemCell(ItemInfo, ItemBuyPrice)));
 			}
 
 			this.Text = $"商店 { Store2.GetName() } ，共计 { Cells.Count }个兑换内容";
@@ -172,7 +164,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 
 			//获取是否存在出售NPC
-			this.npcs = SearcherScene.GetRelativeNpc(StoreAlias);
+			this.npcs = FileCache.Data.Npc.Where(npc => GetNpc(Store2, npc));
 			this.Invoke(() =>
 			{
 				this.ucBtnExt1.Visible = npcs != null && npcs.Any();
@@ -180,31 +172,27 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			});
 		}
 
-		protected override bool FilterNode(NodeInfo NodeInfo, object FilterRule)
+		protected override bool Filter(NodeInfo NodeInfo, List<BaseRecord> FilterRule)
 		{
-			//如果搜索条件是物品信息，那么再搜索可购买物品
-			if (FilterRule is Item FilterItem)
+			var store = FileCache.Data.Store2[NodeInfo.RecordAlias];
+			if (store is null) return false;
+
+			foreach (var rule in FilterRule)
 			{
-				var Store2 = FileCache.Data.Store2[NodeInfo.AliasText];
-				if (Store2 is null) return false;
-
-				//遍历可购买物品字段
-				foreach (var a in Store2.Attributes)
+				if (rule is Item item)
 				{
-					if (!a.Key.StartsWith("item-")) continue;
+					foreach (var a in store.Attributes)
+					{
+						if (!a.Key.StartsWith("item-")) continue;
 
-					var ItemInfo = FileCache.Data.Item[a.Value];
-					if (ItemInfo != null && ItemInfo.alias == FilterItem.alias) return true;
+						var ItemInfo = FileCache.Data.Item[a.Value];
+						if (ItemInfo != null && ItemInfo == item) return true;
+					}
 				}
-			}
-			else if (FilterRule is NpcData NpcData)
-			{
-				for (byte idx = 1; idx <= 6; idx++)
+				else if (rule is Npc npc)
 				{
-					var Store2 = NpcData.Attributes["store2-" + idx];
-					if (Store2 is null) return false;
-
-					if (NodeInfo.AliasText.MyEquals(Store2)) return true;
+					var flag = GetNpc(store, npc);
+					if (flag) return true;
 				}
 			}
 
@@ -233,9 +221,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 
 
+
 		IEnumerable<BaseRecord> npcs;
 
 		private void ucBtnExt1_BtnClick(object sender, EventArgs e) => new SearcherScene(npcs).MyShowDialog();
+
+		private static bool GetNpc(Store2 store, Npc npc) => store == npc.Store2_1 || store == npc.Store2_2 || store == npc.Store2_3 || store == npc.Store2_4 || store == npc.Store2_5 || store == npc.Store2_6;
 		#endregion
 	}
 }

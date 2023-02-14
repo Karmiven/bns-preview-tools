@@ -205,10 +205,9 @@ namespace Xylia.Preview.Data
 				{
 					var data = tables[x];
 					var Ref = new Ref(data.Key());
-					var Alias = data.Alias();
 
 					this.ByRef[Ref] = this._data[x] = new(data);
-					if (Alias != null) this.ByAlias[Alias] = Ref;
+					if (data.alias != null) this.ByAlias[data.alias] = Ref;
 				}
 			}
 			else

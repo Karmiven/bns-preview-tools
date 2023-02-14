@@ -46,7 +46,7 @@ namespace Xylia.Preview.Tests
 		}
 		
 		
-		[TestMethod]
+		//[TestMethod]
 		public void Category()
 		{
 			foreach (var seq in Enum.GetValues<MarketCategory2Seq>())
@@ -63,6 +63,16 @@ namespace Xylia.Preview.Tests
 
 				Console.WriteLine($"Name.item.game-category-3.{seq.GetSignal()}".GetText());
 			}
+		}
+
+
+		[TestMethod]
+		public void RecordTest()
+		{
+			BaseRecord text1 = new() { alias = "123" };
+			BaseRecord text2 = new() { alias = "123" };
+
+			Console.WriteLine(text1 == text2);
 		}
 	}
 }

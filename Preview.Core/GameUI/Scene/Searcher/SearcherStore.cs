@@ -1,132 +1,90 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+
+using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Record;
 
 namespace Xylia.Preview.GameUI.Scene.Searcher
 {
 	public partial class SearcherStore : Form
 	{
-		#region 构造
-		/// <summary>
-		/// 筛选信息
-		/// </summary>
-		public List<FilterInfo> FilterInfo;
+		public IEnumerable<FilterInfo> filters;
 
-		public SearcherStore(List<FilterInfo> FilterInfo = null)
+		public SearcherStore(List<FilterInfo> filters)
 		{
 			InitializeComponent();
 
-			this.FilterInfo = FilterInfo;
-		}
-		#endregion
+			this.filters = filters;
 
-		#region 方法
-		private void Searcher_Load(object sender, EventArgs e)
-		{
-			int LocX = 30, LocY = this.Btn_StartMatch.Bottom + 5;
-
-			//判断是否存在预设的筛选分类
-			if (this.FilterInfo?.Count != 0)
+			#region CheckBox
+			int LocX = 30, LocY = this.Confirm.Bottom + 5;
+			foreach (var Filter in filters)
 			{
-				foreach (var Filter in this.FilterInfo)
+				var c = new CheckBox
 				{
-					var c = new CheckBox
-					{
-						Text = Filter.Text,
-						Checked = Filter.Checked,
+					Text = Filter.TagName,
+					Checked = Filter.Checked,
 
-						Location = new Point(LocX, LocY),
-					};
+					Location = new Point(LocX, LocY),
+				};
+				c.CheckedChanged += new((o, e) => Filter.Checked = c.Checked);
 
-					this.Controls.Add(c);
+				this.Controls.Add(c);
 
-					bool FeedLine = this.Width < (LocX + 20);
-					if (!FeedLine) LocX += c.Width;
-					else
-					{
-						LocX = 30;
-						LocY = c.Bottom + 2;
-					}
+
+				if (this.Width > (LocX + 20)) LocX = c.Right;
+				else
+				{
+					LocX = 30;
+					LocY = c.Bottom + 2;
 				}
 			}
-
-			this.Height = LocY + 35;
+			#endregion
 		}
 
-		private void Btn_StartMatch_BtnClick(object sender, EventArgs e)
+
+		private void Confirm_BtnClick(object sender, EventArgs e)
 		{
+			filters = filters.Where(x => x.Checked);
 			this.DialogResult = DialogResult.OK;
 		}
 
-		private void Searcher_KeyDown(object sender, KeyEventArgs e)
+
+
+		public static List<BaseRecord> Filter(string rule, IEnumerable<FilterInfo> filters)
 		{
-			if (e.KeyCode == Keys.Enter)
-			{
-				this.Btn_StartMatch_BtnClick(null, null);
-			}
+			if (string.IsNullOrWhiteSpace(rule) || !filters.Any())
+				return null;
+
+
+			bool Contains(Type type) => filters.FirstOrDefault(f => f.Tag == type) != null;
+
+			List<BaseRecord> entity = new();
+			if (Contains(typeof(Item))) entity.Add(rule.GetItemInfo());
+			if (Contains(typeof(Npc))) entity.Add(FileCache.Data.Npc[rule]);
+
+			return entity;
 		}
-		#endregion
+
 	}
 
 
-	/// <summary>
-	/// 筛选集合
-	/// </summary>
-	public class FilterList
-	{
-		public readonly List<FilterInfo> FilterInfo = new();
-
-		public bool Contains(FilterTag Tag)
-		{
-			return FilterInfo.Find(f => f.Tag == Tag) != null;
-		}
-
-		public void Add(FilterInfo item)
-		{
-			this.FilterInfo.Add(item);
-		}
-	}
-
-	/// <summary>
-	/// 筛选类型
-	/// </summary>
 	public class FilterInfo
 	{
-		#region 构造
-		public FilterInfo()
+		public FilterInfo(Type tag, string tagName, bool defaultValue = true)
 		{
-
+			this.Tag = tag;
+			this.TagName = tagName;
+			this.Checked = defaultValue;
 		}
 
-		public FilterInfo(FilterTag Tag, string Text, bool Checked = true)
-		{
-			this.Tag = Tag;
-			this.Text = Text;
-			this.Checked = Checked;
-		}
-		#endregion
+		public Type Tag;
 
-
-		/// <summary>
-		/// 标签
-		/// </summary>
-		public FilterTag Tag;
-
-		/// <summary>
-		/// 文本
-		/// </summary>
-		public string Text;
+		public string TagName;
 
 		public bool Checked = true;
-	}
-
-	/// <summary>
-	/// 筛选标签
-	/// </summary>
-	public enum FilterTag
-	{
-		Text,
-		Item,
 	}
 }

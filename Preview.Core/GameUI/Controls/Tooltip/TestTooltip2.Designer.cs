@@ -59,7 +59,7 @@ namespace Xylia.Preview.GameUI.Controls
 			this.Opacity = 0.8D;
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
-			this.VisibleChanged += new System.EventHandler(this.UserOperPanel_VisibleChanged);
+			this.VisibleChanged += new System.EventHandler(this.Frm_VisibleChanged);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

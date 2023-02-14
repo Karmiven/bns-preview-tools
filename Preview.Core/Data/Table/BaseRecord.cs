@@ -44,15 +44,37 @@ namespace Xylia.Preview.Data.Record
 
 
 		public string alias;
-
-		public string Alias() => alias;
 		#endregion
 
 		#region 接口字段
 		public override string ToString() => this.GetType().Name + ":" + (this.alias ?? this.Key().ToString());
 
 		object IArgParam.ParamTarget(string ParamName) => this.GetParam(ParamName) ?? this.Attributes[ParamName];
+
+
+
+		public static bool operator ==(BaseRecord a, BaseRecord b)
+		{
+			// If both are null, or both are same instance, return true.
+			if (ReferenceEquals(a, b)) return true;
+
+			// If one is null, but not both, return false.
+			if (a is null || b is null) return false;
+			if (a.GetType() != b.GetType()) return false;
+
+			// Return true if the fields match:
+			if (a.alias != null && a.alias != b.alias) return false;
+
+
+			return true;
+		}
+
+		public static bool operator !=(BaseRecord a, BaseRecord b)
+		{
+			return !(a == b);
+		}
 		#endregion
+
 
 		public virtual void LoadData(AttributeCollection data)
 		{
@@ -67,12 +89,10 @@ namespace Xylia.Preview.Data.Record
 		}
 
 
-
-
 		public XmlDocument XmlInfo(ReleaseSide side = default)
 		{
 			var doc = new XmlDocument();
-	
+
 			//创建根结点
 			XmlElement table = doc.CreateElement("table");
 			doc.AppendChild(table);
@@ -81,7 +101,7 @@ namespace Xylia.Preview.Data.Record
 			table.SetAttribute("type", "");
 			table.SetAttribute("version", $"");
 			table.AppendChild(BaseNode.Serialize(this, doc));
-	
+
 			return doc;
 		}
 	}

@@ -23,7 +23,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#region 方法
 		public override string Text { get => contentPanel?.Text; set => contentPanel.Text = value; }
 
-		private void UserOperPanel_VisibleChanged(object sender, EventArgs e)
+		private void Frm_VisibleChanged(object sender, EventArgs e)
 		{
 			if (!this.Visible) return;
 

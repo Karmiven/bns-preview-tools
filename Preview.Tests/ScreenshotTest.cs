@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -28,23 +30,10 @@ namespace Xylia.Preview.Tests
 
 
 			var ApplicationNotes = bitmap.GetPropertyItem(0x02bc);
+			var xml = Encoding.UTF8.GetString(ApplicationNotes.Value);
 
-			XmlDocument doc = new();
-			doc.LoadXml(Encoding.UTF8.GetString(ApplicationNotes.Value));
-			doc.Save("screenshot.xml");
-
-
-			var head = doc.DocumentElement.SelectSingleNode("./head");
-
-			var body = doc.DocumentElement.SelectSingleNode("./body");
-			Console.WriteLine(body.SelectSingleNode("./location").InnerXml);
-
-
-			var appearance = doc.DocumentElement.SelectSingleNode("./appearance");
-			var race = appearance.SelectSingleNode("./race").InnerText;
-			var sex = appearance.SelectSingleNode("./sex").InnerText;
-			var data = appearance.SelectSingleNode("./data").InnerText;
-			Console.WriteLine(data);
+			var o = GetObject<screenshot>(xml);
+			Console.WriteLine(o.appearance.data);
 		}
 
 
@@ -97,6 +86,67 @@ namespace Xylia.Preview.Tests
 				xe.SetAttributeValue("param8-" + idx, data[idx - 1]);
 
 			Console.WriteLine(xe);
+		}
+
+
+		public static TResult GetObject<TResult>(string xmlString)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(TResult));
+			return (TResult)serializer.Deserialize(new StringReader(xmlString));
+		}
+	}
+
+
+
+	public class screenshot
+	{
+		public HeadInfo head;
+
+		public BodyInfo body;
+
+		public AppearanceInfo appearance;
+
+
+
+
+		public class HeadInfo
+		{
+			[XmlElement("major-version")]
+			public ushort MajorVersion;
+
+			[XmlElement("minor-version")]
+			public ushort MinorVersion;
+
+			public string gamename;
+
+			[XmlElement("product-version")]
+			public string ProductVersion;
+
+			public string time;
+
+			public string checksum;
+
+			public string checksum2;
+		}
+
+		public class BodyInfo
+		{
+
+		}
+
+		public class AppearanceInfo
+		{
+			[XmlElement("major-version")]
+			public ushort MajorVersion;
+
+			[XmlElement("minor-version")]
+			public ushort MinorVersion;
+
+			public byte race;
+
+			public byte sex;
+
+			public string data;
 		}
 	}
 }

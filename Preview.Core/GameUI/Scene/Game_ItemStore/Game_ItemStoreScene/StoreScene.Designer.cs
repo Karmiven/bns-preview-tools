@@ -37,7 +37,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			this.MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.ModifyFilterRule = new System.Windows.Forms.ToolStripMenuItem();
 			this.CancelFilter = new System.Windows.Forms.ToolStripMenuItem();
-			this.ListPreview = new ListPreview();
+			this.ListPreview = new Xylia.Preview.GameUI.Controls.ListPreview();
 			this.MenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -63,7 +63,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			this.TreeView.Size = new System.Drawing.Size(401, 803);
 			this.TreeView.TabIndex = 4;
 			this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
-		
 			// 
 			// MenuStrip
 			// 
@@ -94,10 +93,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			this.ListPreview.AutoScroll = true;
 			this.ListPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(26)))), ((int)(((byte)(35)))));
 			this.ListPreview.Dock = System.Windows.Forms.DockStyle.Right;
+			this.ListPreview.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.ListPreview.Location = new System.Drawing.Point(409, 0);
 			this.ListPreview.Margin = new System.Windows.Forms.Padding(4);
 			this.ListPreview.Name = "ListPreview";
-			//this.ListPreview.ShowItemID = false;
 			this.ListPreview.Size = new System.Drawing.Size(489, 803);
 			this.ListPreview.TabIndex = 0;
 			// 
