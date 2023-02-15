@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Xylia.Preview.GameUI.Controls.Forms
@@ -14,5 +15,7 @@ namespace Xylia.Preview.GameUI.Controls.Forms
 			get => this.Text;
 			set => this.Text = value;
 		}
+
+		protected override Point ScrollToControl(Control activeControl) => this.AutoScrollPosition;
 	}
 }

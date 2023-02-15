@@ -6,7 +6,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class Manipulate : CaseBase
 	{
-		#region 字段
 		public string Object2;
 
 		[Signal("multi-object-1")] public string MultiObject1;
@@ -27,11 +26,8 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("multi-object-16")] public string MultiObject16;
 
 
-
 		[Signal("env-looting")]
 		public string EnvLooting;
-
-
 
 		/// <summary>
 		/// 用于校验玩家第二势力
@@ -45,16 +41,8 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Side(Side.Type.Server)]
 		[Signal("transfer-faction2")]
 		public string TransferFaction2;
-		#endregion
 
 
-
-		#region 方法
-		public override void CheckData()
-		{
-			if (this.Object2 is null && this.Object is not null)
-				this.Object2 = this.Object.Replace("zoneenv:", "zoneenv2:");
-		}
 
 		public override List<string> AttractionObject => new() 
 		{
@@ -77,6 +65,5 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 			MultiObject15,
 			MultiObject16,
 		};
-		#endregion
 	}
 }

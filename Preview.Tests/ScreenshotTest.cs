@@ -91,7 +91,7 @@ namespace Xylia.Preview.Tests
 
 		public static TResult GetObject<TResult>(string xmlString)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(TResult));
+			var serializer = new XmlSerializer(typeof(TResult));
 			return (TResult)serializer.Deserialize(new StringReader(xmlString));
 		}
 	}

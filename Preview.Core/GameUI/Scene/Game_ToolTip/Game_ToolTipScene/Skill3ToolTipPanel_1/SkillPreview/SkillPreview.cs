@@ -35,7 +35,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 
 
 		#region 方法
-		public async void LoadData(Skill3 Skill)
+		public void LoadData(Skill3 Skill)
 		{
 			#region 初始化
 			this.M1_Panel.Tooltips.Clear();
@@ -66,7 +66,6 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			this.Casting.Text = Skill.CastDuration.GetDuration();
 			this.Reuse.Text = Skill.RecycleGroupDuration.GetDuration();
 			#endregion
-
 
 
 
@@ -122,6 +121,8 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 					SkillTooltip.TooltipGroup.SUB => this.SUB_Panel,
 					SkillTooltip.TooltipGroup.STANCE => null,
 					SkillTooltip.TooltipGroup.CONDITION => this.CONDITION_Panel,
+
+					_ => null,
 				};
 
 				if (group is null) continue;

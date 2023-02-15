@@ -10,9 +10,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 	// acquisition 的子对象护卫字段不生效
 	public sealed class Talk : NpcTalkBase
 	{
-		#region 字段
-		public string Object;
-
 		[Obsolete]
 		[Side(Side.Type.Server)]
 		[Signal("convoy-member-1")]
@@ -29,8 +26,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		/// </summary>
 		[Side(Side.Type.Server)]
 		public ZoneConvoy Convoy;
-		#endregion
-
 
 
 

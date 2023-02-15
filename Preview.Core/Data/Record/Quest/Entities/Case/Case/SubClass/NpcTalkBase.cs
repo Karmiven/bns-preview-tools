@@ -6,7 +6,11 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public abstract class NpcTalkBase : CaseBase
 	{
-		#region 字段
+		public string Object;
+
+		public string Object2;
+
+
 		[Side(Side.Type.Client)]
 		[Signal("npc-response")]
 		public NpcResponse NpcResponse;
@@ -51,6 +55,5 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 
 		[Signal("duel-straight-win")]
 		public int DuelStraightWin;
-		#endregion
 	}
 }

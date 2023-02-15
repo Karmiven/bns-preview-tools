@@ -99,6 +99,7 @@ namespace Xylia.Preview.Data.Record
 					TextType.Second1 => value > 0 ? "Name.SkillModifyByEquipment.Plus.Second" : "Name.SkillModifyByEquipment.Minus.Second",
 					TextType.Second2 => value > 0 ? "Name.SkillModifyByEquipment.Plus.Second.Integer" : "Name.SkillModifyByEquipment.Minus.Second.Integer",
 
+					_ => null,
 				}).GetText()));
 			}
 

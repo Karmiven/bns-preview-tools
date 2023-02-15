@@ -26,7 +26,7 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 		/// <exception cref="Exception"></exception>
 		/// <exception cref="ArgumentNullException"></exception>
 		/// <exception cref="InvalidCastException"></exception>
-		public static TNode TypeFactory<SubType, TNode>(this XmlNode CaseNode, int Index, BaseNode Owner, Func<SubType, TNode> Func)
+		public static TNode TypeFactory<SubType, TNode>(this XmlNode CaseNode, Func<SubType, TNode> Func)
 			where SubType : Enum
 			where TNode : TypeBaseNode<SubType>
 		{
@@ -34,20 +34,18 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 			if (CaseNode is not XmlElement xe) throw new Exception("节点类型错误");
 
 			var Type = CaseNode.Attributes["type"]?.Value?.Trim();
-			if (string.IsNullOrWhiteSpace(Type)) throw new ArgumentNullException("未定义Case类型");
+			if (string.IsNullOrWhiteSpace(Type)) throw new Exception("未定义Case类型");
 			if (!Type.TryParseToEnum(out SubType ParseType)) throw new InvalidCastException($"转换失败 ({ Type })");
 			#endregion
 
-			#region 根据类型生成实例
+
 			var record = Func(ParseType);
 			if (record is null) throw new InvalidCastException($"{ParseType} 尚未适配转换类");
 
-			//record.TableIndex = (uint)Index;
 			record.Type = ParseType;
 			record.LoadData(xe);
 
 			return record;
-			#endregion
 		}
 
 

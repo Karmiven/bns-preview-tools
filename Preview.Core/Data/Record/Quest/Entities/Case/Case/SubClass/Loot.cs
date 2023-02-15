@@ -11,7 +11,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 	/// </summary>
 	public sealed class Loot : CaseBase
 	{
-		#region 字段
 		public string Object2;
 
 		[Signal("multi-object-1")] public string MultiObject1;
@@ -30,11 +29,8 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("multi-object-14")] public string MultiObject14;
 		[Signal("multi-object-15")] public string MultiObject15;
 		[Signal("multi-object-16")] public string MultiObject16;
-		#endregion
 
 
-
-		#region 字段
 		[Signal("quest-symbol-drop-prob")]
 		public byte QuestSymbolDropProb;
 
@@ -49,16 +45,11 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		/// </summary>
 		[Side(Side.Type.Client)]
 		public string Looting;
-		#endregion
+
+
 
 
 		#region 方法
-		public override void CheckData()
-		{
-			if (this.Object2 is null && this.Object is not null)
-				this.Object2 = this.Object;
-		}
-
 		public override List<string> AttractionObject => new()
 		{
 			Object2,

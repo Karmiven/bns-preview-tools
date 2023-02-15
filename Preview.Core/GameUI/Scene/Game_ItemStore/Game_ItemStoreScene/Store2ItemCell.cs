@@ -85,6 +85,8 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 						BDayOfWeek.Thu => "UI.ItemStore.BuyConfirm.Thu.QuotaDesc".GetText(),
 						BDayOfWeek.Fri => "UI.ItemStore.BuyConfirm.Fri.QuotaDesc".GetText(),
 						BDayOfWeek.Sat => "UI.ItemStore.BuyConfirm.Sat.QuotaDesc".GetText(),
+
+						_ => null,
 					};
 				}
 				

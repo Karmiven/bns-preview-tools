@@ -69,6 +69,8 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 				SkillTooltipAttribute.ArgType.KeyCommand => FileCache.Data.Skill3[Arg]?.CurrentShortCutKey.GetImage(),
 				SkillTooltipAttribute.ArgType.Number => ArgValue1.ToString(),
 				SkillTooltipAttribute.ArgType.TextAlias => Arg.GetText(),
+
+				_ => null,
 			});
 			#endregion
 		}

@@ -186,6 +186,8 @@ namespace Xylia.Preview.Data.Record
 						WeaponTypeSeq.LongBow => ConditionType.LongBow,
 						WeaponTypeSeq.Spear => ConditionType.Spear,
 						WeaponTypeSeq.Orb => ConditionType.Orb,
+
+						_ => ConditionType.None,
 					};
 				}
 				else if (Item.Type == ItemType.Accessory)
@@ -203,6 +205,8 @@ namespace Xylia.Preview.Data.Record
 						AccessoryTypeSeq.Rune1 => ConditionType.Rune1,
 						AccessoryTypeSeq.Rune2 => ConditionType.Rune2,
 						AccessoryTypeSeq.Nova => ConditionType.Nova,
+
+						_ => ConditionType.None,
 					};
 				}
 			}

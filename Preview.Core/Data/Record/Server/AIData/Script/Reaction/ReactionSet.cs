@@ -42,7 +42,7 @@ namespace Xylia.bns.Modules.AIData.Script
 			for (int idx = 0; idx < Reactions.Count; idx++)
 			{
 				var ReactionNode = Reactions[idx];
-				this.Reactions.Add(ReactionNode.TypeFactory<ReactionType, IReaction>(idx, this, (s) => s switch
+				this.Reactions.Add(ReactionNode.TypeFactory<ReactionType, IReaction>(s => s switch
 				{
 					ReactionType.AcquireFieldItem => new AcquireFieldItem(),
 					ReactionType.ActivateTeleport => new ActivateTeleport(),

@@ -53,12 +53,12 @@ namespace Xylia.Preview.GameUI.Controls
 
 			if (!empty && !exists)
 			{
-				control.MouseEnter += MouseEnter;
-				control.MouseLeave += MouseLeave;
+				control.MouseEnter += mouseEnter;
+				control.MouseLeave += mouseLeave;
 			}
 		}
 
-		private void MouseEnter(object sender, EventArgs eventargs)
+		private void mouseEnter(object sender, EventArgs eventargs)
 		{
 			Control control = (Control)sender;
 			if (!_tools.TryGetValue(control, out var info))
@@ -71,7 +71,7 @@ namespace Xylia.Preview.GameUI.Controls
 			control.Focus();
 		}
 
-		private void MouseLeave(object sender, EventArgs eventargs)
+		private void mouseLeave(object sender, EventArgs eventargs)
 		{
 			Control control = (Control)sender;
 			if (!_tools.TryGetValue(control, out _))

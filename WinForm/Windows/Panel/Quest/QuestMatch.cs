@@ -51,7 +51,7 @@ namespace Xylia.Match.Windows.Panel
 				if (quest is null) return;
 
 				//创建界面
-				new QuestPreview(quest).ShowDialog();
+				new Game_QuestJournalScene(quest).ShowDialog();
 			});
 
 			thread.SetApartmentState(ApartmentState.STA);

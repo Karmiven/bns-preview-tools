@@ -45,7 +45,7 @@ namespace Xylia.Preview.Data.Record.QuestData
 				var CaseNode = (XmlElement)nodeList[idx];
 				if (CaseNode.Name == "case")
 				{
-					CaseEntity = CaseNode.TypeFactory<CaseType, CaseBase>(idx, this, (s) => s switch
+					CaseEntity = CaseNode.TypeFactory<CaseType, CaseBase>(s => s switch
 					{
 						CaseType.AcquireSummoned => new AcquireSummoned(),
 						CaseType.Approach => new Approach(),
@@ -79,7 +79,7 @@ namespace Xylia.Preview.Data.Record.QuestData
 				}
 				else if (CaseNode.Name == "tutorial-case")
 				{
-					CaseEntity = CaseNode.TypeFactory<TutorialCaseType, TutorialCaseBase>(idx, this, (s) => s switch
+					CaseEntity = CaseNode.TypeFactory<TutorialCaseType, TutorialCaseBase>(s => s switch
 					{
 						TutorialCaseType.AcquireItem => new AcquireItem(),
 						TutorialCaseType.AcquireSp => new AcquireSp(),

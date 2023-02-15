@@ -3,7 +3,7 @@
 
 namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 {
-	partial class QuestPreview
+	partial class Game_QuestJournalScene
 	{
 		/// <summary> 
 		/// 必需的设计器变量。
@@ -32,7 +32,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuestPreview));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game_QuestJournalScene));
 			this.Quest_ICON = new System.Windows.Forms.PictureBox();
 			this.Quest_Group = new System.Windows.Forms.Label();
 			this.QuestName = new Xylia.Preview.GameUI.Controls.ContentPanel();

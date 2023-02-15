@@ -168,9 +168,9 @@ namespace Xylia.Preview.Data.Record.QuestData
 
 
 
-		public string Object;
+		//public string Object;
 
-		public string Object2;
+		//public string Object2;
 
 		
 		[Signal("faction-killed-count-min")]
@@ -232,7 +232,7 @@ namespace Xylia.Preview.Data.Record.QuestData
 		}
 
 		//去重后返回 .Distinct().ToList()
-		public virtual List<string> AttractionObject => new() { Object, Object2 };
+		public virtual List<string> AttractionObject => new() { /*Object, Object2*/ };
 		#endregion
 	}
 }

@@ -41,7 +41,7 @@ namespace Xylia.Match.Windows
 
 			LastRule = SelItem.id;
 
-			var thread = new Thread(act => new QuestPreview(SelItem).ShowDialog());
+			var thread = new Thread(act => new Game_QuestJournalScene(SelItem).ShowDialog());
 			thread.SetApartmentState(ApartmentState.STA);
 			thread.Start();
 		}

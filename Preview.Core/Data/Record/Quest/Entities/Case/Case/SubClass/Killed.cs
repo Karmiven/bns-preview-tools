@@ -8,7 +8,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class Killed : CaseBase
 	{
-		#region 字段
 		[Signal("specify-object-type")]
 		public SpecifyObjectType SpecifyObjectType;
 
@@ -31,21 +30,13 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("multi-object-15")] public string MultiObject15;
 		[Signal("multi-object-16")] public string MultiObject16;
 
-
 		[Signal("killed-difficulty-type")]
 		public DifficultyType KilledDifficultyType;
 
 		public Skill3 Skill3;
-		#endregion
 
 
 		#region 方法
-		public override void CheckData()
-		{
-			if (this.Object2 is null && this.Object is not null)
-				this.Object2 = this.Object;
-		}
-
 		public override List<string> AttractionObject => new()
 		{
 			Object2,

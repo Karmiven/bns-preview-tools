@@ -266,7 +266,7 @@
     <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Completed.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\QuestPreview.cs">
+    <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillFrm.cs">

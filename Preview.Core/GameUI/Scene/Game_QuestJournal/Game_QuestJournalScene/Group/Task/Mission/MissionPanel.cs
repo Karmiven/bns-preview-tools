@@ -49,7 +49,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 
 
 				//测试模式
-				if (QuestPreview.TestMode)
+				if (Game_QuestJournalScene.TestMode)
 				{
 					Case.Controls.Add(new ContentPanel($"{o.GetType()}"));
 				}

@@ -6,9 +6,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class NpcManipulate : NpcTalkBase
 	{
-		#region 字段
-		public string Object;
-
 		[Signal("multi-object-1")] public string MultiObject1;
 		[Signal("multi-object-2")] public string MultiObject2;
 		[Signal("multi-object-3")] public string MultiObject3;
@@ -25,9 +22,9 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("multi-object-14")] public string MultiObject14;
 		[Signal("multi-object-15")] public string MultiObject15;
 		[Signal("multi-object-16")] public string MultiObject16;
-		#endregion
 
-		#region 方法
+
+
 		public override List<string> AttractionObject => new()
 		{
 			Object2,
@@ -49,6 +46,5 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 			MultiObject15,
 			MultiObject16,
 		};
-		#endregion
 	}
 }

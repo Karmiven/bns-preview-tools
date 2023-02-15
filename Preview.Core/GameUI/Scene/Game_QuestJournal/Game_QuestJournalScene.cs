@@ -16,12 +16,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	/// <summary>
 	/// 任务预览组件
 	/// </summary>
-	public partial class QuestPreview : PreviewFrm
+	public partial class Game_QuestJournalScene : PreviewFrm
 	{
 		#region 构造
-		public QuestPreview(Quest QuestData) : this() => this.LoadData(QuestData);
+		public Game_QuestJournalScene(Quest QuestData) : this() => this.LoadData(QuestData);
 
-		public QuestPreview()
+		public Game_QuestJournalScene()
 		{
 			InitializeComponent();
 			this.MaximumSize = new(2000, 1000);

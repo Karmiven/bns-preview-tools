@@ -80,6 +80,8 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 						BDayOfWeek.Thu => "UI.DungeonBonusReward.Guide.QuotaDesc.Thu".GetText(),
 						BDayOfWeek.Fri => "UI.DungeonBonusReward.Guide.QuotaDesc.Fri".GetText(),
 						BDayOfWeek.Sat => "UI.DungeonBonusReward.Guide.QuotaDesc.Sat".GetText(),
+
+						_ => null,
 					};
 				}
 				else this.WarningPreview.Text = "未知重置信息";
