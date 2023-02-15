@@ -29,6 +29,8 @@ namespace Xylia.Preview.Data.Helper
 
 		public BNSDat ConfigData;
 
+		public DateTime CreatedAt;
+
 		public BnsBinTool.Core.Models.Table[] Tables;
 
 		public DatafileToXmlConverterHelper datafileToXml;
@@ -71,8 +73,9 @@ namespace Xylia.Preview.Data.Helper
 			var is64Bit = true;
 			var data = Datafile.ReadFromBytes(XmlData.ExtractBin(), is64Bit: is64Bit);
 			var local = Datafile.ReadFromBytes(LocalData.ExtractBin(), is64Bit: is64Bit);
+
 			this.Tables = data.Tables.Concat(local.Tables).ToArray();
-			Trace.WriteLine($"CreatedAt   -> { data.CreatedAt }");
+			this.CreatedAt = data.CreatedAt;
 
 
 			DateTime dt = DateTime.Now;

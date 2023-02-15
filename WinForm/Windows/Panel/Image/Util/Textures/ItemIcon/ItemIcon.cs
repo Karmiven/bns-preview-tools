@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using Xylia.Match.Util.Game.ItemData.Util;
 using Xylia.Preview.Common.Interface.RecordAttribute;
+using Xylia.Preview.Data;
 using Xylia.Preview.Data.Record;
 
 using static Xylia.Preview.Data.Record.Item;
@@ -48,7 +48,7 @@ namespace Xylia.Match.Util.Paks.Textures
 
 
 			//读取外部文件
-			var CacheList = ChvLoad.LoadData(ChvPath, null);
+			var lst = ChvLoad.LoadData(ChvPath);
 
 			//读取物品数据
 			Parallel.ForEach(set.Item, pOptions, (item) =>
@@ -57,8 +57,8 @@ namespace Xylia.Match.Util.Paks.Textures
 				var record = ((DbData)item.Attributes).record;
 
 				int MainID = record.RecordId;
-				if (isWhiteList && (CacheList is null || !CacheList.Contains(MainID))) return;
-				if (!isWhiteList && (CacheList != null && CacheList.Contains(MainID))) return;
+				if (isWhiteList && (lst is null || !lst.Contains(MainID))) return;
+				if (!isWhiteList && (lst != null && lst.Contains(MainID))) return;
 
 
 				#region 获取数据

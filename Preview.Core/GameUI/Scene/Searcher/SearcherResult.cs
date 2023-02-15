@@ -8,9 +8,9 @@ using Xylia.Preview.GameUI.Controls.List;
 
 namespace Xylia.Preview.GameUI.Scene.Searcher
 {
-	public partial class SearcherScene : Form
+	public partial class SearcherResult : Form
 	{
-		public SearcherScene(IEnumerable<BaseRecord> records)
+		public SearcherResult(IEnumerable<BaseRecord> records)
 		{
 			InitializeComponent();
 

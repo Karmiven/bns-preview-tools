@@ -8,10 +8,12 @@ using System.Windows.Forms;
 
 using NPOI.SS.UserModel;
 
+using Xylia.Extension;
 using Xylia.Files.Excel;
-using Xylia.Match.Util.Game.ItemData.Util;
+using Xylia.Match.Util.ItemData;
 using Xylia.Match.Util.ItemMatch.Util;
 using Xylia.Preview.Common.Interface.RecordAttribute;
+using Xylia.Preview.Data;
 using Xylia.Preview.Data.Helper;
 
 namespace Xylia.Match.Util.ItemList
@@ -46,25 +48,26 @@ namespace Xylia.Match.Util.ItemList
 		}
 		#endregion
 
-		#region 数据
+		#region Data
+		DateTime CreatedAt;
+
 		List<ItemDataInfo> ItemDatas;
 
 		BlockingCollection<ItemDataInfo> Failures;
 
-		/// <summary>
-		/// 读取数据
-		/// </summary>
+
 		public bool GetData()
 		{
 			#region 初始化
-			this.GetOutput?.Invoke("正在对比新增道具，资源文件处理耗时较长，请耐心等待。");
-
 			DataTableSet set = new();
 			set.LoadData();
-			//this.GetOutput?.Invoke("当前版本: " + set.CreatedAt);
+
+			CreatedAt = set.CreatedAt;
+
 
 			set.Item.TryLoad();
 			set.TextData.TryLoad();
+
 			var InfoGet = new InfoGet(set);
 			this.Failures = new();
 			#endregion
@@ -108,60 +111,35 @@ namespace Xylia.Match.Util.ItemList
 
 
 
-		#region 输出
-		/// <summary>
-		/// 指明是否输出表格文档
-		/// </summary>
+		#region Output
 		public bool UseExcel = false;
 
 		public string Folder_Output = null;
 
 		public FilePath File = new();
 
-		public static void CheckFile(string Path)
+
+
+		public void Start(DateTime StartTime)
 		{
-			if (System.IO.File.Exists(Path)) return;
+			var time = CreatedAt == default ? StartTime : CreatedAt;
+			var outdir = Folder_Output + $@"\信息导出\物品列表\{ time:yyyy年MM月\\dd日 HH时mm分}";
+			Directory.CreateDirectory(outdir);
 
-			FileStream Creat = new(Path, FileMode.Create);
-			Creat.Close();
-		}
+			File.CacheList = Path.Combine(outdir, $@"{time:yyyy-MM-dd HH-mm}.chv");
+			File.Failure = Path.Combine(outdir, @"未汉化道具.txt");
+			File.PlainTXT = Path.Combine(outdir, @"导出数据." + (UseExcel ? "xlsx" : "txt"));
 
-		public void StartMatch(DateTime StartTime)
-		{
-			#region 初始化
-			//文件夹路径
-			File.Directory = Folder_Output + $@"\信息导出\物品列表\{ StartTime:yyyy年MM月\\dd日\\HH时mm分}";
 
-			//创建文件夹
-			Directory.CreateDirectory(File.Directory);
+			ChvLoad cache = new();
+			cache.DataTime = CreatedAt.GetTimeStamp();
 
-			//CHV文件存储路径
-			File.Backup = File.Directory + $@"\{ StartTime:yyyy-MM-dd HH-mm}.chv";
+			if (CacheList != null) cache.datas.AddRange(CacheList);
+			cache.datas.AddRange(this.ItemDatas.Select(item => item.id));
 
-			//失败记录存储路径
-			File.Failure = File.Directory + @"\未汉化道具.txt";
+			cache.Save(File.CacheList);
 
-			//数据存储路径
-			File.PlainTXT = File.Directory + @"\导出数据." + (UseExcel ? "xlsx" : "txt");
 
-			CheckFile(File.PlainTXT);
-			CheckFile(File.Backup);
-
-			StreamWriter outfile_Chv = new(File.Backup);
-
-			if (CacheList != null)
-			{
-				foreach (var item in CacheList) outfile_Chv.WriteLine(item);
-			}
-			#endregion
-
-			#region 分析数据
-			int Count = this.ItemDatas.Count;
-			foreach (var Item in this.ItemDatas)
-				outfile_Chv.WriteLine(Item.id);
-
-			outfile_Chv.Close();
-			#endregion
 
 			#region 输出信息
 			if (UseExcel) this.CreateExcel(this.ItemDatas);
@@ -175,10 +153,9 @@ namespace Xylia.Match.Util.ItemList
 			}
 			#endregion
 
-
 			#region 最后处理
 			TimeSpan ts = DateTime.Now - StartTime;
-			GetOutput($"本次拉取数据共计{ Count }条，总耗{ ts.Minutes }分{ ts.Seconds }秒。");
+			GetOutput($"本次拉取数据共计{ this.ItemDatas.Count }条，总耗{ ts.Minutes }分{ ts.Seconds }秒。");
 
 			this.ItemDatas.Clear();
 			this.ItemDatas = null;
@@ -250,7 +227,8 @@ namespace Xylia.Match.Util.ItemList
 		/// <param name="Info"></param>
 		public void CreateText(IEnumerable<ItemDataInfo> Info)
 		{
-			using StreamWriter Out_Main = new(File.PlainTXT);
+			using var Out_Main = new StreamWriter(new FileStream(File.PlainTXT, FileMode.Create));
+
 			foreach (var Item in Info)
 			{
 				string Message = null;

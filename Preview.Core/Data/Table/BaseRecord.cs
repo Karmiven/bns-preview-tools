@@ -46,6 +46,8 @@ namespace Xylia.Preview.Data.Record
 		public string alias;
 		#endregion
 
+
+
 		#region 接口字段
 		public override string ToString() => this.GetType().Name + ":" + (this.alias ?? this.Key().ToString());
 

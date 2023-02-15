@@ -1,6 +1,6 @@
 ﻿namespace Xylia.Preview.GameUI.Scene.Searcher
 {
-	partial class SearcherStore
+	partial class SearcherDialog
 	{
 		/// <summary>
 		/// Required designer variable.

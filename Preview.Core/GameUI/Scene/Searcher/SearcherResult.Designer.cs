@@ -3,7 +3,7 @@ using Xylia.Preview.GameUI.Controls.List;
 
 namespace Xylia.Preview.GameUI.Scene.Searcher
 {
-	partial class SearcherScene
+	partial class SearcherResult
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -31,7 +31,7 @@ namespace Xylia.Preview.GameUI.Scene.Searcher
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearcherScene));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearcherResult));
 			this.storeListPreview1 = new ListPreview();
 			this.SuspendLayout();
 			// 

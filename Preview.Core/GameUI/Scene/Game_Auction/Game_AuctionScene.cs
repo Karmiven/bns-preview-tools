@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Controls.List;
 
@@ -50,7 +51,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			ItemPreview_Search.InputText = rule;
 			TreeView.SelectedNode = TreeView.Nodes[0];
 		}
-
 
 		private static Dictionary<MarketCategory2Seq, List<MarketCategory3Seq>> ChildCategory()
 		{
@@ -175,7 +175,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			#endregion
 
 			#region	EtcMaterial
-			data[MarketCategory2Seq.EtcMaterial].Add(MarketCategory3Seq.SpecialMaterial);	
+			data[MarketCategory2Seq.EtcMaterial].Add(MarketCategory3Seq.SpecialMaterial);
 			data[MarketCategory2Seq.EtcMaterial].Add(MarketCategory3Seq.NormalMaterial);
 			#endregion
 
@@ -223,6 +223,16 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 		//Ini.ReadValue("Preview", "item#search_autoclose").ToBool();
 		//Ini.ReadValue("Preview", "item#search_showextra").ToBool()
 
+
+
+		HashSet<int> lst;
+
+		private void chk_compare_CheckedChanged(object sender, EventArgs e)
+		{
+			lst = chk_compare.Checked ? ChvLoad.LoadData() : null;
+			LoadData(sender, e);
+		}
+
 		private void LoadData(object sender, EventArgs e)
 		{
 			this.ItemList.Cells = null;
@@ -230,9 +240,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			var node = TreeView.SelectedNode;
 			if (node.Name == "favorites") return;
 
-			#region 初始化规则
+			#region search rules
 			string rule = ItemPreview_Search.InputText;
-			bool empty = string.IsNullOrWhiteSpace(rule);
+			bool empty = string.IsNullOrWhiteSpace(rule) && !chk_compare.Checked;
 
 			var IsAll = node.Name == "all";
 			if (IsAll && empty) return;
@@ -240,14 +250,18 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			var category2 = IsAll ? default : (node.Level == 0 ? node : node.Parent).Name.ToEnum<MarketCategory2Seq>();
 			var category3 = node.Level == 0 ? default : node.Name.ToEnum<MarketCategory3Seq>();
 
-			var auctionable = Chk_Auctionable.Checked;
+			var auctionable = chk_Auctionable.Checked;
 			#endregion
 
 
 			new Thread(t =>
 			{
-				BlockingCollection<Item> lst = new();
-				Parallel.ForEach(FileCache.Data.Item, o =>
+				IEnumerable<Item> datas = FileCache.Data.Item;
+				if (lst != null && lst.Any()) datas = datas.Where(item => !lst.Contains(item.Key()));
+
+
+				BlockingCollection<Item> result = new();
+				Parallel.ForEach(datas, o =>
 				{
 					if (!IsAll)
 					{
@@ -265,13 +279,13 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 					if (auctionable && !o.Auctionable && !o.SealRenewalAuctionable) return;
 
 
-					lst.Add(o);
+					result.Add(o);
 				});
 
 
 				IEnumerable<Item> temp;
-				if (checkBox1.Checked) temp = lst.OrderByDescending(o => o.Key());
-				else temp = lst.OrderBy(o => o.Key());
+				if (checkBox1.Checked) temp = result.OrderByDescending(o => o.Key());
+				else temp = result.OrderBy(o => o.Key());
 				this.ItemList.Invoke(() => this.ItemList.Cells = temp.Select(o => new ItemData(o)));
 			}).Start();
 		}

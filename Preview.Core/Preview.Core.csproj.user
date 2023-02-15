@@ -227,7 +227,7 @@
     <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\UserOperPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GameUI\Scene\Searcher\SearcherScene.cs">
+    <Compile Update="GameUI\Scene\Searcher\SearcherResult.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\GroupBase.cs">
@@ -290,7 +290,7 @@
     <Compile Update="GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\TraitTierCell.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="GameUI\Scene\Searcher\SearcherStore.cs">
+    <Compile Update="GameUI\Scene\Searcher\SearcherDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\StoreScene.cs">

@@ -25,25 +25,25 @@ namespace Xylia.Match.Util
 
 
 		#region 加载方法
-		/// <summary>
-		/// 返回物品汉化名称
-		/// </summary>
-		/// <param name="ItemAlias"></param>
-		/// <returns></returns>
 		public string GetName2(string ItemAlias)
 		{
 			string NameText = TextData[$"Item.Name2.{ItemAlias}"].GetText();
-			if (NameText is null) Special?.TryGetValue(ItemAlias, out NameText);      //名称获取异常状态替换规则
 
-			//返回结果
+			//名称获取异常状态替换规则
+			if (NameText is null)
+			{
+				if (Special is null || !Special.TryGetValue(ItemAlias, out NameText))
+				{
+					if (ItemAlias.StartsWith("NPC_")) return "哈迪斯";
+					if (ItemAlias.StartsWith("Lobby_")) return "哈迪斯";
+
+					if (ItemAlias.MyContains("Test")) return "";
+				}
+			}
+
 			return NameText is null ? null : NameText + GetEquipGem(ItemAlias);
 		}
 
-		/// <summary>
-		/// 返回物品描述信息
-		/// </summary>
-		/// <param name="ItemAlias"></param>
-		/// <returns></returns>
 		public string GetDesc(string ItemAlias)
 		{
 			string Desc = null;
@@ -53,11 +53,6 @@ namespace Xylia.Match.Util
 			return BNS_Cut(Desc);
 		}
 
-		/// <summary>
-		/// 返回物品相关信息
-		/// </summary>
-		/// <param name="ItemAlias"></param>
-		/// <returns></returns>
 		public string GetInfo(string ItemAlias)
 		{
 			string Info = null;
@@ -82,7 +77,7 @@ namespace Xylia.Match.Util
 			foreach (var (alias, text) in from XmlNode xmlNode in xmlDocument.SelectNodes("Game/record")
 										  let alias = xmlNode.Attributes["alias"]?.Value
 										  let text = xmlNode.Attributes["name2"]?.Value
-										  where alias != null && text != null
+										  where alias != null
 										  select (alias, text))
 			{
 				dictionary[alias] = text;
@@ -128,11 +123,6 @@ namespace Xylia.Match.Util
 			return New.Replace("&quot;", '"'.ToString().Replace('”', '"')).Replace("enablescale=true", "");
 		}
 
-		/// <summary>
-		/// 获取职业信息 (简易方法)
-		/// </summary>
-		/// <param Alias="Alias"></param>
-		/// <returns></returns>
 		public static string GetJob(string Alias)
 		{
 			if (string.IsNullOrEmpty(Alias)) return null;

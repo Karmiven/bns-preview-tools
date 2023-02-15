@@ -1,23 +1,20 @@
-﻿namespace Xylia.Match.Util.Game.ItemData.Util
+﻿namespace Xylia.Match.Util.ItemData
 {
 	public class FilePath
 	{
 		/// <summary>
-		/// 备份文件导出路径（在当前版本中即 Chv 格式文件）
+		/// CHV文件存储路径
 		/// </summary>
-		public string Backup;
+		public string CacheList;
 
 		/// <summary>
-		/// 匹配失败文件导出路径
+		/// 失败记录存储路径
 		/// </summary>
 		public string Failure;
 
 		/// <summary>
-		/// 文件目录路径
+		/// 数据存储路径
 		/// </summary>
-		public string Directory;
-
-
 		public string PlainTXT;
 	}
 }

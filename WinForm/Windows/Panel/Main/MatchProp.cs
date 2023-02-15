@@ -75,7 +75,7 @@ namespace Xylia.Match.Windows.Panel
 
 		private void File_Searcher_BtnClick(object sender, EventArgs e)
 		{
-			Open.Filter = @"转储文件|*.chv|所有文件|*.*";
+			Open.Filter = @"|*.chv|所有文件|*.*";
 			Open.RestoreDirectory = false;
 			Open.InitialDirectory = CommonPath.OutputFolder + "\\信息导出\\物品列表";
 			if (Open.ShowDialog() == DialogResult.OK)
@@ -153,7 +153,7 @@ namespace Xylia.Match.Windows.Panel
 
 				#region 执行输出
 				Step1.StepIndex = 3;
-				match.StartMatch(StartTime);
+				match.Start(StartTime);
 				match = null;
 				#endregion
 

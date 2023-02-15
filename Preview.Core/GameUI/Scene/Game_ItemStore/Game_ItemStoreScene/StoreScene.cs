@@ -56,7 +56,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 		private void ModifyFilterRule_Click(object sender, EventArgs e)
 		{
-			var Searcher = new SearcherStore(_filter);
+			var Searcher = new SearcherDialog(_filter);
 			if (Searcher.ShowDialog() != DialogResult.OK) return;
 
 			Filter(Searcher.textBox1.Text, Searcher.filters);
@@ -76,7 +76,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			foreach (TreeNode CurNode in this.TreeView.Nodes)
 				CurNode.Nodes.Clear();
 
-			var records = SearcherStore.Filter(rule, filters);
+			var records = SearcherDialog.Filter(rule, filters);
 			foreach (var (node, info) in this.TreeNodeInfo)
 			{
 				bool flag = false;

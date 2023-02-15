@@ -9,11 +9,11 @@ using Xylia.Preview.Data.Record;
 
 namespace Xylia.Preview.GameUI.Scene.Searcher
 {
-	public partial class SearcherStore : Form
+	public partial class SearcherDialog : Form
 	{
 		public IEnumerable<FilterInfo> filters;
 
-		public SearcherStore(List<FilterInfo> filters)
+		public SearcherDialog(List<FilterInfo> filters)
 		{
 			InitializeComponent();
 

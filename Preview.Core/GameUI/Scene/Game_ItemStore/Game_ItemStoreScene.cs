@@ -224,7 +224,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 		IEnumerable<BaseRecord> npcs;
 
-		private void ucBtnExt1_BtnClick(object sender, EventArgs e) => new SearcherScene(npcs).MyShowDialog();
+		private void ucBtnExt1_BtnClick(object sender, EventArgs e) => new SearcherResult(npcs).MyShowDialog();
 
 		private static bool GetNpc(Store2 store, Npc npc) => store == npc.Store2_1 || store == npc.Store2_2 || store == npc.Store2_3 || store == npc.Store2_4 || store == npc.Store2_5 || store == npc.Store2_6;
 		#endregion

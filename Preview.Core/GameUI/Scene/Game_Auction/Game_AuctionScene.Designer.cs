@@ -32,9 +32,10 @@
 			this.ItemList = new Xylia.Preview.GameUI.Controls.ListPreview();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.Chk_Auctionable = new System.Windows.Forms.CheckBox();
+			this.chk_Auctionable = new System.Windows.Forms.CheckBox();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.ItemPreview_Search = new HZH_Controls.Controls.UCTextBoxEx();
+			this.chk_compare = new System.Windows.Forms.CheckBox();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
@@ -66,14 +67,15 @@
 			this.ItemList.Location = new System.Drawing.Point(0, 49);
 			this.ItemList.Margin = new System.Windows.Forms.Padding(4);
 			this.ItemList.Name = "ItemList";
+			this.ItemList.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
 			this.ItemList.Size = new System.Drawing.Size(549, 551);
 			this.ItemList.TabIndex = 4;
-			this.ItemList.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.chk_compare);
 			this.panel1.Controls.Add(this.checkBox1);
-			this.panel1.Controls.Add(this.Chk_Auctionable);
+			this.panel1.Controls.Add(this.chk_Auctionable);
 			this.panel1.Controls.Add(this.ItemList);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
 			this.panel1.Location = new System.Drawing.Point(265, 0);
@@ -92,16 +94,16 @@
 			this.checkBox1.UseVisualStyleBackColor = true;
 			this.checkBox1.CheckedChanged += new System.EventHandler(this.LoadData);
 			// 
-			// Chk_Auctionable
+			// chk_Auctionable
 			// 
-			this.Chk_Auctionable.AutoSize = true;
-			this.Chk_Auctionable.Location = new System.Drawing.Point(483, 3);
-			this.Chk_Auctionable.Name = "Chk_Auctionable";
-			this.Chk_Auctionable.Size = new System.Drawing.Size(63, 21);
-			this.Chk_Auctionable.TabIndex = 5;
-			this.Chk_Auctionable.Text = "可拍卖";
-			this.Chk_Auctionable.UseVisualStyleBackColor = true;
-			this.Chk_Auctionable.CheckedChanged += new System.EventHandler(this.LoadData);
+			this.chk_Auctionable.AutoSize = true;
+			this.chk_Auctionable.Location = new System.Drawing.Point(483, 3);
+			this.chk_Auctionable.Name = "chk_Auctionable";
+			this.chk_Auctionable.Size = new System.Drawing.Size(63, 21);
+			this.chk_Auctionable.TabIndex = 5;
+			this.chk_Auctionable.Text = "可拍卖";
+			this.chk_Auctionable.UseVisualStyleBackColor = true;
+			this.chk_Auctionable.CheckedChanged += new System.EventHandler(this.LoadData);
 			// 
 			// panel2
 			// 
@@ -134,17 +136,18 @@
 			this.ItemPreview_Search.Location = new System.Drawing.Point(3, 4);
 			this.ItemPreview_Search.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
 			this.ItemPreview_Search.MaxValue = new decimal(new int[] {
-			1000000,
-			0,
-			0,
-			0});
+            1000000,
+            0,
+            0,
+            0});
 			this.ItemPreview_Search.MinValue = new decimal(new int[] {
-			1000000,
-			0,
-			0,
-			-2147483648});
+            1000000,
+            0,
+            0,
+            -2147483648});
 			this.ItemPreview_Search.Name = "ItemPreview_Search";
 			this.ItemPreview_Search.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
+			this.ItemPreview_Search.PasswordChar = '\0';
 			this.ItemPreview_Search.PromptColor = System.Drawing.Color.Gray;
 			this.ItemPreview_Search.PromptFont = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
 			this.ItemPreview_Search.PromptText = "";
@@ -155,6 +158,17 @@
 			this.ItemPreview_Search.TabIndex = 116;
 			this.ItemPreview_Search.SearchClick += new System.EventHandler(this.LoadData);
 			// 
+			// chk_compare
+			// 
+			this.chk_compare.AutoSize = true;
+			this.chk_compare.Location = new System.Drawing.Point(3, 4);
+			this.chk_compare.Name = "chk_compare";
+			this.chk_compare.Size = new System.Drawing.Size(51, 21);
+			this.chk_compare.TabIndex = 101;
+			this.chk_compare.Text = "新物品";
+			this.chk_compare.UseVisualStyleBackColor = true;
+			this.chk_compare.CheckedChanged += new System.EventHandler(this.chk_compare_CheckedChanged);
+			// 
 			// Game_AuctionScene
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -163,6 +177,7 @@
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.MaximizeBox = false;
 			this.Name = "Game_AuctionScene";
 			this.Text = "Game_AuctionScene";
 			this.panel1.ResumeLayout(false);
@@ -179,7 +194,8 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel2;
 		private HZH_Controls.Controls.UCTextBoxEx ItemPreview_Search;
-		private System.Windows.Forms.CheckBox Chk_Auctionable;
+		private System.Windows.Forms.CheckBox chk_Auctionable;
 		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox chk_compare;
 	}
 }
