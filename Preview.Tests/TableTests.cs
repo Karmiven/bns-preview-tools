@@ -45,7 +45,6 @@ namespace Xylia.Preview.Tests
 			Console.WriteLine(record.XmlInfo());
 		}
 		
-		
 		//[TestMethod]
 		public void Category()
 		{

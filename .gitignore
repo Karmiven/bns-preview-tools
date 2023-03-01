@@ -3,4 +3,4 @@ obj
 .vs
 packages
 RunTimes
-/Preview.Tests/XMLFile1.xml
+/Preview.Tests/*.xml

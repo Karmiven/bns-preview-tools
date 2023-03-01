@@ -57,9 +57,6 @@
 			this.quotaTxt.TabIndex = 5;
 			this.quotaTxt.Text = "[限购政策信息]";
 			this.quotaTxt.Visible = false;
-
-
-
 			// 
 			// Store2ItemCell
 			// 
@@ -77,7 +74,6 @@
 			this.Controls.SetChildIndex(this.quotaTxt, 0);
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
 		#endregion

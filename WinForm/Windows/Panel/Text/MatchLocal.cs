@@ -10,7 +10,10 @@ using System.Xml;
 
 using HZH_Controls.Forms;
 
+using NPOI.SS.UserModel;
+
 using Xylia.Configure;
+using Xylia.Files.Excel;
 
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
@@ -72,121 +75,85 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 		public void OutLocal(string Source)
 		{
 			Save.FileName = "TextData";
-			Save.Filter = "txt文件|*.txt|xml文件|*.xml";
+			Save.Filter = "txt file|*.txt|xml file|*.xml";
+			if (Save.ShowDialog() != DialogResult.OK) return;
 
-			if (Save.ShowDialog() == DialogResult.OK)
+			Step1.StepIndex = 2;
+			Extract(Source, Save.FileName);
+			Step1.StepIndex = 3;
+		}
+
+		public static void Extract(string Source, string OutPath)
+		{
+			new Thread(act =>
 			{
-				new Thread(act =>
+				string path = OutPath;
+				string ext = Path.GetExtension(OutPath);
+
+				var table = new LocalDataTableSet(Source).TextData;
+				table.TryLoad();
+
+				if (ext == ".xml")
 				{
-					Step1.StepIndex = 2;
-					string path = Save.FileName;
-					string ext = Path.GetExtension(Save.FileName);
+					table.ProcessTable(Path.GetDirectoryName(path));
+				}
+				else if (ext == ".xlsx")
+				{
+					var excel = new ExcelInfo("汉化文档");
+					excel.SetColumn("alias", 50);
+					excel.SetColumn("text", 100);
 
-
-					try
+					ISheet CreateOutputSheet(IWorkbook workbook, string Name)
 					{
-						if (ext == ".xml")
+						ISheet sheet = workbook.CreateSheet(Name);
+
+						//中心
+						ICellStyle CenterStyle = workbook.CreateStyle(new IStyle() { HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment.Center });
+
+						IRow TitleRow = sheet.CreateRow(0);
+
+						TitleRow.CreateCell(0).SetCellValue("汉化别名");
+						TitleRow.CreateCell(1).SetCellValue("汉化文本");
+
+						TitleRow.Cells[0].CellStyle = CenterStyle;
+						TitleRow.Cells[1].CellStyle = CenterStyle;
+
+						sheet.SetColumnWidth(0, 256 * 50);
+						sheet.SetColumnWidth(1, 256 * 150);
+
+						return sheet;
+					}
+
+
+					int Row = 0;
+					foreach (var record in table)
+					{
+						//#region 判断是否是需要的数据
+						//// 韩文校验
+						//if (ucCheckBox2.Checked && !record.text.RegexMatch("[\uAC00-\uD7A3]+"))
+						//	continue;
+						//#endregion
+
+						#region 换表操作
+						if (Row >= 1000000)
 						{
-							var table = new LocalDataTableSet(Source).TextData;
-							table.TryLoad();
-							table.ProcessTable(Path.GetDirectoryName(path));
-
-							Step1.StepIndex = 4;
-							return;
-						}
-
-
-						#region 初始化
-						var Local = GetLocalInfo(Source);
-						Step1.StepIndex = 3;
-
-						if (!Local.Any())
-						{
-							Tip.Message("解析文件失败");
-							return;
+							Row = 0;
+							excel.MainSheet = CreateOutputSheet(excel.Workbook, "汉化文档_" + (excel.Workbook.NumberOfSheets + 1));
 						}
 						#endregion
 
-						#region 输出内容		
-						if (ext == ".html")
-						{
-							StreamWriter sw = path.CreateWriter();
-
-							int i = 0, index = 1;
-
-							foreach (var item in Local)
-							{
-								i++;
-
-								if (i >= 30000)
-								{
-									sw.Close();
-									sw.Dispose();
-									sw = (path.Replace(".html", null) + $"_{ index++ }.html").CreateWriter();
-									i = 0;
-								}
-
-								sw.Write(HtmlSupport.HtmlConvert($"<div class=\"Content\">" +
-
-																			   $"<div class=\"Content_Title\">" +
-																					   $"<span class=\"Sign\" >特征值：</span>" +
-																					   $"<span class=\"Text\" >{ item.alias }</span>" +
-																			   $"</div>" +
-
-																			   $"<div class=\"Content_New\" >" +
-																						 $"<span class=\"Sign\" >文本：</span>" +
-																						 $"<span class=\"Text\" >{ HtmlSupport.ToHTML(item.text) }</span>" +
-																						 $"<span class=\"Text\" >{ HtmlSupport.ToHTML(item.text) }</span>" +
-																				$"</div>" +
-
-																			   $"<div class=\"Separator\" >{  MatchLocal.Line  }</div>" +
-
-																	$"</div>"));
-							}
-
-							sw.Close();
-							sw.Dispose();
-						}
-						else
-						{
-							using StreamWriter Out_Main = new(path);
-							foreach (var item in Local)
-							{
-								if (false)
-								{
-									Out_Main.WriteLine($"    <case handle=\"add\">");
-									Out_Main.WriteLine($"      <word Index=\"0\">{ item.alias }</word>");
-									Out_Main.WriteLine($"      <word Index=\"1\"><![CDATA[{ item.text }]]></word>");
-									Out_Main.WriteLine($"    </case>");
-								}
-								else
-								{
-									Out_Main.WriteLine(item.alias);
-									Out_Main.WriteLine();
-									Out_Main.WriteLine(item.text);
-									Out_Main.WriteLine(MatchLocal.Line);
-								}
-							}
-						}
-
-						Step1.StepIndex = 4;
-						Local.Clear();
-						Local = null;
-						#endregion
-					}
-					catch (Exception ee)
-					{
-						Tip.Message(ee.Message);
+						var CurRow = excel.CreateRow(++Row);
+						CurRow.AddCell(record.alias);
+						CurRow.AddCell(record.text);
 					}
 
-				}).Start();
-			}
+					excel.Save(OutPath);
+				}
+
+				GC.Collect();
+			}).Start();
 		}
 		#endregion
-
-
-
-
 
 
 
@@ -212,7 +179,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 					CompareThread.Interrupt();
 					CompareThread = null;
 
-					FrmTips.ShowTips(null , "操作已强制终止!");
+					FrmTips.ShowTips(null, "操作已强制终止!");
 					ucBtnFillet1.Enabled = ucBtnFillet4.Enabled = pictureBox1.Enabled = true;
 					Btn_StartWithEnd.BtnText = "开始";
 				}));

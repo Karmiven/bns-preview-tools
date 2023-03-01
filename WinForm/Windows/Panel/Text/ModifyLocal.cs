@@ -6,12 +6,10 @@ using System.Windows.Forms;
 
 using HZH_Controls.Forms;
 
-using NPOI.SS.UserModel;
-
 using Xylia.Configure;
 using Xylia.Extension;
-using Xylia.Files.Excel;
-using Xylia.Preview.Data.Helper;
+
+using static Xylia.Match.Windows.Panel.TextInfo.MatchLocal;
 
 namespace Xylia.Match.Windows.Panel.TextInfo
 {
@@ -82,7 +80,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			}
 			else if (File.Exists(TextBox1.Text))
 			{
-				var result = MessageBox.Show("继续操作会覆盖数据，请更名或备份数据！如已完成，请点击确认。", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				var result = MessageBox.Show("继续操作会覆盖数据，请更名或备份数据！", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				if (result != DialogResult.OK)
 				{
 					FrmTips.ShowTipsSuccess(null, "用户结束操作");
@@ -92,83 +90,8 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			#endregion
 
 
-			new Thread(act =>
-			{
-				#region 初始化
-				bool isDefault = string.IsNullOrWhiteSpace(TextBox1.Text);
-				string Ext = Path.GetExtension(TextBox1.Text)?.ToLower();
-
-				if (isDefault || Ext == ".json")
-					throw new Exception("暂不支持的格式");
-
-				var table = new LocalDataTableSet(filePath.Text).TextData;
-				#endregion
-
-
-				#region 根据选择格式输出内容
-				if (Ext == ".xlsx" || Ext == ".xls")
-				{
-					#region 初始化
-					var excel = new ExcelInfo("汉化文档");
-					var titleRow = excel.CreateRow(0);
-					titleRow.AddCell("汉化编号");
-					titleRow.AddCell("汉化别名");
-					titleRow.AddCell("汉化文本");
-					#endregion
-
-					#region 写入内容
-					int Row = 0;
-					foreach (var record in table)
-					{
-						#region 判断是否是需要的数据
-						// 韩文校验
-						if (ucCheckBox2.Checked && !record.text.RegexMatch("[\uAC00-\uD7A3]+"))
-							continue;
-						#endregion
-
-						#region 换表操作
-						if (Row >= 1000000)
-						{
-							Row = 0;
-							excel.MainSheet = CreateOutputSheet(excel.Workbook, "汉化文档_" + (excel.Workbook.NumberOfSheets + 1));
-						}
-						#endregion
-
-
-						#region 创建行基本信息
-						var CurRow = excel.CreateRow(++Row);
-						CurRow.AddCell(record.TableIndex);
-						CurRow.AddCell(record.alias);
-						CurRow.AddCell(record.text);
-						#endregion
-					}
-
-					//存储
-					excel.Save(TextBox1.Text);
-					#endregion
-				}
-				else if (Ext == ".xml")
-				{
-					var outfile = new StreamWriter(isDefault ? Path.GetDirectoryName(filePath.Text) + @"\汉化.xml" : TextBox1.Text);
-					outfile.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-					outfile.WriteLine("<table version=\"0.6\">");
-
-					foreach (var record in table)
-					{
-						outfile.WriteLine($"\t<record alias=\"{ record.alias }\" >");
-						outfile.WriteLine($"\t\t<![CDATA[{ record.text }]]>");
-						outfile.WriteLine($"\t</record>");
-					}
-
-					outfile.WriteLine("</table>");
-					outfile.Close();
-				}
-				#endregion
-
-				GC.Collect();
-				FrmTips.ShowTipsSuccess(null, "输出已完成");
-
-			}).Start();
+			Extract(filePath.Text, TextBox1.Text);
+			FrmTips.ShowTipsSuccess(null, "输出已完成");
 		}
 
 		private void ucBtnFillet3_BtnClick(object sender, EventArgs e)
@@ -261,6 +184,37 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			}
 		}
 
+		private void ucBtnFillet5_BtnClick(object sender, EventArgs e)
+		{
+			var OpenFile = new OpenFileDialog
+			{
+				Filter = OutputFilter,
+				FileName = "汉化数据",
+
+				CheckFileExists = true,
+				CheckPathExists = false,
+			};
+
+			if (OpenFile.ShowDialog() == DialogResult.OK) TextBox2.Text = OpenFile.FileName;
+			else FrmTips.ShowTipsError(null, "用户退出操作");
+		}
+
+		private void ucBtnFillet6_BtnClick(object sender, EventArgs e)
+		{
+			FileDialog Dialog = ucCheckBox1.Checked ? new OpenFileDialog() : new SaveFileDialog();
+			Dialog.Filter = ucCheckBox1.Checked ? "dat文件|*.dat" : OutputFilter;
+			Dialog.FileName = ucCheckBox1.Checked ? "local64.dat" : "汉化数据";
+
+			Dialog.CheckFileExists = ucCheckBox1.Checked;
+
+
+			if (Dialog.ShowDialog() == DialogResult.OK) TextBox1.Text = Dialog.FileName;
+			else FrmTips.ShowTipsError(null, "用户退出操作");
+		}
+
+
+
+
 		private void ucCheckBox1_CheckedChangeEvent(object sender, EventArgs e)
 		{
 			if (ucCheckBox1.Checked)
@@ -281,19 +235,6 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			}
 		}
 
-		private void ucBtnFillet6_BtnClick(object sender, EventArgs e)
-		{
-			FileDialog Dialog = ucCheckBox1.Checked ? new OpenFileDialog() : new SaveFileDialog();
-			Dialog.Filter = ucCheckBox1.Checked ? "dat文件|*.dat" : OutputFilter;
-			Dialog.FileName = ucCheckBox1.Checked ? "local64.dat" : "汉化数据";
-
-			Dialog.CheckFileExists = ucCheckBox1.Checked;
-
-
-			if (Dialog.ShowDialog() == DialogResult.OK) TextBox1.Text = Dialog.FileName;
-			else FrmTips.ShowTipsError(null, "用户退出操作");
-		}
-
 		private void filePath_TextChanged(object sender, EventArgs e)
 		{
 			string DatPath = filePath.Text;
@@ -302,23 +243,6 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			if (!string.IsNullOrWhiteSpace(DatPath) && File.Exists(DatPath) && Loaded)
 				TextBox1.Text = Path.GetDirectoryName(DatPath) + @"\汉化数据.xlsx";
 		}
-
-		private void ucBtnFillet5_BtnClick(object sender, EventArgs e)
-		{
-			var OpenFile = new OpenFileDialog
-			{
-				Filter = OutputFilter,
-				FileName = "汉化数据",
-
-				CheckFileExists = true,
-				CheckPathExists = false,
-			};
-
-			if (OpenFile.ShowDialog() == DialogResult.OK) TextBox2.Text = OpenFile.FileName;
-			else FrmTips.ShowTipsError(null, "用户退出操作");
-		}
-
-
 
 		private void ucCheckBox2_CheckedChangeEvent(object sender, EventArgs e) => Ini.WriteValue(this.GetType(), ((Control)sender).Name, SaveAsBin.Checked);
 
@@ -329,29 +253,6 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 		private void DoubleClickPath(object sender, EventArgs e)
 		{
 			//((Control)sender).DoubleClickPath();
-		}
-		#endregion
-
-		#region 处理方法
-		private static ISheet CreateOutputSheet(IWorkbook workbook, string Name)
-		{
-			ISheet sheet = workbook.CreateSheet(Name);
-
-			//中心
-			ICellStyle CenterStyle = workbook.CreateStyle(new IStyle() { HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment.Center });
-
-			IRow TitleRow = sheet.CreateRow(0);
-
-			TitleRow.CreateCell(0).SetCellValue("汉化别名");
-			TitleRow.CreateCell(1).SetCellValue("汉化文本");
-
-			TitleRow.Cells[0].CellStyle = CenterStyle;
-			TitleRow.Cells[1].CellStyle = CenterStyle;
-
-			sheet.SetColumnWidth(0, 256 * 50);
-			sheet.SetColumnWidth(1, 256 * 150);
-
-			return sheet;
 		}
 		#endregion
 	}

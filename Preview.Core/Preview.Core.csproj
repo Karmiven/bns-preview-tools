@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net6.0-windows</TargetFramework>
+		<LangVersion>9.0</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
 		<OutputType>Library</OutputType>
 		<PublishUrl>publish\</PublishUrl>
+		<Deterministic>False</Deterministic>
 		<Install>true</Install>
 		<EnableDefaultCompileItems>true</EnableDefaultCompileItems>
 		<InstallFrom>Disk</InstallFrom>
@@ -17,7 +19,6 @@
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWPF>True</UseWPF>
-		
 		<SignAssembly>false</SignAssembly>
 		<NeutralLanguage>zh</NeutralLanguage>
 		<BaseIntermediateOutputPath />
@@ -29,68 +30,22 @@
 		<FileVersion>1.0.2</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<OutputPath>..\..\..\..\..\..\..\Publish\Update\Xylia.Preview\Debug\</OutputPath>
-		<LangVersion>9.0</LangVersion>
-		<Deterministic>False</Deterministic>
 		<PlatformTarget>x64</PlatformTarget>
-		<DebugType>none</DebugType>
 		<DebugSymbols>false</DebugSymbols>
 		<DefineConstants>$(DefineConstants)</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>none</DebugType>
-		<OutputPath>..\..\..\..\..\..\..\Publish\Update\Xylia.Preview\Release\</OutputPath>
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-		<DocumentationFile>bin\Release\Xylia.Preview.xml</DocumentationFile>
 		<Deterministic>False</Deterministic>
 		<DefineConstants>$(DefineConstants)</DefineConstants>
 	</PropertyGroup>
 
-
-	<ItemGroup>
-		<Compile Remove="GameUI\Scene\Game_ItemGrowth2\Resources\**" />
-		<Compile Remove="Properties\AnalyseSection\Data2020\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\ClosetGroup\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\CombatData\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\ItemData\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\JobStyleData\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\NPC\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\Skill3\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\Stance\**" />
-		<Compile Remove="Properties\AnalyseSection\Data\ZoneData0\**" />
-		<EmbeddedResource Remove="GameUI\Scene\Game_ItemGrowth2\Resources\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data2020\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\ClosetGroup\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\CombatData\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\ItemData\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\JobStyleData\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\NPC\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\Skill3\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\Stance\**" />
-		<EmbeddedResource Remove="Properties\AnalyseSection\Data\ZoneData0\**" />
-		<None Remove="GameUI\Scene\Game_ItemGrowth2\Resources\**" />
-		<None Remove="Properties\AnalyseSection\Data2020\**" />
-		<None Remove="Properties\AnalyseSection\Data\ClosetGroup\**" />
-		<None Remove="Properties\AnalyseSection\Data\CombatData\**" />
-		<None Remove="Properties\AnalyseSection\Data\ItemData\**" />
-		<None Remove="Properties\AnalyseSection\Data\JobStyleData\**" />
-		<None Remove="Properties\AnalyseSection\Data\NPC\**" />
-		<None Remove="Properties\AnalyseSection\Data\Skill3\**" />
-		<None Remove="Properties\AnalyseSection\Data\Stance\**" />
-		<None Remove="Properties\AnalyseSection\Data\ZoneData0\**" />
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <None Remove="C:\Users\Xylia\.nuget\packages\naudio.vorbis\1.5.0\contentFiles\any\netstandard2.0\README.md" />
-	  <None Remove="Properties\AnalyseSection\Data\lttmeaiw.gje~" />
-	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="BnsBinTool.Core">
 		  <HintPath>..\BnsBinTool\Src\BnsBinTool.Core\bin\Release\net6.0\win-x64\BnsBinTool.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="Xylia.bns">
-			<HintPath>..\..\..\..\..\..\..\Publish\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
+		  <HintPath>..\..\DatTool\BnsDatTool\bin\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
@@ -334,7 +289,7 @@
 		<PackageReference Include="K4os.Compression.LZ4.Streams" Version="1.2.16" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
 		<PackageReference Include="NPOI" Version="2.6.0" />
-		<PackageReference Include="Xylia" Version="1.0.3.9" />
+		<PackageReference Include="Xylia" Version="1.0.3.11" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="GameUI\Controls\Tooltip\TestTooltip2.cs" />
@@ -496,7 +451,7 @@
 		<Folder Include="GameUI\Scene\Game_Guild2\Game_Guild2Scene\" />
 		<Folder Include="GameUI\Scene\Game_GuildVoiceChat\Game_GuildVoiceChatScene\" />
 		<Folder Include="GameUI\Scene\Game_GuildVoiceChat\Game_VoiceChatHUDScene\" />
-		<Folder Include="GameUI\Scene\Game_HUD_Scene\Game_PlayerStatusScene\" />
+		<Folder Include="GameUI\Scene\Game_HUD_Scene\" />
 		<Folder Include="GameUI\Scene\Game_HugeBoss\Game_HugeBossScene\" />
 		<Folder Include="GameUI\Scene\Game_IngameNotice\Game_IngameNoticeScene\" />
 		<Folder Include="GameUI\Scene\Game_Inspector\Game_InspectorScene\" />
@@ -571,10 +526,10 @@
 		<Folder Include="GameUI\Scene\Game_Stylepoint\Game_StylepointScene\" />
 		<Folder Include="GameUI\Scene\Game_SummonedBeauty\Game_SummonedBeautyShopScene\" />
 		<Folder Include="GameUI\Scene\Game_SummonedBeauty\Game_SummonedBeautyTalkScene\" />
-		<Folder Include="GameUI\Scene\Game_Survey\Game_SurveyScene\" />
+		<Folder Include="GameUI\Scene\Game_Survey\" />
 		<Folder Include="GameUI\Scene\Game_SystemInventory\Game_SystemInventoryScene\" />
-		<Folder Include="GameUI\Scene\Game_TargetIndicator\GameUI_TargetIndicator\" />
-		<Folder Include="GameUI\Scene\Game_Team\Game_TeamScene\" />
+		<Folder Include="GameUI\Scene\Game_TargetIndicator\" />
+		<Folder Include="GameUI\Scene\Game_Team\" />
 		<Folder Include="GameUI\Scene\Game_TencentCharge\" />
 		<Folder Include="GameUI\Scene\Game_TencentIngameShop\" />
 		<Folder Include="GameUI\Scene\Game_Tooltip2\Game_ContextMenuTooltipScene\" />
@@ -592,7 +547,7 @@
 		<Folder Include="GameUI\Scene\Lobby_Credit\" />
 		<Folder Include="GameUI\Scene\Lobby_CustomizeCharacter\Lobby_CustomizeCharacterScene\" />
 		<Folder Include="GameUI\Scene\Lobby_CustomizeCharacter\Lobby_SelectWorldScene\" />
-		<Folder Include="GameUI\Scene\Lobby_HomeBrowser\Lobby_HomeBrowser_Scene\" />
+		<Folder Include="GameUI\Scene\Lobby_HomeBrowser\" />
 		<Folder Include="GameUI\Scene\Lobby_NShop\" />
 		<Folder Include="GameUI\Scene\Lobby_SelectCharacter\Lobby_SelectCharacterScene\" />
 		<Folder Include="GameUI\Scene\Lobby_SelectCharacter\Lobby_ServiceScene\" />

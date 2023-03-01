@@ -35,11 +35,9 @@ namespace Xylia.Preview.Data.Helper
 
 			Dictionary<short, Dictionary<string, AttributeDefinition>> attrDef = new();
 
-			// 处理默认
 			attrDef[-1] = new(StringComparer.OrdinalIgnoreCase);
 			Definition.ExpandedAttributes.ForEach(attr => attrDef[-1][attr.Name] = attr);
 
-			// 处理子类
 			Definition.Subtables.ForEach(subtable =>
 			{
 				var group = attrDef[subtable.SubclassType] = new(StringComparer.OrdinalIgnoreCase);

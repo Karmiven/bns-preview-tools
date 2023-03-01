@@ -27,46 +27,41 @@ namespace Xylia.Match.Windows.Panel
 		#region 方法
 		private void Btn_Output_BtnClick(object sender, EventArgs e)
 		{
-			var Selector = this.Selector.TextValue;
+			var tempPath = this.Selector.TextValue;
+			if (string.IsNullOrWhiteSpace(tempPath)) return;
+
 
 			new Thread(t =>
 			{
 				this.Btn_Output.Visible = false;
 
-				PakData PakData = new();
+				using PakData PakData = new();
 				PakData.Initialize();
 
-				var tempPath = Selector.Contains('/') ? Selector : $"GameUI/Resource/{Selector}/";
 				var gameFiles = PakData._provider.Files.Select(o => o.Value)?.Where(o => o.Extension == "uasset" && o.Path.Contains(tempPath));
-				if (gameFiles != null)
+				foreach (var gamefile in gameFiles)
 				{
-					foreach (var gamefile in gameFiles)
-					{
-						string dir = true ? Path.GetDirectoryName(gamefile.Path) : Path.GetFileName(Path.GetDirectoryName(gamefile.Path));
-						dir = this.Path_OutDir.Text + "\\" + dir + "\\";
+					string dir = true ? Path.GetDirectoryName(gamefile.Path) : Path.GetFileName(Path.GetDirectoryName(gamefile.Path));
+					dir = this.Path_OutDir.Text + "\\" + dir + "\\";
 
-						string path = dir + Path.GetFileNameWithoutExtension(gamefile.Path);
-						if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+					string path = dir + Path.GetFileNameWithoutExtension(gamefile.Path);
+					if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
-						var exports = PakData._provider.LoadPackage(gamefile).GetExports();
-						if (exports is null || !exports.Any()) continue;
+					var exports = PakData._provider.LoadPackage(gamefile).GetExports();
+					if (exports is null || !exports.Any()) continue;
 
-						var export = exports.First();
-						export.GetImage()?.Save(path + ".png");
-					}
+					var export = exports.First();
+					export.GetImage()?.Save(path + ".png");
 				}
 
 				gameFiles = null;
-
-				PakData.Dispose();
-				PakData = null;
 
 				GC.Collect();
 				this.Btn_Output.Visible = true;
 
 			}).Start();
 		}
-		
+
 
 		private void ucBtnFillet1_BtnClick(object sender, EventArgs e)
 		{

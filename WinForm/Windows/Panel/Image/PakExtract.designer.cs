@@ -67,7 +67,7 @@ namespace Xylia.Match.Windows.Panel
 			// Selector
 			// 
 			this.Selector.BackColor = System.Drawing.Color.RosyBrown;
-			this.Selector.BoxStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Selector.BoxStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
 			this.Selector.ConerRadius = 10;
 			this.Selector.DropPanelHeight = -1;
 			this.Selector.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -81,22 +81,19 @@ namespace Xylia.Match.Windows.Panel
 			this.Selector.RectWidth = 1;
 			this.Selector.SelectedIndex = -1;
 			this.Selector.Size = new System.Drawing.Size(463, 38);
-			this.Selector.Source.Add("GameUI_Icon");
-			this.Selector.Source.Add("GameUI_Icon2nd");
-			this.Selector.Source.Add("GameUI_Icon3rd");
-			this.Selector.Source.Add("GameUI_Icon4th");
-			this.Selector.Source.Add("GameUI_Icon5th");
-			this.Selector.Source.Add("GameUI_Icon6th");
-			this.Selector.Source.Add("GameUI_Icon7th");
-			this.Selector.Source.Add("GameUI_Icon8th");
-			this.Selector.Source.Add("GameUI_Icon9th");
-			this.Selector.Source.Add("GameUI_TitleImage");
-			this.Selector.Source.Add("GameUI_ImageSet");
-			this.Selector.Source.Add("GameUI_ImageSet_R");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_Icon");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_Icon2nd");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_Icon3rd");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_Icon4th");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_Icon5th");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_Icon6th");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_TitleImage");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_ImageSet");
+			this.Selector.Source.Add("GameUI/Resource/GameUI_ImageSet_R");
 			this.Selector.Source.Add("BNSR/Content/Art/UI/V2/Resource");
 			this.Selector.TabIndex = 110;
 			this.Selector.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.Selector.TextValue = "GameUI_Icon";
+			this.Selector.TextValue = "";
 			this.Selector.TriangleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			// 
 			// Label1

@@ -4,15 +4,8 @@
 		<AssemblyName>Match64</AssemblyName>
 		<Deterministic>false</Deterministic>
 		<IsWebBootstrapper>false</IsWebBootstrapper>
-		<PublishUrl>publish\</PublishUrl>
 		<Install>true</Install>
 		<InstallFrom>Disk</InstallFrom>
-		<UpdateEnabled>false</UpdateEnabled>
-		<UpdateMode>Foreground</UpdateMode>
-		<UpdateInterval>7</UpdateInterval>
-		<UpdateIntervalUnits>Days</UpdateIntervalUnits>
-		<UpdatePeriodically>false</UpdatePeriodically>
-		<UpdateRequired>false</UpdateRequired>
 		<MapFileExtensions>true</MapFileExtensions>
 		<ApplicationRevision>0</ApplicationRevision>
 		<ApplicationVersion>1.19.0.0</ApplicationVersion>
@@ -42,55 +35,28 @@
 		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
 		<TargetZone>LocalIntranet</TargetZone>
 	</PropertyGroup>
+	
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<DebugSymbols>false</DebugSymbols>
-		<DebugType>none</DebugType>
 		<PlatformTarget>x64</PlatformTarget>
 		<Optimize>True</Optimize>
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>none</DebugType>
 		<Optimize>True</Optimize>
 		<DefineConstants>
 			TRACE;
 		</DefineConstants>
-		<WarningLevel>0</WarningLevel>
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 	</PropertyGroup>
-	<ItemGroup>
-	  <None Remove="Properties\launchSettings.json" />
-	</ItemGroup>
-
 	
 	<ItemGroup>
 		<Reference Include="BnsBinTool.Core">
 		  <HintPath>..\BnsBinTool\Src\BnsBinTool.Core\bin\Release\net6.0\win-x64\BnsBinTool.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="Xylia.bns">
-		  <HintPath>..\..\..\..\..\..\..\Publish\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
-		</Reference>
-		<Reference Update="System">
-			<Private>False</Private>
-		</Reference>
-		<Reference Update="System.Core">
-			<Private>False</Private>
-		</Reference>
-		<Reference Update="System.Drawing">
-			<Private>False</Private>
-		</Reference>
-		<Reference Update="System.Runtime.Serialization">
-			<Private>False</Private>
-		</Reference>
-		<Reference Update="System.Xml.Linq">
-			<Private>False</Private>
-		</Reference>
-		<Reference Update="System.Data">
-			<Private>False</Private>
-		</Reference>
-		<Reference Update="System.Xml">
-			<Private>False</Private>
+		  <HintPath>..\..\DatTool\BnsDatTool\bin\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
@@ -155,7 +121,7 @@
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="HZH_Controls" Version="1.0.14" />
 		<PackageReference Include="NPOI" Version="2.6.0" />
-		<PackageReference Include="Xylia" Version="1.0.3.9" />
+		<PackageReference Include="Xylia" Version="1.0.3.11" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />

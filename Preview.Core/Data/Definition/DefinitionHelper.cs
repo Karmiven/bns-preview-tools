@@ -54,8 +54,6 @@ namespace Xylia.Preview.Data.Definition
 		}
 
 
-
-
 		public static DatafileDefinition LoadDefinition(List<MyTableDefinition> tableDefinitions, DataTableSet set, bool mergeDuplicatedSequences = false, bool is64Bit = false)
 		{
 			foreach (var tableDef in tableDefinitions)

@@ -5,9 +5,8 @@ using System.Linq;
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.GameUI.Controls.Currency;
 using Xylia.Preview.GameUI.Controls;
-using Xylia.Preview.GameUI.Scene.Game_QuestJournal;
+using Xylia.Preview.GameUI.Controls.Currency;
 using Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell;
 
 
@@ -97,7 +96,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 				if (setting != null) QuestBonusReward.LoadData(setting);
 			}
 			#endregion
-
 
 			#region 最后处理
 			if (RewardSelect.Source.Count == 0)

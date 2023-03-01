@@ -45,13 +45,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// metroLabel1
+			// Label1
 			// 
 			this.Label1.AutoSize = true;
 			this.Label1.Location = new System.Drawing.Point(12, 8);
 			this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.Label1.Name = "metroLabel1";
-			this.Label1.Size = new System.Drawing.Size(178, 19);
+			this.Label1.Name = "Label1";
+			this.Label1.Size = new System.Drawing.Size(161, 17);
 			this.Label1.TabIndex = 89;
 			this.Label1.Text = "请选择旧版本 local.dat 文件";
 			// 
@@ -64,13 +64,13 @@
 			this.Path_Local1.TabIndex = 86;
 			this.Path_Local1.TextChanged += new System.EventHandler(this.DataPath_TextChanged);
 			// 
-			// metroLabel2
+			// Label2
 			// 
 			this.Label2.AutoSize = true;
 			this.Label2.Location = new System.Drawing.Point(12, 74);
 			this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.Label2.Name = "metroLabel2";
-			this.Label2.Size = new System.Drawing.Size(178, 19);
+			this.Label2.Name = "Label2";
+			this.Label2.Size = new System.Drawing.Size(161, 17);
 			this.Label2.TabIndex = 90;
 			this.Label2.Text = "请选择新版本 local.dat 文件";
 			// 
@@ -126,6 +126,7 @@
 			// 
 			this.Step1.BackColor = System.Drawing.Color.Transparent;
 			this.Step1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.Step1.ImeMode = System.Windows.Forms.ImeMode.Disable;
 			this.Step1.ImgCompleted = ((System.Drawing.Image)(resources.GetObject("Step1.ImgCompleted")));
 			this.Step1.LineWidth = 2;
 			this.Step1.Location = new System.Drawing.Point(8, 246);
@@ -139,7 +140,6 @@
 			this.Step1.Steps = new string[] {
         "准备",
         "解析",
-        "执行",
         "结束"};
 			this.Step1.StepWidth = 32;
 			this.Step1.TabIndex = 102;
