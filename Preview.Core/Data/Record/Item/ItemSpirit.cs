@@ -6,6 +6,7 @@ using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class ItemSpirit : BaseRecord
 	{
 		#region 属性字段

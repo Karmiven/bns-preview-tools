@@ -2,6 +2,7 @@
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class SkillByEquipment : BaseRecord
 	{
 		[Signal("skill3-id-1")]

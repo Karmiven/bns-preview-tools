@@ -283,12 +283,9 @@
 	<ItemGroup>
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
 		<PackageReference Include="CUE4Parse-Conversion" Version="1.0.4" />
-		<PackageReference Include="DotNetZip" Version="1.16.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="HZH_Controls" Version="1.0.14" />
-		<PackageReference Include="K4os.Compression.LZ4.Streams" Version="1.2.16" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
-		<PackageReference Include="NPOI" Version="2.6.0" />
 		<PackageReference Include="Xylia" Version="1.0.3.11" />
 	</ItemGroup>
 	<ItemGroup>

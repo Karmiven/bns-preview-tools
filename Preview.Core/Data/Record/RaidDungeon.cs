@@ -3,6 +3,7 @@ using Xylia.Preview.Common.Interface;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class RaidDungeon : BaseRecord , Attraction
 	{
 		public Text Name2;

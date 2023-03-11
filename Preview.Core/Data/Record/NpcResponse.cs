@@ -6,7 +6,6 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class NpcResponse : BaseRecord
 	{
-		#region 属性字段
 		[Signal("faction-check-type")]
 		public FactionCheckTypeSeq FactionCheckType;
 
@@ -42,9 +41,8 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("idle-end")]
 		public Social IdleEnd;
-		#endregion
 
-		#region 枚举
+
 		public enum FactionCheckTypeSeq : byte
 		{
 			[Signal("is")]
@@ -67,6 +65,5 @@ namespace Xylia.Preview.Data.Record
 			[Signal("check-for-fail")]
 			CheckForFail,
 		}
-		#endregion
 	}
 }

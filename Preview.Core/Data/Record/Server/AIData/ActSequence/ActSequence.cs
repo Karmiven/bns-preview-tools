@@ -45,7 +45,7 @@ namespace Xylia.bns.Modules.AIData.ActSequence
 			var Actions = xe.SelectNodes("./action");
 			for (int idx = 0; idx < Actions.Count; idx++)
 			{
-				var ActionNode = Actions[idx];
+				var ActionNode = (XmlElement)Actions[idx];
 				this.Actions.Add(ActionNode.TypeFactory<ActionType, IAction>(s => s switch
 				{
 					ActionType.Despawn => new Despawn(),

@@ -4,7 +4,6 @@ namespace Xylia.Preview.Data.Record
 {
 	public sealed class UnlocatedStore : BaseRecord
 	{
-		#region 字段
 		public Store2 Store2;
 
 		[Signal("no-more-use")]
@@ -12,19 +11,12 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("unlocated-store-type")]
 		public Type UnlocatedStoreType;
-		#endregion
 
-
-		#region 枚举
-		/// <summary>
-		/// 非固定商店分类
-		/// </summary>
 		public enum Type
 		{
-			UnlocatedNone = 0,
+			UnlocatedNone,
 			UnlocatedStore,
 			AccountStore,
-
 			SoulBoostStore1,
 			SoulBoostStore2,
 			SoulBoostStore3,
@@ -32,6 +24,5 @@ namespace Xylia.Preview.Data.Record
 			SoulBoostStore5,
 			SoulBoostStore6,
 		}
-		#endregion
 	}
 }

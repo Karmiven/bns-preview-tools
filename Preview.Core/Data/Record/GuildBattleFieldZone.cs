@@ -4,6 +4,7 @@ using Xylia.Preview.Common.Interface;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class GuildBattleFieldZone : BaseRecord, Attraction
 	{
 		[Signal("guild-battle-field-zone-name2")]

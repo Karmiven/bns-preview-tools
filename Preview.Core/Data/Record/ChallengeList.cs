@@ -4,9 +4,6 @@ using Xylia.Attribute.Component;
 
 namespace Xylia.Preview.Data.Record
 {
-	/// <summary>
-	/// 挑战
-	/// </summary>
 	public sealed class ChallengeList : BaseRecord
 	{
 		#region 枚举
@@ -72,7 +69,6 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("challenge-reward-total-count")]
 		public byte ChallengeRewardTotalCount;
-
 
 
 

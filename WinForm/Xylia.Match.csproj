@@ -120,7 +120,6 @@
 		<PackageReference Include="CUE4Parse" Version="1.0.4" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="HZH_Controls" Version="1.0.14" />
-		<PackageReference Include="NPOI" Version="2.6.0" />
 		<PackageReference Include="Xylia" Version="1.0.3.11" />
 	</ItemGroup>
 	<ItemGroup>

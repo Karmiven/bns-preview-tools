@@ -4,9 +4,10 @@ using Xylia.Preview.Common.Interface;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class FieldZone : BaseRecord, Attraction
 	{
-		public string Group;
+		public AttractionGroup Group;
 
 		[Signal("attraction-quest-1")]
 		public string AttractionQuest1;

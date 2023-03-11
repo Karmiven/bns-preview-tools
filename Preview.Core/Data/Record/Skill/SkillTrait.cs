@@ -2,12 +2,11 @@
 using Xylia.Attribute.Component;
 using Xylia.Preview.Common.Seq;
 
-
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class SkillTrait : BaseRecord
 	{
-		#region 数据字段
 		public JobSeq Job;
 
 		[Signal("job-style")]
@@ -22,8 +21,7 @@ namespace Xylia.Preview.Data.Record
 
 
 
-
-		public string Name2;
+		public Text Name2;
 
 		public string Icon;
 
@@ -31,13 +29,13 @@ namespace Xylia.Preview.Data.Record
 		public string TraitSymbol;
 
 		[Signal("tooltip-train-name")]
-		public string TooltipTrainName;
+		public Text TooltipTrainName;
 
 		[Signal("tooltip-train-description")]
-		public string TooltipTrainDescription;
+		public Text TooltipTrainDescription;
 
 		[Signal("tooltip-effect-description")]
-		public string TooltipEffectDescription;
+		public Text TooltipEffectDescription;
 
 		[Signal("tooltip-skill-systematization-group-1")]
 		public string TooltipSkillSystematizationGroup1;
@@ -76,22 +74,22 @@ namespace Xylia.Preview.Data.Record
 		public int TooltipAcquireSkillListSkill3Id6;
 
 		[Signal("tooltip-acquire-skill-list-skill3-description-1")]
-		public string TooltipAcquireSkillListSkill3Description1;
+		public Text TooltipAcquireSkillListSkill3Description1;
 
 		[Signal("tooltip-acquire-skill-list-skill3-description-2")]
-		public string TooltipAcquireSkillListSkill3Description2;
+		public Text TooltipAcquireSkillListSkill3Description2;
 
 		[Signal("tooltip-acquire-skill-list-skill3-description-3")]
-		public string TooltipAcquireSkillListSkill3Description3;
+		public Text TooltipAcquireSkillListSkill3Description3;
 
 		[Signal("tooltip-acquire-skill-list-skill3-description-4")]
-		public string TooltipAcquireSkillListSkill3Description4;
+		public Text TooltipAcquireSkillListSkill3Description4;
 
 		[Signal("tooltip-acquire-skill-list-skill3-description-5")]
-		public string TooltipAcquireSkillListSkill3Description5;
+		public Text TooltipAcquireSkillListSkill3Description5;
 
 		[Signal("tooltip-acquire-skill-list-skill3-description-6")]
-		public string TooltipAcquireSkillListSkill3Description6;
+		public Text TooltipAcquireSkillListSkill3Description6;
 
 		[Signal("tooltip-variable-skill-list-skill3-id-1")]
 		public int TooltipVariableSkillListSkill3Id1;
@@ -130,22 +128,21 @@ namespace Xylia.Preview.Data.Record
 		public byte VariableTooltipSkill3VariationId6;
 
 		[Signal("tooltip-variable-skill-list-skill3-description-1")]
-		public string TooltipVariableSkillListSkill3Description1;
+		public Text TooltipVariableSkillListSkill3Description1;
 
 		[Signal("tooltip-variable-skill-list-skill3-description-2")]
-		public string TooltipVariableSkillListSkill3Description2;
+		public Text TooltipVariableSkillListSkill3Description2;
 
 		[Signal("tooltip-variable-skill-list-skill3-description-3")]
-		public string TooltipVariableSkillListSkill3Description3;
+		public Text TooltipVariableSkillListSkill3Description3;
 
 		[Signal("tooltip-variable-skill-list-skill3-description-4")]
-		public string TooltipVariableSkillListSkill3Description4;
+		public Text TooltipVariableSkillListSkill3Description4;
 
 		[Signal("tooltip-variable-skill-list-skill3-description-5")]
-		public string TooltipVariableSkillListSkill3Description5;
+		public Text TooltipVariableSkillListSkill3Description5;
 
 		[Signal("tooltip-variable-skill-list-skill3-description-6")]
-		public string TooltipVariableSkillListSkill3Description6;
-		#endregion
+		public Text TooltipVariableSkillListSkill3Description6;
 	}
 }

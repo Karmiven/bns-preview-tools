@@ -41,7 +41,7 @@ namespace Xylia.bns.Modules.AIData.Script
 			var Reactions = xe.SelectNodes("./reaction");
 			for (int idx = 0; idx < Reactions.Count; idx++)
 			{
-				var ReactionNode = Reactions[idx];
+				var ReactionNode = (XmlElement)Reactions[idx];
 				this.Reactions.Add(ReactionNode.TypeFactory<ReactionType, IReaction>(s => s switch
 				{
 					ReactionType.AcquireFieldItem => new AcquireFieldItem(),

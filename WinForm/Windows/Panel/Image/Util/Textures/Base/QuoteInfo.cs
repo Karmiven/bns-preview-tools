@@ -7,7 +7,7 @@ namespace Xylia.Match.Util.Paks.Textures
 	/// </summary>
 	public class QuoteInfo
 	{
-		#region 存储名称时字段
+		#region 存储信息
 		/// <summary>
 		/// 对象编号
 		/// </summary>

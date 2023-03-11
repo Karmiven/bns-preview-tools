@@ -1,12 +1,10 @@
-﻿
-using Xylia.Attribute.Component;
+﻿using Xylia.Attribute.Component;
 
 namespace Xylia.Preview.Data.Record
 {
 	[AliasRecord]
 	public sealed class ItemSkill : BaseRecord
 	{
-		#region 属性字段
 		[Signal("skill-id")]
 		public int SkillId;
 
@@ -46,6 +44,5 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("item-skill-tooltip")]
 		public Text ItemSkillTooltip;
-		#endregion
 	}
 }

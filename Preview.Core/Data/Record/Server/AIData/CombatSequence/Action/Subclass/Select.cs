@@ -26,13 +26,12 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 		{
 			base.LoadData(xe);
 
-
 			this.Actions = new List<IAction>();
 			var Actions = xe.SelectNodes("./action");
 			for (int i = 0; i < Actions.Count; i++)
 			{
-				var ActionNode = Actions[i];
-				this.Actions.Add(ActionNode.ActionFactory(i, this));
+				var ActionNode = (XmlElement)Actions[i];
+				this.Actions.Add(ActionNode.ActionFactory());
 			}
 		}
 		#endregion

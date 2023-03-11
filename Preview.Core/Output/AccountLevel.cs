@@ -1,11 +1,4 @@
-﻿using System.Collections.Generic;
-
-using Xylia.Extension;
-using Xylia.Files.Excel;
-using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Record;
-
-namespace Xylia.Preview.Output
+﻿namespace Xylia.Preview.Output
 {
 	public sealed class AccountLevel : OutBase
 	{

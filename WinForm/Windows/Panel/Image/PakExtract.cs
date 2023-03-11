@@ -30,7 +30,6 @@ namespace Xylia.Match.Windows.Panel
 			var tempPath = this.Selector.TextValue;
 			if (string.IsNullOrWhiteSpace(tempPath)) return;
 
-
 			new Thread(t =>
 			{
 				this.Btn_Output.Visible = false;
@@ -38,23 +37,21 @@ namespace Xylia.Match.Windows.Panel
 				using PakData PakData = new();
 				PakData.Initialize();
 
-				var gameFiles = PakData._provider.Files.Select(o => o.Value)?.Where(o => o.Extension == "uasset" && o.Path.Contains(tempPath));
-				foreach (var gamefile in gameFiles)
+				foreach (var gamefile in PakData._provider.Files
+					.Where(o => o.Value.Extension == "uasset" && o.Value.Path.Contains(tempPath))
+					.Select(o => o.Value))
 				{
-					string dir = true ? Path.GetDirectoryName(gamefile.Path) : Path.GetFileName(Path.GetDirectoryName(gamefile.Path));
-					dir = this.Path_OutDir.Text + "\\" + dir + "\\";
-
-					string path = dir + Path.GetFileNameWithoutExtension(gamefile.Path);
+					string dir = this.Path_OutDir.Text + "\\" + Path.GetDirectoryName(gamefile.Path);
 					if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
 					var exports = PakData._provider.LoadPackage(gamefile).GetExports();
 					if (exports is null || !exports.Any()) continue;
 
-					var export = exports.First();
-					export.GetImage()?.Save(path + ".png");
+					var o = exports.First();
+					var type = checkBox1.Checked ? "." + o.ExportType : null;
+					var ext = ".png";
+					o.GetImage()?.Save(dir + $"\\{o.Name}{type}{ext}");
 				}
-
-				gameFiles = null;
 
 				GC.Collect();
 				this.Btn_Output.Visible = true;

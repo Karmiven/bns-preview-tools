@@ -10,8 +10,6 @@ using System.Xml;
 
 using BnsBinTool.Core.DataStructs;
 
-using HZH_Controls;
-
 using Xylia.Extension;
 using Xylia.Preview.Common.Interface.RecordAttribute;
 using Xylia.Preview.Data.Helper;
@@ -21,9 +19,6 @@ using Xylia.Preview.Properties;
 
 namespace Xylia.Preview.Data
 {
-	/// <summary>
-	/// 数据表
-	/// </summary>
 	public class DataTable<T> : IEnumerable<T>, IEnumerable where T : BaseRecord, new()
 	{
 		#region 构造
@@ -60,7 +55,6 @@ namespace Xylia.Preview.Data
 			}
 		}
 		#endregion
-
 
 
 		#region 加载方法
@@ -295,7 +289,6 @@ namespace Xylia.Preview.Data
 		#endregion
 
 
-
 		#region 处理类方法
 		public void ProcessTable(string _outputPath) => this._processTable?.Invoke(_outputPath);
 
@@ -305,9 +298,6 @@ namespace Xylia.Preview.Data
 		#endregion
 
 		#region 接口方法
-		/// <summary>
-		/// 清除数据
-		/// </summary>
 		public void Clear()
 		{
 			this._data = null;

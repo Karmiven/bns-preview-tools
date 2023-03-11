@@ -1,7 +1,8 @@
-﻿using Xylia.Preview.Common.Interface;
+﻿using Xylia.Attribute.Component;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class SkillGatherRange3 : BaseRecord
 	{
 		#region 字段	

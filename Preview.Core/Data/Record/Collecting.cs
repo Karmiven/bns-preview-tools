@@ -1,7 +1,6 @@
 ﻿using System;
 
 using Xylia.Attribute.Component;
-using Xylia.Preview.Common.Interface;
 using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record
@@ -9,7 +8,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class Collecting : BaseRecord
 	{
-		public string Name;
+		public Text Name;
 
 		public CategorySeq Category;
 		public enum CategorySeq

@@ -36,6 +36,7 @@ namespace Xylia.Match.Windows.Panel
 			this.Label1 = new System.Windows.Forms.Label();
 			this.Path_OutDir = new System.Windows.Forms.TextBox();
 			this.ucBtnFillet1 = new HZH_Controls.Controls.UCBtnFillet();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// Btn_Output
@@ -133,11 +134,25 @@ namespace Xylia.Match.Windows.Panel
 			this.ucBtnFillet1.TabIndex = 113;
 			this.ucBtnFillet1.BtnClick += new System.EventHandler(this.ucBtnFillet1_BtnClick);
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.BackColor = System.Drawing.Color.Transparent;
+			this.checkBox1.Checked = true;
+			this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox1.Location = new System.Drawing.Point(12, 178);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(75, 21);
+			this.checkBox1.TabIndex = 114;
+			this.checkBox1.Text = "输出类名";
+			this.checkBox1.UseVisualStyleBackColor = false;
+			// 
 			// PakExtract
 			// 
 			this.AllowDrop = true;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.ucBtnFillet1);
 			this.Controls.Add(this.Label1);
 			this.Controls.Add(this.Path_OutDir);
@@ -156,5 +171,6 @@ namespace Xylia.Match.Windows.Panel
 		private System.Windows.Forms.Label Label1;
 		private System.Windows.Forms.TextBox Path_OutDir;
 		private HZH_Controls.Controls.UCBtnFillet ucBtnFillet1;
+		private System.Windows.Forms.CheckBox checkBox1;
 	}
 }

@@ -87,7 +87,7 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action
 
 	public static class Factory
 	{
-		public static IAction ActionFactory(this XmlNode CaseNode, int Index, BaseNode Owner) => CaseNode.TypeFactory<ActionType, IAction>(s => s switch
+		public static IAction ActionFactory(this XmlElement CaseNode) => CaseNode.TypeFactory<ActionType, IAction>(s => s switch
 		{
 			ActionType.BossGpSelectAttack => new BossGpSelectAttack(),
 			ActionType.BossLinkLaserAttack => new BossLinkLaserAttack(),

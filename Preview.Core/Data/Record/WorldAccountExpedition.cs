@@ -3,6 +3,7 @@ using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class WorldAccountExpedition : BaseRecord
 	{
 		public byte Step;

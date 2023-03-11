@@ -1,6 +1,4 @@
-﻿
-using Xylia.Attribute.Component;
-using Xylia.Preview.Common.Interface;
+﻿using Xylia.Attribute.Component;
 
 namespace Xylia.Preview.Data.Record
 {

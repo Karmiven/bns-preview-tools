@@ -1,10 +1,10 @@
 ﻿namespace Xylia.Preview.Data.Record
 {
-	public class SlateScrollStone : BaseRecord
+	public sealed class SlateScrollStone : BaseRecord
 	{
-		public string scroll;
+		public SlateScroll scroll;
 
-		public string stone; 
+		public SlateStone stone; 
 
 		public bool recommend; 
 	}

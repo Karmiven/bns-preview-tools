@@ -1,8 +1,8 @@
-﻿
-using Xylia.Attribute.Component;
+﻿using Xylia.Attribute.Component;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class SkillTooltipAttribute : BaseRecord
 	{
 		[Signal("arg-type-1")] 

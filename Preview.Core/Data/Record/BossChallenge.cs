@@ -4,6 +4,7 @@ using Xylia.Preview.Common.Interface;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class BossChallenge : BaseRecord, Attraction
 	{
 		[Signal("boss-challenge-name2")]

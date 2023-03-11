@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 using Xylia.Attribute.Component;
 using Xylia.Preview.Data.Package.Pak;
@@ -83,13 +84,9 @@ public static class IconTextureExt
 		return GetIcon(TextureAlias, IconIndex);
 	}
 
-	/// <summary>
-	/// 获取拆分信息
-	/// </summary>
-	/// <param name="IconInfo"></param>
-	/// <param name="TextureAlias"></param>
-	/// <param name="IconIndex"></param>
-	/// <exception cref="System.Exception"></exception>
+	public static Bitmap GetIcon(this string TextureAlias, short IconIndex) => FileCache.Data.IconTexture[TextureAlias]?.GetIcon(IconIndex);
+
+
 	public static void GetInfo(this string IconInfo, out string TextureAlias, out short IconIndex)
 	{
 		//判断有效性
@@ -97,21 +94,18 @@ public static class IconTextureExt
 		IconIndex = 0;
 		if (string.IsNullOrWhiteSpace(IconInfo)) return;
 
-		#region 获取图标序号
+		//获取图标序号
 		if (IconInfo.Contains(','))
 		{
 			var IconSplit = IconInfo.Split(',');
 			TextureAlias = IconSplit[0];
 
 			if (short.TryParse(IconSplit[^1], out IconIndex)) return;
-			else throw new System.Exception("获取序号失败: " + IconInfo);
+			else throw new Exception("获取序号失败: " + IconInfo);
 		}
-		#endregion
 
 		TextureAlias = IconInfo;
 		IconIndex = 1;
 		return;
 	}
-
-	public static Bitmap GetIcon(this string TextureAlias, short IconIndex) => FileCache.Data.IconTexture[TextureAlias]?.GetIcon(IconIndex);
 }

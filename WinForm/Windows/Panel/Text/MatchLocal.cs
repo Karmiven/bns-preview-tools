@@ -354,15 +354,11 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 					ucBtnFillet1.Enabled = ucBtnFillet4.Enabled = pictureBox1.Enabled = true;
 					Btn_StartWithEnd.BtnText = "开始";
+					CompareThread = null;
+
 					GC.Collect();
-
-					this.Invoke(new Action(() =>
-					{
-						FrmTips.ShowTipsSuccess(null, HasChanged ? "执行已经结束,请在输出目录查看" : "执行已结束，但是未发现任何变更");
-
-						CompareThread = null;
-						GC.Collect();
-					}));
+	
+					this.Invoke(() => FrmTips.ShowTipsSuccess(null, HasChanged ? "执行已经结束,请在输出目录查看" : "执行已结束，但是未发现任何变更"));
 				}
 				catch (Exception ee)
 				{

@@ -2,9 +2,7 @@
 
 namespace Xylia.Preview.Data.Record
 {
-	/// <summary>
-	/// 挑战奖励
-	/// </summary>
+	[AliasRecord]
 	public sealed class ChallengeListReward : BaseRecord
 	{
 		[Signal("reward-money")]

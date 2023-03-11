@@ -2,9 +2,6 @@
 
 namespace Xylia.Preview.Data.Record
 {
-	/// <summary>
-	/// 聚灵阁物品
-	/// </summary>
 	public sealed class RandomStoreItem : BaseRecord
 	{
 		public Item Item;

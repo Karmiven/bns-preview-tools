@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 using Xylia.Extension;
 
-
 namespace Xylia.Preview.Data
 {
 	public class ChvLoad

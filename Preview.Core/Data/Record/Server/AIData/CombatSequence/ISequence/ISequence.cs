@@ -66,8 +66,8 @@ namespace Xylia.bns.Modules.AIData.CombatSequence
             var Actions = xe.SelectNodes("./action");
             for (int i = 0; i < Actions.Count; i++)
             {
-                var ActionNode = Actions[i];
-                this.Actions.Add(ActionNode.ActionFactory(i, this));
+                var ActionNode = (XmlElement)Actions[i];
+                this.Actions.Add(ActionNode.ActionFactory());
             }
         }
         #endregion

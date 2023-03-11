@@ -42,9 +42,9 @@ namespace Xylia.Preview.Output
 			this.ExcelInfo = new ExcelInfo(Name);
 			this.CreateData();
 			this.ExcelInfo.Save(Save.FileName);
-			#endregion
+	
 
-			#region 清理资源
+
 			FrmTips.ShowTipsWarning(null, $"执行已完成，耗时{(int)(DateTime.Now - dt).TotalSeconds}s");
 
 			this.ExcelInfo.Dispose();

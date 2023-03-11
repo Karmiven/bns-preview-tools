@@ -10,10 +10,10 @@ namespace Xylia.Match.Util.Paks.Textures
 
 		protected override void AnalyseSourceData()
 		{
-			Parallel.ForEach(set.GoodsIcon, item =>
+			Parallel.ForEach(set.GoodsIcon, record =>
 			{
-				int MainId = item.Key();
-				item.Icon.GetInfo(out string TextureAlias, out short IconIndex);
+				int MainId = record.Key();
+				record.Icon.GetInfo(out string TextureAlias, out short IconIndex);
 
 				this.QuoteInfos.Add(new QuoteInfo()
 				{

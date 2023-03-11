@@ -46,7 +46,7 @@ namespace Xylia.Match.Windows.Panel
 
 			if (!File.Exists(filePath.Text))
 			{
-				this.Invoke(new Action(() => FrmTips.ShowTipsError(null, "未选择文件")));
+				FrmTips.ShowTipsError(null, "未选择文件");
 				return;
 			}
 			else if (Directory.Exists(TextBox1.Text) && new DirectoryInfo(TextBox1.Text).GetFiles("*.jpg").Length != 0)
@@ -54,20 +54,20 @@ namespace Xylia.Match.Windows.Panel
 				var result = MessageBox.Show("继续操作会覆盖数据，请备份数据！如已完成，请点击确认。", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				if (result != DialogResult.OK) 
 				{
-					this.Invoke(new Action(() => FrmTips.ShowTipsSuccess(null, "用户结束操作")));
+					FrmTips.ShowTipsSuccess(null, "用户结束操作");
 					return;
 				}
 			}
 
 
-			new Thread((ThreadStart)delegate
+			new Thread(o =>
 			{
 				if (!Directory.Exists(TextBox1.Text)) Directory.CreateDirectory(TextBox1.Text);
 
 				//Xylia.Compress.Zip.UnCompressFile(filePath.Text, TextBox1.Text, Static.pwd);
 
 				GC.Collect();
-				this.Invoke(new Action(() => FrmTips.ShowTipsSuccess(null, "已结束输出")));
+				this.Invoke(() => FrmTips.ShowTipsSuccess(null, "已结束输出"));
 
 			}).Start();
 		}
@@ -83,10 +83,10 @@ namespace Xylia.Match.Windows.Panel
 				return;
 			}
 
-			new Thread((ThreadStart)delegate
+			new Thread(o =>
 			{
 				//Xylia.Compress.Zip.ZipDirectory(TextBox1.Text, filePath.Text, Static.pwd);
-				this.Invoke(new Action(() => FrmTips.ShowTipsSuccess(null, "封包完成")));
+				this.Invoke(() => FrmTips.ShowTipsSuccess(null, "封包完成"));
 			}).Start();
 		}
 

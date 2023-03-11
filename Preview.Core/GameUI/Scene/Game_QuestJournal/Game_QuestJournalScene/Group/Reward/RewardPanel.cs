@@ -67,13 +67,11 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 
 					if (Reward1 != null)
 					{
-						Reward1.Step = step.id;
 						Rewards.Add(Reward1);
 					}
 
 					if (Reward2 != null)
 					{
-						Reward2.Step = step.id;
 						Rewards.Add(Reward2);
 					}
 				}

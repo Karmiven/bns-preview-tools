@@ -3,6 +3,7 @@ using Xylia.Preview.Common.Interface;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class Cave2 : BaseRecord, Attraction
 	{
 		[Signal("ui-text-grade")]

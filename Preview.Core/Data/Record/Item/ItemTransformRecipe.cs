@@ -9,6 +9,7 @@ using static Xylia.Preview.Data.Record.Item;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class ItemTransformRecipe : BaseRecord
 	{
 		[Signal("money-cost")]

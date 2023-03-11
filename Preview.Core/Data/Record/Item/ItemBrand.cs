@@ -1,12 +1,10 @@
 ﻿
 using Xylia.Attribute.Component;
 
-
 namespace Xylia.Preview.Data.Record
 {
 	public sealed class ItemBrand : BaseRecord
 	{
-		#region 属性字段
 		[Signal("ui-item-transform")]
 		public string UiItemTransform;
 
@@ -54,6 +52,5 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("ui-item-dual-sword")]
 		public string UiItemDualSword;
-		#endregion
 	}
 }

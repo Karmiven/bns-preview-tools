@@ -3,6 +3,7 @@ using Xylia.Preview.Common.Interface;
 
 namespace Xylia.Preview.Data.Record
 {
+	[AliasRecord]
 	public sealed class PublicRaid : BaseRecord, Attraction
 	{
 		[Signal("publicraid-name2")]
