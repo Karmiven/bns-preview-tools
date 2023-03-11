@@ -29,7 +29,9 @@ namespace Xylia.Preview.Common.Cast
 			if (ObjInfo.Contains(':'))
 			{
 				var tmp = ObjInfo.Split(':');
-				return CastObject(tmp[1]?.Trim(), tmp[0]?.Trim());
+
+				var obj = CastObject(tmp[1]?.Trim(), tmp[0]?.Trim());
+				if (obj != null) return obj;
 			}
 
 			System.Diagnostics.Debug.WriteLine($"Cast Failed: {ObjInfo}");
@@ -45,16 +47,9 @@ namespace Xylia.Preview.Common.Cast
 
 			//通过反射获取数据
 			var DataTable = FileCache.Data.GetValue(DataTableName, true);
-			if (DataTable != null)
-			{
-				var record = DataTable.GetType()
-					.GetMethod("get_Item", ClassExtension.Flags, new Type[] { typeof(string) })?.Invoke(DataTable, DataKey);
-
-				return record is null ? default : record as BaseRecord;
-			}
-
-			System.Diagnostics.Debug.WriteLine($"Cast Failed: {DataTableName}: {DataKey}");
-			return default;
+			return (BaseRecord)DataTable?.GetType()
+				.GetMethod("get_Item", ClassExtension.Flags, new Type[] { typeof(string) })?
+				.Invoke(DataTable, DataKey);
 		}
 		#endregion
 	}
