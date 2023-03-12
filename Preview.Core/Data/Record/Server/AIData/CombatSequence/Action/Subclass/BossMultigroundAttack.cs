@@ -1,14 +1,10 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Base;
-using  Xylia.Preview.Data.Record;
-
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	[Signal("boss-multiground-attack")]
 	public sealed class BossMultigroundAttack : SkillBase
 	{
-		#region 字段
 		[Signal("ground-pattern-1")] 
 		public BossGroundAttackTargetPattern GroundPattern1;
 
@@ -26,6 +22,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 
 		[Signal("origin-pos")] 
 		public string OriginPos;
-		#endregion
 	}
 }

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Xml;
+﻿using System.Xml;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Data.Record.CombatSequenceData.Action;
 using Xylia.Preview.Data.Table.XmlRecord;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	public enum ActionType
 	{

@@ -1,7 +1,6 @@
-﻿
-using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	public enum ReactionType
 	{

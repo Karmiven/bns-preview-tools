@@ -147,20 +147,20 @@ namespace Xylia.Preview.Data
 			{
 				int index = x;
 				var record = objs[index];
-				var o = this._data[index] = new(() =>
+				var obj = this._data[index] = new(() =>
 				{
-					var Object = new T();
-					Object.TableIndex = (uint)index;
-					Object.LoadData(record);
+					var o = new T();
+					o.TableIndex = (uint)index;
+					o.LoadData(record);
 
-					return Object;
+					return o;
 				});
 
 
 				if (!int.TryParse(record.Attributes["id"]?.Value, out int RecordId)) RecordId = index + 1;
 
 				var Ref = new Ref(RecordId);
-				this.ByRef[Ref] = o;
+				this.ByRef[Ref] = obj;
 
 				string alias = record.Attributes["alias"]?.Value;
 				if (alias != null) this.ByAlias[alias] = Ref;

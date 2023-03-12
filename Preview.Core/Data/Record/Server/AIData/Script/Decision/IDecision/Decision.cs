@@ -1,11 +1,9 @@
-﻿using Xylia.bns.Modules.AIData.Script.Entities.Decision;
+﻿using Xylia.Preview.Data.Record.ScriptData.Decision;
 
-
-namespace Xylia.bns.Modules.AIData.Script.Decision
+namespace Xylia.Preview.Data.Record.ScriptData.Decision
 {
 	public sealed class Decision : IDecision
 	{
-		#region 字段
 		/// <summary>
 		/// 事件类型
 		/// </summary>
@@ -15,11 +13,5 @@ namespace Xylia.bns.Modules.AIData.Script.Decision
 		/// 继承母对象的当前事件
 		/// </summary>
 		public bool Forward;
-
-		/// <summary>
-		/// 此字段可能是错写
-		/// </summary>
-		public bool Foward;
-		#endregion
 	}
 }

@@ -1,11 +1,10 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record.QuestData.TutorialCase
 {
 	public sealed class WindowOpen : TutorialCaseBase
 	{
-		#region 字段
 		[Signal("window-type")]
 		[Side(Side.Type.Client)]
 		public WindowTypeSeq WindowType;
@@ -45,6 +44,5 @@ namespace Xylia.Preview.Data.Record.QuestData.TutorialCase
 			[Signal("by-npc-seller-button")]
 			ByNpcSellerButton,
 		}
-		#endregion
 	}
 }

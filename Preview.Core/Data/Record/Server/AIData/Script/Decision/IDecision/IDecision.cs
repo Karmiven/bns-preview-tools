@@ -1,37 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.GameData.Filter;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Data.Record;
 using Xylia.Preview.Data.Table.XmlRecord;
 
-namespace Xylia.bns.Modules.AIData.Script.Decision
+namespace Xylia.Preview.Data.Record.ScriptData.Decision
 {
-	public abstract class IDecision : BaseNode
+	public abstract class IDecision : BaseRecord
 	{
-		#region 结构字段
-		/// <summary>
-		/// 筛选器
-		/// </summary>
-		[FStruct(StructType.Meta)]
-		public List<FilterSet> FilterSets;
+		[Signal("filter-set")]
+		public List<FilterSet> FilterSet;
 
-		/// <summary>
-		/// 执行器
-		/// </summary>
-		[FStruct(StructType.Meta)]
-		public List<ReactionSet> ReactionSets;
-		#endregion
-
-
-		#region 方法
-		public override void LoadData(XmlElement xe)
-		{
-			base.LoadData(xe);
-
-			this.FilterSets = BaseNode.LoadChildren<FilterSet>(xe, "filter-set");
-			this.ReactionSets = BaseNode.LoadChildren<ReactionSet>(xe, "reaction-set");
-		}
-		#endregion
+		[Signal("reaction-set")]
+		public List<ReactionSet> ReactionSet;
 	}
 }

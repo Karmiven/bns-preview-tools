@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record.QuestData

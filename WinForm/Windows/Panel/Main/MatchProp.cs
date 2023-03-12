@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ using Xylia.Extension;
 using Xylia.Match.Util.ItemList;
 using Xylia.Match.Windows.Forms;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.GameUI.Scene.Game_Auction;
 using Xylia.Preview.GameUI.Scene.Game_ChallengeToday;
 using Xylia.Preview.GameUI.Scene.Game_ItemStore;
 using Xylia.Preview.GameUI.Scene.Game_Map;
@@ -213,14 +215,10 @@ namespace Xylia.Match.Windows.Panel
 
 
 		#region 物品预览
-		/// <summary>
-		/// 打开物品预览
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
 		private void ItemPreview_Search_SearchClick(object sender, EventArgs e)
 		{
-			if (string.IsNullOrWhiteSpace(ItemPreview_Search.InputText))
+			var rule = ItemPreview_Search.InputText;
+			if (string.IsNullOrWhiteSpace(rule))
 			{
 				SendMessage("搜索条件不能为空");
 				return;
@@ -229,16 +227,10 @@ namespace Xylia.Match.Windows.Panel
 
 			var thread = new Thread(() =>
 			{
-				try
-				{
-					var data = ItemPreview_Search.InputText.GetItemInfo(true);
-					if (data is not null) data.PreviewShow();
-					else SendMessage("所查找的道具不存在", true);
-				}
-				catch
-				{
-
-				}
+				var records = rule.GetItemInfo(true);
+				if (records.Count == 0) SendMessage("所查找的道具不存在", true);
+				else if (records.Count == 1) records.First().PreviewShow();
+				else new Game_AuctionScene(rule).ShowDialog();
 			});
 
 			thread.SetApartmentState(ApartmentState.STA);
@@ -256,7 +248,7 @@ namespace Xylia.Match.Windows.Panel
 			{
 				try
 				{
-					FileCache.Data.ClearAll();
+					FileCache.Clear();
 					lib.ClearMemory();
 
 					SendMessage("刷新完成");
@@ -289,7 +281,6 @@ namespace Xylia.Match.Windows.Panel
 		private void ucBtnExt11_BtnClick(object sender, EventArgs e) => Execute.MyShowDialog<Game_ItemStoreScene>();
 		private void ucBtnExt13_BtnClick(object sender, EventArgs e) => Execute.MyShowDialog<Game_MapScene>();
 		private void ucBtnExt20_BtnClick(object sender, EventArgs e) => Execute.MyShowDialog<SkillTraitPreview>();
-
 
 
 		private void ucBtnExt12_BtnClick(object sender, EventArgs e) => Execute.StartOutput<Output.ItemCloset_Main>();

@@ -1,22 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.GameData.AIData.ActSequence.Action;
-using Xylia.bns.Modules.GameData.AIData.ActSequence.Action.Subclass;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
+using Xylia.Preview.Data.Record.AIData.ActSequence.Action;
 using Xylia.Preview.Data.Table.XmlRecord;
 
-namespace Xylia.bns.Modules.AIData.ActSequence
+namespace Xylia.Preview.Data.Record.ActSequence
 {
 	[Signal("act-sequence")]
-	public class ActSequence : BaseNode
+	public class ActSequence : BaseRecord
 	{
-		#region 字段
+		public List<IAction> Action;
+
+
 		public string Alias;
 
 		public ActType Type;
-
 		public enum ActType
 		{
 			Act,
@@ -28,25 +29,17 @@ namespace Xylia.bns.Modules.AIData.ActSequence
 
 		[Signal("indexed-detect")]
 		public byte IndexedDetect;
-		#endregion
-
-		#region 结构字段
-		[FStruct(StructType.Meta)]
-		public List<IAction> Actions = new();
-		#endregion
 
 
-		#region	方法
-		public override void LoadData(XmlElement xe)
+
+		public override void LoadData(XmlElement data)
 		{
-			base.LoadData(xe);
+			base.LoadData(data);
 
-			this.Actions = new List<IAction>();
-			var Actions = xe.SelectNodes("./action");
-			for (int idx = 0; idx < Actions.Count; idx++)
+			Action = new();
+			foreach (var record in data.SelectNodes("./action").OfType<XmlElement>())
 			{
-				var ActionNode = (XmlElement)Actions[idx];
-				this.Actions.Add(ActionNode.TypeFactory<ActionType, IAction>(s => s switch
+				Action.Add(record.TypeFactory<ActionType, IAction>(s => s switch
 				{
 					ActionType.Despawn => new Despawn(),
 					ActionType.Hide => new Hide(),
@@ -60,13 +53,12 @@ namespace Xylia.bns.Modules.AIData.ActSequence
 					ActionType.Pause => new Pause(),
 					ActionType.Pathway => new Pathway(),
 					ActionType.Select => new Select(),
-					ActionType.Social => new Social(),
+					ActionType.Social => new AIData.ActSequence.Action.Social(),
 					ActionType.Stay => new Stay(),
 
 					_ => null
 				}));
 			}
 		}
-		#endregion
 	}
 }

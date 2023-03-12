@@ -1,32 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	public sealed class Select : IAction
 	{
-		#region 字段
 		/// <summary>
 		/// 进入概率
 		/// </summary>
 		[Signal("enter-prob")]
 		public byte EnterProb = 100;
-		#endregion
+
+		public List<IAction> Actions;
 
 
-		#region 结构字段
-		[FStruct(StructType.Meta)]
-		public List<IAction> Actions = new();
-		#endregion
 
-		#region 方法
 		public override void LoadData(XmlElement xe)
 		{
 			base.LoadData(xe);
 
-			this.Actions = new List<IAction>();
+			this.Actions = new();
 			var Actions = xe.SelectNodes("./action");
 			for (int i = 0; i < Actions.Count; i++)
 			{
@@ -34,6 +29,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 				this.Actions.Add(ActionNode.ActionFactory());
 			}
 		}
-		#endregion
 	}
 }

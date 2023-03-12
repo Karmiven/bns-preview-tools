@@ -1,4 +1,4 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
 using static Xylia.Preview.Data.Record.QuestData.Case.DuelFinish;
 
@@ -37,8 +37,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Side(Side.Type.Client)]
 		[Signal("button-text-cancel")]
 		public string ButtonTextCancel;
-
-
 
 
 		[Signal("faction-killed-count-min")]

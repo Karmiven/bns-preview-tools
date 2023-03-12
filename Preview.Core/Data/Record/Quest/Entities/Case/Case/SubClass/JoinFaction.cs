@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class JoinFaction : CaseBase
 	{
-		#region 字段
 		public Faction Faction;
 
 		public string Object;
@@ -20,10 +19,7 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("npc-response-3")]
 		public NpcResponse NpcResponse3;
 
-		#endregion
 
-		#region 方法
 		public override List<string> AttractionObject => new() { Object };
-		#endregion
 	}
 }

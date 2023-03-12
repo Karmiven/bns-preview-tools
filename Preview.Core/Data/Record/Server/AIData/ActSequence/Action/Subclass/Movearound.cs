@@ -1,11 +1,9 @@
-﻿using Xylia.bns.Modules.GameData.AIData.ActSequence.Action.Base;
+﻿using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.GameData.AIData.ActSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.AIData.ActSequence.Action
 {
 	public sealed class Movearound : MovearoundBase
 	{
-		#region 字段
 		public Script_obj Area;
-		#endregion
 	}
 }

@@ -14,6 +14,7 @@ using Xylia.Preview.Data.Definition;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.Properties;
 
+using TableModel = BnsBinTool.Core.Models.Table;
 
 namespace Xylia.Preview.Data.Helper
 {
@@ -31,7 +32,7 @@ namespace Xylia.Preview.Data.Helper
 
 		public DateTime CreatedAt;
 
-		public BnsBinTool.Core.Models.Table[] Tables;
+		public TableModel[] Tables;
 
 		public DatafileToXmlConverterHelper datafileToXml;
 
@@ -109,10 +110,7 @@ namespace Xylia.Preview.Data.Helper
 		}
 		#endregion
 
-
-
-
-
+		#region Tables
 		public DataTable<AccountLevel> AccountLevel { get; } = new();
 		public DataTable<AccountPostCharge> AccountPostCharge { get; } = new();
 		public DataTable<Achievement> Achievement { get; } = new();
@@ -207,7 +205,7 @@ namespace Xylia.Preview.Data.Helper
 		public DataTable<WorldAccountExpedition> WorldAccountExpedition { get; } = new();
 		public DataTable<WorldAccountMuseum> WorldAccountMuseum { get; } = new();
 		public DataTable<ZoneEnv2> ZoneEnv2 { get; } = new();
-
+		#endregion
 
 		public DataTableSet()
 		{
@@ -217,19 +215,6 @@ namespace Xylia.Preview.Data.Helper
 				{
 					var Table = finfo.GetValue(this);
 					Table.GetInfo("DataTableSet").SetValue(Table, this);
-				}
-			}
-		}
-
-		public void ClearAll()
-		{
-			//清理所有缓存数据
-			foreach (var finfo in this.GetType().GetMembers(ClassExtension.Flags))
-			{
-				if (finfo.HasImplementedRawGeneric(typeof(DataTable<>)))
-				{
-					var Table = finfo.GetValue(this);
-					Table.GetType().GetMethod("Clear", ClassExtension.Flags).Invoke(Table);
 				}
 			}
 		}
@@ -245,6 +230,7 @@ namespace Xylia.Preview.Data.Helper
 				if (disposing)
 				{
 					// TODO: 释放托管状态(托管对象)
+					Tables = null;
 				}
 
 				// TODO: 释放未托管的资源(未托管的对象)并重写终结器
@@ -255,7 +241,6 @@ namespace Xylia.Preview.Data.Helper
 
 		public void Dispose()
 		{
-			// 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
 			Dispose(disposing: true);
 			GC.SuppressFinalize(this);
 		}
@@ -289,7 +274,6 @@ namespace Xylia.Preview.Data.Helper
 			#endregion
 		}
 	}
-
 
 	public sealed class TestSet : DataTableSet
 	{

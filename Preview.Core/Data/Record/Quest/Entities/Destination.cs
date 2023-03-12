@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Data.Table.XmlRecord;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
-	public class Destination : BaseNode
+	public class Destination : BaseRecord
 	{
-		#region 字段
 		[Signal("mission-step-id")]
 		public byte MissionStepID;
 
@@ -18,6 +17,5 @@ namespace Xylia.Preview.Data.Record.QuestData
 
 		[Side(Side.Type.Client)]
 		public string Kismet;
-		#endregion
 	}
 }

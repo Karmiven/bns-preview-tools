@@ -1,4 +1,4 @@
-﻿namespace Xylia.Attribute.Component
+﻿namespace Xylia.Preview.Common.Attribute
 {
 	public class Side : System.Attribute
 	{

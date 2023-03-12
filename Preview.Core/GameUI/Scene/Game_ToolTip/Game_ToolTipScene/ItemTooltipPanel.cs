@@ -174,12 +174,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 
 						switch (m_nametype)
 						{
-							case 1: this.ItemName = this.ItemInfo.alias; break;
-							case 2: this.ItemName = this.ItemInfo.Key().ToString(); break;
+							case 1: this.ItemNameCell.Text = this.ItemInfo.alias; break;
+							case 2: this.ItemNameCell.Text = this.ItemInfo.Key().ToString(); break;
 							default:
 							{
 								m_nametype = 0;
-								this.ItemName = this.ItemInfo.Name2;
+								this.ItemNameCell.Text = this.ItemInfo.Name2;
 							}
 							break;
 						}
@@ -373,10 +373,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 		#region 控件属性
-		[Category("Data"), Description("物品详细信息")]
-		private string ItemName { get => this.ItemNameCell.Text; set => this.ItemNameCell.Text = value; }
-
-
 		public Bitmap CardImage;
 
 		private List<MyInfo> MainInfo { get; set; } = new();
@@ -702,7 +698,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			this.ItemNameCell.TagImage = this.ItemInfo.TagIconGrade;
 			this.lbl_Category.Text = $"Name.item.game-category-3.{ this.ItemInfo.GameCategory3.GetSignal() }".GetText(true);
 			this.PricePreview.CurrencyCount = this.ItemInfo.Attributes["price"].ToInt();
-			this.ItemName = this.ItemInfo.Name2;
+			this.ItemNameCell.Text = this.ItemInfo.Name2;
 
 
 			this.MainInfo = new List<MyInfo>()

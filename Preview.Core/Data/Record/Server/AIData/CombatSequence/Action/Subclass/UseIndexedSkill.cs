@@ -1,14 +1,12 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	[Signal("use-indexed-skill")]
 	public sealed class UseIndexedSkill : IAction
 	{
-		#region 字段
 		public int Skill;
 
 		public int Skill3;
-		#endregion
 	}
 }

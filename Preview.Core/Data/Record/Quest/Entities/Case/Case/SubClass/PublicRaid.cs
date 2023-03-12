@@ -2,8 +2,6 @@
 {
 	public sealed class PublicRaid : CaseBase
 	{
-		#region 字段
-
-		#endregion
+		
 	}
 }

@@ -2,20 +2,22 @@
 	<PropertyGroup>
 		<RootNamespace>Xylia.Match</RootNamespace>
 		<AssemblyName>Match64</AssemblyName>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<SelfContained>false</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<Deterministic>false</Deterministic>
 		<IsWebBootstrapper>false</IsWebBootstrapper>
+		<BootstrapperEnabled>true</BootstrapperEnabled>
 		<Install>true</Install>
 		<InstallFrom>Disk</InstallFrom>
 		<MapFileExtensions>true</MapFileExtensions>
 		<ApplicationRevision>0</ApplicationRevision>
 		<ApplicationVersion>1.19.0.0</ApplicationVersion>
 		<UseApplicationTrust>false</UseApplicationTrust>
-		<BootstrapperEnabled>true</BootstrapperEnabled>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<TargetFramework>net6.0-windows</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<PublishTrimmed>false</PublishTrimmed>
-		<PlatformTarget>x64</PlatformTarget>
 		<GenerateManifests>false</GenerateManifests>
 		<Nullable>annotations</Nullable>
 		<OutputType>WinExe</OutputType>
@@ -120,7 +122,7 @@
 		<PackageReference Include="CUE4Parse" Version="1.0.4" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="HZH_Controls" Version="1.0.14" />
-		<PackageReference Include="Xylia" Version="1.0.3.11" />
+		<PackageReference Include="Xylia" Version="1.0.3.13" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />

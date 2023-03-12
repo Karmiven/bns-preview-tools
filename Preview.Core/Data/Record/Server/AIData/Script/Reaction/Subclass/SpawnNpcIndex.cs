@@ -1,14 +1,13 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Data.Record.ScriptData.Reaction.Base;
 
-using Xylia.bns.Modules.AIData.Script.Reaction.Base;
 
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("spawn-npc-index")]
 	public sealed class SpawnNpcIndex : SpawnNpcBase
 	{
-		#region 字段
 		public Script_obj Target;
 		public Script_obj Party;
 		public Script_obj Group;
@@ -28,6 +27,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		[Signal("index-13")] public byte Index13;
 		[Signal("index-14")] public byte Index14;
 		[Signal("index-15")] public byte Index15;
-		#endregion
 	}
 }

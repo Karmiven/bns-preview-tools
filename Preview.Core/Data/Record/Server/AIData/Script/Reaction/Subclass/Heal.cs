@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+using Xylia.Preview.Common.Arg;
+
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	public sealed class Heal : IReaction
 	{
-		#region 字段
 		[Obsolete]
 		public Script_obj Target;
 
@@ -12,6 +13,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 
 
 		public byte Percent;
-		#endregion
 	}
 }

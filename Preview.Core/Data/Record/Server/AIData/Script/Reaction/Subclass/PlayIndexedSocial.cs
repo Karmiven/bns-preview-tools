@@ -1,11 +1,11 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("play-indexed-social")]
 	public sealed class PlayIndexedSocial : IReaction
 	{
-		#region 字段
 		public Script_obj From;
 
 		/// <summary>
@@ -18,6 +18,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 
 		[Signal("play-social-delay")]
 		public int PlaySocialDelay;
-		#endregion
 	}
 }

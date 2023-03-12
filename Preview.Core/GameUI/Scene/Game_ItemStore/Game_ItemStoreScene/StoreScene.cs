@@ -39,7 +39,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		{
 			if (TreeView.SelectedNode is null || !TreeNodeInfo.TryGetValue(TreeView.SelectedNode, out var info)) return;
 
-			thread = new Thread(act => this.Show(this.StoreAlias = info.RecordAlias));
+			thread = new Thread(() => this.Show(this.StoreAlias = info.RecordAlias));
 			thread.SetApartmentState(ApartmentState.STA);
 			thread.Start();
 		}

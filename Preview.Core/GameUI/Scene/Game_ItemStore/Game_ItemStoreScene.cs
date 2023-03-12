@@ -74,7 +74,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 				string Name2 = Store2.Name2.GetText();
 				string CurName = Name2 is null ? Store2Alias : $"[{ Name2 }] " + Store2Alias;
 
-
 				int? Order = null;
 
 				//远程商店设定
@@ -100,17 +99,13 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 				}
 				#endregion
 
-				#region 生成控件
 				StoreInfoList.Add(new StoreInfo()
 				{
 					Alias = Store2Alias,
 					Name = CurName,
-
-					//节点顺序
 					Order = Order ?? Store2.Key(),
 					StoreType = StoreType,
 				});
-				#endregion
 			}
 			#endregion
 
@@ -129,8 +124,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		}
 
 		protected override void Show(string StoreAlias)
-		{
-			#region 初始化数据
+		{	
+			//初始化
+			this.ListPreview.Invoke(() => this.ListPreview.Cells = null);
+
 			var Store2 = FileCache.Data.Store2[StoreAlias];
 			if (Store2 is null) return;
 
@@ -139,9 +136,8 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 			this.Text = $"商店 { Store2.GetName() } ，加载数据中...";
 			this.ListPreview.Name = Store2.alias;
-			#endregion
 
-			#region 读取数据
+			//读取数据
 			var Cells = new List<ListCell>();
 			for (int i = 1; i <= 127; i++)
 			{
@@ -160,7 +156,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 			this.Text = $"商店 { Store2.GetName() } ，共计 { Cells.Count }个兑换内容";
 			this.ListPreview.Invoke(() => this.ListPreview.Cells = Cells);
-			#endregion
 
 
 			//获取是否存在出售NPC
@@ -199,8 +194,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			return false;
 		}
 		#endregion
-
-
 
 		#region 界面方法
 		private void Store2Scene_Load(object sender, EventArgs e)

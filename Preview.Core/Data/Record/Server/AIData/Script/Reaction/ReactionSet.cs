@@ -1,23 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.AIData.Script.Reaction;
-using Xylia.bns.Modules.AIData.Script.Reaction.Subclass;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Data.Record.ScriptData.Reaction;
 using Xylia.Preview.Data.Table.XmlRecord;
 
-namespace Xylia.bns.Modules.AIData.Script
+namespace Xylia.Preview.Data.Record.ScriptData
 {
 	[Signal("reaction-set")]
-	public sealed class ReactionSet : BaseNode
+	public sealed class ReactionSet : BaseRecord
 	{
-		#region 结构字段
-		[FStruct(StructType.Meta)]
-		public List<IReaction> Reactions;
-		#endregion
+		public List<IReaction> Reaction;
 
-		#region 字段
 		/// <summary>
 		/// 概率 0~100，decision 下的所有 ReactionSet 概率和不能超过最大值
 		/// </summary>
@@ -27,22 +22,17 @@ namespace Xylia.bns.Modules.AIData.Script
 		/// 概率 0~10000，decision 下的所有 ReactionSet 概率和不能超过最大值 
 		/// </summary>
 		public short Probability10000;
-		#endregion
-
-		
 
 
-		#region 方法
-		public override void LoadData(XmlElement xe)
+
+		public override void LoadData(XmlElement data)
 		{
-			base.LoadData(xe);
+			base.LoadData(data);
 
-			this.Reactions = new List<IReaction>();
-			var Reactions = xe.SelectNodes("./reaction");
-			for (int idx = 0; idx < Reactions.Count; idx++)
+			this.Reaction = new List<IReaction>();
+			foreach (var record in data.SelectNodes("./reaction").OfType<XmlElement>())
 			{
-				var ReactionNode = (XmlElement)Reactions[idx];
-				this.Reactions.Add(ReactionNode.TypeFactory<ReactionType, IReaction>(s => s switch
+				this.Reaction.Add(record.TypeFactory<ReactionType, IReaction>(s => s switch
 				{
 					ReactionType.AcquireFieldItem => new AcquireFieldItem(),
 					ReactionType.ActivateTeleport => new ActivateTeleport(),
@@ -115,6 +105,5 @@ namespace Xylia.bns.Modules.AIData.Script
 				}));
 			}
 		}
-		#endregion
 	}
 }

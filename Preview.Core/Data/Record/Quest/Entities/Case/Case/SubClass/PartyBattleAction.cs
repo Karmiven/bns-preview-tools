@@ -1,4 +1,4 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
 using static Xylia.Preview.Data.Record.QuestData.Case.PartyBattle;
 

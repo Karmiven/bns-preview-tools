@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
+using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -24,14 +26,25 @@ namespace Xylia.Preview.Tests
 			Console.WriteLine(record.GetText());
 		}
 
-		//[TestMethod]
+		[TestMethod]
 		[DataRow("Bard_G1_Var_1")]
 		public void ContextScript(string alias)
 		{
 			var table = FileCache.Data.ContextScript;
 			var record = table[alias];
+			if (record is null) return;
 
-			record.Test();
+			foreach (var stance in record.Stance)
+			{
+				foreach (var decision in stance.Layer.SelectMany(layer => layer.Decision))
+				{
+					var condition = decision.Condition.Find(condition => condition.Skill == 66301);
+					if (condition is null) continue;
+
+					var result = decision.Result.Find(result => result.ControlMode == Result.ControlModeSeq.bns);
+					Debug.WriteLine(result.Special1);
+				}
+			}
 		}
 
 		//[TestMethod]
@@ -65,7 +78,7 @@ namespace Xylia.Preview.Tests
 		}
 
 
-		[TestMethod]
+		//[TestMethod]
 		public void RecordTest()
 		{
 			BaseRecord text1 = new() { alias = "123" };

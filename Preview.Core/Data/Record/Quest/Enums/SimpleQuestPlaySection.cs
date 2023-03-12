@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xylia.bns.Modules.Quest.Enums
+namespace Xylia.Preview.Data.Record.QuestData.Enums
 {
 	public enum SimpleQuestPlaySection
 	{

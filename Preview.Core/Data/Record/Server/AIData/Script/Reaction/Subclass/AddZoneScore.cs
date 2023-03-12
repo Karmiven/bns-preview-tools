@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 增加挑战分数
@@ -9,11 +9,9 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("add-zone-score")]
 	public sealed class AddZoneScore : IReaction
 	{
-		#region 字段
 		/// <summary>
 		/// 分数
 		/// </summary>
 		public int Score;
-		#endregion
 	}
 }

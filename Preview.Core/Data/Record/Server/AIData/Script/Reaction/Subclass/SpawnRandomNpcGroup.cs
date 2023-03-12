@@ -1,14 +1,12 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Data.Record.ScriptData.Reaction.Base;
 
-using Xylia.bns.Modules.AIData.Script.Reaction.Base;
-
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("spawn-random-npc-group")]
 	public sealed class SpawnRandomNpcGroup : SpawnNpcBase
 	{
-		#region 字段		
 		[Signal("group-1")] public Script_obj Group1;
 		[Signal("group-2")] public Script_obj Group2;
 		[Signal("group-3")] public Script_obj Group3;
@@ -30,6 +28,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		[Signal("prob-8")] public byte Prob8;
 		[Signal("prob-9")] public byte Prob9;
 		[Signal("prob-10")] public byte Prob10;
-		#endregion
 	}
 }

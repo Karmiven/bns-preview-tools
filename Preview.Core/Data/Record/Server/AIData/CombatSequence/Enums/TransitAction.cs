@@ -1,4 +1,4 @@
-﻿namespace Xylia.bns.Modules.AIData.CombatSequence.Enums
+﻿namespace Xylia.Preview.Data.Record.CombatSequenceData.Enums
 {
 	/// <summary>
 	/// 转移活动

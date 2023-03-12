@@ -1,13 +1,12 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Data.Record.ScriptData.Reaction.Base;
 
-using Xylia.bns.Modules.AIData.Script.Reaction.Base;
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("spawn-random-npc")]
 	public sealed class SpawnRandomNpc : SpawnNpcBase
 	{
-		#region 字段
 		//public byte Probability;
 
 
@@ -20,6 +19,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		public byte Start;
 
 		public byte End;
-		#endregion
 	}
 }

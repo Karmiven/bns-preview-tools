@@ -1,10 +1,9 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record.QuestData.TutorialCase
 {
 	public sealed class SkillSequence : TutorialCaseBase
 	{
-		#region 字段
 		[Signal("object-1")] public string Object_1;
 		[Signal("object-2")] public string Object_2;
 		[Signal("object-3")] public string Object_3;
@@ -36,13 +35,10 @@ namespace Xylia.Preview.Data.Record.QuestData.TutorialCase
 		[Signal("object2-13")] public string Object2_13;
 		[Signal("object2-14")] public string Object2_14;
 		[Signal("object2-15")] public string Object2_15;
-		#endregion
-
-
-		#region 客户端专用字段
+	
+	
 		[Side(Side.Type.Client)]
 		[Signal("skill-sequence")]
 		public string skillSequence;
-		#endregion
 	}
 }

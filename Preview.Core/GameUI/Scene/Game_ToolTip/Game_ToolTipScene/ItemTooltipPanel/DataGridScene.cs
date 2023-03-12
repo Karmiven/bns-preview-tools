@@ -11,7 +11,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class DataGridScene : Form
 	{
-		public DataGridScene(ParamTable ParamTable, AttributeCollection Attributes)
+		public DataGridScene(ParamTable ParamTable, IAttributeCollection Attributes)
 		{
 			this.InitializeComponent();
 

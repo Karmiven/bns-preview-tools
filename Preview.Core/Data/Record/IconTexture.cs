@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Data.Package.Pak;
 
 namespace Xylia.Preview.Data.Record
@@ -9,7 +9,6 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class IconTexture : BaseRecord
 	{
-		#region 属性字段
 		[Signal("icon-texture")]
 		public string iconTexture;
 
@@ -24,14 +23,13 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("texture-width")]
 		public short TextureWidth;
-		#endregion
 
 
-		#region 方法
 		public Bitmap GetIcon(short IconIndex)
 		{
-			Bitmap TextureData = GetTextureData();
+			Bitmap TextureData = this.iconTexture.GetUObject().GetImage();
 			if (TextureData is null) return null;
+
 
 			#region 裁剪内容
 			if (this.TextureWidth == this.IconWidth && this.TextureHeight == this.IconHeight)
@@ -68,44 +66,40 @@ namespace Xylia.Preview.Data.Record
 			}
 			#endregion
 		}
-
-		private Bitmap GetTextureData() => this.iconTexture.GetUObject().GetImage();
-		#endregion
-	}
-}
-
-public static class IconTextureExt
-{
-	public static Bitmap GetIcon(this string IconInfo)
-	{
-		GetInfo(IconInfo, out string TextureAlias, out short IconIndex);
-		if (TextureAlias is null) return null;
-
-		return GetIcon(TextureAlias, IconIndex);
 	}
 
-	public static Bitmap GetIcon(this string TextureAlias, short IconIndex) => FileCache.Data.IconTexture[TextureAlias]?.GetIcon(IconIndex);
-
-
-	public static void GetInfo(this string IconInfo, out string TextureAlias, out short IconIndex)
+	public static class IconTextureExt
 	{
-		//判断有效性
-		TextureAlias = null;
-		IconIndex = 0;
-		if (string.IsNullOrWhiteSpace(IconInfo)) return;
-
-		//获取图标序号
-		if (IconInfo.Contains(','))
+		public static Bitmap GetIcon(this string IconInfo)
 		{
-			var IconSplit = IconInfo.Split(',');
-			TextureAlias = IconSplit[0];
+			GetInfo(IconInfo, out string TextureAlias, out short IconIndex);
+			if (TextureAlias is null) return null;
 
-			if (short.TryParse(IconSplit[^1], out IconIndex)) return;
-			else throw new Exception("获取序号失败: " + IconInfo);
+			return GetIcon(TextureAlias, IconIndex);
 		}
 
-		TextureAlias = IconInfo;
-		IconIndex = 1;
-		return;
+		public static Bitmap GetIcon(this string TextureAlias, short IconIndex) => FileCache.Data.IconTexture[TextureAlias]?.GetIcon(IconIndex);
+
+
+		public static void GetInfo(this string IconInfo, out string TextureAlias, out short IconIndex)
+		{
+			TextureAlias = null;
+			IconIndex = 0;
+			if (string.IsNullOrWhiteSpace(IconInfo)) return;
+
+			//获取图标序号
+			if (IconInfo.Contains(','))
+			{
+				var IconSplit = IconInfo.Split(',');
+				TextureAlias = IconSplit[0];
+
+				if (short.TryParse(IconSplit[^1], out IconIndex)) return;
+				else throw new Exception("获取序号失败: " + IconInfo);
+			}
+
+			TextureAlias = IconInfo;
+			IconIndex = 1;
+			return;
+		}
 	}
 }

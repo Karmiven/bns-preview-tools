@@ -1,42 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Xylia.Attribute.Component;
+
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.bns.Modules.Quest.Enums;
-using Xylia.Preview.Data.Table.XmlRecord;
+using Xylia.Preview.Data.Record.QuestData.Enums;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
 	[Signal("mission-step")]
-	public class MissionStep : BaseNode
+	public class MissionStep : BaseRecord
 	{
-		#region 结构字段
-		[FStruct(StructType.Meta)]
-		public List<Mission> Missions = new();
+		[Signal("mission")]
+		public List<Mission> Mission;
 
-		[FStruct(StructType.Meta)]
-		public MissionStepSuccess MissionStepSuccess;
+		[Signal("mission-step-success")]
+		public List<MissionStepSuccess> MissionStepSuccess;
 
-		[FStruct(StructType.Meta)]
-		public MissionStepFail MissionStepFail;
-		#endregion
-
-		#region 方法
-		public override void LoadData(XmlElement xe)
-		{
-			base.LoadData(xe);
-
-			this.Missions = BaseNode.LoadChildren<Mission>(xe, "mission");
-			this.MissionStepSuccess = BaseNode.LoadChildren<MissionStepSuccess>(xe, "mission-step-success").FirstOrDefault();
-			this.MissionStepFail = BaseNode.LoadChildren<MissionStepFail>(xe, "mission-step-fail").FirstOrDefault();
-		}
-		#endregion
+		[Signal("mission-step-fail")]
+		public List<MissionStepFail> MissionStepFail;
 
 
 
-		#region 共同字段
+
 		/// <summary>
 		/// 步骤编号
 		/// </summary>
@@ -151,6 +136,5 @@ namespace Xylia.Preview.Data.Record.QuestData
 
 		[Side(Side.Type.Server)]
 		public RollBack RollBack;
-		#endregion
 	}
 }

@@ -40,8 +40,8 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			this.DamageRateStandardStats = new System.Windows.Forms.Label();
 			this.DamageRatePvp = new System.Windows.Forms.Label();
 			this.SkillGatherType = new System.Windows.Forms.PictureBox();
-			this.Reuse = new System.Windows.Forms.Label();
-			this.Scale = new System.Windows.Forms.Label();
+			this.reuse = new System.Windows.Forms.Label();
+			this.scale = new System.Windows.Forms.Label();
 			this.UI_Tooltip_Reuse = new System.Windows.Forms.Label();
 			this.UI_Tooltip_Casting = new System.Windows.Forms.Label();
 			this.UI_Tooltip_Scale = new System.Windows.Forms.Label();
@@ -151,23 +151,23 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			// 
 			// Reuse
 			// 
-			this.Reuse.AutoSize = true;
-			this.Reuse.ForeColor = System.Drawing.Color.White;
-			this.Reuse.Location = new System.Drawing.Point(368, 386);
-			this.Reuse.Name = "Reuse";
-			this.Reuse.Size = new System.Drawing.Size(27, 17);
-			this.Reuse.TabIndex = 32;
-			this.Reuse.Text = "0秒";
+			this.reuse.AutoSize = true;
+			this.reuse.ForeColor = System.Drawing.Color.White;
+			this.reuse.Location = new System.Drawing.Point(368, 386);
+			this.reuse.Name = "Reuse";
+			this.reuse.Size = new System.Drawing.Size(27, 17);
+			this.reuse.TabIndex = 32;
+			this.reuse.Text = "0秒";
 			// 
 			// Scale
 			// 
-			this.Scale.AutoSize = true;
-			this.Scale.ForeColor = System.Drawing.Color.White;
-			this.Scale.Location = new System.Drawing.Point(130, 386);
-			this.Scale.Name = "Scale";
-			this.Scale.Size = new System.Drawing.Size(32, 17);
-			this.Scale.TabIndex = 33;
-			this.Scale.Text = "测试";
+			this.scale.AutoSize = true;
+			this.scale.ForeColor = System.Drawing.Color.White;
+			this.scale.Location = new System.Drawing.Point(130, 386);
+			this.scale.Name = "Scale";
+			this.scale.Size = new System.Drawing.Size(32, 17);
+			this.scale.TabIndex = 33;
+			this.scale.Text = "测试";
 			// 
 			// UI_Tooltip_Reuse
 			// 
@@ -242,8 +242,8 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			this.Controls.Add(this.UI_Tooltip_Scale);
 			this.Controls.Add(this.UI_Tooltip_Casting);
 			this.Controls.Add(this.UI_Tooltip_Reuse);
-			this.Controls.Add(this.Scale);
-			this.Controls.Add(this.Reuse);
+			this.Controls.Add(this.scale);
+			this.Controls.Add(this.reuse);
 			this.Controls.Add(this.SkillGatherType);
 			this.Controls.Add(this.CONDITION_Panel);
 			this.Controls.Add(this.DamageRatePvp);
@@ -263,22 +263,20 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			this.PerformLayout();
 
 		}
-
 		#endregion
+
 		private ItemNameCell SkillName;
 		private ItemIconCell SkillIcon;
 		private SkillTooltipPanel M1_Panel;
 		private SkillTooltipPanel M2_Panel;
 		private SkillTooltipPanel SUB_Panel;
 		private SkillTooltipPanel CONDITION_Panel;
-
 		private System.Windows.Forms.Label DamageRateStandardStats;
 		private System.Windows.Forms.Label DamageRatePvp;
 		private System.Windows.Forms.PictureBox SkillGatherType;
-		private System.Windows.Forms.Label Reuse;
-		private System.Windows.Forms.Label Scale;
+		private System.Windows.Forms.Label reuse;
+		private System.Windows.Forms.Label scale;
 		private System.Windows.Forms.Label UI_Tooltip_Reuse;
-
 		private System.Windows.Forms.Label UI_Tooltip_Casting;
 		private System.Windows.Forms.Label UI_Tooltip_Scale;
 		private System.Windows.Forms.Label UI_Tooltip_Distance;

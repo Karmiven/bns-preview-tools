@@ -1,5 +1,5 @@
 ﻿
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Interface;
 
 
@@ -8,7 +8,6 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class ZoneEnv2 : BaseRecord
 	{
-		#region 字段
 		public Text Name2;
 
 		[Signal("action-name2")]
@@ -16,7 +15,6 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("action-desc2")]
 		public Text ActionDesc2;
-		#endregion
 
 
 

@@ -1,6 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 设置NPC队伍的对象
@@ -8,7 +9,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("set-party-object")]
 	public sealed class SetPartyObject : IReaction
 	{
-		#region 字段
 		public byte Reg;
 
 		/// <summary>
@@ -20,6 +20,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		/// 设置指向对象
 		/// </summary>
 		public Script_obj Object;
-		#endregion
 	}
 }

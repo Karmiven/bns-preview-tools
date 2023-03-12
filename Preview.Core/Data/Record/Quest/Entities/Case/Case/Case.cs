@@ -1,27 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Xml;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.GameData.Filter;
-using Xylia.bns.Modules.GameData.Quest.Enums;
-using Xylia.bns.Modules.Quest.Enums;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.Preview.Data.Table.XmlRecord;
+using Xylia.Preview.Data.Record.QuestData.Enums;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
 	[Signal("case")]
-	public abstract class CaseBase : TypeBaseNode<CaseType>
+	public abstract class CaseBase : TypeBaseRecord<CaseType>
 	{
-		#region 结构字段
-		[FStruct(StructType.Meta)]
-		public List<FilterSet> FilterSets;
-		#endregion
+		[Signal("filter-set")]
+		public List<FilterSet> FilterSet;
 
 
-		#region 共同字段
+
 		[DefaultValue(100)]
 		public byte Prob = 100;
 
@@ -103,15 +97,6 @@ namespace Xylia.Preview.Data.Record.QuestData
 
 
 
-
-
-
-
-
-
-
-
-
 		// 旧版本物品消耗
 		[Obsolete][Signal("grocery")] 
 		public string Grocery;
@@ -178,9 +163,10 @@ namespace Xylia.Preview.Data.Record.QuestData
 
 		[Signal("faction-killed-count-max")]
 		public byte FactionKilledCountMax;
-		#endregion
 
-		#region 服务端属性
+
+
+
 		[Side(Side.Type.Server)]
 		public string Zone;
 
@@ -191,8 +177,6 @@ namespace Xylia.Preview.Data.Record.QuestData
 		[Side(Side.Type.Server)]
 		[Signal("fail-quest-decision")]
 		public string FailQuestDecision;
-
-
 
 		/// <summary>
 		/// 掉落物品
@@ -208,31 +192,10 @@ namespace Xylia.Preview.Data.Record.QuestData
 		[Side(Side.Type.Server)]
 		[Signal("team-broadcast")]
 		public bool TeamBroadcast = false;
-		#endregion
 
 
-
-
-
-		#region 方法
-		public override void LoadData(XmlElement xe)
-		{
-			base.LoadData(xe);
-			this.FilterSets = BaseNode.LoadChildren<FilterSet>(xe, "filter-set");
-
-			this.CheckData();
-		}
-
-		/// <summary>
-		/// 数据检查
-		/// </summary>
-		public virtual void CheckData()
-		{
-
-		}
 
 		//去重后返回 .Distinct().ToList()
 		public virtual List<string> AttractionObject => new() { /*Object, Object2*/ };
-		#endregion
 	}
 }

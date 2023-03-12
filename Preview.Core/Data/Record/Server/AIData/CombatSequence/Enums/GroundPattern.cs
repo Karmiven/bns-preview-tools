@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Enums
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Enums
 {
 	public enum GroundPattern
 	{

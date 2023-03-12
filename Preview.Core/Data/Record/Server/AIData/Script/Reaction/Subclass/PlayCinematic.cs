@@ -1,13 +1,11 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-using  Xylia.Preview.Data.Record;
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("play-cinematic")]
 	public sealed class PlayCinematic : IReaction
 	{
-		#region 字段
 		/// <summary>
 		/// 引用 Cinematic 对象
 		/// </summary>
@@ -16,7 +14,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		public Sight Sight;
 
 		public Script_obj To;
-		#endregion
 	}
 
 	public enum Sight

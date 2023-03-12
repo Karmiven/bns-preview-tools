@@ -1,5 +1,4 @@
-﻿
-using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Interface;
 
 namespace Xylia.Preview.Data.Record
@@ -8,16 +7,16 @@ namespace Xylia.Preview.Data.Record
 	public sealed class BossChallenge : BaseRecord, Attraction
 	{
 		[Signal("boss-challenge-name2")]
-		public string BossChallengeName2;
+		public Text BossChallengeName2;
 
 		[Signal("boss-challenge-desc")]
-		public string BossChallengeDesc;
+		public Text BossChallengeDesc;
 
 		[Signal("ui-text-grade")]
 		public byte UiTextGrade;
 
 		[Signal("reward-summary")]
-		public string RewardSummary;
+		public AttractionRewardSummary RewardSummary;
 
 
 		#region 接口字段

@@ -1,13 +1,14 @@
 ﻿using System;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+using Xylia.Preview.Common.Arg;
+
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 伤害
 	/// </summary>
 	public sealed class Damage : IReaction
 	{
-		#region 字段
 		[Obsolete]
 		public Script_obj Target;
 
@@ -17,6 +18,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		public long Amount;
 
 		public byte Percent;
-		#endregion
 	}
 }

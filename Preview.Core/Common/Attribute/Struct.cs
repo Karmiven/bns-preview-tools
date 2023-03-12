@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xylia.Attribute.Component
+namespace Xylia.Preview.Common.Attribute
 {
 	[AttributeUsage(AttributeTargets.Field)]
 	public sealed class FStruct : System.Attribute

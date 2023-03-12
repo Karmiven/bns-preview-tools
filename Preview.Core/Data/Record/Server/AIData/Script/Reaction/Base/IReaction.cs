@@ -2,9 +2,9 @@
 
 using Xylia.Preview.Data.Table.XmlRecord;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
-	public abstract class IReaction : TypeBaseNode<ReactionType>
+	public abstract class IReaction : TypeBaseRecord<ReactionType>
 	{
 		[DefaultValue(0)]
 		public byte Probability;

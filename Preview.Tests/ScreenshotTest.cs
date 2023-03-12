@@ -58,7 +58,7 @@ namespace Xylia.Preview.Tests
 			91
 		};
 
-		private void CreateAppearance(RaceSeq race, SexSeq sex, byte[] data)
+		private static void CreateAppearance(RaceSeq race, SexSeq sex, byte[] data)
 		{
 			var xe = new XElement("record");
 			xe.SetAttributeValue("alias", "");

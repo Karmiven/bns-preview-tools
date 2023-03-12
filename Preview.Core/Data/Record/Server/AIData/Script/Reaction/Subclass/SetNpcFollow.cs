@@ -1,8 +1,8 @@
-﻿using Xylia.Attribute.Component;
-
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 using Xylia.Preview.Common.Seq;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 设置NPC跟随
@@ -10,12 +10,10 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("set-npc-follow")]
 	public sealed class SetNpcFollow : IReaction
 	{
-		#region 字段
 		public Script_obj Master;
 
 		public Script_obj Npc;
 
 		public Detect Detect;
-		#endregion
 	}
 }

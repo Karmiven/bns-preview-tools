@@ -1,8 +1,8 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Data.Record.ScriptData.Reaction.Base;
 
-using Xylia.bns.Modules.AIData.Script.Reaction.Base;
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 设置NPC智力
@@ -10,10 +10,8 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("set-npc-brain")]
 	public sealed class SetNpcBrain : NpcBase
 	{
-		#region 字段
 		public Script_obj Npc;
 
 		public Script_obj Target;
-		#endregion
 	}
 }

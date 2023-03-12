@@ -1,12 +1,11 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("npc-talk-finish")]
 	public sealed class NpcTalkFinish : IReaction
 	{
-		#region 字段
 		public Script_obj Npc;
-		#endregion
 	}
 }

@@ -25,13 +25,11 @@ public static partial class Program
 	[STAThread]
 	static void Main(string[] args = null)
 	{
-		#region 进程载入初始化
 		Application.EnableVisualStyles();
 		Application.SetCompatibleTextRenderingDefault(false);
 		Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
 		AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 		AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
-		#endregion
 
 		try
 		{

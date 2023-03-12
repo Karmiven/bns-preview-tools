@@ -1,17 +1,15 @@
 ﻿using System;
+using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Common.Attribute;
 
-using Xylia.Attribute.Component;
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("heal-max")]
 	public sealed class HealMax : IReaction
 	{
-		#region 字段
 		[Obsolete]
 		public Script_obj Target;
 
 		public Script_obj Target2;
-		#endregion
 	}
 }

@@ -1,6 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 设置NPC活动
@@ -8,13 +9,8 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("set-npc-act")]
 	public sealed class SetNpcAct : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
-		/// <summary>
-		/// 引用 ActSequence 对象
-		/// </summary>
-		public string Seq;
-		#endregion
+		public ActSequence.ActSequence Seq;
 	}
 }

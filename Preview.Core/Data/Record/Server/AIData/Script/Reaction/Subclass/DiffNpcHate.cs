@@ -1,15 +1,12 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-using Xylia.bns.Modules.AIData.Script.Reaction.Base;
+using Xylia.Preview.Data.Record.ScriptData.Reaction.Base;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("diff-npc-hate")]
 	public sealed class DiffNpcHate : NpcHateBase
 	{
-		#region 字段
 		public int Amount;
-
-		#endregion
 	}
 }

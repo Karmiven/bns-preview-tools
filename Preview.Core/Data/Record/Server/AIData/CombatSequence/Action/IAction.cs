@@ -1,12 +1,9 @@
-﻿
-using Xylia.Attribute.Component;
-using Xylia.Preview.Data.Table.XmlRecord;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
-	public abstract class IAction : TypeBaseNode<ActionType>
+	public abstract class IAction : TypeBaseRecord<ActionType>
 	{
-		#region 字段
 		public bool Combo;
 
 		/// <summary>
@@ -31,6 +28,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action
 		/// 仅当上级节点是 Select 时才有意义
 		/// </summary>
 		public byte Prob;
-		#endregion
 	}
 }

@@ -1,13 +1,10 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.GameData.AIData.ActSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.AIData.ActSequence.Action
 {
 	public sealed class Select : IAction
 	{
-		#region 字段
 		[Signal("enter-prob")]
 		public byte EnterProb;
-
-		#endregion
 	}
 }

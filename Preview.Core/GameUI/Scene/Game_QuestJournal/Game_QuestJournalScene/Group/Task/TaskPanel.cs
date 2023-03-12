@@ -40,7 +40,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		public void LoadData(Data.Record.Quest Quest, WaveOut SoundOut)
 		{
 			int LocY = 30;
-			if (!Quest.MissionSteps.Value.Any())
+			if (!Quest.MissionStep.Value.Any())
 			{
 				this.Controls.Add(new Controls.ContentPanel
 				{
@@ -51,7 +51,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 				return;
 			}
 
-			foreach (var MissionStep in Quest.MissionSteps.Value.OrderBy(step => step.id))
+			foreach (var MissionStep in Quest.MissionStep.Value.OrderBy(step => step.id))
 			{
 				if (MissionStep.Retired) continue;
 

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
 using Xylia.Extension;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.GameUI.Scene.Game_Auction;
 using Xylia.Preview.Resources;
-using Xylia.Windows.CustomException;
 
 namespace Xylia.Preview.Common.Extension
 {
@@ -40,64 +39,34 @@ namespace Xylia.Preview.Common.Extension
 		/// <param name="IconInfo"></param>
 		/// <param name="ItemGrade"></param>
 		/// <returns></returns>
-		public static Bitmap GetIconWithGrade(this string IconInfo, byte ItemGrade)
+		public static Bitmap GetIconWithGrade(this string IconInfo, byte Grade) => string.IsNullOrWhiteSpace(IconInfo) ? null :
+			Grade.GetBackGround(true).Combine(IconInfo.GetIcon());
+
+		public static List<Item> GetItemInfo(this string rule, bool UseExt = false)
 		{
-			if (string.IsNullOrWhiteSpace(IconInfo))
+			Item data;
+			if (!rule.Contains('+') && int.TryParse(rule, out var id)) data = FileCache.Data.Item[id, 1];
+			else data = FileCache.Data.Item[rule.Trim()];
+			if (data != null) return new() { data };
+
+
+			BlockingCollection<Item> lst = new();
+			Parallel.ForEach(FileCache.Data.Item, Info =>
 			{
-				System.Diagnostics.Debug.WriteLine($"未设置图标");
-				return null;
-			}
-
-			//获取底图
-			var BackGroundImage = ItemGrade.GetBackGround(true);
-
-			//返回结果数据
-			Bitmap Raw = IconInfo.GetIcon();
-			return Raw is null ? BackGroundImage : BackGroundImage.Combine(Raw);
-		}
-
-
-		/// <summary>
-		/// 尝试获取道具信息，搜索失败则进行模糊搜索
-		/// </summary>
-		/// <param name="rule"></param>
-		/// <param name="ShowList"></param>
-		/// <returns></returns>
-		public static Item GetItemInfo(this string rule, bool ShowList = false)
-		{
-			if (!rule.Contains('+') && int.TryParse(rule, out var id))
-				return FileCache.Data.Item[id, 1];
-
-
-			var data = FileCache.Data.Item[rule.Trim()];
-			if (data is null)
-			{
-				BlockingCollection<Item> lst = new();
-				Parallel.ForEach(FileCache.Data.Item, Info =>
+				var ItemName = Info.Name2;
+				if (ItemName != null)
 				{
-					string ItemName = Info.Name2;
-					if (ItemName != null)
+					if (UseExt)
 					{
-						if (ShowList)
-						{
-							if (ItemName.IndexOf(rule, StringComparison.OrdinalIgnoreCase) < 0) return;
-						}
-						else if (ItemName != rule) return;
-
-						lst.Add(Info);
+						if (ItemName.IndexOf(rule, StringComparison.OrdinalIgnoreCase) < 0) return;
 					}
-				});
+					else if (ItemName != rule) return;
 
-				var ResultCount = lst.Count;
-				if (ResultCount == 1) data = lst.First();
-				else if (ResultCount > 0 && ShowList)
-				{
-					new Game_AuctionScene(rule).ShowDialog();
-					throw new UserExitException();
+					lst.Add(Info);
 				}
-			}
+			});
 
-			return data;
+			return lst.ToList();
 		}
 	}
 }

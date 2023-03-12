@@ -57,7 +57,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			#region 步骤奖励
 			List<QuestReward> Rewards = new();
 
-			var MissionStep = Quest.MissionSteps.Value.SelectMany(s => s.Missions).Where(step => step.Reward1 != null || step.Reward2 != null);
+			var MissionStep = Quest.MissionStep.Value.SelectMany(s => s.Mission).Where(step => step.Reward1 != null || step.Reward2 != null);
 			if (MissionStep.Any())
 			{
 				foreach (var step in MissionStep)

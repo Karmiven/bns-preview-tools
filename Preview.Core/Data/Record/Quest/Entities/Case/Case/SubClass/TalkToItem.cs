@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class TalkToItem : NpcTalkBase
 	{
-		#region 字段
 		/// <summary>
 		/// 书信道具
 		/// </summary>
@@ -27,7 +26,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 
 		[Signal("check-exp-boost-normal-below")]
 		public byte CheckExpBoostNormalBelow;
-		#endregion
 
 
 		public override List<string> AttractionObject => new() { "item:" + Item };

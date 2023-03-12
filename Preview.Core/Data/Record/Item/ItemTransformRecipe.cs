@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Cast;
 using Xylia.Preview.Common.Seq;
 
@@ -154,9 +154,6 @@ namespace Xylia.Preview.Data.Record
 
 
 		#region 方法
-		/// <summary>
-		/// 查询物品成长路径
-		/// </summary>
 		public static IEnumerable<ItemTransformRecipe> QueryRecipe(Item Item) => FileCache.Data.ItemTransformRecipe.Where(o =>
 		{
 			var MainIngredient = o.Attributes["main-ingredient"].CastObject();

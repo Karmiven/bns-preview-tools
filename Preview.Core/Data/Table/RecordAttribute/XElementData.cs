@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace Xylia.Preview.Common.Interface.RecordAttribute
 {
-	public sealed class XElementData : AttributeCollection
+	public sealed class XElementData : IAttributeCollection
 	{
 		#region 构造
-		private readonly XmlElement data;
+		public readonly XmlElement data;
 
 		public XElementData(XmlElement data) => this.data = data;
 		#endregion

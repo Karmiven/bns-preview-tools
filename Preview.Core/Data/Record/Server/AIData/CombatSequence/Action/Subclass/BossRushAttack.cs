@@ -1,8 +1,9 @@
 ﻿using System;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 前冲  需要智力为boss
@@ -10,7 +11,6 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("boss-rush-attack")]
 	public sealed class BossRushAttack : IAction
 	{
-		#region 字段
 		/// <summary>
 		/// 到达后效果
 		/// </summary>
@@ -44,6 +44,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 		public string Skill;
 
 		public string Skill3;
-		#endregion
 	}
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Xylia.bns.Modules.Quest.Enums
+﻿namespace Xylia.Preview.Data.Record.QuestData.Enums
 {
 	/// <summary>
 	/// 消息提醒目录

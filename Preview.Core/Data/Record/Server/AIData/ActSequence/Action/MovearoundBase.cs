@@ -1,10 +1,10 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.GameData.AIData.ActSequence.Action.Base
+namespace Xylia.Preview.Data.Record.AIData.ActSequence.Action
 {
 	public abstract class MovearoundBase : IAction
 	{
-		#region 字段
 		[Signal("max-idle-sec")]
 		public int MaxIdleSec;
 
@@ -19,6 +19,5 @@ namespace Xylia.bns.Modules.GameData.AIData.ActSequence.Action.Base
 
 
 		public Script_obj Target;
-		#endregion
 	}
 }

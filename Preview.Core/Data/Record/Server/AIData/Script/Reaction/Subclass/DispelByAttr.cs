@@ -1,16 +1,14 @@
-﻿using Xylia.Attribute.Component;
-
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 using Xylia.Preview.Common.Seq;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("dispel-by-attr")]
 	public sealed class DispelByAttr : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
 		public EffectAttribute Attr;
-		#endregion
 	}
 }

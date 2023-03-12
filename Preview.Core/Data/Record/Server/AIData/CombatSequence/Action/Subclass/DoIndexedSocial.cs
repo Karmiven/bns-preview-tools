@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 执行社交 (索引)
@@ -8,8 +8,6 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("do-indexed-social")]
 	public sealed class DoIndexedSocial : IAction
 	{
-		#region 字段
 		public byte Social;
-		#endregion
 	}
 }

@@ -1,6 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 委托效果
@@ -8,7 +9,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("invoke-effect")]
 	public sealed class InvokeEffect : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
 		public string Effect;
@@ -26,6 +26,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		public bool Immediately;
 
 		public Script_obj From;
-		#endregion
 	}
 }

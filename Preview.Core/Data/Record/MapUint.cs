@@ -1,12 +1,11 @@
 ﻿
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record
 {
 	[AliasRecord]
 	public sealed class MapUnit : BaseRecord
 	{
-		#region 字段
 		public TypeSeq Type;
 
 
@@ -85,7 +84,7 @@ namespace Xylia.Preview.Data.Record
 
 		[Signal("center-pos-y")]
 		public float CenterPosY;
-		#endregion
+
 
 
 		#region 枚举

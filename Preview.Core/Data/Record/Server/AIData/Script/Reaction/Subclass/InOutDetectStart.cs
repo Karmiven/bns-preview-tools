@@ -1,14 +1,12 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-using  Xylia.Preview.Data.Record;
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 
 	[Signal("in-out-detect-start")]
 	public sealed class InOutDetectStart : IReaction
 	{
-		#region 字段
 		public int Duration;
 
 		/// <summary>
@@ -52,7 +50,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		public byte GatherCount;
 
 		public byte Index;
-		#endregion
 	}
 
 

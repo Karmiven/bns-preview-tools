@@ -229,7 +229,26 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 
 		private void chk_compare_CheckedChanged(object sender, EventArgs e)
 		{
-			lst = chk_compare.Checked ? ChvLoad.LoadData() : null;
+			if (!chk_compare.Enabled)
+			{
+				chk_compare.Enabled = true;
+				return;
+			}
+			else if (!chk_compare.Checked) 
+			{ 
+				lst = null;
+			}
+			else
+			{
+				lst = ChvLoad.LoadData();
+				if (lst is null)
+				{
+					chk_compare.Enabled = false;
+					chk_compare.Checked = false;
+					return;
+				}
+			}
+
 			LoadData(sender, e);
 		}
 
@@ -259,7 +278,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 				IEnumerable<Item> datas = FileCache.Data.Item;
 				if (lst != null && lst.Any()) datas = datas.Where(item => !lst.Contains(item.Key()));
 
-
 				BlockingCollection<Item> result = new();
 				Parallel.ForEach(datas, o =>
 				{
@@ -269,15 +287,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 						else if (category2 != default && category2 != o.MarketCategory2) return;
 					}
 
-
 					if (!empty)
 					{
 						string ItemName = o.Name2;
 						if (ItemName is null || ItemName.IndexOf(rule, StringComparison.OrdinalIgnoreCase) < 0) return;
 					}
 
-					if (auctionable && !o.Auctionable && !o.SealRenewalAuctionable) return;
 
+					if (auctionable && !o.Auctionable && !o.SealRenewalAuctionable) return;
 
 					result.Add(o);
 				});

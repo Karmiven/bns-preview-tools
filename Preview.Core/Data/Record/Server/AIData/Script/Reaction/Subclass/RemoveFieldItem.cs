@@ -1,15 +1,14 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("remove-field-item")]
 	public sealed class RemoveFieldItem : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
 		public string Spawn1;
 		public string Spawn2;
-		#endregion
 	}
 }

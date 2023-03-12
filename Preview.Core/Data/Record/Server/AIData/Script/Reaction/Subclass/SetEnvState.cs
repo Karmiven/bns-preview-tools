@@ -1,9 +1,9 @@
 ﻿using System;
 
-using Xylia.Attribute.Component;
-using Xylia.Preview.Data.Record;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 设置 Env 状态
@@ -11,7 +11,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("set-env-state")]
 	public sealed class SetEnvState : IReaction
 	{
-		#region 字段
 		[Obsolete]
 		public Script_obj Target;
 
@@ -21,6 +20,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		public ZoneEnv2.EnvState State;
 
 		public ZoneEnv2.EnvState State2;
-		#endregion
 	}
 }

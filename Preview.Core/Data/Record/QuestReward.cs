@@ -1,4 +1,4 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Extension;
 
 namespace Xylia.Preview.Data.Record

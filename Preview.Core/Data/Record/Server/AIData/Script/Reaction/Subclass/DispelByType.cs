@@ -1,15 +1,14 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("dispel-by-type")]
 	public sealed class DispelByType : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
 		public Script_obj From;
-
 
 
 		[Signal("dispel-force")]
@@ -17,6 +16,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 
 		[Signal("effect-type")]
 		public string EffectType;
-		#endregion
 	}
 }

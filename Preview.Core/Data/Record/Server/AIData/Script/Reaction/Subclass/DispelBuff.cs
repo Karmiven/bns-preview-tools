@@ -1,6 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 清除效果
@@ -8,8 +9,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("dispel-buff")]
 	public sealed class DispelBuff : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
-		#endregion
 	}
 }

@@ -1,14 +1,10 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Base;
-
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	[Signal("boss-simultaneous-ground-attack")]
 	public sealed class BossSimultaneousGroundAttack : SkillBase
 	{
-		#region 字段
-		
-		#endregion
+	
 	}
 }

@@ -28,7 +28,7 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 		/// <exception cref="InvalidCastException"></exception>
 		public static TNode TypeFactory<SubType, TNode>(this XmlElement CaseNode, Func<SubType, TNode> Func)
 			where SubType : Enum
-			where TNode : TypeBaseNode<SubType>
+			where TNode : TypeBaseRecord<SubType>
 		{
 			var typeVal = CaseNode.Attributes["type"]?.Value?.Trim();
 			if (!typeVal.TryParseToEnum(out SubType Type)) 

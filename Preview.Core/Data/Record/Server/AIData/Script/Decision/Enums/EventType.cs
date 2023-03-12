@@ -1,10 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.Script.Entities.Decision
+namespace Xylia.Preview.Data.Record.ScriptData.Decision
 {
-	/// <summary>
-	/// Decision 事件类型
-	/// </summary>
 	public enum EventType
 	{
 		/// <summary>

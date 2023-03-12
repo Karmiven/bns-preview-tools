@@ -16,7 +16,6 @@ using Xylia.Extension;
 using RecordModel = BnsBinTool.Core.Models.Record;
 using TableModel = BnsBinTool.Core.Models.Table;
 
-
 namespace Xylia.Preview.Data.Helper
 {
 	public class DatafileToXmlConverterHelper
@@ -190,7 +189,7 @@ namespace Xylia.Preview.Data.Helper
 				case AttributeType.TTRef:
 					var tr = record.Get<TRef>(attribute.Offset);
 
-					if (tr == attribute.AttributeDefaultValues.DTRef)
+					if (tr == attribute.AttributeDefaultValues.DTRef || tr.Id == 0)
 						return null;
 
 					var tableName = tr.Table.ToString();

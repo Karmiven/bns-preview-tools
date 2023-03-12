@@ -1,10 +1,6 @@
-﻿using System.Xml;
+﻿using Xylia.Preview.Common.Attribute;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.GameData.AIData.ActSequence.Action.Subclass;
-using Xylia.Preview.Data.Table.XmlRecord;
-
-namespace Xylia.bns.Modules.GameData.AIData.ActSequence.Action
+namespace Xylia.Preview.Data.Record.AIData.ActSequence.Action
 {
 	/// <summary>
 	/// 活动类型

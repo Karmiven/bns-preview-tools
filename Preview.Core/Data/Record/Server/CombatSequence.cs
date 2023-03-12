@@ -1,17 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.AIData.CombatSequence.Enums;
-using Xylia.Preview.Data.Table.XmlRecord;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Data.Record.CombatSequenceData.Enums;
 
-
-namespace Xylia.bns.Modules.AIData.CombatSequence
+namespace Xylia.Preview.Data.Record
 {
 	[Signal("combat-sequence")]
-	public sealed class CombatSequence : BaseNode
+	public sealed class CombatSequence : BaseRecord
 	{
-		#region 字段
 		public string Alias;
 
 		[Signal("hide-seq-start")]
@@ -52,24 +48,11 @@ namespace Xylia.bns.Modules.AIData.CombatSequence
 
 		[Signal("transit-social-2")]
 		public byte TransitSocial2;
-		#endregion
 
-		#region 结构字段
-		[FStruct(StructType.Meta)]
-		public List<Normal> Normals = new();
 
-		[FStruct(StructType.Meta)]
-		public List<Special> Specials = new();
-		#endregion
 
-		#region	方法
-		public override void LoadData(XmlElement xe)
-		{
-			base.LoadData(xe);
+		public List<CombatSequenceData.Normal> Normal;
 
-			this.Normals = BaseNode.LoadChildren<Normal>(xe, "normal");
-			this.Specials = BaseNode.LoadChildren<Special>(xe, "special");
-        }
-		#endregion
+		public List<CombatSequenceData.Special> Special;
 	}
 }

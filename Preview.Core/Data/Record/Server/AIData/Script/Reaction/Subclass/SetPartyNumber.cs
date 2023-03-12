@@ -1,16 +1,15 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("set-party-number")]
 	public sealed class SetPartyNumber : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
 		public byte Reg;
 
 		public int Amount;
-		#endregion
 	}
 }

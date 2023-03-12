@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 
+using Xylia.Preview.Data.Record;
 
 namespace Xylia.Match.Util.Paks.Textures
 {
 	public sealed class GoodIcon : IconOutBase
 	{
-		#region 方法
 		public GoodIcon(string GameFolder) : base(GameFolder) { }
 
 		protected override void AnalyseSourceData()
@@ -23,6 +23,5 @@ namespace Xylia.Match.Util.Paks.Textures
 				});
 			});
 		}
-		#endregion
 	}
 }

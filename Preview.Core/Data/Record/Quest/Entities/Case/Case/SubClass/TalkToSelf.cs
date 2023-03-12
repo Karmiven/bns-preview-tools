@@ -1,13 +1,12 @@
 ﻿using System;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class TalkToSelf : CaseBase
 	{
-		#region 字段
 		/// <summary>
 		/// 免费接收 (功能已废弃)
 		/// </summary>
@@ -22,8 +21,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 
 
 
-
-
 		[Signal("check-inventory-full")]
 		public bool CheckInventoryFull;
 
@@ -35,6 +32,5 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 
 		[Signal("required-jumping-character-state")]
 		public JumpingCharacterState RequiredJumpingCharacterState;
-		#endregion
 	}
 }

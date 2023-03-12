@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Extension;
 using Xylia.Preview.Common.Cast;
 using Xylia.Preview.Common.Interface;

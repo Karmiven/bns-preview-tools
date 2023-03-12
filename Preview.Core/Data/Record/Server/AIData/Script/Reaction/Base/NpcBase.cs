@@ -1,8 +1,8 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
 using Xylia.Preview.Common.Seq;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Base
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction.Base
 {
 	public abstract class NpcBase : IReaction
 	{

@@ -1,20 +1,17 @@
 ﻿using System;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 using Xylia.Preview.Common.Seq;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Base
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	public abstract class SkillBase : IAction
 	{
-		#region 字段
 		[Obsolete]
-		public string Skill;
+		public Skill Skill;
 
-		/// <summary>
-		/// 技能
-		/// </summary>
-		public string Skill3;
+		public Skill3 Skill3;
 
 
 		public Script_obj Target;
@@ -42,6 +39,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Base
 
 		[Signal("replace-top-hate")]
 		public bool ReplaceTopHate;
-		#endregion
 	}
 }

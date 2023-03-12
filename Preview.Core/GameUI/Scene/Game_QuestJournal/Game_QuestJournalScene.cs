@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 using CSCore.SoundOut;
 
-using Xylia.bns.Modules.Quest.Enums;
+using Xylia.Preview.Data.Record.QuestData.Enums;
 using Xylia.Extension;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Controls.Forms;

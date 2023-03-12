@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.GameData.Quest.Enums
+namespace Xylia.Preview.Data.Record.QuestData.Enums
 {
 	[DefaultValue(Default)]
 	public enum Indicator

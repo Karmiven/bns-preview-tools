@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.Quest.Enums;
-using Xylia.Preview.Data.Table.XmlRecord;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Data.Record.QuestData.Enums;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
 	[Signal("tutorial-case")]
-	public abstract class TutorialCaseBase : TypeBaseNode<TutorialCaseType>
+	public abstract class TutorialCaseBase : TypeBaseRecord<TutorialCaseType>
 	{
 		[DefaultValue(100)]
 		public byte Prob = 100;

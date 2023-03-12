@@ -1,4 +1,4 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
 using Xylia.Preview.Common.Seq;
 
@@ -6,8 +6,6 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class DuelFinish : CaseBase
 	{
-		#region 字段
-
 		[Signal("duel-grade")]
 		public byte DuelGrade;
 
@@ -65,6 +63,5 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 
 		[Signal("duel-straight-win")]
 		public int DuelStraightWin;
-		#endregion
 	}
 }

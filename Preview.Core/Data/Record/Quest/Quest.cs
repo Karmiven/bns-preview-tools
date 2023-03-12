@@ -6,44 +6,36 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 
-using Xylia.Attribute.Component;
-using Xylia.bns.Modules.Quest.Enums;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Data.Record.QuestData.Enums;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record.QuestData;
 using Xylia.Preview.Data.Table;
-using Xylia.Preview.Data.Table.XmlRecord;
 
 using static Xylia.Preview.Resources.Resource_Common;
-
 
 namespace Xylia.Preview.Data.Record
 {
 	[AliasRecord]
 	public sealed class Quest : BaseRecord
 	{
-		#region 构造
-		[FStruct(StructType.Meta)]
-		public Lazy<Acquisition> Acquisition;
+		#region 字段
+		public Lazy<List<Acquisition>> Acquisition;
 
-		[FStruct(StructType.Meta)]
-		public Lazy<List<MissionStep>> MissionSteps = new();
+		public Lazy<List<MissionStep>> MissionStep;
 
-		[FStruct(StructType.Meta)]
-		public Lazy<Completion> Completion;
+		public Lazy<List<Completion>> Completion;
 
-		[FStruct(StructType.Meta)]
-		public Lazy<List<Transit>> Transits;
+		public Lazy<List<Transit>> Transit;
 
-		[FStruct(StructType.Meta)]
-		public Lazy<Complete> Complete;
+		public Lazy<List<Complete>> Complete;
 
-		[FStruct(StructType.Meta)]
-		public Lazy<GiveupLoss> GiveupLoss;
+		public Lazy<List<GiveupLoss>> GiveupLoss;
 
 		public override int Key() => this.id;
-		#endregion
 
-		#region 字段
+
+
 		public int id;
 
 		[Signal("max-repeat")]
@@ -404,15 +396,19 @@ namespace Xylia.Preview.Data.Record
 		#region 方法
 		public override void LoadData(XmlElement data)
 		{
-			BaseNode.LoadData(this, data);
+			base.LoadData(data);
 
-			this.Acquisition = new(() => BaseNode.LoadChildren<Acquisition>(data, "acquisition").FirstOrDefault());
-			this.MissionSteps = new(() => BaseNode.LoadChildren<MissionStep>(data, "mission-step"));
-			this.Transits = new(() => BaseNode.LoadChildren<Transit>(data, "transit"));
-			this.Completion = new(() => BaseNode.LoadChildren<Completion>(data, "completion").FirstOrDefault());
-			this.GiveupLoss = new(() => BaseNode.LoadChildren<GiveupLoss>(data, "giveup-loss").FirstOrDefault());
-			this.Complete = new(() => BaseNode.LoadChildren<Complete>(data, "complete").FirstOrDefault());
+			this.Acquisition = new(() => BaseRecord.LoadChildren<Acquisition>(data, "acquisition"));
+			this.MissionStep = new(() => BaseRecord.LoadChildren<MissionStep>(data, "mission-step"));
+			this.Transit = new(() => BaseRecord.LoadChildren<Transit>(data, "transit"));
+			this.Completion = new(() => BaseRecord.LoadChildren<Completion>(data, "completion"));
+			this.GiveupLoss = new(() => BaseRecord.LoadChildren<GiveupLoss>(data, "giveup-loss"));
+			this.Complete = new(() => BaseRecord.LoadChildren<Complete>(data, "complete"));
 		}
+
+
+
+
 
 
 		//protected bool SerializeChild(ReleaseSide ReleaseSide) => !this.Retired || ReleaseSide == ReleaseSide.Server;
@@ -472,7 +468,7 @@ namespace Xylia.Preview.Data.Record
 			{
 				if (this.Retired) return Color.Red;
 
-				var RecommendedLevel = this.Acquisition.Value?.RecommendedLevel ?? 0;
+				var RecommendedLevel = this.Acquisition.Value?.FirstOrDefault()?.RecommendedLevel ?? 0;
 				if (RecommendedLevel < 60 - 10) return Color.Gray;
 
 				return Color.LightGreen;
@@ -484,11 +480,6 @@ namespace Xylia.Preview.Data.Record
 
 	public static class QuestExtension
 	{
-		/// <summary>
-		/// 合并客户端与服务端的任务文件数据
-		/// </summary>
-		/// <param name="MainFolder"></param>
-		/// <param name="OutFolder"></param>
 		public static void Combine(string MainFolder = @"F:\Build\server\2021_版本库2\quest\publish-live", string OutFolder = @"F:\Build\server\2021_版本库2\quest\tmp3")
 		{
 			//foreach (var Quest in MainFolder.ReadFiles<Quest>())
@@ -523,8 +514,9 @@ namespace Xylia.Preview.Data.Record
 			act(QuestData);
 
 			//获取下一任务信息
-			if (QuestData.Completion.Value is null) return;
-			foreach (var NextQuest in QuestData.Completion.Value.NextQuests)
+			var Completion = QuestData.Completion.Value?.FirstOrDefault();
+			if (Completion is null) return;
+			foreach (var NextQuest in Completion.NextQuest)
 			{
 				if (NextQuest.Job1 == JobSeq.JobNone || NextQuest.Job1 == TargetJob)
 					GetEpicInfo(NextQuest.Quest, act, TargetJob);

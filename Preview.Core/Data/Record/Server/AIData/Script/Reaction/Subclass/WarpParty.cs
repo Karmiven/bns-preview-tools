@@ -1,12 +1,10 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("warp-party")]
 	public sealed class WarpParty : Warp
 	{
-		#region 字段
-
-		#endregion
+		
 	}
 }

@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 重置区域对象
@@ -8,8 +8,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("reset-zone-object")]
 	public sealed class ResetZoneObject : IReaction
 	{
-		#region 字段
 		public byte zreg;
-		#endregion
 	}
 }

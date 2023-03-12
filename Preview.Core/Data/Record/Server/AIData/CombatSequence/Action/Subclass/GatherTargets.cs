@@ -1,10 +1,8 @@
-﻿using Xylia.Attribute.Component;
-
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Base;
-using Xylia.bns.Modules.AIData.CombatSequence.Enums;
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
+using Xylia.Preview.Data.Record.CombatSequenceData.Enums;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 采集特殊目标
@@ -16,7 +14,6 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("gather-targets")]
 	public sealed class GatherTargets : SkillBase
 	{
-		#region 字段
 		public Flag Condition;
 
 		[Signal("gather-count")]
@@ -24,6 +21,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 
 		[Signal("gather-rule")]
 		public GatherRule GatherRule;
-		#endregion
 	}
 }

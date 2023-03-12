@@ -17,7 +17,7 @@ namespace Xylia.Match.Util.Paks.Textures
 		/// <summary>
 		/// 游戏资源文件夹
 		/// </summary>
-		private string _gameDirectory;
+		private readonly string _gameDirectory;
 
 		public IconOutBase(string GameFolder)
 		{

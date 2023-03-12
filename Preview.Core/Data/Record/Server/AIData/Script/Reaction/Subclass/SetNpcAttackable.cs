@@ -1,7 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 设置NPC可被攻击
@@ -9,10 +9,8 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("set-npc-attackable")]
 	public sealed class SetNpcAttackable : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
 		public bool Flag;
-		#endregion
 	}
 }

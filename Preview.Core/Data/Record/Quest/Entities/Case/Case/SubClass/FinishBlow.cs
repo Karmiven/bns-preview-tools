@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class FinishBlow : CaseBase
 	{
-		#region 字段
 		public Npc Npc;
 
 		[Signal("skill3-id-1")] public int Skill3ID1;
@@ -29,11 +28,8 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("skill3-id-18")] public int Skill3ID18;
 		[Signal("skill3-id-19")] public int Skill3ID19;
 		[Signal("skill3-id-20")] public int Skill3ID20;
-		#endregion
-
-
-		#region 方法
+	
+	
 		public override List<string> AttractionObject => new() { "npc:" + Npc };
-		#endregion
 	}
 }

@@ -1,7 +1,5 @@
-﻿using Xylia.Attribute.Component;
-
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.Preview.Data.Table.XmlRecord;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
@@ -9,9 +7,8 @@ namespace Xylia.Preview.Data.Record.QuestData
 	/// 放弃任务失去
 	/// </summary>
 	[Signal("giveup-loss")]
-	public class GiveupLoss : BaseNode
+	public class GiveupLoss : BaseRecord
 	{
-		#region 公共字段
 		[Signal("item-1")] public string Item1;
 		[Signal("item-2")] public string Item2;
 		[Signal("item-3")] public string Item3;
@@ -26,6 +23,5 @@ namespace Xylia.Preview.Data.Record.QuestData
 		[Signal("job-2")] public JobSeq Job2;
 		[Signal("job-3")] public JobSeq Job3;
 		[Signal("job-4")] public JobSeq Job4;
-		#endregion
 	}
 }

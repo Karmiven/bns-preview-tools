@@ -1,5 +1,5 @@
 ﻿
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record;
 
@@ -10,7 +10,6 @@ namespace Xylia.Preview.Common.Arg
 	/// </summary>
 	public class Creature
 	{
-		#region 字段
 		[Signal("world-id")]
 		public short WorldId;
 
@@ -1207,6 +1206,5 @@ namespace Xylia.Preview.Common.Arg
 
 		[Signal("hypermove-power-equip-value")]
 		public byte HypermovePowerEquipValue;
-		#endregion
 	}
 }

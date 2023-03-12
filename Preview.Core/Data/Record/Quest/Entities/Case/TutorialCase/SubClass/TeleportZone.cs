@@ -1,13 +1,11 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record.QuestData.TutorialCase
 {
 	public sealed class TeleportZone : TutorialCaseBase
 	{
-		#region 字段
 		[Side(Side.Type.Client)]
 		[Signal("teleport-id")]
 		public Teleport TeleportID;
-		#endregion
 	}
 }

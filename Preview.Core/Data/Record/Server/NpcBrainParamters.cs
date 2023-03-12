@@ -1,20 +1,12 @@
 ﻿using System;
 
-using Xylia.Attribute.Component;
-
-using Xylia.bns.Modules.AIData.NpcBrainParameters.Enums;
-using  Xylia.Preview.Data.Record;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.Preview.Data.Table.XmlRecord;
 
-namespace Xylia.bns.Modules.AIData.NpcBrainParameters
+namespace Xylia.Preview.Data.Record
 {
-	/// <summary>
-	/// NPC智力参数
-	/// </summary>
-	public sealed class NpcBrainParameters : BaseNode
+	public sealed class NpcBrainParameters : BaseRecord
 	{
-		#region 字段
 		public string Alias;
 
 		public string Script;
@@ -259,50 +251,47 @@ namespace Xylia.bns.Modules.AIData.NpcBrainParameters
 		public short MinCloseInDistance7;
 
 
+		[Obsolete] [Signal("skill-1")] public Skill Skill_1;
+		[Obsolete] [Signal("skill-2")] public Skill Skill_2;
+		[Obsolete] [Signal("skill-3")] public Skill Skill_3;
+		[Obsolete] [Signal("skill-4")] public Skill Skill_4;
+		[Obsolete] [Signal("skill-5")] public Skill Skill_5;
+		[Obsolete] [Signal("skill-6")] public Skill Skill_6;
+		[Obsolete] [Signal("skill-7")] public Skill Skill_7;
+		[Obsolete] [Signal("skill-8")] public Skill Skill_8;
+		[Obsolete] [Signal("skill-9")] public Skill Skill_9;
+		[Obsolete] [Signal("skill-10")] public Skill Skill_10;
+		[Obsolete] [Signal("skill-11")] public Skill Skill_11;
+		[Obsolete] [Signal("skill-12")] public Skill Skill_12;
+		[Obsolete] [Signal("skill-13")] public Skill Skill_13;
+		[Obsolete] [Signal("skill-14")] public Skill Skill_14;
+		[Obsolete] [Signal("skill-15")] public Skill Skill_15;
+		[Obsolete] [Signal("skill-16")] public Skill Skill_16;
+		[Obsolete] [Signal("skill-17")] public Skill Skill_17;
+		[Obsolete] [Signal("skill-18")] public Skill Skill_18;
+		[Obsolete] [Signal("skill-19")] public Skill Skill_19;
+		[Obsolete] [Signal("skill-20")] public Skill Skill_20;
 
-		[Obsolete] [Signal("skill-1")] public string Skill_1;
-		[Obsolete] [Signal("skill-2")] public string Skill_2;
-		[Obsolete] [Signal("skill-3")] public string Skill_3;
-		[Obsolete] [Signal("skill-4")] public string Skill_4;
-		[Obsolete] [Signal("skill-5")] public string Skill_5;
-		[Obsolete] [Signal("skill-6")] public string Skill_6;
-		[Obsolete] [Signal("skill-7")] public string Skill_7;
-		[Obsolete] [Signal("skill-8")] public string Skill_8;
-		[Obsolete] [Signal("skill-9")] public string Skill_9;
-		[Obsolete] [Signal("skill-10")] public string Skill_10;
-		[Obsolete] [Signal("skill-11")] public string Skill_11;
-		[Obsolete] [Signal("skill-12")] public string Skill_12;
-		[Obsolete] [Signal("skill-13")] public string Skill_13;
-		[Obsolete] [Signal("skill-14")] public string Skill_14;
-		[Obsolete] [Signal("skill-15")] public string Skill_15;
-		[Obsolete] [Signal("skill-16")] public string Skill_16;
-		[Obsolete] [Signal("skill-17")] public string Skill_17;
-		[Obsolete] [Signal("skill-18")] public string Skill_18;
-		[Obsolete] [Signal("skill-19")] public string Skill_19;
-		[Obsolete] [Signal("skill-20")] public string Skill_20;
-
-
-
-		[Signal("skill3-1")] public string Skill3_1;
-		[Signal("skill3-2")] public string Skill3_2;
-		[Signal("skill3-3")] public string Skill3_3;
-		[Signal("skill3-4")] public string Skill3_4;
-		[Signal("skill3-5")] public string Skill3_5;
-		[Signal("skill3-6")] public string Skill3_6;
-		[Signal("skill3-7")] public string Skill3_7;
-		[Signal("skill3-8")] public string Skill3_8;
-		[Signal("skill3-9")] public string Skill3_9;
-		[Signal("skill3-10")] public string Skill3_10;
-		[Signal("skill3-11")] public string Skill3_11;
-		[Signal("skill3-12")] public string Skill3_12;
-		[Signal("skill3-13")] public string Skill3_13;
-		[Signal("skill3-14")] public string Skill3_14;
-		[Signal("skill3-15")] public string Skill3_15;
-		[Signal("skill3-16")] public string Skill3_16;
-		[Signal("skill3-17")] public string Skill3_17;
-		[Signal("skill3-18")] public string Skill3_18;
-		[Signal("skill3-19")] public string Skill3_19;
-		[Signal("skill3-20")] public string Skill3_20;
+		[Signal("skill3-1")] public Skill3 Skill3_1;
+		[Signal("skill3-2")] public Skill3 Skill3_2;
+		[Signal("skill3-3")] public Skill3 Skill3_3;
+		[Signal("skill3-4")] public Skill3 Skill3_4;
+		[Signal("skill3-5")] public Skill3 Skill3_5;
+		[Signal("skill3-6")] public Skill3 Skill3_6;
+		[Signal("skill3-7")] public Skill3 Skill3_7;
+		[Signal("skill3-8")] public Skill3 Skill3_8;
+		[Signal("skill3-9")] public Skill3 Skill3_9;
+		[Signal("skill3-10")] public Skill3 Skill3_10;
+		[Signal("skill3-11")] public Skill3 Skill3_11;
+		[Signal("skill3-12")] public Skill3 Skill3_12;
+		[Signal("skill3-13")] public Skill3 Skill3_13;
+		[Signal("skill3-14")] public Skill3 Skill3_14;
+		[Signal("skill3-15")] public Skill3 Skill3_15;
+		[Signal("skill3-16")] public Skill3 Skill3_16;
+		[Signal("skill3-17")] public Skill3 Skill3_17;
+		[Signal("skill3-18")] public Skill3 Skill3_18;
+		[Signal("skill3-19")] public Skill3 Skill3_19;
+		[Signal("skill3-20")] public Skill3 Skill3_20;
 
 		[Signal("social-1")] public string Social1;
 		[Signal("social-2")] public string Social2;
@@ -384,6 +373,56 @@ namespace Xylia.bns.Modules.AIData.NpcBrainParameters
 		public string Weapon2;
 		[Signal("weapon-3")]
 		public string Weapon3;
-		#endregion
+	}
+
+
+
+	/// <summary>
+	/// 隐藏类型
+	/// </summary>
+	public enum HideType
+	{
+		None,
+
+		/// <summary>
+		/// 地下，无法攻击
+		/// </summary>
+		Burrow,
+
+		/// <summary>
+		/// 只是无法锁定，还是可以攻击到
+		/// </summary>
+		Hide,
+	}
+
+	public enum TargetingType
+	{
+		None,
+
+		[Signal("hate-top")]
+		HateTop,
+
+		[Signal("hate-tour")]
+		HateTour,
+	}
+
+	/// <summary>
+	/// 战斗序列转移类型
+	/// </summary>
+	public enum TransitType
+	{
+		None,
+
+		/// <summary>
+		/// 事件转移
+		/// </summary>
+		[Signal("by-event")]
+		ByEvent,
+
+		/// <summary>
+		/// 定时器转移
+		/// </summary>
+		[Signal("by-timer")]
+		ByTimer,
 	}
 }

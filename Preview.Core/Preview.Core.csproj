@@ -286,7 +286,7 @@
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="HZH_Controls" Version="1.0.14" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
-		<PackageReference Include="Xylia" Version="1.0.3.11" />
+		<PackageReference Include="Xylia" Version="1.0.3.13" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="GameUI\Controls\Tooltip\TestTooltip2.cs" />

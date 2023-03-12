@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Xylia.Attribute.Component
+namespace Xylia.Preview.Common.Attribute
 {
 	/// <summary>
 	/// 标记

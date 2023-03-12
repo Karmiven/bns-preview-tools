@@ -43,7 +43,7 @@ namespace Xylia.Preview.Tests
 
 			//this.Controls.Remove<CaseInfoPanel>();
 			//int height = 25;
-			//var cs = MissionPanel.LoadTalkMessage(new Xylia.bns.Modules.GameData.CommonTable.NpcResponse(this.textBox1.Text), new WaveOut());
+			//var cs = MissionPanel.LoadTalkMessage(new Xylia.Preview.Data.Record.CommonTable.NpcResponse(this.textBox1.Text), new WaveOut());
 
 			//foreach (var o in cs)
 			//{

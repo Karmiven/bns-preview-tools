@@ -1,13 +1,12 @@
 ﻿using System;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 
 
 namespace Xylia.Preview.Data.Record.QuestData.Case
 {
 	public sealed class Skill : CaseBase
 	{
-		#region 字段
 		[Side(Side.Type.Client)]
 		[Signal("npc-response")]
 		public NpcResponse NpcResponse;
@@ -33,6 +32,5 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		public Record.Skill skill;
 
 		public Record.Skill3 Skill3;
-		#endregion
 	}
 }

@@ -1,20 +1,17 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Attribute.Component;
-using Xylia.Preview.Data.Table.XmlRecord;
+using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
 	[Signal("not-acquire")]
-	public sealed class NotAcquire : BaseNode
+	public sealed class NotAcquire : BaseRecord
 	{
-		#region 字段
 		[DefaultValue(null)]
 		[Signal("zone-index")]
 		public byte ZoneIndex;
 
 		[Side(Side.Type.Client)]
 		public string Kismet;
-		#endregion
 	}
 }

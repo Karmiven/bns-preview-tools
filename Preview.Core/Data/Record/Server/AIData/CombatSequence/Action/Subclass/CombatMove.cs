@@ -1,8 +1,8 @@
-﻿using Xylia.Attribute.Component;
-using Xylia.bns.Modules.AIData.CombatSequence.Enums;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Data.Record.CombatSequenceData.Enums;
 
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 战斗移动
@@ -10,7 +10,6 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("combat-move")]
 	public sealed class CombatMove : IAction
 	{
-		#region 字段
 		[Signal("move-msec")]
 		public int MoveMsec;
 
@@ -22,6 +21,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 
 		[Signal("range-within")]
 		public short RangeWithin;
-		#endregion
 	}
 }

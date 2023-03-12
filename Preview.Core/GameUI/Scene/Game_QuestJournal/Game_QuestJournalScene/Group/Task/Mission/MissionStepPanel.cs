@@ -41,7 +41,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			#endregion
 
 			#region 进度需求信息
-			if (this.MissionDemand.Visible = MissionStep.Missions.Count > 1)
+			if (this.MissionDemand.Visible = MissionStep.Mission.Count > 1)
 			{
 				if (MissionStep.CompletionType == OpCheck.or) this.MissionDemand.Text += $"完成下列任一课题";
 				else if (MissionStep.CompletionType == OpCheck.and)
@@ -53,7 +53,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			#endregion
 
 			#region 遍历课题集合
-			foreach (var Mission in MissionStep.Missions)
+			foreach (var Mission in MissionStep.Mission)
 			{
 				var MissionPanel = new MissionPanel();
 				MissionPanel.LoadData(Mission, SoundOut);

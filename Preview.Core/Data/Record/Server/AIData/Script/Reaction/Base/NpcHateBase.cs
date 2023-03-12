@@ -1,4 +1,6 @@
-﻿namespace Xylia.bns.Modules.AIData.Script.Reaction.Base
+﻿using Xylia.Preview.Common.Arg;
+
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction.Base
 {
 	public abstract class NpcHateBase : IReaction
 	{

@@ -1,6 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 使用指定的特殊战斗序列
@@ -8,7 +9,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("npc-fire-special")]
 	public sealed class NpcFireSpecial : IReaction
 	{
-		#region 字段
 		public Script_obj Target;
 
 		/// <summary>
@@ -19,6 +19,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 
 
 		public Script_obj Requester;
-		#endregion
 	}
 }

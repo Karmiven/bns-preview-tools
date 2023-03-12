@@ -17,7 +17,6 @@ namespace Xylia.Preview.Common.Cast
 			else if (SeqType == SeqType.KeyCap) return CastSeq<KeyCode>(SeqValue);
 			else if (SeqType == SeqType.KeyCommand) return CastSeq<KeyCommandSeq>(SeqValue);
 
-			//返回无效值
 			throw new InvalidCastException($"Cast Failed: {SeqName} > {SeqValue}");
 		}
 		#endregion
@@ -40,7 +39,6 @@ namespace Xylia.Preview.Common.Cast
 
 		private static BaseRecord CastObject(this string DataKey, string DataTableName)
 		{
-			//特别的处理方法
 			if (string.IsNullOrWhiteSpace(DataKey)) return default;
 			if (DataTableName.MyEquals("skill")) return FileCache.Data.Skill3[DataKey];
 			if (DataTableName.MyEquals("tooltip")) return FileCache.Data.TextData[DataKey];

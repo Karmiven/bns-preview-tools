@@ -32,7 +32,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			//书信对话类型可能不会有步骤描述
 			if (Mission.Name2 is null)
 			{
-				if (Mission.Cases.Find(c => c is CaseBase o && o.Type == CaseType.TalkToSelf) != null)
+				if (Mission.Case.Find(c => c is CaseBase o && o.Type == CaseType.TalkToSelf) != null)
 					this.MissionText.Text = "<font name=\"00008130.UI.Label_LightYellow_12\">完成书信对话</font>";
 			}
 
@@ -42,7 +42,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 
 			#region 处理课题信息
 			List<CaseTest> Cases = new();
-			foreach (var o in Mission.Cases)
+			foreach (var o in Mission.Case)
 			{
 				var Case = new CaseTest(o);
 				Cases.Add(Case);

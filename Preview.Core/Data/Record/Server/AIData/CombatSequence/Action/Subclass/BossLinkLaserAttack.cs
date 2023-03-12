@@ -1,10 +1,9 @@
-﻿using Xylia.Attribute.Component;
-
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Base;
-using Xylia.bns.Modules.AIData.CombatSequence.Enums;
+﻿using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
+using Xylia.Preview.Data.Record.CombatSequenceData.Enums;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 连线两个对象
@@ -12,7 +11,6 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("boss-link-laser-attack")]
 	public sealed class BossLinkLaserAttack : SkillBase
 	{
-		#region 字段
 		[Signal("is-target-skill-gather")]
 		public bool IsTargetSkillGather;
 
@@ -90,6 +88,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 		/// </summary>
 		[Signal("terminate-flag-2")] 
 		public Flag TerminateFlag2;
-		#endregion
 	}
 }

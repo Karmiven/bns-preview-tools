@@ -6,7 +6,7 @@ namespace Xylia.Preview.Common.Interface.RecordAttribute
 	/// <summary>
 	/// 对象属性集合
 	/// </summary>
-	public interface AttributeCollection : IEnumerable
+	public interface IAttributeCollection : IEnumerable
 	{
 		string this[string param] { get; }
 

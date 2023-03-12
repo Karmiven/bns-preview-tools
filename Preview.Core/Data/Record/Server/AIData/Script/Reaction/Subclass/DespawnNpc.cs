@@ -1,8 +1,8 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Data.Record.ScriptData.Reaction.Base;
 
-using Xylia.bns.Modules.AIData.Script.Reaction.Base;
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 消除NPC
@@ -10,7 +10,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("despawn-npc")]
 	public sealed class DespawnNpc : DespawnNpcBase
 	{
-		#region 字段
 		[Signal("target")] public Script_obj Target;
 		[Signal("target-1")] public Script_obj Target1;
 		[Signal("target-2")] public Script_obj Target2;
@@ -33,6 +32,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		[Signal("spawn-8")] public string Spawn8;
 		[Signal("spawn-9")] public string Spawn9;
 		[Signal("spawn-10")] public string Spawn10;
-		#endregion
 	}
 }

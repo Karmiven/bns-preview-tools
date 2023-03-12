@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Extension;
 using Xylia.Preview.Common.Seq;
 

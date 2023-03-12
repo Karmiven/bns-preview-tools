@@ -1,11 +1,10 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 using  Xylia.Preview.Data.Record;
 
 namespace Xylia.Preview.Data.Record.QuestData.TutorialCase
 {
 	public sealed class GrowItem : TutorialCaseBase
 	{
-		#region 字段
 		[Side(Side.Type.Client)]
 		[Signal("material-item")]
 		public Item MaterialItem;
@@ -13,6 +12,5 @@ namespace Xylia.Preview.Data.Record.QuestData.TutorialCase
 		[Side(Side.Type.Client)]
 		[Signal("primary-item")]
 		public Item PrimaryItem;
-		#endregion
 	}
 }

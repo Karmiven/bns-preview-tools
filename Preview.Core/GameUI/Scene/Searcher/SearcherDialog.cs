@@ -63,7 +63,7 @@ namespace Xylia.Preview.GameUI.Scene.Searcher
 			bool Contains(Type type) => filters.FirstOrDefault(f => f.Tag == type) != null;
 
 			List<BaseRecord> entity = new();
-			if (Contains(typeof(Item))) entity.Add(rule.GetItemInfo());
+			if (Contains(typeof(Item))) entity.Add(rule.GetItemInfo().First());
 			if (Contains(typeof(Npc))) entity.Add(FileCache.Data.Npc[rule]);
 
 			return entity;

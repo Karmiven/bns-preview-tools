@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 使用鬼魂技能
@@ -8,8 +8,6 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("use-soul-npc-skill")]
 	public sealed class UseSoulNpcSkill : IAction
 	{
-		#region 字段
-
-		#endregion
+	
 	}
 }

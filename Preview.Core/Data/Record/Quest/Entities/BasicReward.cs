@@ -1,4 +1,4 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Table.XmlRecord;
@@ -6,9 +6,8 @@ using Xylia.Preview.Data.Table.XmlRecord;
 namespace Xylia.Preview.Data.Record.QuestData
 {
 	[Signal("basic-reward")]
-	public sealed class BasicReward : BaseNode
+	public sealed class BasicReward : BaseRecord
 	{
-		#region 字段
 		public int Money;
 
 		public int Exp;
@@ -24,6 +23,5 @@ namespace Xylia.Preview.Data.Record.QuestData
 
 		[Signal("faction-reputation")]
 		public short FactionReputation;
-		#endregion
 	}
 }

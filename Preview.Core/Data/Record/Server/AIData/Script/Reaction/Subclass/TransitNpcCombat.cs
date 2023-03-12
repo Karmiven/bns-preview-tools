@@ -1,6 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 对于 manual 条件序列，指示转移到下一个战斗序列
@@ -8,7 +9,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("transit-npc-combat")]
 	public class TransitNpcCombat : IReaction
 	{
-		#region 字段
 		/// <summary>
 		/// 指定转移的目标
 		/// </summary>
@@ -24,6 +24,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		/// 立即转移
 		/// </summary>
 		public bool Immediately;
-		#endregion
 	}
 }

@@ -64,7 +64,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			this.DamageRatePvp.Text = ((float)Skill.DamageRatePvp / 1000).ToString("F3");
 
 			this.Casting.Text = Skill.CastDuration.GetDuration();
-			this.Reuse.Text = Skill.RecycleGroupDuration.GetDuration();
+			this.reuse.Text = Skill.RecycleGroupDuration.GetDuration();
 			#endregion
 
 
@@ -97,12 +97,12 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 
 			if (GatherType == GatherType.Target)
 			{
-				Scale.Text = "Name.Skill.ScaleRange.Default".GetText();
+				this.scale.Text = "Name.Skill.ScaleRange.Default".GetText();
 				this.SkillGatherType.Image = null;
 			}
 			else
 			{
-				Scale.Text = GatherRange.RadiusMax / 100 + "米";
+				this.scale.Text = GatherRange.RadiusMax / 100 + "米";
 
 				string res = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_ImageSet/SkillGatherType/" + GatherType.GetSignal().Replace("-", "_");
 				this.SkillGatherType.Image = res.GetUObject().GetImage();

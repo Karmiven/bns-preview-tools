@@ -1,14 +1,11 @@
-﻿using Xylia.Attribute.Component;
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Base;
+﻿using Xylia.Preview.Common.Attribute;
 
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	[Signal("boss-repeater-attack")]
 	public sealed class BossRepeaterAttack : SkillBase
 	{
-		#region 字段
-
-		#endregion
+	
 	}
 }

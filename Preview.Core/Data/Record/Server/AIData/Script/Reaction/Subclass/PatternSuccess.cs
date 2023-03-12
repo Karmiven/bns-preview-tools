@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
 	/// 挑战模式阶段成功
@@ -8,8 +8,6 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 	[Signal("pattern-success")]
 	public sealed class PatternSuccess : IReaction
 	{
-		#region 字段
 		public byte Index;
-		#endregion
 	}
 }

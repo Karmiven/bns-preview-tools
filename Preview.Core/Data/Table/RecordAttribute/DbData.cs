@@ -9,7 +9,7 @@ using Xylia.Preview.Data.Helper;
 
 namespace Xylia.Preview.Common.Interface.RecordAttribute
 {
-	public sealed class DbData : AttributeCollection
+	public sealed class DbData : IAttributeCollection
 	{
 		#region 构造
 		private readonly DatafileToXmlConverterHelper convert;

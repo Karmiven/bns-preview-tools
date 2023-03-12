@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Linq;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Common.Interface;

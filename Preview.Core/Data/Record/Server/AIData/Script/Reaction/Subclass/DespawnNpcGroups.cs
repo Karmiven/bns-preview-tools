@@ -1,13 +1,12 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Data.Record.ScriptData.Reaction.Base;
 
-using Xylia.bns.Modules.AIData.Script.Reaction.Base;
-
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("despawn-npc-groups")]
 	public sealed class DespawnNpcGroups : DespawnNpcBase
 	{
-		#region 字段
 		[Signal("target")] public Script_obj Target;
 		[Signal("target-1")] public Script_obj Target1;
 		[Signal("target-2")] public Script_obj Target2;
@@ -29,6 +28,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		[Signal("group-8")] public Script_obj Group8;
 		[Signal("group-9")] public Script_obj Group9;
 		[Signal("group-10")] public Script_obj Group10;
-		#endregion
 	}
 }

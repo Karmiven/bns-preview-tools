@@ -1,12 +1,10 @@
-﻿using Xylia.Attribute.Component;
-
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.Preview.Data.Table.XmlRecord;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
 	[Signal("next-quest")]
-	public sealed class NextQuest : BaseNode
+	public sealed class NextQuest : BaseRecord
 	{
 		/// <summary>
 		/// 任务别名

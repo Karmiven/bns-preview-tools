@@ -1,14 +1,14 @@
 ﻿using System;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 
 	[Signal("set-env-enable")]
 	public sealed class SetEnvEnable : IReaction
 	{
-		#region 字段
 		[Obsolete]
 		public Script_obj Target;
 
@@ -22,6 +22,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 		public bool Enable;
 
 		public bool State;
-		#endregion
 	}
 }

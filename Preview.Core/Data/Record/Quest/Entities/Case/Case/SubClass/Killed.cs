@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-using Xylia.Attribute.Component;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.bns.Modules.Quest.Enums;
+using Xylia.Preview.Data.Record.QuestData.Enums;
 
 namespace Xylia.Preview.Data.Record.QuestData.Case
 {

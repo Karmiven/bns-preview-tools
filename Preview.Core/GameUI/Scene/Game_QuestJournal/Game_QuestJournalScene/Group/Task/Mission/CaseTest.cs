@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Common.Seq;
+using Xylia.Preview.Data.Record;
 using Xylia.Preview.Data.Record.QuestData;
 using Xylia.Preview.Data.Record.QuestData.Case;
-using Xylia.Preview.Data.Table.XmlRecord;
 
 namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 {
@@ -15,9 +15,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	public class CaseTest
 	{
 		#region 构造
-		readonly BaseNode data;
+		readonly BaseRecord data;
 
-		public CaseTest(BaseNode Case)
+		public CaseTest(BaseRecord Case)
 		{
 			this.data = Case;
 			this.Controls = new();

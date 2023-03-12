@@ -1,7 +1,6 @@
-﻿using Xylia.Attribute.Component;
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Base;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 执行特定社交
@@ -9,8 +8,6 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("do-social")]
 	public sealed class DoSocial : SkillBase
 	{
-		#region 字段
-		public string Social;
-		#endregion
+		public Social Social;
 	}
 }

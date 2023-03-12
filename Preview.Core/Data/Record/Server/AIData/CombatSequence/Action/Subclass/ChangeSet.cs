@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 改变设置
@@ -9,13 +9,11 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("change-set")]
 	public sealed class ChangeSet : IAction
 	{
-		#region 字段
 		public byte Stance;
 
 		[Signal("stance-effect-1")]
 		public byte StanceEffect1;
 
 		public byte Weapon;
-		#endregion
 	}
 }

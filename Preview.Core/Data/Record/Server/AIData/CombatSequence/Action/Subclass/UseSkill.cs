@@ -1,8 +1,7 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Arg;
+using Xylia.Preview.Common.Attribute;
 
-using Xylia.bns.Modules.AIData.CombatSequence.Action.Base;
-
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 发动技能
@@ -10,28 +9,21 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("use-skill")]
 	public class UseSkill : SkillBase
 	{
-		#region 字段
-		/// <summary>
-		/// 目标 ZoneArea
-		/// </summary>
 		[Signal("target-area")]
-		public string TargetArea;
-		#endregion
+		public ZoneArea TargetArea;
 
-
-		#region 多目标字段
-		[Signal("multi-skill3-1")] public string Multi_Skill3_1;
-		[Signal("multi-skill3-2")] public string Multi_Skill3_2;
-		[Signal("multi-skill3-3")] public string Multi_Skill3_3;
-		[Signal("multi-skill3-4")] public string Multi_Skill3_4;
-		[Signal("multi-skill3-5")] public string Multi_Skill3_5;
-		[Signal("multi-skill3-6")] public string Multi_Skill3_6;
-		[Signal("multi-skill3-7")] public string Multi_Skill3_7;
-		[Signal("multi-skill3-8")] public string Multi_Skill3_8;
-		[Signal("multi-skill3-9")] public string Multi_Skill3_9;
-		[Signal("multi-skill3-10")] public string Multi_Skill3_10;
-		[Signal("multi-skill3-11")] public string Multi_Skill3_11;
-		[Signal("multi-skill3-12")] public string Multi_Skill3_12;
+		[Signal("multi-skill3-1")] public Skill3 Multi_Skill3_1;
+		[Signal("multi-skill3-2")] public Skill3 Multi_Skill3_2;
+		[Signal("multi-skill3-3")] public Skill3 Multi_Skill3_3;
+		[Signal("multi-skill3-4")] public Skill3 Multi_Skill3_4;
+		[Signal("multi-skill3-5")] public Skill3 Multi_Skill3_5;
+		[Signal("multi-skill3-6")] public Skill3 Multi_Skill3_6;
+		[Signal("multi-skill3-7")] public Skill3 Multi_Skill3_7;
+		[Signal("multi-skill3-8")] public Skill3 Multi_Skill3_8;
+		[Signal("multi-skill3-9")] public Skill3 Multi_Skill3_9;
+		[Signal("multi-skill3-10")] public Skill3 Multi_Skill3_10;
+		[Signal("multi-skill3-11")] public Skill3 Multi_Skill3_11;
+		[Signal("multi-skill3-12")] public Skill3 Multi_Skill3_12;
 
 		[Signal("multi-target-1")] public Script_obj MultiTarget1;
 		[Signal("multi-target-2")] public Script_obj MultiTarget2;
@@ -45,6 +37,5 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 		[Signal("multi-target-10")] public Script_obj MultiTarget10;
 		[Signal("multi-target-11")] public Script_obj MultiTarget11;
 		[Signal("multi-target-12")] public Script_obj MultiTarget12;
-		#endregion
 	}
 }

@@ -1,7 +1,5 @@
-﻿using Xylia.Attribute.Component;
-
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.Preview.Data.Table.XmlRecord;
 
 namespace Xylia.Preview.Data.Record.QuestData
 {
@@ -10,9 +8,8 @@ namespace Xylia.Preview.Data.Record.QuestData
 	/// 完成课题时失去
 	/// </summary>
 	[Signal("completion-loss")]
-	public class CompletionLoss : BaseNode
+	public class CompletionLoss : BaseRecord
 	{
-		#region 字段
 		[Signal("job-1")] public JobSeq Job1;
 		[Signal("job-2")] public JobSeq Job2;
 		[Signal("job-3")] public JobSeq Job3;
@@ -39,6 +36,5 @@ namespace Xylia.Preview.Data.Record.QuestData
 		[Signal("item-count-4")] public byte ItemCount4;
 
 		public long Money;
-		#endregion
 	}
 }

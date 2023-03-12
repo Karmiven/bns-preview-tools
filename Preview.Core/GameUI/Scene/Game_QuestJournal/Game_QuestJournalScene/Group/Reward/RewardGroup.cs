@@ -14,7 +14,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	public sealed class RewardGroup
 	{
 		#region 构造
-		public RewardGroup(AttributeCollection Attributes, string Group)
+		public RewardGroup(IAttributeCollection Attributes, string Group)
 		{
 			this.Faction = Attributes[Group + "-faction"];
 			this.DifficultyType = Attributes[Group + "-difficulty-type"].ToEnum<DifficultyType>();
@@ -73,7 +73,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		/// 获取组名称
 		/// </summary>
 		/// <returns></returns>
-		private string GetGroupName(AttributeCollection Attributes)
+		private string GetGroupName(IAttributeCollection Attributes)
 		{
 			string groupName = null;
 

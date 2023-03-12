@@ -1,6 +1,6 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
 
-namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
+namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 侦测生物
@@ -8,10 +8,8 @@ namespace Xylia.bns.Modules.AIData.CombatSequence.Action.Subclass
 	[Signal("detect-creature")]
 	public sealed class DetectCreature : IAction
 	{
-		#region 字段
 		public short Height;
 
 		public short Radius;
-		#endregion
 	}
 }

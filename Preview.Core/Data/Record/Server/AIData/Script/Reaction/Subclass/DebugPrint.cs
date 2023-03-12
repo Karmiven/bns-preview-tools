@@ -1,11 +1,11 @@
-﻿using Xylia.Attribute.Component;
+﻿using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Arg;
 
-namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
+namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	[Signal("debug-print")]
 	public sealed class DebugPrint : IReaction
 	{
-		#region 字段
 		public string text;
 
 		[Signal("param-1")]
@@ -31,6 +31,5 @@ namespace Xylia.bns.Modules.AIData.Script.Reaction.Subclass
 
 		[Signal("param-8")]
 		public Script_obj Param8;
-		#endregion
 	}
 }
