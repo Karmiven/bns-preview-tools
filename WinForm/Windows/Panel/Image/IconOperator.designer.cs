@@ -60,7 +60,6 @@ namespace Xylia.Match.Windows.Panel
 			this.Radio_128px = new HZH_Controls.Controls.UCRadioButton();
 			this.Radio_64px = new HZH_Controls.Controls.UCRadioButton();
 			this.ucCheckBox1 = new HZH_Controls.Controls.UCCheckBox();
-			this.pictureBox4 = new System.Windows.Forms.PictureBox();
 			this.Label4 = new System.Windows.Forms.Label();
 			this.Button4 = new System.Windows.Forms.Button();
 			this.ImageCompose_Reset = new System.Windows.Forms.Button();
@@ -81,7 +80,6 @@ namespace Xylia.Match.Windows.Panel
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.TabPage2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.GemPage.SuspendLayout();
 			this.Menu.SuspendLayout();
@@ -361,7 +359,6 @@ namespace Xylia.Match.Windows.Panel
 			this.TabPage2.Controls.Add(this.Radio_128px);
 			this.TabPage2.Controls.Add(this.Radio_64px);
 			this.TabPage2.Controls.Add(this.ucCheckBox1);
-			this.TabPage2.Controls.Add(this.pictureBox4);
 			this.TabPage2.Controls.Add(this.Label4);
 			this.TabPage2.Controls.Add(this.Button4);
 			this.TabPage2.Controls.Add(this.ImageCompose_Reset);
@@ -464,6 +461,7 @@ namespace Xylia.Match.Windows.Panel
 			this.Radio_64px.Size = new System.Drawing.Size(84, 30);
 			this.Radio_64px.TabIndex = 35;
 			this.Radio_64px.TextValue = "64   px";
+			this.Radio_64px.CheckedChangeEvent += new System.EventHandler(this.Radio_64px_CheckedChangeEvent);
 			// 
 			// ucCheckBox1
 			// 
@@ -476,15 +474,6 @@ namespace Xylia.Match.Windows.Panel
 			this.ucCheckBox1.TabIndex = 33;
 			this.ucCheckBox1.TextValue = "使用新版本背景";
 			this.ucCheckBox1.CheckedChangeEvent += new System.EventHandler(this.ComboBox1_TextChanged);
-			// 
-			// pictureBox4
-			// 
-			this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-			this.pictureBox4.Location = new System.Drawing.Point(439, 39);
-			this.pictureBox4.Name = "pictureBox4";
-			this.pictureBox4.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox4.TabIndex = 32;
-			this.pictureBox4.TabStop = false;
 			// 
 			// Label4
 			// 
@@ -516,7 +505,7 @@ namespace Xylia.Match.Windows.Panel
 			// pictureBox1
 			// 
 			this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-			this.pictureBox1.Location = new System.Drawing.Point(260, 65);
+			this.pictureBox1.Location = new System.Drawing.Point(312, 57);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(64, 64);
 			this.pictureBox1.TabIndex = 24;
@@ -640,7 +629,6 @@ namespace Xylia.Match.Windows.Panel
 			this.groupBox1.PerformLayout();
 			this.TabPage2.ResumeLayout(false);
 			this.TabPage2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.GemPage.ResumeLayout(false);
 			this.GemPage.PerformLayout();
@@ -676,7 +664,6 @@ namespace Xylia.Match.Windows.Panel
         private HZH_Controls.Controls.UCSplitLabel Footer;
         private HZH_Controls.Controls.UCSwitch Switch_Mode;
         private System.Windows.Forms.ToolStripMenuItem DEBUG;
-		private System.Windows.Forms.PictureBox pictureBox4;
 		private HZH_Controls.Controls.UCCheckBox ucCheckBox1;
 		private HZH_Controls.Controls.UCRadioButton Radio_128px;
 		private HZH_Controls.Controls.UCRadioButton Radio_64px;

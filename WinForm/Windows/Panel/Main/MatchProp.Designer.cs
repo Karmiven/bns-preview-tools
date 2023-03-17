@@ -213,7 +213,7 @@
 			this.Note_Chv.Name = "Note_Chv";
 			this.Note_Chv.Size = new System.Drawing.Size(248, 17);
 			this.Note_Chv.TabIndex = 90;
-			this.Note_Chv.Text = "请选择.chv文件 （若无请取消勾选“仅更新”）";
+			this.Note_Chv.Text = "请选择缓存文件 （若无请取消勾选“仅更新”）";
 			// 
 			// Chk_OnlyNew
 			// 

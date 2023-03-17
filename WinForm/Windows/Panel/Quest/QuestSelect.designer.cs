@@ -83,7 +83,9 @@
 			this.ClientSize = new System.Drawing.Size(667, 441);
 			this.Controls.Add(this.textBoxEx1);
 			this.Controls.Add(this.listBox1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Margin = new System.Windows.Forms.Padding(4);
+			this.MinimizeBox = false;
 			this.Name = "QuestSelect";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "任务列表";

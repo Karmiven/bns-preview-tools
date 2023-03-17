@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
 
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
@@ -36,12 +33,11 @@ namespace Xylia.Preview.Data.Package.Pak
 			if (o is null) return null;
 			else if (o is UTexture2D texture)
 			{
-				var stream = texture.Decode().Encode(SkiaSharp.SKEncodedImageFormat.Png, 100).AsStream();
-				return new Bitmap(stream);
+				var bitmap = texture.Decode();
+				if (bitmap is not null) return new Bitmap(bitmap.Encode(SkiaSharp.SKEncodedImageFormat.Png, 100).AsStream());
 			}
 			else if (o.ExportType == "ImageSet")
 			{
-				//获取到的可能是 Import 中的 抽象UObject，仍需要去获取完整的 UObject
 				if (!o.TryGetValue(out UObject Image, "Image")) return null;
 
 				var u = (int)o.GetOrDefault<float>("U");
@@ -49,8 +45,8 @@ namespace Xylia.Preview.Data.Package.Pak
 				var ul = (int)o.GetOrDefault<float>("UL");
 				var vl = (int)o.GetOrDefault<float>("VL");
 
-				var ImageData = Image.GetPathName().GetUObject();
-				if (ImageData is UTexture2D image) return image.GetImage().GetSubImage(u, v, ul, vl);
+				return Image.GetUObject().GetImage()
+					.GetSubImage(u, v, ul, vl);
 			}
 
 			return null;

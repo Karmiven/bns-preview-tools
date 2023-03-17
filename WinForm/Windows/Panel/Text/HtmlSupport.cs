@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 
 using HtmlAgilityPack;
 
-using Xylia.Attribute;
 using Xylia.Extension;
 
 namespace Xylia.Match.Windows.Panel.TextInfo
@@ -114,19 +113,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 
 
-		/// <summary>
-		/// Html处理
-		/// </summary>
-		/// <param name="Text"></param>
-		/// <returns></returns>
 		public static string HtmlConvert(this string Text) => Text.Replace("\n", "<br/>\n");
-
-		/// <summary>
-		/// 游戏专用Xml信息转换为Html信息
-		/// </summary>
-		/// <param name="Text"></param>
-		/// <returns></returns>
-		public static string ToHTML(this string Text) => ToHTML(Text, out _);
 
 		public static string ToHTML(this string Text, out bool IsMultiLine)
 		{

@@ -41,15 +41,15 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 				category3Seqs.ForEach(category3 => node.Nodes.Add(category3.ToString(), $"Name.item.game-category-3.{category3.GetSignal()}".GetText(true)));
 			}
 			#endregion
-
-			FileCache.Data.Item.TryLoad();
-			FileCache.PakData.Initialize();
 		}
 
 		public Game_AuctionScene(string rule) : this()
 		{
 			ItemPreview_Search.InputText = rule;
 			TreeView.SelectedNode = TreeView.Nodes[0];
+
+			FileCache.Data.Item.TryLoad();
+			FileCache.PakData.Initialize();
 		}
 
 		private static Dictionary<MarketCategory2Seq, List<MarketCategory3Seq>> ChildCategory()

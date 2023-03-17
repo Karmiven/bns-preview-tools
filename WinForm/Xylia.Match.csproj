@@ -52,6 +52,7 @@
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 	</PropertyGroup>
+
 	
 	<ItemGroup>
 		<Reference Include="BnsBinTool.Core">
@@ -89,9 +90,6 @@
 			<SubType>UserControl</SubType>
 		</Compile>
 		<Compile Update="Windows\Panel\Else\ModifyLoading.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Windows\Panel\Text\ModifyLocal.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
 		<Compile Update="Windows\Panel\Image\IconOperator.cs">

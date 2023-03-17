@@ -17,16 +17,11 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 	/// </summary>
 	public sealed class TextLoader
 	{
-		#region 字段
 		public bool NewCreat = false;
 
 		public List<Text> Data = new();
-		#endregion
 
 
-
-
-		#region 方法
 		public void LoadDirectory(string DirectoryPath = @"F:\Build\server\2021_版本库2\client\text")
 		{
 			if (string.IsNullOrWhiteSpace(DirectoryPath) || !Directory.Exists(DirectoryPath))
@@ -41,23 +36,6 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			foreach (var FileInfo in DirInfo.GetFiles()) Load(FileInfo);
 			foreach (var SubDirInfo in DirInfo.GetDirectories()) LoadDirectory(SubDirInfo);
 		}
-
-
-		public void Test()
-		{
-			//处理新增文本的顺序信息
-			//int MaxID = this.Max(t => t.id);
-			//foreach (var text in this.Where(t => t.id == 0 && !t.UseAlias))
-			//{
-			//	text.id = ++MaxID;
-
-			//	//修改编号后必须刷新缓存哈希
-			//	this.ht_id.Add(text.id, text);
-			//}
-
-			//System.Diagnostics.Trace.WriteLine("总读取数量：" + this.Count);
-		}
-
 
 		public void Load(FileInfo file)
 		{
@@ -121,6 +99,22 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 				default: throw new Exception("导入类型暂不支持");
 			}
 		}
-		#endregion
+
+
+
+		public void Test()
+		{
+			uint MaxID = this.Data.Max(t => t.TableIndex);
+			foreach (var text in this.Data.Where(t => t.TableIndex == 0))
+			{
+				text.TableIndex = ++MaxID;
+
+				//修改编号后必须刷新缓存哈希
+				//this.ht_id.Add(text.id, text);
+			}
+
+			System.Diagnostics.Trace.WriteLine("总读取数量：" + this.Data.Count);
+		}
+
 	}
 }

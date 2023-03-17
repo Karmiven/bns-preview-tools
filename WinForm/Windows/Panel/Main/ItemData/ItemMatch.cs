@@ -109,8 +109,6 @@ namespace Xylia.Match.Util.ItemList
 		}
 		#endregion
 
-
-
 		#region Output
 		public bool UseExcel = false;
 

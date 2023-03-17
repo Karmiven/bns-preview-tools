@@ -473,7 +473,7 @@
 			this.Controls.Add(this.TabControl1);
 			this.Controls.Add(this.Label6);
 			this.Controls.Add(this.Label5);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "SettingFrm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

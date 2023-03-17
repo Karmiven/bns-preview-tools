@@ -13,10 +13,8 @@ using HZH_Controls.Forms;
 using Xylia.Configure;
 using Xylia.Match.Util.Paks;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell;
 using Xylia.Preview.Properties;
-using Xylia.Windows.Forms;
 
 
 
@@ -347,18 +345,12 @@ namespace Xylia.Match.Windows.Panel
 
 
 			this.ImageCompose = new();
-			this.ImageCompose.RefreshHandle += new(() =>
-			{
-				pictureBox1.Image = ImageCompose.DrawICON();
-				pictureBox4.Image = ImageCompose.DrawICON(2);
-			});
+			this.ImageCompose.RefreshHandle += new(() => pictureBox1.Image = ImageCompose.DrawICON(Radio_64px.Checked ? null : 2));
 
 			this.ComboBox1_TextChanged(sender, e);
 		}
 
 		private byte ImageCompose_GetGrade() => CombineOption.Grades.Find(o => o.Name == ComboBox1.TextValue)?.ItemGrade ?? 0;
-
-
 
 
 		private void ComboBox1_TextChanged(object sender, EventArgs e)
@@ -407,9 +399,7 @@ namespace Xylia.Match.Windows.Panel
 					case ".ico": Format = ImageFormat.Icon; break;
 				}
 
-
-				if (Radio_64px.Checked) pictureBox1.Image.Save(SaveFileDialog.FileName, Format);
-				else pictureBox4.Image.Save(SaveFileDialog.FileName, Format);
+				pictureBox1.Image.Save(SaveFileDialog.FileName, Format);
 			}
 		}
 
@@ -549,6 +539,15 @@ namespace Xylia.Match.Windows.Panel
 		private void ucSwitch1_CheckedChanged(object sender, EventArgs e)
 		{
 			this.GemCircle.Transparent = !this.GemCircle.Transparent;
+		}
+
+		private void Radio_64px_CheckedChangeEvent(object sender, EventArgs e)
+		{
+			this.pictureBox1.Size = new Size(
+				Radio_64px.Checked ? 64 : 128, 
+				Radio_64px.Checked ? 64 : 128);
+
+			this.ImageCompose.Refresh();
 		}
 		#endregion
 	}

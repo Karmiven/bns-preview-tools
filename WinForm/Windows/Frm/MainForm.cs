@@ -32,8 +32,7 @@ namespace Xylia.Match.Windows
 			pages.Add(new("道具获取", new MatchProp()));
 			pages.Add(new("任务查询", new QuestMatch()));
 			pages.Add(new("图标生成", new IconOperator()));
-			pages.Add(new("汉化对比", new MatchLocal()));
-			pages.Add(new("汉化修改", new ModifyLocal()));
+			pages.Add(new("汉化功能", new MatchLocal()));
 			pages.Add(new("Pak功能", new PakExtract()));
 			pages.Add(new("属性计算", new Attribute.MainFrm()));
 			//pages.Add(new("Pak功能", subGroup.Youdao));

@@ -218,19 +218,16 @@ namespace Xylia.Match.Windows.Panel
 		private void ItemPreview_Search_SearchClick(object sender, EventArgs e)
 		{
 			var rule = ItemPreview_Search.InputText;
-			if (string.IsNullOrWhiteSpace(rule))
-			{
-				SendMessage("搜索条件不能为空");
-				return;
-			}
-
-
 			var thread = new Thread(() =>
 			{
-				var records = rule.GetItemInfo(true);
-				if (records.Count == 0) SendMessage("所查找的道具不存在", true);
-				else if (records.Count == 1) records.First().PreviewShow();
-				else new Game_AuctionScene(rule).ShowDialog();
+				if (string.IsNullOrWhiteSpace(rule)) new Game_AuctionScene().ShowDialog();
+				else
+				{
+					var records = rule.GetItemInfo(true);
+					if (records.Count == 0) SendMessage("所查找的道具不存在", true);
+					else if (records.Count == 1) records.First().PreviewShow();
+					else new Game_AuctionScene(rule).ShowDialog();
+				}
 			});
 
 			thread.SetApartmentState(ApartmentState.STA);
