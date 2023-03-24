@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Net;
-
+﻿
 using Xylia.Net;
 
 namespace Xylia.Match.Properties

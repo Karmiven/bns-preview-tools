@@ -2,10 +2,11 @@
 	<PropertyGroup>
 		<RootNamespace>Xylia.Match</RootNamespace>
 		<AssemblyName>Match64</AssemblyName>
+		<OutputType>WinExe</OutputType>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<PlatformTarget>x64</PlatformTarget>
 		<SelfContained>false</SelfContained>
-		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<Deterministic>false</Deterministic>
 		<IsWebBootstrapper>false</IsWebBootstrapper>
 		<BootstrapperEnabled>true</BootstrapperEnabled>
@@ -20,13 +21,10 @@
 		<PublishTrimmed>false</PublishTrimmed>
 		<GenerateManifests>false</GenerateManifests>
 		<Nullable>annotations</Nullable>
-		<OutputType>WinExe</OutputType>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<IsPublishable>True</IsPublishable>
 		<PackageIcon>Query.ico</PackageIcon>
-		<ApplicationIcon>Properties\Query.ico</ApplicationIcon>
 		<DebugType>none</DebugType>
-		<NoWin32Manifest>true</NoWin32Manifest>
 		<AssemblyVersion></AssemblyVersion>
 		<FileVersion></FileVersion>
 		<NeutralLanguage>zh-Hans</NeutralLanguage>
@@ -36,7 +34,11 @@
 		<UseWPF>True</UseWPF>
 		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
 		<TargetZone>LocalIntranet</TargetZone>
+
+		<ApplicationIcon>Properties\Query.ico</ApplicationIcon>
+		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 	</PropertyGroup>
+	
 	
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<DebugSymbols>false</DebugSymbols>
@@ -140,4 +142,5 @@
 		  <Generator></Generator>
 		</None>
 	</ItemGroup>
+	<ProjectExtensions><VisualStudio><UserProperties program_1deps_1json__JsonSchema="https://beaujs.com/schema.json" /></VisualStudio></ProjectExtensions>
 </Project>
