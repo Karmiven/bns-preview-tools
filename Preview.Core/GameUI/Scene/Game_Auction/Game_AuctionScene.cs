@@ -19,7 +19,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 {
 	public partial class Game_AuctionScene : Form // PreviewFrm
 	{
-		#region 构造
+		#region Constructor
 		public Game_AuctionScene()
 		{
 			InitializeComponent();
@@ -30,6 +30,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 
 			TreeView.Nodes.Add("all", "UI.Market.Category.All".GetText());
 			TreeView.Nodes.Add("favorites", "UI.Market.Category.Favorites".GetText());
+			TreeView.SelectedNode = TreeView.Nodes[0];
 
 			foreach (var category2 in Enum.GetValues<MarketCategory2Seq>())
 			{
@@ -46,7 +47,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 		public Game_AuctionScene(string rule) : this()
 		{
 			ItemPreview_Search.InputText = rule;
-			TreeView.SelectedNode = TreeView.Nodes[0];
 
 			FileCache.Data.Item.TryLoad();
 			FileCache.PakData.Initialize();
@@ -261,10 +261,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 
 			#region search rules
 			string rule = ItemPreview_Search.InputText;
-			bool empty = string.IsNullOrWhiteSpace(rule) && !chk_compare.Checked;
+			bool empty = string.IsNullOrWhiteSpace(rule);
 
 			var IsAll = node.Name == "all";
-			if (IsAll && empty) return;
+			if (IsAll && empty && !chk_compare.Checked) return;
 
 			var category2 = IsAll ? default : (node.Level == 0 ? node : node.Parent).Name.ToEnum<MarketCategory2Seq>();
 			var category3 = node.Level == 0 ? default : node.Name.ToEnum<MarketCategory3Seq>();

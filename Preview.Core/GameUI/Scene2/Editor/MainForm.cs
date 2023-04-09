@@ -969,10 +969,10 @@ namespace Crypto_Notepad
 
 
 
-		#region 保存事件
+		#region 保存Event
 		//定义委托
 		public delegate void SaveHandle(object sender, EventArgs e);
-		//定义事件
+		//定义Event
 		public event SaveHandle SaveContent;
 
 		private void SaveToolStripMenuItem_Click(object sender, EventArgs e)

@@ -100,7 +100,7 @@ namespace Xylia.Preview.Data.Record
 			if (EquipJobCheck1 == JobSeq.JobNone) return true;
 
 
-			//如果职业存在，且当前物品存在职业限制
+			//如果职业存在, 且当前物品存在职业限制
 			if (EquipJobCheck1 == TargetJob) return true;
 			else if (EquipJobCheck2 == TargetJob) return true;
 			else if (EquipJobCheck3 == TargetJob) return true;

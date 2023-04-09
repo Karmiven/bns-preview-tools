@@ -20,7 +20,7 @@ namespace Xylia.Preview.Data.Record
 		public AttractionRewardSummary RewardSummary;
 
 
-		#region 接口字段
+		#region Interface
 		public string GetName() => this.GuildBattleFieldZoneName2.GetText();
 
 		public string GetDescribe() => this.GuildBattleFieldZoneDesc.GetText();

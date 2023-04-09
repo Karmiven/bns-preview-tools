@@ -14,7 +14,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class UserOperPanel : Form
 	{
-		#region 字段
+		#region Fields
 		public ItemTooltipPanel MyParentForm;
 
 		/// <summary>
@@ -25,7 +25,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		public int BtnCount = 0;
 		#endregion
 
-		#region 构造
+		#region Constructor
 		public UserOperPanel(ItemTooltipPanel ParentForm)
 		{
 			InitializeComponent();
@@ -57,7 +57,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 		#endregion
 
-		#region 方法
+		#region Functions
 		private void UserOperScene_Load(object sender, EventArgs e)
 		{
 			this.Width = 50;
@@ -70,20 +70,20 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 
 			var ScreenPoint = this.MyParentForm.PointToScreen(new Point(0, 0));
 
-			//必须等开始加载了才能进行定位
+			//必须等开始Load 了才能进行定位
 			this.Left = ScreenPoint.X - this.Width;
 			this.Top = ScreenPoint.Y;
 		}
 		#endregion
 
 
-		#region 查看字段
+		#region 查看Fields
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
 			var ItemData = MyParentForm?.ItemInfo;
 			if (ItemData is null) return;
 
-			new DataGridScene(ParamTable, ItemData.Attributes) { Text = $"查看字段 {ItemData.Name2}" }
+			new DataGridScene(ParamTable, ItemData.Attributes) { Text = $"查看Fields {ItemData.Name2}" }
 			   .MyShowDialog();
 		}
 

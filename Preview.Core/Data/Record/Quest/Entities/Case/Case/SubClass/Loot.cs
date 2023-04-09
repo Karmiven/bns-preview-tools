@@ -49,7 +49,7 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 
 
 
-		#region 方法
+		#region Functions
 		public override List<string> AttractionObject => new()
 		{
 			Object2,

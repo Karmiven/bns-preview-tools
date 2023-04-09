@@ -82,7 +82,7 @@ namespace Xylia.Preview.Data.Package.SoundWave
 			}
 		}
 		/// <summary>
-		/// 读取音频文件地址
+		/// Load 音频文件地址
 		/// </summary>
 		/// <param name="filename"></param>
 		public void Open(string filename)

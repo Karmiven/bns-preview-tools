@@ -11,7 +11,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 	[DesignTimeVisible(false)]
 	public partial class AttributeInfoCell : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public AttributeInfoCell(ItemRandomAbilitySlot RandomAbilitySlot)
 		{
 			InitializeComponent();

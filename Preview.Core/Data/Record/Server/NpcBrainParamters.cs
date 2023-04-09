@@ -119,7 +119,7 @@ namespace Xylia.Preview.Data.Record
 
 
 		/// <summary>
-		/// 可触发 invoke-effect 事件的效果类型
+		/// 可触发 invoke-effect Event的效果类型
 		/// </summary>
 		[Signal("event-invoke-effect-attribute-1")]
 		public EffectAttribute EventInvokeEffectAttribute1;
@@ -145,7 +145,7 @@ namespace Xylia.Preview.Data.Record
 
 
 		/// <summary>
-		/// 可触发 invoked-effect 事件的效果类型
+		/// 可触发 invoked-effect Event的效果类型
 		/// </summary>
 		[Signal("event-invoked-effect-attribute-1")]
 		public EffectAttribute EventInvokedEffectAttribute1;
@@ -385,12 +385,12 @@ namespace Xylia.Preview.Data.Record
 		None,
 
 		/// <summary>
-		/// 地下，无法攻击
+		/// 地下, 无法攻击
 		/// </summary>
 		Burrow,
 
 		/// <summary>
-		/// 只是无法锁定，还是可以攻击到
+		/// 只是无法锁定, 还是可以攻击到
 		/// </summary>
 		Hide,
 	}
@@ -414,7 +414,7 @@ namespace Xylia.Preview.Data.Record
 		None,
 
 		/// <summary>
-		/// 事件转移
+		/// Event转移
 		/// </summary>
 		[Signal("by-event")]
 		ByEvent,

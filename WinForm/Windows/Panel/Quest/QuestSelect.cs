@@ -16,18 +16,18 @@ namespace Xylia.Match.Windows
 {
 	public partial class QuestSelect : Form
 	{
-		#region 构造
+		#region Constructor
 		public QuestSelect()
 		{
 			InitializeComponent();
 
-			//加载数据
+			//Load Data
 			this.LoadData();
 		}
 		#endregion
 
 
-		#region 控件方法
+		#region Functions (UI)
 		private void ListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			Quest SelItem;
@@ -74,9 +74,7 @@ namespace Xylia.Match.Windows
 		}
 		#endregion
 
-
-
-		#region 处理方法
+		#region Functions
 		public static int LastRule
 		{
 			get => Ini.ReadValue("Preview", "quest#last").ToInt();
@@ -85,7 +83,7 @@ namespace Xylia.Match.Windows
 
 
 		/// <summary>
-		/// 加载数据
+		/// Load Data
 		/// </summary>
 		public void LoadData()
 		{
@@ -123,7 +121,7 @@ namespace Xylia.Match.Windows
 
 		private void ListBox1_DrawItem(object sender, DrawItemEventArgs e)
 		{
-			#region 初始化
+			#region Initialize
 			//防止渲染时异常
 			if (e.Index == -1 || e.Index >= listBox1.Items.Count) return;
 			if (listBox1.Items[e.Index] is not Quest CurQuest) return;
@@ -150,7 +148,7 @@ namespace Xylia.Match.Windows
 			#endregion
 
 			#region 绘制文本
-			//如果颜色未赋值，则使用前景色
+			//如果颜色未赋值, 则使用前景色
 			Color StrColor = CurQuest.ForeColor;
 			if (StrColor == default) StrColor = this.ForeColor;
 

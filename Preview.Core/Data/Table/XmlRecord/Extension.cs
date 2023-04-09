@@ -45,7 +45,7 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 
 
 
-		#region 读取文件
+		#region ReadFile
 		public static List<T> ReadFile<T>(this XmlDocument XmlDoc, ref uint TableIndex, string NodeName = null) where T : BaseRecord, new()
 		{
 			List<T> tables = new();
@@ -63,7 +63,7 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 		}
 
 		/// <summary>
-		/// 将指定文件的所有 <see langword="节点"/> 读取为 <see cref="TableNode"/> 实例
+		/// 将指定文件的所有 <see langword="节点"/> Load 为 <see cref="TableNode"/> 实例
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="FilePath"></param>
@@ -79,7 +79,7 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 		}
 
 		/// <summary>
-		/// 将指定文件夹下特定的所有文件的 <see langword="T"/> 节点读取为 <see cref="TableNode"/> 实例
+		/// 将指定文件夹下特定的所有文件的 <see langword="T"/> 节点Load 为 <see cref="TableNode"/> 实例
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="FolderPath"></param>

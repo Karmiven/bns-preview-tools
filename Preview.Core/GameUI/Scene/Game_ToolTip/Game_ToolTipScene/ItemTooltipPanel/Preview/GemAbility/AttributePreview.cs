@@ -14,19 +14,19 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class AttributePreview : PreviewControl
 	{
-		#region 构造
+		#region Constructor
 		public AttributePreview() => InitializeComponent();
 		#endregion
 
 
-		#region 接口方法
+		#region Interface Functions
 		public override void LoadData(BaseRecord record)
 		{
-			#region 读取属性
-			//读取主属性
+			#region Load 属性
+			//Load 主属性
 			var MainAbilityFixed = FileCache.Data.ItemRandomAbilitySlot[record.Attributes["main-ability-fixed"]];
 
-			//读取子属性
+			//Load 子属性
 			var SubAbilityFixed = FileCache.Data.ItemRandomAbilitySlot[record.Attributes["sub-ability-fixed"]];
 
 

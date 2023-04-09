@@ -14,12 +14,12 @@ namespace Xylia.Preview.Data.Record.ScriptData
 		public List<IReaction> Reaction;
 
 		/// <summary>
-		/// 概率 0~100，decision 下的所有 ReactionSet 概率和不能超过最大值
+		/// 概率 0~100, decision 下的所有 ReactionSet 概率和不能超过最大值
 		/// </summary>
 		public byte Probability;
 
 		/// <summary>
-		/// 概率 0~10000，decision 下的所有 ReactionSet 概率和不能超过最大值 
+		/// 概率 0~10000, decision 下的所有 ReactionSet 概率和不能超过最大值 
 		/// </summary>
 		public short Probability10000;
 

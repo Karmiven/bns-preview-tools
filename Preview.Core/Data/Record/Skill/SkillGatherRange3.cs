@@ -5,7 +5,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class SkillGatherRange3 : BaseRecord
 	{
-		#region 字段	
+		#region Fields	
 		public short RangeCastMin;
 		public short RangeCastMax;
 

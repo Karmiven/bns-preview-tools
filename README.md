@@ -22,7 +22,7 @@ get epic quest list<br>
 preview targeted quest
 
 ## text
-compare update on diffent versions
+compare update on diffent versions<br>
 output origion data
 
 ## pak files

@@ -20,7 +20,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Map
 {
 	public partial class Game_MapScene : PreviewFrm
 	{
-		#region 构造
+		#region Constructor
 		public Game_MapScene() : this("World") { }
 
 		public Game_MapScene(string Rule)
@@ -32,7 +32,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Map
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		private MapInfo _mapInfo;
 
 		private MapDepthSeq _mapDepth;
@@ -96,7 +96,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Map
 				if (res is null) continue;
 
 				#region Get Pos
-				//如果地形一致，不用转换 pos
+				//如果地形一致, 不用转换 pos
 				var Pos = GetPoint(mapunit.PositionX, mapunit.PositionY, this._mapInfo);
 				if (MapTree.Count > 1)
 				{
@@ -120,7 +120,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Map
 				};
 				this.pictureBox1.Controls.Add(temp);
 
-				#region 设置事件
+				#region 设置Event
 				temp.Click += new EventHandler((sender, e) =>
 				{
 					if (mapunit.Type == TypeSeq.Link) Execute.MyShowDialog(new Game_MapScene(mapunit.Attributes["link-mapid"]));

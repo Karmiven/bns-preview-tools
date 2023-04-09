@@ -26,7 +26,7 @@ namespace Xylia.Preview.Data.Record
 		public byte SeedItemImproveLevel;
 
 
-		#region 方法
+		#region Functions
 		public static ItemImproveSuccession QuerySeedItem(Item ItemInfo) => FileCache.Data.ItemImproveSuccession.FirstOrDefault(o => o.SeedItemImproveId == ItemInfo.ImproveId && o.SeedItemImproveLevel == ItemInfo.ImproveLevel);
 
 		public Item GetFeedItem(Item ItemInfo) => FileCache.Data.Item.FirstOrDefault(o => o.ImproveId == this.FeedItemImproveId && o.ImproveLevel == this.FeedItemImproveLevel && o.Brand == ItemInfo.Brand);

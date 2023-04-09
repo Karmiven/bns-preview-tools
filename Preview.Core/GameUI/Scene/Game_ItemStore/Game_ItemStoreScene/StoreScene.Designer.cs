@@ -90,6 +90,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			// 
 			// ListPreview
 			// 
+			this.ListPreview.MaxCellNum = 0;
 			this.ListPreview.AutoScroll = true;
 			this.ListPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(26)))), ((int)(((byte)(35)))));
 			this.ListPreview.Dock = System.Windows.Forms.DockStyle.Right;

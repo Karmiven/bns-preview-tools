@@ -9,15 +9,11 @@ using Xylia.Preview.GameUI.Controls;
 using Xylia.Preview.GameUI.Controls.Currency;
 using Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell;
 
-
 namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 {
-	/// <summary>
-	/// 任务奖励界面
-	/// </summary>
 	public partial class RewardPanel : GroupBase
 	{
-		#region 构造
+		#region Constructor
 		readonly FixedItem FixedCommon = new();
 		readonly OptionaItem OptionalCommon = new();
 		readonly FixedItem Fixed = new() { Visible = false };
@@ -41,10 +37,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 		#endregion
 
-
-
-
-		#region 字段
+		#region Fields
 		private IEnumerable<QuestBonusRewardSetting> QuestBonusRewardSettings;
 
 		private List<RewardCellBase> RewardCells;
@@ -118,14 +111,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			{
 				if (value is null)
 				{
-					//没有奖励内容时，隐藏界面
+					//没有奖励内容时, 隐藏界面
 					this.Visible = false;
 					return;
 				}
 
 
 				#region 货币型奖励
-				//加载货币类型奖励信息
+				//Load 货币类型奖励信息
 				this.RewardCells = new List<RewardCellBase>();
 
 				#region 钱币
@@ -138,7 +131,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 					};
 
 					int Ratio = 30;
-					MoneyElement.SetToolTip($"此为基础金币，应用{Ratio}%增益后为 {Money.ConvertInfo((long)(value.BasicMoney * (1 + (double)Ratio / 100)))}");
+					MoneyElement.SetToolTip($"此为基础金币, 应用{Ratio}%增益后为 {Money.ConvertInfo((long)(value.BasicMoney * (1 + (double)Ratio / 100)))}");
 					RewardCells.Add(MoneyElement);
 				}
 				#endregion
@@ -308,7 +301,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 
 
 
-		#region 获取物品图标
+		#region Get Icon
 		private static List<ItemIconCell> GetObjIcon(RewardGroup group)
 		{
 			if (group is null) return null;
@@ -336,8 +329,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 		#endregion
 
-
-		#region 方法
+		#region Functions
 		private void RewardSelect_SelectedChangedEvent(object sender, System.EventArgs e)
 		{
 			var CurGroup = RewardGroups[this.RewardSelect.TextValue];

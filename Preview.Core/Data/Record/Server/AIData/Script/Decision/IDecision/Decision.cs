@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.Data.Record.ScriptData.Decision;
-
-namespace Xylia.Preview.Data.Record.ScriptData.Decision
+﻿namespace Xylia.Preview.Data.Record.ScriptData.Decision
 {
 	public sealed class Decision : IDecision
 	{

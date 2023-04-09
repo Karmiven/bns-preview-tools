@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 {
 	public partial class Completed : PreviewFrm
 	{
-		#region 构造
+		#region Constructor
 		public Completed()
 		{
 			CheckForIllegalCrossThreadCalls = false;
@@ -28,7 +28,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 
 
 
-		#region 控件方法
+		#region Functions (UI)
 		bool UseControl = false;
 
 		public void richTextBox1_MouseWheel(object sender, MouseEventArgs e)
@@ -117,14 +117,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 					// 判断来源是否富文本控件
 					if (Menu.SourceControl is RichTextBox box)
 					{
-						// 当选择内容为空时，复制功能不可用
+						// 当选择内容为空时, 复制功能不可用
 						copy.Enabled = !string.IsNullOrWhiteSpace(box.SelectedText);
 					}
 				};
 				#endregion
 
 				#region  功能控制
-				// 绑定复制事件
+				// 绑定复制Event
 				copy.Click += (o, a) =>
 				{
 					// 判断来源是否富文本控件
@@ -145,7 +145,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		Dictionary<TreeNode, Quest> temp = new();
 
 		public void LoadData()
@@ -174,6 +174,5 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			richTextBox1.Text = QuestData.CompletedDesc.GetText()?.Replace("<br/>", "\n");
 		}
 		#endregion
-
 	}
 }

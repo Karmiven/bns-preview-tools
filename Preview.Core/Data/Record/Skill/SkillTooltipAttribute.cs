@@ -28,7 +28,7 @@ namespace Xylia.Preview.Data.Record
 		public ModifyType SkillModifyType;
 
 
-		#region 枚举
+		#region Enums
 		public enum ArgType
 		{
 			None,

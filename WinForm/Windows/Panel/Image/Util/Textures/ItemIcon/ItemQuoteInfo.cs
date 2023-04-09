@@ -14,7 +14,7 @@ namespace Xylia.Match.Util.Paks.Textures
 	/// </summary>
 	public sealed class ItemQuoteInfo : QuoteInfo
 	{
-		#region 实例字段
+		#region 实例Fields
 		/// <summary>
 		/// 指示是否有背景
 		/// </summary>

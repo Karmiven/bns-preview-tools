@@ -554,7 +554,7 @@ namespace Xylia.Match.Windows.Panel
 			this.Label6.Name = "Label6";
 			this.Label6.Size = new System.Drawing.Size(200, 17);
 			this.Label6.TabIndex = 107;
-			this.Label6.Text = "需要更改部位时，请点击对应的区域";
+			this.Label6.Text = "需要更改部位时, 请点击对应的区域";
 			// 
 			// Button7
 			// 

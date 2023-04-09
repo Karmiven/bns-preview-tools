@@ -14,7 +14,7 @@ namespace Xylia.Preview.GameUI.Controls
 	[Designer(typeof(FixedHeightDesigner))]
 	public partial class PriceCell : Panel
 	{
-		#region 构造
+		#region Constructor
 		public PriceCell()
 		{
 			InitializeComponent();
@@ -28,7 +28,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 描述信息
 		/// </summary>
@@ -69,7 +69,7 @@ namespace Xylia.Preview.GameUI.Controls
 		}
 		#endregion
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 开始进行绘制
 		/// </summary>
@@ -126,7 +126,7 @@ namespace Xylia.Preview.GameUI.Controls
 		/// </summary>
 		public void CreateMeta(Graphics g, int Count, Image Icon, ref int LoX, float TxtPadding = 0, int IconPadding = 0, Size? IconSize = null)
 		{
-			//如果未传递，则使用常用图标Size
+			//如果未传递, 则使用常用图标Size
 			Size RealSize = IconSize ?? new Size(24, 24);
 
 			//创建标签行
@@ -143,7 +143,7 @@ namespace Xylia.Preview.GameUI.Controls
 			}
 
 
-			//判断图标的显示形式，否则会出现小图标被拉伸的问题
+			//判断图标的显示形式, 否则会出现小图标被拉伸的问题
 			if (Icon.Width < RealSize.Width && Icon.Height < RealSize.Height)
 			{
 				RealSize = Icon.Size;

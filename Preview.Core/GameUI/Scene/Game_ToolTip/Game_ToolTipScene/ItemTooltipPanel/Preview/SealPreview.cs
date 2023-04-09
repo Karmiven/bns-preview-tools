@@ -18,7 +18,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		public override void LoadData(BaseRecord Record)
 		{
 			#region 封印数据
-			//新封印方法
+			//新封印Functions
 			var SealRenewalAuctionable = Record.Attributes["seal-renewal-auctionable"].ToBool();
 			var SealConsumeItem1 = Record.Attributes["seal-consume-item-1"];
 			var SealConsumeItem2 = Record.Attributes["seal-consume-item-2"];
@@ -49,7 +49,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			#endregion
 
 
-			#region 加载信息
+			#region Load 信息
 			string Info = null;
 
 			//封印信息
@@ -69,7 +69,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 				}
 
 				//显示封印信息
-				if (SealRenewalAuctionable) Info = $"可通过{ Info }进行封印，封印后保留强化效果";
+				if (SealRenewalAuctionable) Info = $"可通过{ Info }进行封印, 封印后保留强化效果";
 				else Info = $"可通过{ Info }重新封印为{  FileCache.Data.Item[SealAcquireItem]?.ItemName }";
 			}
 

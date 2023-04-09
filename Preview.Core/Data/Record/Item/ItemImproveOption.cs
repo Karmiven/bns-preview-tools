@@ -58,7 +58,7 @@ namespace Xylia.Preview.Data.Record
 		public string DrawOptionIcon;
 
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 获取显示文本
 		/// </summary>

@@ -4,7 +4,7 @@ namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 {
 	/// <summary>
 	/// 改变设置
-	/// 特征属性都是索引，可能是从智商设置中抽取对象
+	/// 特征属性都是索引, 可能是从智商设置中抽取对象
 	/// </summary>
 	[Signal("change-set")]
 	public sealed class ChangeSet : IAction

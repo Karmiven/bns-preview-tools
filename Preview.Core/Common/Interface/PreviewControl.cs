@@ -15,7 +15,7 @@ namespace Xylia.Preview.Common.Interface
 		public virtual bool INVALID() => !this.Visible;
 
 		/// <summary>
-		/// 加载数据
+		/// Load Data
 		/// </summary>
 		/// <param name="record"></param>
 		public virtual void LoadData(BaseRecord record)
@@ -25,7 +25,7 @@ namespace Xylia.Preview.Common.Interface
 
 
 		/// <summary>
-		/// 通过 IRecord 对象加载组件
+		/// 通过 IRecord 对象Load 组件
 		/// </summary>
 		/// <typeparam name="TRecord"></typeparam>
 		/// <param name="Record"></param>

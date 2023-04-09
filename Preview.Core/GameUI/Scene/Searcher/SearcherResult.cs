@@ -26,7 +26,7 @@ namespace Xylia.Preview.GameUI.Scene.Searcher
 				{
 					text = $"{npc.Title2.GetText()} {npc.Name2.GetText()} ({ record.alias })";
 
-					//查询地图信息
+					//get map info
 					var MapUnit = FileCache.Data.MapUnit.Where(Info => Info.alias.MyContains(record.alias)).FirstOrDefault();
 					if (MapUnit != null)
 					{

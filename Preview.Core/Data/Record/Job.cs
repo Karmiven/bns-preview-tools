@@ -20,7 +20,7 @@ namespace Xylia.Preview.Data.Record
 
 
 
-		#region 方法
+		#region Functions
 		public KeyCommand CurrentActionKey => KeyCommandSeq.Action3.GetKeyCommand();
 
 		/// <summary>

@@ -10,7 +10,7 @@
         /// <summary> 
         /// 清理所有正在使用的资源。
         /// </summary>
-        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        /// <param name="disposing">如果应释放托管资源, 为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,8 +23,8 @@
         #region 组件设计器生成的代码
 
         /// <summary> 
-        /// 设计器支持所需的方法 - 不要修改
-        /// 使用代码编辑器修改此方法的内容。
+        /// 设计器支持所需的Functions - 不要修改
+        /// 使用代码编辑器修改此Functions的内容。
         /// </summary>
         private void InitializeComponent()
         {
@@ -322,8 +322,8 @@
 			this.Switch_Mode.SwitchType = HZH_Controls.Controls.SwitchType.Ellipse;
 			this.Switch_Mode.TabIndex = 126;
 			this.Switch_Mode.Texts = new string[] {
-        "实时读取",
-        "外部读取"};
+        "实时Load ",
+        "外部Load "};
 			this.Switch_Mode.TrueColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.Switch_Mode.TrueTextColr = System.Drawing.Color.Black;
 			this.Switch_Mode.Visible = false;

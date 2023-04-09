@@ -8,7 +8,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 	[DesignTimeVisible(false)]
 	public partial class SlateScrollCell : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public SlateScrollCell()
 		{
 			InitializeComponent();
@@ -18,7 +18,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		[Category("Data"), Description("")]
 		public Bitmap Icon
 		{
@@ -66,7 +66,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 
 		private void RewardCell_Load(object sender, EventArgs e)
 		{
-			//Load会比构造函数慢
+			//Load会比Constructor函数慢
 			this.Refresh();
 		}
 

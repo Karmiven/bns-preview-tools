@@ -33,7 +33,7 @@ public static partial class Program
 
 		try
 		{
-			//重写Writer方法
+			//重写Writer
 			//Console.SetOut(new DebugWriter());
 
 			#region 判断主进程等级
@@ -53,11 +53,14 @@ public static partial class Program
 			if(error is TypeInitializationException typeInitializationException)
 				error = typeInitializationException.InnerException;
 
-			MessageBox.Show(error.Message, "资源读取失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			MessageBox.Show(error.Message, "资源加载失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
 
-		Application.Run(new Xylia.Match.Windows.MainForm() { });
+		Application.Run(new Xylia.Match.Windows.MainForm() 
+		{ 
+		
+		});
 	}
 
 
@@ -85,11 +88,6 @@ public static partial class Program
 		Application_ExceptionHandle(error, str);
 	}
 
-	/// <summary>
-	/// 应用程序线程错误
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
 	static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
 	{
 		string strDateInfo = "出现应用程序未处理的异常：" + DateTime.Now.ToString() + "\n";
@@ -102,18 +100,12 @@ public static partial class Program
 		Application_ExceptionHandle(error, str);
 	}
 
-	/// <summary>
-	/// 应用程序错误处理
-	/// </summary>
-	/// <param name="error"></param>
-	/// <param name="str"></param>
 	static void Application_ExceptionHandle(Exception error, string str)
 	{
 		Log.Write(str, MsgInfo.MsgLevel.崩溃);
 		if (error is InvalidOperationException) return;
 		if (error is CSCore.MmException) return;
 
-		//HZH_Controls.Forms.FrmTips.ShowTipsError("发生致命错误，请立即暂停操作并及时联系开发者！");
 		MessageBox.Show(str);
 	}
 
@@ -138,11 +130,6 @@ public static partial class Program
 		return null;
 	}
 
-	/// <summary>
-	/// 获取资源文件流
-	/// </summary>
-	/// <param name="MainName"></param>
-	/// <returns></returns>
 	static Stream GetResourceStream(string MainName)
 	{
 		var Names = new List<string>

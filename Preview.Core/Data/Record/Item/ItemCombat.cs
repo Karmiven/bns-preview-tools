@@ -184,7 +184,7 @@ namespace Xylia.Preview.Data.Record
 		public SkillModifyInfoGroup SkillModifyInfoGroup;
 	
 
-		#region 方法
+		#region Functions
 		public List<ItemSkill> ItemSkills
 		{
 			get

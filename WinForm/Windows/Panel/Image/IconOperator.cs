@@ -16,14 +16,12 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell;
 using Xylia.Preview.Properties;
 
-
-
 namespace Xylia.Match.Windows.Panel
 {
 	[DesignTimeVisible(false)]
 	public partial class IconOperator : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public IconOperator()
 		{
 			this.DoubleBuffered = true;
@@ -36,7 +34,7 @@ namespace Xylia.Match.Windows.Panel
 			IsInitialization = true;
 			InitializeComponent();
 
-			#region 初始化道具属性选择框
+			#region Initialize道具属性选择框
 			ComboBox1.Source = new();
 			ComboBox2.Source = new();
 			ComboBox3.Source = new();
@@ -54,7 +52,7 @@ namespace Xylia.Match.Windows.Panel
 
 		private void IconOperator_Load(object sender, EventArgs e)
 		{
-			//初始化文本框路径
+			//Initialize文本框路径
 			//this.ReadConfig(this.GetType().Name);
 
 			Path_ResultPath.Text = Ini.ReadValue(this.GetType(), "OutFolder");
@@ -62,7 +60,7 @@ namespace Xylia.Match.Windows.Panel
 			TextBox1.Text = Ini.ReadValue(this.GetType(), "CacheList");
 
 
-			#region 读取输出格式设置
+			#region Load 输出格式设置
 			this.FormatSelect.Source = new();
 			this.FormatSelect.Source.Add("[id]");
 			this.FormatSelect.Source.Add("[id]_[name]");
@@ -85,7 +83,7 @@ namespace Xylia.Match.Windows.Panel
 		#region 输出道具图标
 		private void FormatSelect_MouseEnter(object sender, EventArgs e)
 		{
-			string Msg = "*可自定义输出格式  特殊规则为 [id]、[name/名称]、[alias/别名]\n（建议使用英文，英文不区分大小写)";
+			string Msg = "*可自定义输出格式  特殊规则为 [id]、[name/名称]、[alias/别名]\n（建议使用英文, 英文不区分大小写)";
 			frmAnchor = FrmAnchorTips.ShowTips(FormatSelect, Msg, AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 0, false);
 		}
 
@@ -139,7 +137,7 @@ namespace Xylia.Match.Windows.Panel
 
 		private void Button1_MouseEnter(object sender, EventArgs e)
 		{
-			string Msg = "按照已生成的图标生成配置列表，便于版本更新\n\n注意：如果修改了输出文件夹的名字（即\"生成\"文件夹）\n\n输出栏 直接选择新文件夹，点击按钮即可";
+			string Msg = "按照已生成的图标生成配置列表, 便于版本更新\n\n注意：如果修改了输出文件夹的名字（即\"生成\"文件夹）\n\n输出栏 直接选择新文件夹, 点击按钮即可";
 			frmAnchor = FrmAnchorTips.ShowTips(Button1, Msg, AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500);
 		}
 
@@ -180,7 +178,7 @@ namespace Xylia.Match.Windows.Panel
 						if (!Directory.Exists(FolderPath))
 						{
 							FolderPath = Path_ResultPath.Text;
-							this.Invoke(new Action(() => FrmTips.ShowTips(null, "由于不存在目标子文件夹，已变更为扫描所选的<输出目录>")));
+							this.Invoke(new Action(() => FrmTips.ShowTips(null, "由于不存在目标子文件夹, 已变更为扫描所选的<输出目录>")));
 						}
 
 						var Files = new DirectoryInfo(FolderPath).GetFiles();
@@ -244,17 +242,17 @@ namespace Xylia.Match.Windows.Panel
 
 
 
-			#region 初始化
+			#region Initialize
 			string ChvPath = TextBox1.Text;
 			if (!string.IsNullOrWhiteSpace(ChvPath) && !File.Exists(ChvPath))
 			{
-				Xylia.Tip.Message("Chv文件路径错误或不存在，请重新确认！");
+				Xylia.Tip.Message("Chv文件路径错误或不存在, 请重新确认！");
 				return;
 			}
 
 			if (!this.Switch_Mode.Checked && !File.Exists(TextBox1.Text))
 			{
-				Xylia.Tip.Message("选择白名单模式时，必须选择配置文件!");
+				Xylia.Tip.Message("选择白名单模式时, 必须选择配置文件!");
 				return;
 			}
 			#endregion
@@ -533,7 +531,7 @@ namespace Xylia.Match.Windows.Panel
 		{
 			string PartName = GemCircle.PartConvert.ContainsKey(this.GemCircle.PartSel) ? GemCircle.PartConvert[this.GemCircle.PartSel] : this.GemCircle.PartSel.ToString();
 
-			Label6.Text = $"需要更改部位时，请点击对应的区域\n\n当前选择：{ PartName }";
+			Label6.Text = $"需要更改部位时, 请点击对应的区域\n\n当前选择：{ PartName }";
 		}
 
 		private void ucSwitch1_CheckedChanged(object sender, EventArgs e)

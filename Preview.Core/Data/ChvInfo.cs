@@ -89,15 +89,15 @@ namespace Xylia.Preview.Data
 			return LoadData(fileDialog.FileName);
 		}
 
-		public static HashSet<int> LoadData(string ChvPath, Action<string> action = null)
+		public static HashSet<int> LoadData(string path, Action<string> action = null)
 		{
-			if (string.IsNullOrWhiteSpace(ChvPath)) return null;
+			if (string.IsNullOrWhiteSpace(path)) return null;
 
 			ChvLoad cache = new();
-			cache.Load(ChvPath);
+			cache.Load(path);
 
 			string Msg = null;
-			if (!string.IsNullOrWhiteSpace(cache.Title)) Msg += $"目前加载的是「{ cache.Title }」";
+			if (!string.IsNullOrWhiteSpace(cache.Title)) Msg += $"目前Load 的是「{ cache.Title }」";
 			if (cache.DataTime != 0) Msg += $" 版本{ cache.DataTime.GetDateTime() }";
 			if (!string.IsNullOrEmpty(Msg)) action?.Invoke(Msg);
 
@@ -115,12 +115,11 @@ namespace Xylia.Preview.Data
 
 			if (!cache.datas.Any()) return null;
 
-
 			var vs = new HashSet<int>();
 			foreach (var item in cache.datas)
 				vs.Add(item);
 
-			action?.Invoke($"共加载到{ vs.Count }个历史版本道具，将会自动跳过");
+			action?.Invoke($"共Load 到{ vs.Count }个历史版本道具, 将会自动跳过");
 			return vs;
 		}
 	}

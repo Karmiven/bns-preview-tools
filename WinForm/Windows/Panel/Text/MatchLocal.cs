@@ -239,7 +239,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 
 
-					#region 初始化
+					#region Initialize
 					Step1.StepIndex = 2;
 
 					var sw = OutPath.CreateWriter();
@@ -266,7 +266,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 					bool HasChanged = false;
 					foreach (var Item in Sin_New)
 					{
-						//如果旧汉化中没有，判断为新增
+						//如果旧汉化中没有, 判断为新增
 						if (!Sin_Old.ContainsKey(Item.Key))
 						{
 							HasChanged = true;
@@ -289,7 +289,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 						}
 
 
-						//如果旧汉化中有，但是不相同
+						//如果旧汉化中有, 但是不相同
 						else
 						{
 							if (Sin_Old[Item.Key].text == Item.Value.text) continue;
@@ -369,7 +369,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 					GC.Collect();
 	
-					this.Invoke(() => FrmTips.ShowTipsSuccess(null, HasChanged ? "执行已经结束,请在输出目录查看" : "执行已结束，但是未发现任何变更"));
+					this.Invoke(() => FrmTips.ShowTipsSuccess(null, HasChanged ? "执行已经结束,请在输出目录查看" : "执行已结束, 但是未发现任何变更"));
 				}
 				catch (Exception ee)
 				{
@@ -438,7 +438,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 		
 		private void ucBtnFillet6_BtnClick(object sender, EventArgs e)
 		{
-			#region 初始化
+			#region Initialize
 			if (!File.Exists(filePath.Text))
 			{
 				FrmTips.ShowTipsError(null, "未选择local.dat文件");
@@ -446,7 +446,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			}
 			else if (File.Exists(TextBox1.Text))
 			{
-				var result = MessageBox.Show("继续操作会覆盖数据，请更名或备份数据！", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				var result = MessageBox.Show("继续操作会覆盖数据, 请更名或备份数据！", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				if (result != DialogResult.OK)
 				{
 					FrmTips.ShowTipsSuccess(null, "用户结束操作");
@@ -493,7 +493,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 		private void ucBtnFillet11_BtnClick(object sender, EventArgs e)
 		{
-			#region 初始化
+			#region Initialize
 			string DatPath = filePath.Text;
 			bool is64 = Path.GetFileName(DatPath).Contains("64");
 			string TransFile = string.IsNullOrWhiteSpace(TextBox1.Text) ? Path.GetDirectoryName(filePath.Text) + @"\汉化数据.json" : TextBox1.Text;

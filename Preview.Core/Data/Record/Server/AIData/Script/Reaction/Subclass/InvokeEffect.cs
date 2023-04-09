@@ -16,7 +16,7 @@ namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 
 		
 		/// <summary>
-		/// SoulMask 类型效果必须设置此字段
+		/// SoulMask 类型效果必须设置此Fields
 		/// </summary>
 		public Script_obj Caster;
 

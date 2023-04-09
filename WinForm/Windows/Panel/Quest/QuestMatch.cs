@@ -14,7 +14,7 @@ namespace Xylia.Match.Windows.Panel
 	[DesignTimeVisible(false)]
 	public partial class QuestMatch : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public QuestMatch()
 		{
 			InitializeComponent();
@@ -25,7 +25,7 @@ namespace Xylia.Match.Windows.Panel
 		#endregion
 
 
-		#region 重做方法
+		#region 重做Functions
 		/// <summary>
 		/// 绑定快捷键
 		/// </summary>

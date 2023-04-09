@@ -35,7 +35,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 		{
 			if (ArgType == SkillTooltipAttribute.ArgType.None) return;
 
-			#region 获取参数数值
+			#region Get param value
 			int ArgValue1 = 0;
 			int ArgValue2 = 0;
 
@@ -48,8 +48,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			}
 			#endregion
 
-
-			#region 传递参数
+			#region param
 			Params.Add(ArgType switch
 			{
 				SkillTooltipAttribute.ArgType.DamagePercentMinMax => GetDamageInfo(ArgValue1, ArgValue2, Tooltip.SkillAttackAttributeCoefficientPercent),

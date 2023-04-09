@@ -5,7 +5,7 @@
 	/// </summary>
 	public struct MoneyConvert
 	{
-		#region 构造
+		#region Constructor
 		public MoneyConvert(int? Total) => this.Total = Total ?? 0;
 
 		public MoneyConvert(string Total) => this.Total = int.TryParse(Total, out int temp) ? temp : 0;

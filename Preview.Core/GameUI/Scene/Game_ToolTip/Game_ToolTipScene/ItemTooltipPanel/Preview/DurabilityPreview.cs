@@ -7,7 +7,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 	{
 		public DurabilityPreview() => InitializeComponent();
 
-		#region 字段
+		#region Fields
 		private int _durability;
 
 		public int Durability

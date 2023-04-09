@@ -15,7 +15,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class ExchangePreview : PreviewControl
 	{
-		#region 构造
+		#region Constructor
 		public ExchangePreview()
 		{
 			this.InitializeComponent();
@@ -23,7 +23,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public override void LoadData(BaseRecord record)
 		{
 			var Item = record as Item;
@@ -34,7 +34,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			#region 查询当前物品为加工目标物品 
 			var CrystallFrom = LoadNormalItem(Item.alias);
 
-			//对于加工来源，需要限制加载类型
+			//对于加工来源, 需要限制Load 类型
 			var temp = CrystallFrom.Where(rule => rule.RuleUsage == RuleUsageSeq.Crystallization);
 			CrystallRules.AddRange(temp);
 

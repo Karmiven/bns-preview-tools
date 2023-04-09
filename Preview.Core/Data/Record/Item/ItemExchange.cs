@@ -9,7 +9,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class ItemExchange : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		[Signal("rule-usage")]
 		public RuleUsageSeq RuleUsage;
 		public enum RuleUsageSeq
@@ -85,7 +85,7 @@ namespace Xylia.Preview.Data.Record
 		public short NormalItemStackCount4;
 		#endregion
 
-		#region 方法
+		#region Functions
 		public static IEnumerable<ItemExchange> LoadNormalItem(string ItemAlias)
 			=> FileCache.Data.ItemExchange.Where(Info =>
 			   (Info.NormalItem1?.MyEquals(ItemAlias) ?? false)

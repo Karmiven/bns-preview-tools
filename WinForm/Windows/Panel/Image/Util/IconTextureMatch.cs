@@ -9,7 +9,7 @@ namespace Xylia.Match.Util.Paks
 {
 	public sealed class IconTextureMatch
 	{
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 起始时活动
 		/// </summary>
@@ -29,10 +29,10 @@ namespace Xylia.Match.Util.Paks
 		public string FormatSelect;
 		#endregion
 
-		#region 方法
+		#region Functions
 		public void StartMatch(Textures.IconOutBase IconOutBase, ref Thread RunThread, Action<string> action)
 		{
-			#region 初始化
+			#region Initialize
 			//清理tip
 			FrmTips.ClearTips();
 
@@ -46,13 +46,13 @@ namespace Xylia.Match.Util.Paks
 			#region 执行
 			RunThread = new Thread(o =>
 			{
-				//触发开始事件
+				//触发开始Event
 				Start?.Invoke(null, new());
 
 				try
 				{
 					DateTime d1 = DateTime.Now;
-					action($"正在初始化数据");
+					action($"正在Initialize数据");
 
 					using (IconOutBase)
 					{
@@ -70,14 +70,14 @@ namespace Xylia.Match.Util.Paks
 				}
 				catch (Exception ee)
 				{
-					action("由于发生了错误，进程已提前结束。");
+					action("由于发生了错误, 进程已提前结束。");
 
 					Xylia.Tip.Stop(ee.ToString());
 					Console.WriteLine(ee);
 				}
 				finally
 				{
-					//结束事件
+					//结束Event
 					Finish?.Invoke(null, null);
 					lib.ClearMemory();
 				}

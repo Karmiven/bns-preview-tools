@@ -8,20 +8,16 @@ using CSCore.SoundOut;
 
 namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 {
-	/// <summary>
-	/// 任务信息
-	/// </summary>
 	public partial class TaskPanel : GroupBase
 	{
-		#region 构造
+		#region Constructor
 		public TaskPanel()
 		{
 			InitializeComponent();
 		}
 		#endregion
 
-
-		#region 方法
+		#region Functions
 		private void ContentInfo_SizeChanged(object sender, EventArgs e)
 		{
 			this.Refresh();
@@ -44,7 +40,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			{
 				this.Controls.Add(new Controls.ContentPanel
 				{
-					Text = "无内容，可能是废弃任务。",
+					Text = "无内容, 可能是废弃任务。",
 					Location = new Point(ContentStartX, LocY),
 				});
 

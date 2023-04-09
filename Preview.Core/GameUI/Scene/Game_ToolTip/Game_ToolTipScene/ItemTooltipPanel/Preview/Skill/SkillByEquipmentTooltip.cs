@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 	[DesignTimeVisible(true)]
 	public partial class SkillByEquipmentTooltip : TitlePanel
 	{
-		#region 构造
+		#region Constructor
 		public SkillByEquipmentTooltip()
 		{
 			InitializeComponent();
@@ -20,7 +20,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 
-		#region 接口方法
+		#region Interface Functions
 		public override void LoadData(BaseRecord record)
 		{
 			var Record = record as SkillByEquipment;

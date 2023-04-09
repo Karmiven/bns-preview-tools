@@ -15,7 +15,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 	[DesignTimeVisible(false)]
 	public partial class SkillPreview : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public SkillPreview()
 		{
 			InitializeComponent();
@@ -34,10 +34,10 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public void LoadData(Skill3 Skill)
 		{
-			#region 初始化
+			#region Initialize
 			this.M1_Panel.Tooltips.Clear();
 			this.M2_Panel.Tooltips.Clear();
 			this.SUB_Panel.Tooltips.Clear();

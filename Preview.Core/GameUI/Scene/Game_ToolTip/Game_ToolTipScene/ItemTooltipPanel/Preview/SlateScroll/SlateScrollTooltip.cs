@@ -14,11 +14,11 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class SlateScrollTooltip : TitlePanel
 	{
-		#region 构造
+		#region Constructor
 		public SlateScrollTooltip() => InitializeComponent();
 		#endregion
 
-		#region 方法
+		#region Functions
 		private void SlateScrollTooltip_SizeChanged(object sender, EventArgs e)
 		{
 			foreach (var Cell in this.Controls.OfType<SlateScrollCell>())
@@ -29,12 +29,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 
-		#region 接口方法
+		#region Interface Functions
 		public override void LoadData(BaseRecord record)
 		{
 			#region 筛选出刻印书与血石的对应信息
-			//执行排序：将推荐血石排序到前面，同时抽取部分非推荐血石
-			//然后取出前N个对象，不足时则不执行
+			//执行排序：将推荐血石排序到前面, 同时抽取部分非推荐血石
+			//然后取出前N个对象, 不足时则不执行
 			var ScrollStones = FileCache.Data.SlateScrollStone.Where(info => info.scroll == record).ToList();
 			ScrollStones.Sort(new SlateScrollStoneSort() { SortByGrade = false });
 
@@ -46,7 +46,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			var cells = new List<SlateScrollCell>();
 			foreach (var Stone in ScrollStones.Select(s => FileCache.Data.SlateStone[s.stone]))
 			{
-				#region 生成属性信息
+				#region get attr
 				char SplitChar = '，';   //设置分隔符号
 				string AbilityInfo = null;
 
@@ -64,7 +64,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 				AbilityInfo = AbilityInfo?.RemoveSuffixString(SplitChar);
 				#endregion
 
-				#region 生成新的血石单元
 				cells.Add(new SlateScrollCell()
 				{
 					Icon = Stone.Icon.GetIcon(),
@@ -73,11 +72,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 
 					AbilityInfo = AbilityInfo,
 				});
-				#endregion
 			}
 			#endregion
 
-			#region 界面显示控制
+			#region UI
 			int LoY = 21 + 8;
 			foreach (var Cell in cells)
 			{

@@ -10,7 +10,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class EventTimePreview : TitlePanel
 	{
-		#region 构造
+		#region Constructor
 		public EventTimePreview() => InitializeComponent();
 
 		public DateTime EventExpirationTime
@@ -39,7 +39,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public override void LoadData(BaseRecord record)
 		{
 			ItemEvent Record = record as ItemEvent;

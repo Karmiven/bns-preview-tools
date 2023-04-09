@@ -11,7 +11,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 {
 	public partial class StoreScene : Form
 	{
-		#region 构造
+		#region Constructor
 		public StoreScene()
 		{
 			InitializeComponent();
@@ -21,7 +21,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		internal Dictionary<TreeNode, NodeInfo> TreeNodeInfo = new();
 
 		public readonly List<FilterInfo> _filter = new();
@@ -32,7 +32,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		#endregion
 
 
-		#region 控件方法
+		#region Functions (UI)
 		private void Store2Frm_Load(object sender, EventArgs e) => this.LoadData();
 
 		public void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -64,7 +64,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		protected virtual void LoadData() { }
 
 		protected virtual void Show(string StoreAlias) { }

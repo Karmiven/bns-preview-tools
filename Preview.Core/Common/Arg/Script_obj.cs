@@ -5,7 +5,7 @@
 	/// </summary>
 	public struct Script_obj
 	{
-		#region 构造
+		#region Constructor
 		public Script_obj(string Text) => this.Temp = Text;
 		#endregion
 

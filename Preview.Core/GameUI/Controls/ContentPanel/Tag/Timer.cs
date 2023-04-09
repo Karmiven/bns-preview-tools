@@ -38,7 +38,7 @@ namespace Xylia.Preview.Common.Tag
 		}
 
 
-		#region 构造
+		#region Constructor
 		private DateTime Value { get; set; }
 
 		public Timer(DateTime Value) => this.Value = Value;
@@ -56,7 +56,7 @@ namespace Xylia.Preview.Common.Tag
 		}
 		#endregion
 
-		#region 方法
+		#region Functions
 		public TimeSpan Span => Value - DateTime.Now;
 
 		public string ToString(string Format)

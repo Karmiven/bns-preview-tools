@@ -87,7 +87,7 @@ namespace Xylia.Preview.Data.Record
 
 
 
-		#region 枚举
+		#region Enums
 		public enum TypeSeq
 		{
 			Static,

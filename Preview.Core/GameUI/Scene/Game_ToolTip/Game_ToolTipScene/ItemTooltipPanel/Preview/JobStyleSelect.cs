@@ -20,9 +20,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview
 		public event JobStyleChangedHandle JobStyleChanged;
 		#endregion
 
-		#region 方法
+		#region Functions
 		/// <summary>
-		/// 加载派系图标
+		/// Load 派系图标
 		/// </summary>
 		/// <param name="job"></param>
 		public void LoadStyleIcon(JobSeq job)

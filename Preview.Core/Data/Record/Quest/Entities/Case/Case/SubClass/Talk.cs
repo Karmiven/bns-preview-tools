@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 	// 护送只能在 cave2 定义区域生成
 	// cannot start convoy before progress mission
 	// 无法在执行任务前开始护卫
-	// acquisition 的子对象护卫字段不生效
+	// acquisition 的子对象护卫Fields不生效
 	public sealed class Talk : NpcTalkBase
 	{
 		[Obsolete]

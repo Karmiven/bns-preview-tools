@@ -12,12 +12,12 @@ namespace Xylia.Match.Windows.Forms
 {
 	public partial class LoggerFrm : Form
 	{
-		#region 字段
+		#region Fields
 		public List<object> lstSource = new();
 		public static string LogPath = Xylia.Configure.PathDefine.MainFolder + $@"\Log\{ DateTime.UtcNow:yyMMdd}.log";
 		#endregion
 
-		#region 构造
+		#region Constructor
 		/// <summary>
 		/// 日志系统
 		/// </summary>
@@ -26,7 +26,7 @@ namespace Xylia.Match.Windows.Forms
 			this.InitializeComponent();
 			ClearOverdue();
 
-			#region 初始化
+			#region Initialize
 			var lstCulumns = new List<DataGridViewColumnEntity>
 			{
 				new DataGridViewColumnEntity() { DataField = "ID", HeadText = "ID", Width = 50, WidthType = SizeType.Absolute },
@@ -42,7 +42,7 @@ namespace Xylia.Match.Windows.Forms
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 自动清理时间过久日志
 		/// </summary>											  
@@ -107,7 +107,7 @@ namespace Xylia.Match.Windows.Forms
 			sw.BaseStream.Seek(0, SeekOrigin.End);
 
 			if (isNew) sw.WriteLine($"-------------------------------------------------------------------\n" +
-									$"由 { Assemly.FullName } 初始化创建\n" +
+									$"由 { Assemly.FullName } Initialize创建\n" +
 									$"-------------------------------------------------------------------");
 
 			string OutMsg = $"{ DateTime.Now } || { Assemly.Name + "(" + Assemly.Version + ")" } || { msgLevel } || {  Msg }";

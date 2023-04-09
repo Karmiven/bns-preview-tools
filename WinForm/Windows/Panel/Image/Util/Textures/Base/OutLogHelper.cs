@@ -33,7 +33,7 @@ namespace Xylia.Match.Util.Paks.Textures
 
 
 
-		#region 方法
+		#region Functions
 		private Dictionary<string, StreamWriter> StreamWriters;
 		private bool disposedValue;
 
@@ -84,7 +84,7 @@ namespace Xylia.Match.Util.Paks.Textures
 
 		public void Record(string Msg, object ItemId, string ItemName)
 		{
-			Record($"物品Id { ItemId } [{ ItemName }]，{ Msg }。".Replace("。。", "。"), LogGroup.错误记录);
+			Record($"物品Id { ItemId } [{ ItemName }], { Msg }。".Replace("。。", "。"), LogGroup.错误记录);
 		}
 		#endregion
 
@@ -103,7 +103,7 @@ namespace Xylia.Match.Util.Paks.Textures
 				}
 
 				// TODO: 释放未托管的资源(未托管的对象)并重写终结器
-				// TODO: 将大型字段设置为 null
+				// TODO: 将大型Fields设置为 null
 				disposedValue = true;
 			}
 		}
@@ -111,13 +111,13 @@ namespace Xylia.Match.Util.Paks.Textures
 		// // TODO: 仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
 		// ~OutLogHelper()
 		// {
-		//     // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+		//     // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”Functions中
 		//     Dispose(disposing: false);
 		// }
 
 		public void Dispose()
 		{
-			// 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+			// 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”Functions中
 			Dispose(disposing: true);
 			GC.SuppressFinalize(this);
 		}

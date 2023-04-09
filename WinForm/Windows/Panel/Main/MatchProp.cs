@@ -30,7 +30,7 @@ namespace Xylia.Match.Windows.Panel
 	[DesignTimeVisible(false)]
 	public partial class MatchProp : UserControl
 	{
-		#region 构造
+		#region Constructor
 		readonly bool IsInitialization = true;
 
 		public MatchProp()
@@ -48,14 +48,14 @@ namespace Xylia.Match.Windows.Panel
 		}
 		#endregion
 
-		#region 控件方法
+		#region Functions (UI)
 		private void ToEnd(bool UseError = false)
 		{
 			Timer.Stop();
 
 			Step1.StepIndex = 4;
 
-			//if (UseError) richOut.Output(Xylia.Match.Windows.Forms.Controls.lib.RichOutLib.Combine("由于用户操作，本次执行未完成。\n\n", Color.Orange, 13));
+			//if (UseError) richOut.Output(Xylia.Match.Windows.Forms.Controls.lib.RichOutLib.Combine("由于用户操作, 本次执行未完成。\n\n", Color.Orange, 13));
 			//  Program.Taskbar.SetProgressState(TaskbarProgressBarState.Paused, this.Handle);
 
 			Btn_StartMatch.Enabled = ucBtnFillet1.Enabled = File_Searcher.Enabled = GRoot_Path.Enabled = Chv_Path.Enabled = Chk_OnlyNew.Enabled = true;
@@ -91,7 +91,7 @@ namespace Xylia.Match.Windows.Panel
 
 		private void Btn_StartMatch_BtnClick(object sender, EventArgs e)
 		{
-			#region 初始化
+			#region Initialize
 			if (!Directory.Exists(GRoot_Path.Text))
 			{
 				SendMessage("请先设置游戏目录");
@@ -105,7 +105,7 @@ namespace Xylia.Match.Windows.Panel
 			}
 			else if (Chk_OnlyNew.Checked && !Chv_Path.Text.Contains("云端资源") && !File.Exists(Chv_Path.Text))
 			{
-				SendMessage(".Chv配置文件未选择或不存在\n如无配置文件，请使用云资源或者取消下方\"仅更新\"勾选");
+				SendMessage(".Chv配置文件未选择或不存在\n如无配置文件, 请使用云资源或者取消下方\"仅更新\"勾选");
 				return;
 			}
 
@@ -141,12 +141,12 @@ namespace Xylia.Match.Windows.Panel
 				this.Step1.StepIndex = 1;
 				#endregion
 
-				#region 加载资源
+				#region Load 资源
 				match.LoadCache(CacheList);
 				var noEmpty = match.GetData();
 				if (!noEmpty)
 				{
-					SendMessage("已激活仅新增道具功能，对比后无新增。");
+					SendMessage("已激活仅新增道具功能, 对比后无新增。");
 					ToEnd();
 					return;
 				}
@@ -168,7 +168,7 @@ namespace Xylia.Match.Windows.Panel
 
 		private void Chk_OnlyNew_CheckedChanged(object sender, EventArgs e) => Note_Chv.Visible = Chv_Path.Visible = /*Online_Searcher.Visible = */File_Searcher.Visible = Chk_OnlyNew.Checked;
 
-		private void File_Searcher_MouseEnter(object sender, EventArgs e) => FrmAnchorTips.ShowTips(File_Searcher, "选择本地文件\n\n如无，请选择云端资源。", AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500, false);
+		private void File_Searcher_MouseEnter(object sender, EventArgs e) => FrmAnchorTips.ShowTips(File_Searcher, "选择本地文件\n\n如无, 请选择云端资源。", AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500, false);
 
 
 		private void SendMessage(string Msg, bool IsError = false) => this.Invoke(() =>
@@ -187,7 +187,7 @@ namespace Xylia.Match.Windows.Panel
 
 					if (SelectdPage == this.PreviewPage_Item) ItemPreview_Search_SearchClick(null, null);
 					else if (SelectdPage == this.PreviewPage_Else) ucBtnExt11_BtnClick(null, null);
-					else Debug.WriteLine("当前页面未定义回车事件：" + SelectdPage);
+					else Debug.WriteLine("enter event not defined：" + SelectdPage);
 				}
 				break;
 
@@ -236,7 +236,7 @@ namespace Xylia.Match.Windows.Panel
 
 		private void ucBtnExt5_MouseEnter(object sender, EventArgs e)
 		{
-			FrmAnchorTips.ShowTips((Control)sender, "在已经读取了数据后，需要重新加载时使用", AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500, false);
+			FrmAnchorTips.ShowTips((Control)sender, "在已经Load 了数据后, 需要重新Load 时使用", AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500, false);
 		}
 
 		private void ucBtnExt5_BtnClick(object sender, EventArgs e)

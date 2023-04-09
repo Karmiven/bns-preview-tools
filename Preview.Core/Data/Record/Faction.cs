@@ -5,7 +5,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class Faction : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		public Text Name2;
 
 		[Signal("tag-name")]

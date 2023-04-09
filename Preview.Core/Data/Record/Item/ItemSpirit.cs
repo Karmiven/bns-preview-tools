@@ -9,7 +9,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class ItemSpirit : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		[Signal("main-ingredient")]
 		public Item MainIngredient;
 
@@ -71,7 +71,7 @@ namespace Xylia.Preview.Data.Record
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public static ItemSpirit Query(Item ItemData) => FileCache.Data.ItemSpirit.FirstOrDefault(o => FileCache.Data.Item[o.MainIngredient] == ItemData);
 
 		public static IEnumerable<ItemSpirit> Query(EquipType EquipType) => EquipType == EquipType.None ? null :

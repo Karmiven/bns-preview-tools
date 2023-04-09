@@ -5,7 +5,7 @@ namespace Xylia.Preview.Data.Record
 {
 	public sealed class MapGroup1Expedition : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 
 		#endregion
 	}

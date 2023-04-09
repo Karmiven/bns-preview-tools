@@ -18,12 +18,9 @@ using TableModel = BnsBinTool.Core.Models.Table;
 
 namespace Xylia.Preview.Data.Helper
 {
-	/// <summary>
-	/// 缓存数据
-	/// </summary>
 	public class DataTableSet : IDisposable
 	{
-		#region 基本数据
+		#region Data
 		public BNSDat XmlData;
 
 		public BNSDat LocalData;
@@ -53,7 +50,7 @@ namespace Xylia.Preview.Data.Helper
 
 		public virtual void LoadData(bool UseDB = true, string Folder = null)
 		{
-			#region 加载文件
+			#region Load 文件
 			if (Tables is not null) return;
 			var tableDef = DefinitionHelper.LoadTableDefinition();
 
@@ -67,7 +64,7 @@ namespace Xylia.Preview.Data.Helper
 			#endregion
 
 
-			#region 加载 bnsDB
+			#region Load  bnsDB
 			if (!UseDB) return;
 
 
@@ -83,10 +80,10 @@ namespace Xylia.Preview.Data.Helper
 
 			//获取扩展信息
 			var AliasTable = data.NameTable.Entries.CreateTable();
-			Debug.WriteLine($"[2] 耗时 {(DateTime.Now - dt).Seconds}s");
+			Debug.WriteLine($"[2] rt {(DateTime.Now - dt).Seconds}s");
 
 			this.SetType(this.Tables.DetectIndices(AliasTable));
-			Debug.WriteLine($"[3] 耗时 {(DateTime.Now - dt).Seconds}s");
+			Debug.WriteLine($"[3] rt {(DateTime.Now - dt).Seconds}s");
 
 			AliasTable.ForEach(table => GetHelper(table.Key).Aliases = table.Value);
 
@@ -234,7 +231,7 @@ namespace Xylia.Preview.Data.Helper
 				}
 
 				// TODO: 释放未托管的资源(未托管的对象)并重写终结器
-				// TODO: 将大型字段设置为 null
+				// TODO: 将大型Fields设置为 null
 				disposedValue = true;
 			}
 		}
@@ -260,7 +257,7 @@ namespace Xylia.Preview.Data.Helper
 
 			var tableDef = DefinitionHelper.LoadTableDefinition();
 
-			#region 加载 bnsDB
+			#region Load bnsDB
 			LocalData = new BNSDat(datpath);
 
 			var is64Bit = true;
@@ -269,7 +266,7 @@ namespace Xylia.Preview.Data.Helper
 			this.SetType(this.Tables.DetectIndices());
 			#endregion
 
-			#region 加载定义数据
+			#region Load 定义数据
 			this.datafileToXml = new(DefinitionHelper.LoadDefinition(tableDef, this));
 			#endregion
 		}
@@ -279,7 +276,7 @@ namespace Xylia.Preview.Data.Helper
 	{
 		public override void LoadData(bool UseDB, string Folder)
 		{
-			#region 加载文件
+			#region Load 文件
 			if (Tables is not null) return;
 
 			var getDataPath = new GetDataPath(Folder ?? CommonPath.GameFolder, true);
@@ -287,7 +284,7 @@ namespace Xylia.Preview.Data.Helper
 			LocalData = new BNSDat(getDataPath.TargetLocal);
 			#endregion
 
-			#region 加载 bnsDB
+			#region Load  bnsDB
 			var data = Datafile.ReadFromBytes(XmlData.ExtractBin());
 			var local = Datafile.ReadFromBytes(LocalData.ExtractBin());
 			this.Tables = data.Tables.Concat(local.Tables).ToArray();

@@ -92,7 +92,7 @@
 			this.Memory.Name = "Memory";
 			this.Memory.Size = new System.Drawing.Size(126, 20);
 			this.Memory.TabIndex = 81;
-			this.Memory.Text = "   信息监控初始化";
+			this.Memory.Text = "   信息监控Initialize";
 			// 
 			// Panel
 			// 

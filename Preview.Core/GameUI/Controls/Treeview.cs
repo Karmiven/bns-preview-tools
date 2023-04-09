@@ -36,7 +36,7 @@ namespace Xylia.Windows.Controls
 		{
 			if (e.Node.Level == 0)//根节点
 			{
-				//设置根节点的背景色，可以防止字体图标重绘叠加
+				//设置根节点的背景色, 可以防止字体图标重绘叠加
 				e.Graphics.FillRectangle(new SolidBrush(Color.Transparent), e.Bounds);
 
 				SolidBrush ForeBrush = new SolidBrush(Color.FromArgb(124, 169, 200));
@@ -57,12 +57,12 @@ namespace Xylia.Windows.Controls
 			}
 			else
 			{
-				//如果子节点的Bounds属性不为空(Empty），绘制该节点
+				//如果子节点的Bounds属性不为空(Empty）, 绘制该节点
 				if (!e.Bounds.IsEmpty)
 				{
 					e.Graphics.FillRectangle(Brushes.White, e.Bounds);
 
-					//绘制连接线,30 = 20 + 10,10为图标宽的一半，保证topEnd点在图标中心，15为行高一半
+					//绘制连接线,30 = 20 + 10,10为图标宽的一半, 保证topEnd点在图标中心, 15为行高一半
 					//Start定义了横线长度
 
 					int Shift = -20;
@@ -83,7 +83,7 @@ namespace Xylia.Windows.Controls
 					if (null != e.Node.NextNode) e.Graphics.DrawLine(linePen, middle, bottomEnd);
 
 
-					//绘制文本框，宽145px可容纳十个10.5pt的字，55 = 23 + 20 + 12，文本框距离上下边界4px
+					//绘制文本框, 宽145px可容纳十个10.5pt的字, 55 = 23 + 20 + 12, 文本框距离上下边界4px
 					Rectangle box = new Rectangle(e.Bounds.Left + 43 + Shifts, e.Bounds.Top + 4, this.Width - 55 - 20 - Shifts, e.Bounds.Height - 8);
 					if (e.Node.IsSelected)//二级节点被选中
 					{

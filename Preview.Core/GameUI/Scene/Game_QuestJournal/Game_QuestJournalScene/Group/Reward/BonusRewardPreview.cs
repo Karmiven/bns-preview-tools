@@ -17,7 +17,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	[DesignTimeVisible(false)]
 	public partial class BonusRewardPreview : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public BonusRewardPreview()
 		{
 			InitializeComponent();
@@ -26,9 +26,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 		#endregion
 
-
-
-		#region 方法
+		#region Functions
 		public bool INVALID = true;
 
 		public void LoadData(QuestBonusRewardSetting QuestBonusRewardSetting)

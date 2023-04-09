@@ -18,7 +18,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 	[DesignTimeVisible(false)]
 	public partial class ProcessComparisonCell : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public ProcessComparisonCell()
 		{
 			InitializeComponent();
@@ -31,7 +31,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public void LoadData(ItemExchange CrystallRule)
 		{
 			this.Controls.Remove(this.itemIconCell1);

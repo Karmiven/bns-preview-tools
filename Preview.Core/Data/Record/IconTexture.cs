@@ -49,7 +49,7 @@ namespace Xylia.Preview.Data.Record
 			//System.Diagnostics.Debug.WriteLine($"{IconIndex} => {ColID} - {RowID}");
 
 			//返回裁剪结果
-			//锁定对象，防止异步异常
+			//锁定对象, 防止异步异常
 			lock (TextureData)
 			{
 				try

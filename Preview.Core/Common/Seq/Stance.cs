@@ -191,7 +191,7 @@ namespace Xylia.Preview.Common.Seq
 		Npc주시자세3,
 
 
-		//新增的，未确认排序
+		//新增的, 未确认排序
 		간이연주,
 		우퍼,
 		연주,

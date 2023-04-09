@@ -10,7 +10,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 	[DesignTimeVisible(false)]
 	public partial class GemCircle : UserControl
 	{
-		#region	构造
+		#region	Constructor
 		public GemCircle()
 		{
 			InitializeComponent();
@@ -19,7 +19,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		private readonly int DefaultScale;
 
 		private Bitmap BackGround  => (Bitmap)new ComponentResourceManager(typeof(GemCircle)).GetObject(nameof(this.Panel_BackGround) + ".Image");
@@ -205,7 +205,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		public enum PartSection
 		{
 			/// <summary>
-			/// 初始化
+			/// Initialize
 			/// </summary>
 			Init,
 
@@ -232,7 +232,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 
 		#endregion
 
-		#region 方法
+		#region Functions
 		public event EventHandler SelectPartChanged;
 
 		/// <summary>
@@ -274,7 +274,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		}
 
 		/// <summary>
-		/// 鼠标点击事件
+		/// 鼠标点击Event
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -333,10 +333,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		/// <returns></returns>
 		public Bitmap Stroke(Bitmap bitmap, bool IsBackground = false)
 		{
-			//重新实例化，防止修改原数据
+			//重新实例化, 防止修改原数据
 			bitmap = new Bitmap(bitmap);
 
-			//背景框范围选择有问题，暂时调整为不处理
+			//背景框范围选择有问题, 暂时调整为不处理
 			if (IsBackground) return bitmap;
 
 			GraphicsPath GP = new GraphicsPath();
@@ -346,7 +346,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 			{
 				for (int j = 0; j < bitmap.Height; j++)
 				{
-					// 这点不透明而且左右上下四点至少有一点是透明的，那这点就是边缘
+					// 这点不透明而且左右上下四点至少有一点是透明的, 那这点就是边缘
 					if (bitmap.GetPixel(i, j) != C && (i > 0 && bitmap.GetPixel(i - 1, j) == C || i < bitmap.Width - 1 && bitmap.GetPixel(i + 1, j) == C || j > 0 && bitmap.GetPixel(i, j - 1) == C || j < bitmap.Height - 1 && bitmap.GetPixel(i, j + 1) == C))
 					{
 						if (IsBackground) GP.AddRectangle(new Rectangle(new Point(i + 1, j), new Size(3, 3)));

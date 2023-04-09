@@ -153,7 +153,7 @@ namespace Xylia.Preview.Data.Record
 
 
 
-		#region 方法
+		#region Functions
 		public static IEnumerable<ItemTransformRecipe> QueryRecipe(Item Item) => FileCache.Data.ItemTransformRecipe.Where(o =>
 		{
 			var MainIngredient = o.Attributes["main-ingredient"].CastObject();

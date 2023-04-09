@@ -13,7 +13,7 @@ namespace Xylia.Match.Util.Paks.Textures
 {
 	public abstract class IconOutBase : IDisposable
 	{
-		#region 构造
+		#region Constructor
 		/// <summary>
 		/// 游戏资源文件夹
 		/// </summary>
@@ -25,7 +25,7 @@ namespace Xylia.Match.Util.Paks.Textures
 		}
 		#endregion
 
-		#region	字段
+		#region	Fields
 		protected DataTableSet set;
 
 		/// <summary>
@@ -48,12 +48,10 @@ namespace Xylia.Match.Util.Paks.Textures
 		#endregion
 
 
-
-
-		#region 方法
+		#region Functions
 		public void LoadData(Action<string> Action)
 		{
-			#region 读取资源
+			#region Load 资源
 			this.LogHelper = new OutLogHelper(Path.GetDirectoryName(this.OutputDirectory));  //设置日志输出路径
 			this.Action = Action;
 
@@ -97,7 +95,7 @@ namespace Xylia.Match.Util.Paks.Textures
 			#endregion
 
 			#region 开始处理
-			//必须进行初始化
+			//必须进行Initialize
 			FileCache.PakData.Initialize(this._gameDirectory);
 
 			//多线程处理
@@ -105,7 +103,7 @@ namespace Xylia.Match.Util.Paks.Textures
 			Directory.CreateDirectory(OutputDirectory);
 			Parallel.ForEach(this.QuoteInfos, QuoteInfo =>
 			{
-				Action($"正在生成图标，进度{ 100 * Count++ / this.QuoteInfos.Count  }%");
+				Action($"正在生成图标, 进度{ 100 * Count++ / this.QuoteInfos.Count  }%");
 
 				string ItemMsg = $"数据ID { QuoteInfo.MainId } [{ QuoteInfo.Name }] ";
 				var IconTexture = set.IconTexture[QuoteInfo.TextureAlias];
@@ -134,7 +132,7 @@ namespace Xylia.Match.Util.Paks.Textures
 					if (!HasSaveFormat) OutName = MainId;
 					else
 					{
-						//由于正则对中文支持问题，其他中文情况单独列出
+						//由于正则对中文支持问题, 其他中文情况单独列出
 						OutName = SaveFormat
 						   .Replace("[名称]", QuoteInfo.Name)
 						   .Replace("[name]", QuoteInfo.Name).Replace("[name2]", QuoteInfo.Name)
@@ -145,7 +143,7 @@ namespace Xylia.Match.Util.Paks.Textures
 					//判断是否存在非法字符
 					if (OutName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
 					{
-						LogHelper.Record($"{ QuoteInfo.MainId } [{ QuoteInfo.Name }]  由于名称存在非法字符，生成名称已调整。(非法字符是指<>?*\" |\\/等不可以用于文件名的符号)", OutLogHelper.LogGroup.生成日志);
+						LogHelper.Record($"{ QuoteInfo.MainId } [{ QuoteInfo.Name }]  由于名称存在非法字符, 生成名称已调整。(非法字符是指<>?*\" |\\/等不可以用于文件名的符号)", OutLogHelper.LogGroup.生成日志);
 						foreach (char c in Path.GetInvalidFileNameChars()) OutName = OutName.Replace(c.ToString(), "_");
 					}
 
@@ -195,7 +193,7 @@ namespace Xylia.Match.Util.Paks.Textures
 					this.set = null;
 
 					// TODO: 释放未托管的资源(未托管的对象)并替代终结器
-					// TODO: 将大型字段设置为 null
+					// TODO: 将大型Fields设置为 null
 					disposedValue = true;
 				}
 			}
@@ -208,12 +206,12 @@ namespace Xylia.Match.Util.Paks.Textures
 		// // TODO: 仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
 		// ~IconTextureBase()
 		// {
-		//     // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+		//     // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”Functions中
 		//     Dispose(disposing: false);
 		// }
 		public void Dispose()
 		{
-			// 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+			// 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”Functions中
 			Dispose(disposing: true);
 			GC.SuppressFinalize(this);
 		}

@@ -20,7 +20,7 @@ namespace Xylia.Preview.Data.Record
 {
 	public class BaseRecord : IArgParam
 	{
-		#region 设定字段
+		#region Fields
 		public IAttributeCollection Attributes { get; set; }
 
 		public virtual int Key() => int.TryParse(this.Attributes?["id"], out var @int) ? @int : (int)(this.TableIndex + 1);
@@ -84,7 +84,7 @@ namespace Xylia.Preview.Data.Record
 		}
 		#endregion
 
-		#region 接口字段
+		#region Interface
 		public override string ToString() => this.GetType().Name + ":" + (this.alias ?? this.Key().ToString());
 
 		object IArgParam.ParamTarget(string ParamName) => this.GetParam(ParamName) ?? this.Attributes[ParamName];
@@ -146,7 +146,7 @@ namespace Xylia.Preview.Data.Record
 		}
 
 
-		#region 静态方法
+		#region Static Functions
 		public static List<T> LoadChildren<T>(XmlElement xe, string NodeName = null) where T : BaseRecord, new()
 		{
 			NodeName ??= typeof(T).Name.ToLower();
@@ -164,11 +164,11 @@ namespace Xylia.Preview.Data.Record
 
 		public static XmlNode Serialize(object T, XmlDocument doc, ReleaseSide side = default, bool HasChild = true, string NodeName = null)
 		{
-			//如果未传递节点名，则获取当前节点名称
+			//如果未传递节点名, 则获取当前节点名称
 			NodeName ??= T.GetAttribute<Signal>()?.Description ?? T.GetType().Name.ToLower();
 			var Node = doc.CreateElement(NodeName);
 
-			//实例化节点和字段名
+			//实例化节点和Fields名
 			foreach (var field in T.GetType().GetFields(ClassExtension.Flags))
 			{
 				if (field.FieldType.GetGenericTypeDefinition() == typeof(List<>))
@@ -195,7 +195,7 @@ namespace Xylia.Preview.Data.Record
 				}
 				else
 				{
-					//去除服务端专用字段
+					//去除服务端专用Fields
 					if (field.ContainAttribute(out Side fside))
 					{
 						if (side == ReleaseSide.Client && fside.SideType == Side.Type.Server) continue;
@@ -206,7 +206,7 @@ namespace Xylia.Preview.Data.Record
 					if (ObjVal is null) continue;
 
 					#region 默认值判断
-					//默认值为 Null，则表示任何值都应该显示
+					//默认值为 Null, 则表示任何值都应该显示
 					if (field.ContainAttribute(out DefaultValueAttribute DefVal))
 					{
 						if (DefVal.Value != null && DefVal.Value.Equals(ObjVal))
@@ -223,7 +223,7 @@ namespace Xylia.Preview.Data.Record
 					{
 						var EnumValue = ObjVal.ToString();
 
-						//如果不存在，则判断枚举对象自身的默认值信息
+						//如果不存在, 则判断枚举对象自身的默认值信息
 						if (field.FieldType.ContainAttribute(out DefaultValueAttribute DefVal2))
 						{
 							if (field.FieldType == DefVal2.Value.GetType() && DefVal2.Value.Equals(ObjVal)) continue;

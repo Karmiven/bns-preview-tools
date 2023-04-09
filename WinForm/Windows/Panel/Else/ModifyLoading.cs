@@ -51,7 +51,7 @@ namespace Xylia.Match.Windows.Panel
 			}
 			else if (Directory.Exists(TextBox1.Text) && new DirectoryInfo(TextBox1.Text).GetFiles("*.jpg").Length != 0)
 			{
-				var result = MessageBox.Show("继续操作会覆盖数据，请备份数据！如已完成，请点击确认。", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				var result = MessageBox.Show("继续操作会覆盖数据, 请备份数据！如已完成, 请点击确认。", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				if (result != DialogResult.OK) 
 				{
 					FrmTips.ShowTipsSuccess(null, "用户结束操作");

@@ -89,7 +89,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 						string Alias = Node.Attributes["alias"]?.Value;
 						string Text = Node.Attributes["text"]?.Value ?? Node.InnerXml;
 
-						//由于解析库不会保留空格，只能通过特殊方法转换
+						//由于解析库不会保留空格, 只能通过特殊Functions转换
 						Text = Text.Replace("&#160;", " ").Replace("&#38;", "&");
 						this.Data.Add(new Text() { alias = Alias, text = Text });
 					}
@@ -113,7 +113,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 				//this.ht_id.Add(text.id, text);
 			}
 
-			System.Diagnostics.Trace.WriteLine("总读取数量：" + this.Data.Count);
+			System.Diagnostics.Trace.WriteLine("总Load 数量：" + this.Data.Count);
 		}
 
 	}

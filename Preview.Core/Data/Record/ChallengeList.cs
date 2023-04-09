@@ -6,7 +6,7 @@ namespace Xylia.Preview.Data.Record
 {
 	public sealed class ChallengeList : BaseRecord
 	{
-		#region 枚举
+		#region Enums
 		public enum TypeSeq
 		{
 			dayofweek,

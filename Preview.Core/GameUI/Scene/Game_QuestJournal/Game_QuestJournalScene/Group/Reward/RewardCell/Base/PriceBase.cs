@@ -4,7 +4,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell
 {
 	public partial class PriceBase : RewardCellBase
 	{
-		#region 初始化
+		#region Initialize
 		public PriceBase()
 		{
 			InitializeComponent();
@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell
 		#endregion
 
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 货币数量
 		/// </summary>

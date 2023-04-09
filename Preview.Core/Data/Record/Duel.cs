@@ -15,7 +15,7 @@ namespace Xylia.Preview.Data.Record
 		[Signal("reward-summary")]
 		public AttractionRewardSummary RewardSummary;
 	
-		#region 接口方法
+		#region Interface Functions
 		public string GetName() => this.DuelName2.GetText();
 
 		public string GetDescribe() => this.DuelDesc.GetText();

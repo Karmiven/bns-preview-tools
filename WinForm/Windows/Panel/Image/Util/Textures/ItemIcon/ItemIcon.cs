@@ -14,7 +14,7 @@ namespace Xylia.Match.Util.Paks.Textures
 	/// </summary>
 	public sealed class ItemIcon : IconOutBase
 	{
-		#region 构造
+		#region Constructor
 		public ItemIcon(string GameFolder) : base(GameFolder) { }
 
 
@@ -35,7 +35,7 @@ namespace Xylia.Match.Util.Paks.Textures
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		protected override void AnalyseSourceData()
 		{
 			Action("正在分析物品数据...");
@@ -47,10 +47,10 @@ namespace Xylia.Match.Util.Paks.Textures
 			};
 
 
-			//读取外部文件
+			//Load 外部文件
 			var lst = ChvLoad.LoadData(ChvPath);
 
-			//读取物品数据
+			//Load 物品数据
 			Parallel.ForEach(set.Item, pOptions, (item) =>
 			{
 				//使用原始属性

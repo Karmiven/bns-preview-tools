@@ -17,7 +17,7 @@ namespace Xylia.Preview.Output
 
 		protected override void CreateData()
 		{
-			//移除掉默认的数据表
+			//Remove default workbook
 			this.ExcelInfo.Workbook.RemoveSheetAt(0);
 			var ItemTable = FileCache.Data.Item;
 

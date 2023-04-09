@@ -16,18 +16,17 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 	[DesignTimeVisible(false)]
 	public partial class ResultWeaponPreview : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public ResultWeaponPreview() => InitializeComponent();
 		#endregion
 
-		#region 事件与委托
+		#region Events & Delegates
 		public delegate void ResultItemChangedHandle(ResultItemChangedEventArgs e);
 		public event ResultItemChangedHandle ResultItemChanged;
 		#endregion
 
 
-
-		#region 界面方法
+		#region Functions (UI)
 		/// <summary>
 		/// 单页最大目标数量
 		/// </summary>
@@ -79,9 +78,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 		}
 		#endregion
 
-
-
-		#region 方法
+		#region Functions
 		private void SetData(Action<string> action, params string[] NextItem)
 		{
 			this.Items = new();
@@ -107,7 +104,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 				this.Items.Add(cell);
 				#endregion
 
-				#region 委托绑定事件
+				#region 委托绑定Event
 				cell.Click += new EventHandler((s, e) =>
 				{
 					//将其他对象的选择状态取消
@@ -146,7 +143,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 
 
 	/// <summary>
-	/// 目标物品变更事件
+	/// 目标物品变更Event
 	/// </summary>
 	public class ResultItemChangedEventArgs : EventArgs
 	{

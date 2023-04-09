@@ -3,8 +3,8 @@
 //     此代码由工具生成。
 //     运行时版本:4.0.30319.42000
 //
-//     对此文件的更改可能会导致不正确的行为，并且如果
-//     重新生成代码，这些更改将会丢失。
+//     对此文件的更改可能会导致不正确的行为, 并且如果
+//     重新生成代码, 这些更改将会丢失。
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -13,12 +13,12 @@ namespace Xylia.Preview.Data {
     
     
     /// <summary>
-    ///   一个强类型的资源类，用于查找本地化的字符串等。
+    ///   一个强类型的资源类, 用于查找本地化的字符串等。
     /// </summary>
     // 此类是由 StronglyTypedResourceBuilder
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
-    // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
-    // (以 /str 作为命令选项)，或重新生成 VS 项目。
+    // 若要添加或移除成员, 请编辑 .ResX 文件, 然后重新运行 ResGen
+    // (以 /str 作为命令选项), 或重新生成 VS 项目。
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -47,7 +47,7 @@ namespace Xylia.Preview.Data {
         }
         
         /// <summary>
-        ///   重写当前线程的 CurrentUICulture 属性，对
+        ///   重写当前线程的 CurrentUICulture 属性, 对
         ///   使用此强类型资源类的所有资源查找执行重写。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5837,7 +5837,7 @@ namespace Xylia.Preview.Data {
         ///		&lt;record alias=&quot;category&quot; type=&quot;Int8&quot; /&gt;
         ///		&lt;record alias=&quot;item&quot; type=&quot;TRef&quot; repeat=&quot;20&quot; /&gt;
         ///		&lt;record alias=&quot;item-count&quot; type=&quot;Int16&quot; repeat=&quot;20&quot; /&gt;
-        ///		&lt;record alias=&quot;unknown&quot; type=&quot;Bool&quot; describe=&quot;是否共同计算，启用 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///		&lt;record alias=&quot;unknown&quot; type=&quot;Bool&quot; describe=&quot;是否共同计算, 启用 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string WorldAccountExpeditionData {
             get {
@@ -5948,7 +5948,7 @@ namespace Xylia.Preview.Data {
         ///		&lt;record alias=&quot;id&quot; type=&quot;Int16&quot; key=&quot;y&quot; /&gt;
         ///		&lt;record alias=&quot;alias&quot; type=&quot;String&quot; /&gt;
         ///
-        ///        &lt;!-- 服务端字段 --&gt;
+        ///        &lt;!-- 服务端Fields --&gt;
         ///		&lt;record alias=&quot;convoy&quot; ref=&quot;NpcConvoy&quot; client=&quot;n&quot; repeat=&quot;4&quot; /&gt;
         ///		&lt;record alias=&quot;spawn&quot; ref=&quot;ZoneNpcSpawn&quot; client=&quot;n&quot; repeat=&quot;4&quot; /&gt;
         ///		&lt;record alias=&quot;move-radius&quot; type=&quot;Distance&quot; client=&quot;n&quot; /&gt;	
@@ -6246,11 +6246,11 @@ namespace Xylia.Preview.Data {
         ///&lt;table&gt;
         ///  &lt;list module=&quot;AIData&quot; type=&quot;ZoneTriggerEventStage&quot; version=&quot;0.11&quot; &gt; 
         ///&lt;!--
-        ///total-duration-minute-1/2 分别对应各自的 next-cond-1/2 条件，注意两者之间并不互斥
-        ///如果同时设置为时间类型，又不设置对应的持续时间。就会出现事件刚结束就立即再次触发的问题。
+        ///total-duration-minute-1/2 分别对应各自的 next-cond-1/2 条件, 注意两者之间并不互斥
+        ///如果同时设置为时间类型, 又不设置对应的持续时间。就会出现Event刚结束就立即再次触发的问题。
         ///
-        ///事件结束时刻为触发时刻+总时长+1分钟（因为触发时刻的那一分钟不会参与计算）
-        ///因此如果需要特定时间点结束，必须对总时长减去1
+        ///Event结束时刻为触发时刻+总时长+1分钟（因为触发时刻的那一分钟不会参与计算）
+        ///因此如果需要特定时间点结束, 必须对总时长减去1
         ///--&gt;
         ///    &lt;record alias=&quot;type&quot; type=&quot;type&quot; &gt;
         ///		&lt;case alias=&quot;stage-stand-by-classic-field&quot; /&gt;

@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class MapInfo : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		[Signal("group-id")]
 		public short GroupId;
 
@@ -80,7 +80,7 @@ namespace Xylia.Preview.Data.Record
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 获取指定地图的深度
 		/// </summary>

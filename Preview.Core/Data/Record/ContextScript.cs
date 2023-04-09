@@ -56,7 +56,7 @@ namespace Xylia.Preview.Data.Record
 
 	public sealed class Condition : BaseRecord
 	{
-		#region 枚举
+		#region Enums
 		public enum FieldSeq
 		{
 			[Signal("job-style-only")]
@@ -98,7 +98,7 @@ namespace Xylia.Preview.Data.Record
 
 	public sealed class Result : BaseRecord
 	{
-		#region 枚举
+		#region Enums
 		public enum ControlModeSeq
 		{
 			classic,

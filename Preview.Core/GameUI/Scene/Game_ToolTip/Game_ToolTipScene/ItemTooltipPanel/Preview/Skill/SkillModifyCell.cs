@@ -8,7 +8,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 	[DesignTimeVisible(false)]
 	public partial class SkillModifyCell : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public SkillModifyCell()
 		{
 			InitializeComponent();
@@ -17,7 +17,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 技能名称
 		/// </summary>
@@ -45,7 +45,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		#endregion
 
 
-		#region 重写方法
+		#region 重写Functions
 		public override void Refresh()
 		{
 			this.Height = SkillName_Txt.Bottom + this.TooltipText_Txt.Height;

@@ -50,7 +50,7 @@
 		
 		<record alias="id" type="Int32" key="y" />
 		<record alias="alias" type="String" />
-		<record alias="subject" type="Int32" length="20" name="由于类型解析暂不支持，暂时需要通过此方式配置" />
+		<record alias="subject" type="Int32" length="20" name="由于类型解析暂不支持, 暂时需要通过此方式配置" />
 		<record alias="target" type="Int32" length="20" />
 		<record alias="subject2" type="Int32" length="20" />
 		<record alias="target2" type="Int32" length="20" />

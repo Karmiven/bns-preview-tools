@@ -20,7 +20,7 @@ namespace Xylia.Preview.GameUI.Controls
 		public HorizontalAlignment HorizontalAlignment;
 		#endregion
 
-		#region 构造
+		#region Constructor
 		public ExecuteParam(Control c)
 		{
 			this.Font = c.Font;
@@ -28,13 +28,7 @@ namespace Xylia.Preview.GameUI.Controls
 		}
 		#endregion
 
-
-		/// <summary>
-		/// 获取字体信息
-		/// </summary>
-		/// <param name="FontName"></param>
-		/// <param name="UseFontHeight"></param>
-		/// <returns></returns>
+		#region Functions
 		public ExecuteParam GetFont(string FontName, bool UseFontHeight = true)
 		{
 			if (FontName is null) return this;
@@ -49,7 +43,7 @@ namespace Xylia.Preview.GameUI.Controls
 			}
 
 
-			#region	读取数据
+			#region	Font
 			var UFontSet = FontName.GetUObject();
 			if (UFontSet is not null)
 			{
@@ -68,11 +62,11 @@ namespace Xylia.Preview.GameUI.Controls
 				float size = !UseFontHeight || set.Height == 0 ? param.Font.Size : set.Height;
 				param.Font = new Font(param.Font.FontFamily, size, style);
 			}
+			#endregion
 
 			return param;
-			#endregion
 		}
-
+		#endregion
 
 		#region ICloneable
 		public object Clone() => this.MemberwiseClone();
@@ -94,7 +88,7 @@ namespace Xylia.Preview.GameUI.Controls
 
 
 
-		#region 构造
+		#region Constructor
 		public ExecuteUnit(ExecuteParam param, PointF point, string text)
 		{
 			this.param = param;

@@ -27,7 +27,7 @@ namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 
 
 
-		#region 可缺省字段
+		#region 可缺省Fields
 		[Signal("enter-cinematic")]
 		public Cinematic EnterCinematic;
 

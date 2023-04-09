@@ -4,7 +4,7 @@ using Xylia.Preview.Common.Arg;
 namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 {
 	/// <summary>
-	/// 对于 manual 条件序列，指示转移到下一个战斗序列
+	/// 对于 manual 条件序列, 指示转移到下一个战斗序列
 	/// </summary>
 	[Signal("transit-npc-combat")]
 	public class TransitNpcCombat : IReaction

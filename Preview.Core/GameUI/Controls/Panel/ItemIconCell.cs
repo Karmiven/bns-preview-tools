@@ -16,7 +16,7 @@ namespace Xylia.Preview.GameUI.Controls
 	[Designer(typeof(FixedHeightDesigner))]
 	public partial class ItemIconCell : PictureBox
 	{
-		#region 构造
+		#region Constructor
 		public ItemIconCell()
 		{
 			InitializeComponent();
@@ -42,7 +42,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 物品别名
 		/// </summary>
@@ -109,13 +109,13 @@ namespace Xylia.Preview.GameUI.Controls
 		/// <summary>
 		/// 显示物品数量
 		/// </summary>
-		[Category("Data"), Description("当数量为1时，是否显示物品数量")]
+		[Category("Data"), Description("当数量为1时, 是否显示物品数量")]
 		public bool ShowStackCountOnlyOne { get; set; } = true;
 		#endregion
 
 
 
-		#region 方法
+		#region Functions
 		private void ItemIconCell_Resize(object sender, EventArgs e)
 		{
 			if (this is not FeedItemIconCell)

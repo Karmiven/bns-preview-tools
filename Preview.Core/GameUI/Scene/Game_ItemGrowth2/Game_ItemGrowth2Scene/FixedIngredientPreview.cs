@@ -13,7 +13,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 	[DesignTimeVisible(false)]
 	public partial class FixedIngredientPreview : Panel
 	{
-		#region 方法
+		#region Functions
 		private void CreateNew(Item Item, int StackCount, ref int LocX)
 		{
 			var ItemIcon = new ItemIconCell()

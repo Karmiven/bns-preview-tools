@@ -14,7 +14,7 @@ namespace Xylia.Preview.Data.Record.CombatSequenceData
 	/// </summary>
 	public abstract class ISequence : BaseRecord
     {
-        #region 字段
+        #region Fields
         [FStruct(StructType.Meta)]
         public List<IAction> Actions = new();
 
@@ -49,12 +49,12 @@ namespace Xylia.Preview.Data.Record.CombatSequenceData
         [Signal("special-5")] public byte Special5;
         #endregion
 
-        #region 方法
+        #region Functions
         public override void LoadData(XmlElement xe)
         {
             base.LoadData(xe);
 
-            //Special1、Special2存在默认值，当定义 Special1 后 Special2 会默认为空
+            //Special1、Special2存在默认值, 当定义 Special1 后 Special2 会默认为空
             if(this.Special1 != 0)    
                 this.Special2 = 0;
 

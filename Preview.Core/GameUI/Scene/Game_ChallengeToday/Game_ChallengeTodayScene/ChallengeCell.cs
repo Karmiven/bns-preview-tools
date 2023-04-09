@@ -22,23 +22,20 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 		public bool CannotAcquire = false;
 
 
-		#region 方法
+		#region Functions
 		public void LoadData(string ChallengeQuestBasic, string ChallengeQuestExpansion, Grade Grade, string attraction)
 		{
-			//初始化
+			//Initialize
 			var Quest = FileCache.Data.Quest[ChallengeQuestBasic];
 			var Attraction = attraction.CastObject();
 
-			//附加对象
 			this.LoadAttraction(Attraction, out var grade);
-
-			//课题名称
 			this.ChallengeName.Params[1] = Quest?.Name2.GetText();
 			this.ChallengeName.Params[2] = null;
 			this.ChallengeName.Params[3] = Quest;
 			this.ChallengeName.Params[4] = GetGradeInfo(Grade);
 
-			string Part1 = CannotAcquire ? "UI.ChallengeToday.NpcQuest.Cannot.Acquire".GetText() : "<arg p='3:quest.front-icon.scale.120'/>";
+			string Part1 = CannotAcquire ? "UI.ChallengeToday.NpcQuest.Cannot.Acquire".GetText() : "<arg p='3:quest.front-icon.scale.100'/>";
 			string Part2 = "<p bottommargin='10' topmargin='10'><arg p='4:string'/> <arg p='1:string'/></p>";
 			this.ChallengeName.Text = Part1 + Part2;
 			this.ChallengeName.ForeColor = Quest?.ForeColor ?? default;
@@ -52,15 +49,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 
 		public void LoadData(DifficultyType ChallengeNpcDifficulty, string ChallengeNpcKill, Grade Grade, string attraction, string ChallengeNpcQuest)
 		{
-			//初始化
+			//Initialize
 			var Quest = FileCache.Data.Quest[ChallengeNpcQuest];
 			var Attraction = attraction.CastObject();
 			var Npc = FileCache.Data.Npc[ChallengeNpcKill];
 
-			//附加对象
 			this.LoadAttraction(Attraction, out var grade);
-
-			//课题名称
 			this.ChallengeName.Params[1] = $"<font name='00008130.Program.Fontset_ItemGrade_{grade}'>{Attraction.GetName()}</font>";
 			this.ChallengeName.Params[2] = GetDifficultyInfo(ChallengeNpcDifficulty);
 			this.ChallengeName.Params[3] = Npc;

@@ -13,7 +13,7 @@ namespace Xylia.Preview.GameUI.Controls
 	[DesignTimeVisible(false)]
 	public partial class ListPreview : Panel
 	{
-		#region 构造
+		#region Constructor
 		public EventHandler ItemCellDoubleClick;
 
 		public ListPreview()
@@ -23,7 +23,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 最大单页控件数量
 		/// </summary>
@@ -45,8 +45,8 @@ namespace Xylia.Preview.GameUI.Controls
 				if (value != null && MaxCellNum != 0)
 					PageCount = (int)Math.Ceiling((float)_cells.Count() / MaxCellNum);
 
-				this.pageSelector.Visible = PageCount > 1;
-				this.Refresh();
+
+				this.Invoke(() => this.Refresh());
 			}
 		}
 
@@ -57,7 +57,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		protected override Point ScrollToControl(Control activeControl) => this.AutoScrollPosition;
 
 		public override void Refresh()
@@ -87,8 +87,7 @@ namespace Xylia.Preview.GameUI.Controls
 					c.DoubleClick += ItemCellDoubleClick;
 			}
 
-
-			if (pageSelector.Visible)
+			if (this.pageSelector.Visible = PageCount > 1)
 			{
 				LocY += 10;
 

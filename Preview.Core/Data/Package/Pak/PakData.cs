@@ -18,7 +18,7 @@ namespace Xylia.Preview.Data.Package.Pak
 {
 	public sealed class PakData : IDisposable
 	{
-		#region 获取虚拟文件系统
+		#region FileProvider
 		/// <summary>
 		/// 虚拟文件系统解析提供器
 		/// </summary>
@@ -50,13 +50,10 @@ namespace Xylia.Preview.Data.Package.Pak
 				this._provider.UnloadAllVfs();
 				this._provider.SubmitKey(new FGuid(), new FAesKey("d2e5f7f94e625efe2726b5360c1039ce7cb9abb760a94f37bb15a6dc08741656"));
 
-				Debug.WriteLine($"[Debug] 初始化文件处理器，耗时 { (DateTime.Now - dt).Seconds }s");
+				Debug.WriteLine($"Initialize file provider, rt { (DateTime.Now - dt).Seconds }s");
 			}
 		}
 
-		/// <summary>
-		/// 读取资源注册表
-		/// </summary>
 		public void LoadAssetRegistry()
 		{
 			DateTime dt = DateTime.Now;
@@ -69,14 +66,14 @@ namespace Xylia.Preview.Data.Package.Pak
 					ObjectRef[asset.ObjectPath2] = asset.ObjectPath.Text;
 			}
 
-			Debug.WriteLine($"[Debug] 初始化资产注册表，耗时 { (DateTime.Now - dt).Seconds }s");
+			Debug.WriteLine($"Initialize asset registry,rt { (DateTime.Now - dt).Seconds }s");
 		}
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		/// <summary>
-		/// 将抽象对象读取为实例对象
+		/// 将抽象对象Load 为实例对象
 		/// </summary>
 		/// <param name="obj"></param>
 		/// <returns></returns>
@@ -103,7 +100,7 @@ namespace Xylia.Preview.Data.Package.Pak
 				OldPath = true;
 
 				//设定常用替换关系
-				//实际通过资源注册表关联，但载入资源注册表十分耗时
+				//实际通过资源注册表关联, 但载入资源注册表十分耗时
 				if (filePath.StartsWith("00008758")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_Icon/" + filePath[9..];
 				else if (filePath.StartsWith("00021326")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_Icon2nd/" + filePath[9..];
 				else if (filePath.StartsWith("00052219")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_Icon3rd/" + filePath[9..];
@@ -129,17 +126,17 @@ namespace Xylia.Preview.Data.Package.Pak
 					if (this.ObjectRef.TryGetValue(filePath, out Ue4Path))
 						return GetObject(Ue4Path);
 
-					Debug.WriteLine("无法读取的路径: " + filePath);
+					Debug.WriteLine("bad asset path: " + filePath);
 					return null;
 				}
 
-				//对于旧版路径，冒号代表文件夹
+				//对于旧版路径, 冒号代表文件夹
 				Ue4Path = Ue4Path.Replace('.', '/');
 			}
 			#endregion
 
 			#region 返回数据
-			//先获取资产文件路径，再判断 ExportMap
+			//先获取资产文件路径, 再判断 ExportMap
 			string AssetPath = Ue4Path.Split('.')[0];
 			var exports = GetAssetExports(AssetPath);
 			if (exports != null && exports.Any())
@@ -152,7 +149,7 @@ namespace Xylia.Preview.Data.Package.Pak
 				return exports.FirstOrDefault(o => o.Name.Equals(ObjectName, StringComparison.OrdinalIgnoreCase));
 			}
 
-			Debug.WriteLine($"路径读取失败: { Ue4Path }");
+			Debug.WriteLine($"get asset failed: { Ue4Path }");
 			return null;
 			#endregion
 		}
@@ -162,7 +159,7 @@ namespace Xylia.Preview.Data.Package.Pak
 			if (this._provider.TryFindGameFile(AssetPath, out var file))
 			{
 				//LoadPackage 直接使用会卡死
-				//需要修改为同步方法 or 通过多线程处理
+				//需要修改为同步Functions or 通过多线程处理
 				var task = new Task<IEnumerable<UObject>>(() => _provider.LoadPackage(file).GetExports());
 				task.Start();
 				task.Wait();

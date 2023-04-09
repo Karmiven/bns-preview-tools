@@ -12,13 +12,12 @@ namespace Xylia.Match.Windows.Panel
 	/// </summary>
 	public sealed class ItemImageCompose
 	{
-		#region 事件与委托
+		#region Events & Delegates
 		public event EmptyHandler RefreshHandle;
 		public void Refresh() => this.RefreshHandle?.Invoke();
 		#endregion
 
-
-		#region 方法
+		#region Functions
 		public Bitmap GradeImage;
 
 		public ImageInfo BottomLeft;

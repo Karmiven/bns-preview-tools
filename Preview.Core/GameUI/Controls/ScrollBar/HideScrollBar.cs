@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Xylia.Preview.GameUI.Controls.PanelEx.ScrollBar
 {
 	/// <summary>
-	/// 隐藏自身系统滚动条，以支持自定义滚动条
+	/// 隐藏自身系统滚动条, 以支持自定义滚动条
 	/// </summary>
 	[DesignTimeVisible(false)]
 	public class HideScrollBarPanel : Panel
@@ -23,15 +23,6 @@ namespace Xylia.Preview.GameUI.Controls.PanelEx.ScrollBar
 			base.WndProc(ref m);
 		}
 
-
-		/// <summary>
-		/// 防止滚动条自动复位
-		/// </summary>
-		/// <param name="activeControl"></param>
-		/// <returns></returns>
-		protected override Point ScrollToControl(Control activeControl)
-		{
-			return this.AutoScrollPosition;
-		}
+		protected override Point ScrollToControl(Control activeControl) => this.AutoScrollPosition;
 	}
 }

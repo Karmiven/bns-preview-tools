@@ -20,7 +20,7 @@ namespace Xylia.Match.Util.ItemList
 {
 	public sealed class ItemMatch
 	{
-		#region 构造
+		#region Constructor
 		private readonly Action<string> GetOutput = null;
 
 		public ItemMatch(Action<string> action)
@@ -58,7 +58,7 @@ namespace Xylia.Match.Util.ItemList
 
 		public bool GetData()
 		{
-			#region 初始化
+			#region Initialize
 			DataTableSet set = new();
 			set.LoadData();
 
@@ -80,7 +80,7 @@ namespace Xylia.Match.Util.ItemList
 				var record = ((DbData)item.Attributes).record;
 
 
-				//读取数据编号
+				//Load Data编号
 				var MainID = record.RecordId;
 				if (CacheList != null && CacheList.Contains(MainID)) return;
 
@@ -153,7 +153,7 @@ namespace Xylia.Match.Util.ItemList
 
 			#region 最后处理
 			TimeSpan ts = DateTime.Now - StartTime;
-			GetOutput($"本次拉取数据共计{ this.ItemDatas.Count }条，总耗{ ts.Minutes }分{ ts.Seconds }秒。");
+			GetOutput($"本次拉取数据共计{ this.ItemDatas.Count }条, 总耗{ ts.Minutes }分{ ts.Seconds }秒。");
 
 			this.ItemDatas.Clear();
 			this.ItemDatas = null;

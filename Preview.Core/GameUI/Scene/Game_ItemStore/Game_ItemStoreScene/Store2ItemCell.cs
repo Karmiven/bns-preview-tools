@@ -29,7 +29,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 
 		private void LoadData(ItemBuyPrice ItemBuyPrice)
 		{
-			//如果购买价格无效，则将图标显示为异常图标
 			if (ItemBuyPrice is null)
 			{
 				this.ItemShow.IconCell.FrameImage = Resource_Common.ItemError;
@@ -50,7 +49,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 				this.quotaTxt.Visible = true;
 				this.quotaTxt.BringToFront();
 
-				//读取目标信息
+				//Load 目标信息
 				string TargetInfo = ("UI.ItemStore.ContentQuota." + Quota.TargetType).GetText();
 				string ChargeInfo = Quota.ChargeInterval == ResetType.None ? null : Quota.ChargeInterval.GetDescription() + " ";
 
@@ -62,7 +61,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 				//UI.Confirm.AccountLimit 购买限制
 
 
-				//读取重置信息
+				//Load 重置信息
 				if (Quota.ExpirationTime != default)
 				{
 					string QuotaDesc2 = "UI.ItemStore.BuyConfirm.Expiration.QuotaDesc".GetText();
@@ -151,7 +150,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			#endregion
 
 
-			//设置提示内容
+			//set tips
 			if (TipInfo.Count != 0)
 				TestTooltip2.SetTooltip(this, TipInfo.Aggregate((sum, now) => sum + "\n" + now));
 		}

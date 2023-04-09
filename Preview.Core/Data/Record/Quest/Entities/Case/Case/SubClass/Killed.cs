@@ -36,7 +36,7 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		public Skill3 Skill3;
 
 
-		#region 方法
+		#region Functions
 		public override List<string> AttractionObject => new()
 		{
 			Object2,

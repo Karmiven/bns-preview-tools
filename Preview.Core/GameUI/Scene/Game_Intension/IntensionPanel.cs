@@ -8,7 +8,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Intension
 {
 	public partial class IntensionPanel : ItemGrowth2Page
 	{
-		#region	构造
+		#region	Constructor
 		public ItemImprove ItemImprove;
 
 		public IntensionPanel() => InitializeComponent();

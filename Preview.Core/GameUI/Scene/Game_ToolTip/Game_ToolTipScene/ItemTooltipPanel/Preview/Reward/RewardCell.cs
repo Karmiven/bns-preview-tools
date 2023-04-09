@@ -35,7 +35,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		}
 		#endregion
 
-		#region 构造
+		#region Constructor
 		public RewardCell()
 		{
 			InitializeComponent();
@@ -44,11 +44,11 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 
 
 
-		#region 字段
+		#region Fields
 		public bool IsJobReward;
 
 		/// <summary>
-		/// 物品名称，用于显示切换额外信息
+		/// 物品名称, 用于显示切换额外信息
 		/// </summary>
 		private string RealName { get; set; }
 
@@ -213,7 +213,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 
 		private void RewardCell_Load(object sender, EventArgs e)
 		{
-			//Load会比构造函数慢
+			//Load会比Constructor函数慢
 			this.Refresh();
 		}
 		#endregion

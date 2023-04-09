@@ -22,7 +22,7 @@ namespace Xylia.Match.Windows.Forms
 
 
 
-		#region 窗体事件 
+		#region From Events 
 		private void SettingsForm_Load(object sender, EventArgs e)
 		{
 

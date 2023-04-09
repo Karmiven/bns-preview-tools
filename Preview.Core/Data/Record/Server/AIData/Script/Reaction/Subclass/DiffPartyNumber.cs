@@ -5,7 +5,7 @@ namespace Xylia.Preview.Data.Record.ScriptData.Reaction
 	[Signal("diff-party-number")]
 	public sealed class DiffPartyNumber : SetNpcNumber
 	{
-		#region 字段
+		#region Fields
 	
 		#endregion
 	}

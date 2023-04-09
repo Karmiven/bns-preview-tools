@@ -19,14 +19,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	[DesignTimeVisible(false)]
 	public partial class CaseInfoPanel : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public CaseInfoPanel()
 		{
 			InitializeComponent();
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		public WaveOut SoundOut;
 
 		public NpcTalkMessage NpcTalkMessage;
@@ -37,7 +37,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		private void CaseInfoPanel_Load(object sender, EventArgs e)
 		{
 			if (NpcTalkMessage.GetStepShow(StepIdx) != null)

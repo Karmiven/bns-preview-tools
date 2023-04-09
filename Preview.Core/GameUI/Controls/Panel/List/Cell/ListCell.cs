@@ -11,7 +11,7 @@ namespace Xylia.Preview.GameUI.Controls.List
 	[DesignTimeVisible(false)]
 	public partial class ListCell : UserControl	, ListData
 	{
-		#region 构造
+		#region Constructor
 		public ListCell()
 		{
 			InitializeComponent();
@@ -19,7 +19,7 @@ namespace Xylia.Preview.GameUI.Controls.List
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 显示右侧文本
 		/// </summary>
@@ -33,7 +33,7 @@ namespace Xylia.Preview.GameUI.Controls.List
 		#endregion
 
 
-		#region 重写方法
+		#region 重写Functions
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);

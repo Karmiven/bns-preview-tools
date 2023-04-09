@@ -8,7 +8,7 @@ namespace Xylia.Preview.Data.Record
 {
 	public sealed class KeyCap : BaseRecord
 	{
-		#region 属性字段	
+		#region Fields	
 		[Signal("key-code")]
 		public KeyCode KeyCode;
 
@@ -25,7 +25,7 @@ namespace Xylia.Preview.Data.Record
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public Bitmap Icon => this.Attributes["icon"].GetIcon();
 
 		public string Image => this.Attributes["image"].GetText();

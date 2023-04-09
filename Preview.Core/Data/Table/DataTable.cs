@@ -21,13 +21,13 @@ namespace Xylia.Preview.Data
 {
 	public class DataTable<T> : IEnumerable<T>, IEnumerable where T : BaseRecord, new()
 	{
-		#region 构造
+		#region Constructor
 		public DataTableSet DataTableSet;
 
 		public string TypeName = typeof(T).Name;
 		#endregion
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 显示调试信息
 		/// </summary>
@@ -57,48 +57,48 @@ namespace Xylia.Preview.Data
 		#endregion
 
 
-		#region 加载方法
+		#region Load Functions
 		protected bool LoadFromGame => CommonPath.DataLoadMode;
 
 		/// <summary>
-		/// 尝试载入数据
-		/// 用于需要事先载入数据的场景
+		/// 尝试Load Data
+		/// 用于需要事先Load Data的场景
 		/// </summary>
 		public void TryLoad() => this.Load();
 
 
 
 		/// <summary>
-		/// 正在加载状态中
+		/// 正在Load 状态中
 		/// </summary>
 		private bool InLoading = false;
 
 		/// <summary>
-		/// 加载资源
+		/// Load 资源
 		/// </summary>
-		/// <param name="Reload">指示在存在数据时，是否可以重新加载</param>
+		/// <param name="Reload">指示在存在数据时, 是否可以重新Load </param>
 		private void Load(bool Reload = false)
 		{
-			#region 初始化
-			//正在加载状态，等待到数据加载完成
+			#region Initialize
+			//正在Load 状态, 等待到数据Load 完成
 			if (this.InLoading)
 			{
-				//等待到加载完成，所以要注意这个等待标志值不能发生异常
-				//可能的异常原因：结束后不解除标志、在同一线程上多次请求加载
+				//等待到Load 完成, 所以要注意这个等待标志值不能发生异常
+				//可能的异常原因：结束后不解除标志、在同一线程上多次请求Load 
 				while (this.InLoading) Thread.Sleep(100);
 				return;
 			}
 
-			//有数据且不需要重载，则不进行处理
+			//有数据且不需要重载, 则不进行处理
 			if (this._data != null && !Reload) return;
 
 
-			//如果是设计器模式，则不进行处理
+			//如果是设计器模式, 则不进行处理
 			if (Program.IsDesignMode) return;
 			#endregion
 
 
-			//进入加载状态
+			//进入Load 状态
 			this.InLoading = true;
 			this._data = null;
 
@@ -120,7 +120,7 @@ namespace Xylia.Preview.Data
 						this._data = Array.Empty<Lazy<T>>();
 
 						InLoading = false;
-						Trace.WriteLine($"[{ DateTime.Now }] 加载失败: { TypeName } -> {ex}");
+						Trace.WriteLine($"[{ DateTime.Now }] Load 失败: { TypeName } -> {ex}");
 					}
 				});
 
@@ -130,7 +130,7 @@ namespace Xylia.Preview.Data
 		}
 
 		/// <summary>
-		/// 加载外部配置文件
+		/// Load 外部配置文件
 		/// </summary>
 		/// <exception cref="FileNotFoundException"></exception>
 		private void LoadXml()
@@ -168,7 +168,7 @@ namespace Xylia.Preview.Data
 		}
 
 		/// <summary>
-		/// 加载游戏数据
+		/// Load 游戏数据
 		/// </summary>
 		/// <exception cref="FileNotFoundException"></exception>
 		/// <exception cref="ArgumentNullException"></exception>
@@ -272,7 +272,7 @@ namespace Xylia.Preview.Data
 
 			this.TryLoad();
 			if (this.ByAlias.TryGetValue(Alias, out var item)) return GetLazyInfo(item);
-			if (this._data.Length != 0 && ShowDebugInfo) Debug.WriteLine($"[{ TypeName }] 对象获取失败  alias: {Alias}");
+			if (this._data.Length != 0 && ShowDebugInfo) Debug.WriteLine($"[{ TypeName }] get failed ,alias: {Alias}");
 			return null;
 		}
 
@@ -283,13 +283,13 @@ namespace Xylia.Preview.Data
 
 			this.TryLoad();
 			if (this.ByRef.TryGetValue(Ref, out var item)) return item;
-			if (this._data.Length != 0) Debug.WriteLine($"[{ TypeName }] 对象获取失败  id: {Ref.Id} variation: {Ref.Variant}");
+			if (this._data.Length != 0) Debug.WriteLine($"[{ TypeName }] get failed,id: {Ref.Id} variation: {Ref.Variant}");
 			return null;
 		}
 		#endregion
 
 
-		#region 处理类方法
+		#region 处理类Functions
 		public void ProcessTable(string _outputPath) => this._processTable?.Invoke(_outputPath);
 
 		private delegate void ProcessTableHandle(string _outputPath);
@@ -297,7 +297,7 @@ namespace Xylia.Preview.Data
 		private event ProcessTableHandle _processTable;
 		#endregion
 
-		#region 接口方法
+		#region Interface Functions
 		public void Clear()
 		{
 			this._data = null;

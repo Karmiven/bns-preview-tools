@@ -15,15 +15,15 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	[DesignTimeVisible(false)]
 	public partial class MissionPanel : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public MissionPanel() => InitializeComponent();
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public void LoadData(Mission Mission, WaveOut SoundOut)
 		{
-			#region 初始化
+			#region Initialize
 			if (Mission is null) return;
 
 			this.Tag = Mission.id;
@@ -36,7 +36,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 					this.MissionText.Text = "<font name=\"00008130.UI.Label_LightYellow_12\">完成书信对话</font>";
 			}
 
-			//如果课题需求值不为1，则显示进度需求信息
+			//如果课题需求值不为1, 则显示进度需求信息
 			if (Mission.RequiredRegisterValue != 1) this.MissionText.Text = $"0/{ Mission.RequiredRegisterValue} {this.MissionText.Text}";
 			#endregion
 
@@ -115,14 +115,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 
 		/// <summary>
-		/// 加载对话消息
+		/// Load 对话消息
 		/// </summary>
 		/// <param name="Message"></param>
 		/// <param name="SoundOut"></param>
 		/// <returns></returns>
 		public static List<Control> LoadTalkMessage(NpcTalkMessage Message, WaveOut SoundOut)
 		{
-			//载入数据
+			//Load Data
 			List<Control> result = new();
 
 			var TalkMessage = FileCache.Data.NpcTalkMessage[Message];
@@ -133,7 +133,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 
 			for (int i = 1; i <= 30; i++)
 			{
-				#region 读取数据
+				#region Load Data
 				var StepText = TalkMessage.Attributes["step-text-" + i];
 				if (StepText is null) break;
 

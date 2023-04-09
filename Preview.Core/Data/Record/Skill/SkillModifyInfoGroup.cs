@@ -26,7 +26,7 @@ namespace Xylia.Preview.Data.Record
 
 
 
-		#region 方法
+		#region Functions
 		public JobSeq SpecificJob { get; set; }
 
 		public override string ToString()

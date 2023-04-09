@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Controls
 	[Designer(typeof(FixedHeightDesigner))]
 	public partial class ItemShowCell : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public ItemShowCell()
 		{
 			InitializeComponent();
@@ -39,7 +39,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 字段
+		#region Fields
 		public Item ItemData
 		{
 			get => (Item)this.IconCell.ObjectRef;
@@ -112,9 +112,9 @@ namespace Xylia.Preview.GameUI.Controls
 		private bool m_ReserveIconSpace { get; set; } = true;
 
 		/// <summary>
-		/// 在图标不存在的情况下，仍然保留图标的空间
+		/// 在图标不存在的情况下, 仍然保留图标的空间
 		/// </summary>
-		[Category("Data"), Description("在图标不存在的情况下，仍然保留图标的空间")]
+		[Category("Data"), Description("在图标不存在的情况下, 仍然保留图标的空间")]
 		public bool ReserveIconSpace
 		{
 			get => m_ReserveIconSpace;
@@ -122,7 +122,7 @@ namespace Xylia.Preview.GameUI.Controls
 		}
 		#endregion
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 获得中心Y位置
 		/// </summary>

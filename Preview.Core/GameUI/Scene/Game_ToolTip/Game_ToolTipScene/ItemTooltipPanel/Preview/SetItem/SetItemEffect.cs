@@ -8,7 +8,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 	[DesignTimeVisible(false)]
 	public partial class SetItemEffect : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public SetItemEffect()
 		{
 			InitializeComponent();
@@ -17,7 +17,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		#endregion
 
 
-		#region 字段
+		#region Fields
 		private int _count = 1;
 
 		/// <summary>

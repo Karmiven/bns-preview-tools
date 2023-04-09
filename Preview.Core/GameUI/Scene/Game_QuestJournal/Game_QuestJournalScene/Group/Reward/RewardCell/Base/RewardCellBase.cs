@@ -6,7 +6,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell
 	[DesignTimeVisible(false)]
 	public partial class RewardCellBase : Panel
 	{
-		#region 构造
+		#region Constructor
 		public RewardCellBase()
 		{
 			InitializeComponent();
@@ -17,7 +17,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 标题
 		/// </summary>

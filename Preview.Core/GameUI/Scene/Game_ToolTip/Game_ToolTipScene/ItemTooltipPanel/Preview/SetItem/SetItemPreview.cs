@@ -15,7 +15,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class SetItemPreview : PreviewControl
 	{
-		#region 构造
+		#region Constructor
 		public SetItemPreview()
 		{
 			InitializeComponent();
@@ -25,17 +25,17 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		readonly List<ItemShowCell> ItemShowCells = new();
 
 		readonly List<SetItemEffect> SetItemEffects = new();
 		#endregion
 
 
-		#region 接口方法
+		#region Interface Functions
 		public override void LoadData(BaseRecord record)
 		{
-			#region 初始化
+			#region Initialize
 			var Item = record as Item;
 			var Record = FileCache.Data.SetItem[record.Attributes["set-item"]];
 			if (Record is null)
@@ -50,7 +50,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			ItemShowCells.Clear();
 			SetItemEffects.Clear();
 
-			//读取套装类型
+			//Load 套装类型
 			var SlotTagIcon1 = Record.Attributes[$"slot-tag-icon-1"];
 			var UseGemPreview = this.GemPreview.Visible = SlotTagIcon1 == "TagIcon_Alpha_01_gray,1";
 
@@ -58,7 +58,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			#endregion
 
 
-			#region	读取套装构成品数据
+			#region	Load 套装构成品数据
 			for (int idx = 1; idx <= 10; idx++)
 			{
 				var SlotName = Record.Attributes[$"slot-name-{idx}"];
@@ -83,7 +83,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			}
 			#endregion
 
-			#region	读取套装效果
+			#region	Load 套装效果
 			for (int idx = 1; idx <= 10; idx++)
 			{
 				SetItemEffect SetItemEffect = new() { Count = idx };

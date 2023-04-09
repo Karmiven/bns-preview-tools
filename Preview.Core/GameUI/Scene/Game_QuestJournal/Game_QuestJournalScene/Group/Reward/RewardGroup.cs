@@ -13,7 +13,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	/// </summary>
 	public sealed class RewardGroup
 	{
-		#region 构造
+		#region Constructor
 		public RewardGroup(IAttributeCollection Attributes, string Group)
 		{
 			this.Faction = Attributes[Group + "-faction"];
@@ -40,7 +40,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 		#endregion
 
-		#region 属性字段
+		#region Fields
 		public string Faction;
 		public DifficultyType DifficultyType;
 
@@ -61,7 +61,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		public byte SkillVarIdx4;
 		#endregion
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 归属组
 		/// </summary>

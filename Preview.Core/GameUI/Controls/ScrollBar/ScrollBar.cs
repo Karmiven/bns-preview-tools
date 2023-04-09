@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Controls.PanelEx.ScrollBar
 	[ToolboxBitmap(typeof(HScrollBar))]
 	public partial class ScrollBar : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public ScrollBar()
 		{
 			InitializeComponent();
@@ -22,7 +22,7 @@ namespace Xylia.Preview.GameUI.Controls.PanelEx.ScrollBar
 		}
 		#endregion
 
-		#region 私有成员
+		#region Private Fields
 		private Panel _RelaPanel = null;
 
 		private bool SlideBarFlag = false;
@@ -30,7 +30,7 @@ namespace Xylia.Preview.GameUI.Controls.PanelEx.ScrollBar
 		private int SlideBarOpacity = 255;
 		#endregion
 
-		#region  字段
+		#region  Fields
 		[Browsable(true)]
 		[Category("Appearance")]
 		[Description("滑动条最短长度")]
@@ -139,7 +139,7 @@ namespace Xylia.Preview.GameUI.Controls.PanelEx.ScrollBar
 		}
 
 		/// <summary>
-		/// 鼠标滚动事件
+		/// 鼠标滚动Event
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>

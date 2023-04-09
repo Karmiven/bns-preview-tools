@@ -8,7 +8,7 @@ namespace Xylia.Match.Windows.Attribute.Data
 {
 	public class ParaEntity
 	{
-		#region 构造
+		#region Constructor
 		public ParaEntity()
 		{
 
@@ -46,20 +46,20 @@ namespace Xylia.Match.Windows.Attribute.Data
 
 		/// <summary>
 		/// The rate of change
-		/// 变化率（要求百分比形式，此数值必定为整数）
+		/// 变化率（要求百分比形式, 此数值必定为整数）
 		/// </summary>
 		public double K;
 
 		/// <summary>
 		/// Constant Item (or initial value)
-		/// 常数项 (起始值，要求百分比形式)
+		/// 常数项 (起始值, 要求百分比形式)
 		/// </summary>
 		public double C;
 
 
 		#region level factor
 		/// <summary>
-		/// 当未计算出μ、Φ数值时，可以使用特定等级数值进行临时替代
+		/// 当未计算出μ、Φ数值时, 可以使用特定等级数值进行临时替代
 		/// </summary>
 		public List<LevelFactor> LevelFactors = new();
 
@@ -84,7 +84,7 @@ namespace Xylia.Match.Windows.Attribute.Data
 		}
 
 		/// <summary>
-		/// 已知变化率、常数项、属性数值与属性比率时，获取特定的等级修正系数
+		/// 已知变化率、常数项、属性数值与属性比率时, 获取特定的等级修正系数
 		/// </summary>
 		/// <param name="value"></param>
 		/// <param name="percent"></param>

@@ -3,7 +3,7 @@
 namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Reward
 {
 	/// <summary>
-	/// 选择奖励事件
+	/// 选择奖励Event
 	/// </summary>
 	public class RewardChangedEvent : EventArgs
 	{

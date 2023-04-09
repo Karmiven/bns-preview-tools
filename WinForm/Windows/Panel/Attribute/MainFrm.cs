@@ -14,7 +14,7 @@ namespace Xylia.Match.Windows.Attribute
 	[DesignTimeVisible(false)]
 	public partial class MainFrm : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public MainFrm()
 		{
 			InitializeComponent();
@@ -22,7 +22,7 @@ namespace Xylia.Match.Windows.Attribute
 		}
 		#endregion
 
-		#region 加载
+		#region Load 
 		readonly Dictionary<TreeNode, ParaEntity> ParaRelative = new();
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace Xylia.Match.Windows.Attribute
 		}
 
 		/// <summary>
-		/// 加载默认数据
+		/// Load 默认数据
 		/// </summary>
 		private void LoadDefaultData()
 		{
@@ -64,7 +64,7 @@ namespace Xylia.Match.Windows.Attribute
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		private void newTreeView1_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			TreeNode SelNode = this.newTreeView1.SelectedNode;

@@ -27,7 +27,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			var skills = data.GroupBy(a => a.ShortCutKey).ToDictionary(a => a.Key).OrderBy(o => o.Key);
 			foreach (var pair in skills)
 			{
-				#region	加载标题
+				#region	Title
 				ContentPanel Title = new()
 				{
 					Text = pair.Key.GetKeyCommand()?.GetImage() ?? "无",
@@ -41,7 +41,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 				this.Controls.Add(Title);
 				#endregion
 
-				#region 加载技能
+				#region Skill
 				foreach (var skill in pair.Value)
 				{
 					ItemIconCell ItemIconCell = new()

@@ -15,14 +15,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 	/// </summary>
 	public class DecomposeRewardInfo
 	{
-		#region 构造
+		#region Constructor
 		public readonly RewardData DecomposeReward;
 
 		public DecomposeRewardInfo(RewardData Reward) => this.DecomposeReward = Reward;
 		#endregion
 
 
-		#region 控件方法
+		#region Functions (UI)
 		public List<RewardCell> _preview;
 
 		public List<RewardCell> Preview
@@ -57,7 +57,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 		/// <returns></returns>
 		private List<RewardCell> CreateGroupPreview(RewardCell.CellGroup RewardGroup)
 		{
-			#region 初始化
+			#region Initialize
 			var result = new List<RewardCell>();
 			if (this.DecomposeReward is null) return result;
 
@@ -68,7 +68,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 				Extra = Job.GetName(jobReward.Job);
 			#endregion
 
-			#region 获取奖励字段名称
+			#region 获取奖励Fields名称
 			switch (RewardGroup)
 			{
 				case RewardCell.CellGroup.Fixed:
@@ -173,7 +173,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 
 
 #if DEBUG
-				//System.Diagnostics.Debug.WriteLine($"[Debug] 初始化奖励元素 => { ItemAlias }，耗时{ (DateTime.Now - dt).TotalMilliseconds }ms");
+				//System.Diagnostics.Debug.WriteLine($"[Debug] Initialize奖励元素 => { ItemAlias }, 耗时{ (DateTime.Now - dt).TotalMilliseconds }ms");
 #endif
 			}
 			#endregion

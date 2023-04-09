@@ -35,7 +35,7 @@ namespace Xylia.Preview.Output
 				cellIdx++;
 				int rowIdx = 0;
 
-				#region 加载任务课题
+				#region Quest Task
 				for (int Idx = 1; Idx <= 20; Idx++)
 				{
 					var ChallengeQuestBasic = challengeList.Attributes["challenge-quest-basic-" + Idx];
@@ -48,7 +48,7 @@ namespace Xylia.Preview.Output
 				}
 				#endregion
 
-				#region 加载击杀课题
+				#region Npc Task
 				for (int Idx = 1; Idx <= 20; Idx++)
 				{
 					var ChallengeNpcDifficulty = challengeList.Attributes["challenge-npc-difficulty-" + Idx].ToEnum<DifficultyType>();

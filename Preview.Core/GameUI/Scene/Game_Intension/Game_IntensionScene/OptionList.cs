@@ -15,7 +15,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Intension
 	[DesignTimeVisible(false)]
 	public sealed class OptionList : Panel
 	{
-		#region 构造
+		#region Constructor
 		public OptionList()
 		{
 			this.AutoScroll = true;
@@ -45,7 +45,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Intension
 
 
 
-		#region 方法
+		#region Functions
 		public int SelectedIndex = 0;
 
 		public event EventHandler SelectedItemChanged;

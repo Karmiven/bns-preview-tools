@@ -14,7 +14,7 @@ namespace Xylia.Match.Windows.Panel
 	[DesignTimeVisible(false)]
 	public partial class PakExtract : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public PakExtract()
 		{
 			InitializeComponent();
@@ -24,7 +24,7 @@ namespace Xylia.Match.Windows.Panel
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		private void Btn_Output_BtnClick(object sender, EventArgs e)
 		{
 			var tempPath = this.Selector.TextValue;

@@ -18,7 +18,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 	/// </summary>
 	public sealed class DecomposeInfo
 	{
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 根据钥匙类型适配奖励
 		/// 否则只能获得第一个奖励
@@ -60,10 +60,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 		#endregion
 
 
-		#region 构造
+		#region Constructor
 		public DecomposeInfo(Item ItemInfo)
 		{
-			#region 读取数据
+			#region Load Data
 			this.DecomposeRewardByConsumeIndex = ItemInfo.Attributes["decompose-reward-by-consume-index"].ToBool();
 			this.DecomposeMax = ItemInfo.Attributes["decompose-max"].ToInt();
 			this.DecomposeMoneyCost = ItemInfo.Attributes["decompose-money-cost"].ToInt();
@@ -83,7 +83,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 			this.Job_Decompose_By_Item2_7 = new DecomposeByItem2(ItemInfo.Attributes["job-decompose-by-item2-7"], ItemInfo.Attributes["job-decompose-by-item2-stack-count-7"].ToInt());
 			#endregion
 
-			#region 读取奖励数据
+			#region Load 奖励数据
 			static DecomposeRewardInfo GetRewardInfo(RewardData reward) => reward is null ? default : new DecomposeRewardInfo(reward);
 			this.DecomposeReward1 = GetRewardInfo(FileCache.Data.Reward[ItemInfo.Attributes["decompose-reward-1"]]);
 			this.DecomposeReward2 = GetRewardInfo(FileCache.Data.Reward[ItemInfo.Attributes["decompose-reward-2"]]);
@@ -111,14 +111,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 获取额外图标
 		/// </summary>
 		/// <returns></returns>
 		public Bitmap GetExtra()
 		{
-			//存在开启金币或物品时会显示解印图标，但如果开启物品为钥匙或者为选择箱时则显示为锁图标
+			//存在开启金币或物品时会显示解印图标, 但如果开启物品为钥匙或者为选择箱时则显示为锁图标
 			if (!this.Decompose_By_Item2_1.INVALID) return GetExtra(this.Decompose_By_Item2_1);
 			else if (!this.Job_Decompose_By_Item2_1.INVALID) return GetExtra(this.Job_Decompose_By_Item2_1);
 			else if (this.DecomposeMoneyCost != 0) return Resource_BNSR.Weapon_Lock_04;

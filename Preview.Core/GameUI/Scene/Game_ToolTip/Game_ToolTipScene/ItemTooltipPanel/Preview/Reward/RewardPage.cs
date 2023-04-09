@@ -11,7 +11,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 	/// </summary>
 	public class RewardPage
 	{
-		#region 字段
+		#region Fields
 		public RewardPage(DecomposeRewardInfo RewardInfo, DecomposeByItem2 OpenItem2)
 		{
 			this.RewardInfo = RewardInfo;
@@ -36,7 +36,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public static List<RewardPage> GetPages(DecomposeInfo DecomposeInfo)
 		{
 			var result = new List<RewardPage>();
@@ -47,9 +47,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 			{
 				if (RewardInfo is null) return;
 
-				//创建奖励成员元素
+
 				var Cells = RewardInfo.Preview;
-				if (!Cells.Any()) Debug.WriteLine($"虽然绑定奖励对象，但是其内容为空");
+				if (!Cells.Any()) Debug.WriteLine($"empty reward");
 
 				result.Add(new RewardPage(RewardInfo, OpenItem));
 			}
@@ -67,7 +67,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 			var RewardGroup_Job = DecomposeInfo.DecomposeJobRewards;
 			if (RewardGroup_Job != null && RewardGroup_Job.Any())
 			{
-				//数量大于一定值时，仍然分页显示
+				//数量大于一定值时, 仍然分页显示
 				int CellSum = RewardGroup_Job.Sum(group => group.Preview.Count);
 				if (CellSum >= 30)
 				{
@@ -76,7 +76,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 				}
 				else
 				{
-					//创建一个临时组，以实现合并显示
+					//创建一个临时组, 以实现合并显示
 					var tempReward = new DecomposeJobRewardInfo(JobSeq.JobNone, null)
 					{
 						_preview = RewardGroup_Job.SelectMany(group => group.Preview).ToList()

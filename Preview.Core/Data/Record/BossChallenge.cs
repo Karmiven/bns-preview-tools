@@ -19,7 +19,7 @@ namespace Xylia.Preview.Data.Record
 		public AttractionRewardSummary RewardSummary;
 
 
-		#region 接口字段
+		#region Interface
 		public string GetName() => this.BossChallengeName2.GetText();
 
 		public string GetDescribe() => this.BossChallengeDesc.GetText();

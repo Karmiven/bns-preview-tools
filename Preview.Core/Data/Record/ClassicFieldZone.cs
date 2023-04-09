@@ -44,7 +44,7 @@ namespace Xylia.Preview.Data.Record
 
 	
 
-		#region 接口字段
+		#region Interface
 		public string GetName() => this.ClassicFieldZoneName2.GetText();
 
 		public string GetDescribe() => this.ClassicFieldZoneDesc.GetText();

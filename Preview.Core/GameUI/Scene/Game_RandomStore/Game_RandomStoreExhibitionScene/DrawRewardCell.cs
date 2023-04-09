@@ -17,8 +17,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 
 		public void LoadData(RandomStoreDrawReward record)
 		{
-			#region 读取物品
-			//读取需要开启次数
+			#region Load Data
 			this.label1.Text = record.RequiredDrawCount + "次";
 
 			List<ItemIconCell> FixedRewards = new();

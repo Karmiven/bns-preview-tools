@@ -11,7 +11,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	[DesignTimeVisible(false)]
 	public partial class GroupBase : UserControl , IPreview
 	{
-		#region 构造
+		#region Constructor
 		public GroupBase() => InitializeComponent();
 		#endregion
 

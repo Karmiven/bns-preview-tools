@@ -22,7 +22,7 @@ namespace Xylia.Preview.Data.Record
 		public string PublicraidImage;
 
 
-		#region 接口方法
+		#region Interface Functions
 		public string GetName() => this.PublicraidName2.GetText();
 
 		public string GetDescribe() => this.PublicraidDesc.GetText();

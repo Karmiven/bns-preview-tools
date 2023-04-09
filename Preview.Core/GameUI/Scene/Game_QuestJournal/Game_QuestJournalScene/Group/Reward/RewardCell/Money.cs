@@ -7,7 +7,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell
 	/// </summary>
 	public sealed partial class Money : PriceBase
 	{
-		#region 字段
+		#region Fields
 		public Money() => InitializeComponent();
 
 		public override CurrencyType CurrencyType => CurrencyType.Money;

@@ -34,7 +34,7 @@ namespace Xylia.Preview.Data.Record
 		public string QuestForIgnoringRequiredLevel;
 
 
-		#region 接口字段
+		#region Interface
 		public string GetName() => this.Cave2Name2.GetText();
 
 		public string GetDescribe() => this.Cave2Desc.GetText();

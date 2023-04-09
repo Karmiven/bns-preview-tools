@@ -3,7 +3,7 @@
 namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 {
 	/// <summary>
-	/// 奖励显示排序方法
+	/// 奖励显示排序Functions
 	/// </summary>
 	public class RewardCellSort : IComparer<RewardCell>
 	{

@@ -5,13 +5,13 @@ namespace Xylia.Preview.Common.Interface.RecordAttribute
 {
 	public sealed class XElementData : IAttributeCollection
 	{
-		#region 构造
+		#region Constructor
 		public readonly XmlElement data;
 
 		public XElementData(XmlElement data) => this.data = data;
 		#endregion
 
-		#region 方法
+		#region Functions
 		public string this[string param] => this.data.Attributes[param]?.Value;
 
 		public void SetAttribute(string Name, string Value) => this.data.SetAttribute(Name, Value);

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table version="0.1">
+    <type>WorldAccountMuseum</type>
+	
+    <record name="alias" text="" />
+    <record name="text" text="" />
+</table>

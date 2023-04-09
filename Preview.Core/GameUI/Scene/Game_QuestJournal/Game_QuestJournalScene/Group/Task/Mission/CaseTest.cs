@@ -14,7 +14,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	/// </summary>
 	public class CaseTest
 	{
-		#region 构造
+		#region Constructor
 		readonly BaseRecord data;
 
 		public CaseTest(BaseRecord Case)

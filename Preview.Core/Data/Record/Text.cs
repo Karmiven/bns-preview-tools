@@ -12,7 +12,7 @@ namespace Xylia.Preview.Data.Record
 	}
 
 	/// <summary>
-	/// 提供获取文本扩展方法
+	/// 提供获取文本扩展Functions
 	/// </summary>
 	public static class TextExtension
 	{
@@ -38,7 +38,7 @@ namespace Xylia.Preview.Data.Record
 		{
 			if(Text is null) return null;
 
-			//需要通过已读取的别名重新加载数据
+			//需要通过已Load 的别名重新Load Data
 			if (Text.Attributes is null)
 				return FileCache.Data.TextData[Text.alias].GetText();
 

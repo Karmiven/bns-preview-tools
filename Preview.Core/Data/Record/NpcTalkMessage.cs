@@ -23,7 +23,7 @@ namespace Xylia.Preview.Data.Record
 		public string EndTalkSound;
 
 
-		#region 方法
+		#region Functions
 		public string GetStepShow(int index) => this.Attributes["step-show-" + index];
 		#endregion
 	}

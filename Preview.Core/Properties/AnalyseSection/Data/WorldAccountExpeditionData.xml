@@ -8,7 +8,7 @@
 		<record alias="category" type="Int8" />
 		<record alias="item" type="TRef" repeat="20" />
 		<record alias="item-count" type="Int16" repeat="20" />
-		<record alias="unknown" type="Bool" describe="是否共同计算，启用时只使用 count1" />
+		<record alias="unknown" type="Bool" describe="是否共同计算, 启用时只使用 count1" />
 		<record alias="ability" type="Seq" repeat="5" seq="attach-ability" />
 		<record alias="ability-value" type="Int32" repeat="5"  max="1000000" />
 		<record alias="unk-" type="Int32" />

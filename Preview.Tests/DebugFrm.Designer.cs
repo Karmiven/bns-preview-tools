@@ -12,7 +12,7 @@ namespace Xylia.Preview.Tests
         /// <summary>
         /// 清理所有正在使用的资源。
         /// </summary>
-        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        /// <param name="disposing">如果应释放托管资源, 为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -25,8 +25,8 @@ namespace Xylia.Preview.Tests
         #region Windows 窗体设计器生成的代码
 
         /// <summary>
-        /// 设计器支持所需的方法 - 不要修改
-        /// 使用代码编辑器修改此方法的内容。
+        /// 设计器支持所需的Functions - 不要修改
+        /// 使用代码编辑器修改此Functions的内容。
         /// </summary>
         private void InitializeComponent()
         {
@@ -36,7 +36,6 @@ namespace Xylia.Preview.Tests
 			this.contentPanel2 = new Xylia.Preview.GameUI.Controls.ContentPanel();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.skillByEquipmentTooltip1 = new Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.SkillByEquipmentTooltip();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -74,22 +73,11 @@ namespace Xylia.Preview.Tests
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Location = new System.Drawing.Point(303, 189);
+			this.pictureBox1.Location = new System.Drawing.Point(12, 136);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(100, 89);
 			this.pictureBox1.TabIndex = 4;
 			this.pictureBox1.TabStop = false;
-			// 
-			// skillByEquipmentTooltip1
-			// 
-			this.skillByEquipmentTooltip1.AutoSize = true;
-			this.skillByEquipmentTooltip1.BackColor = System.Drawing.Color.Transparent;
-			this.skillByEquipmentTooltip1.ForeColor = System.Drawing.Color.Black;
-			this.skillByEquipmentTooltip1.Location = new System.Drawing.Point(287, 12);
-			this.skillByEquipmentTooltip1.Name = "skillByEquipmentTooltip1";
-			this.skillByEquipmentTooltip1.Size = new System.Drawing.Size(267, 114);
-			this.skillByEquipmentTooltip1.TabIndex = 5;
-			this.skillByEquipmentTooltip1.Title = "变更武功";
 			// 
 			// DebugFrm
 			// 
@@ -99,8 +87,7 @@ namespace Xylia.Preview.Tests
 			this.AutoSize = true;
 			this.BackColor = System.Drawing.Color.Black;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(566, 331);
-			this.Controls.Add(this.skillByEquipmentTooltip1);
+			this.ClientSize = new System.Drawing.Size(548, 304);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.contentPanel2);
 			this.Controls.Add(this.contentPanel1);
@@ -112,7 +99,7 @@ namespace Xylia.Preview.Tests
 			this.MaximumSize = new System.Drawing.Size(2147483647, 850);
 			this.Name = "DebugFrm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "调试窗口";
+			this.Text = "Debug";
 			this.Load += new System.EventHandler(this.DebugFrm_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
@@ -129,7 +116,6 @@ namespace Xylia.Preview.Tests
 		private ContentPanel contentPanel2;
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.PictureBox pictureBox1;
-		private GameUI.Scene.Game_ToolTip.ItemTooltipPanel.SkillByEquipmentTooltip skillByEquipmentTooltip1;
 	}
 }
 

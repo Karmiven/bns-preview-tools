@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Record
 {
 	public sealed class FactionLevel : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		public short Level;
 
 		public int Reputation;

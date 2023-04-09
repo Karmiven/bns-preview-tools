@@ -8,7 +8,7 @@ namespace Xylia.Preview.Common.Cast
 {
 	public static class Cast
 	{
-		#region 转换枚举
+		#region Seq
 		public static T CastSeq<T>(this string SeqValue) where T : Enum => SeqValue.ToEnum<T>();
 
 		public static object CastSeq(this string SeqValue, string SeqName)
@@ -21,7 +21,7 @@ namespace Xylia.Preview.Common.Cast
 		}
 		#endregion
 
-		#region 转换对象
+		#region Object
 		public static BaseRecord CastObject(this string ObjInfo)
 		{
 			if (string.IsNullOrWhiteSpace(ObjInfo)) return default;
@@ -43,7 +43,7 @@ namespace Xylia.Preview.Common.Cast
 			if (DataTableName.MyEquals("skill")) return FileCache.Data.Skill3[DataKey];
 			if (DataTableName.MyEquals("tooltip")) return FileCache.Data.TextData[DataKey];
 
-			//通过反射获取数据
+			//get data
 			var DataTable = FileCache.Data.GetValue(DataTableName, true);
 			return (BaseRecord)DataTable?.GetType()
 				.GetMethod("get_Item", ClassExtension.Flags, new Type[] { typeof(string) })?

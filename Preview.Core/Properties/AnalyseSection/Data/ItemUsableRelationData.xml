@@ -20,7 +20,7 @@
 		<record alias="talisman" type="Bool" showzero="y" />
 
 <!--
-不支持的新字段
+不支持的新Fields
 		<record alias="techeonwangreung" type="Bool" showzero="y" />
 		<record alias="event1" type="Bool" showzero="y" />
 		<record alias="event2" type="Bool" showzero="y" />

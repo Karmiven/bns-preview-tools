@@ -7,9 +7,6 @@ using Xylia.Match.Properties;
 
 namespace Xylia.Match.Util
 {
-	/// <summary>
-	/// 轮播Tip
-	/// </summary>
 	public class TipMessage
 	{
 		readonly Dictionary<int, TipInfo> Tips = new();

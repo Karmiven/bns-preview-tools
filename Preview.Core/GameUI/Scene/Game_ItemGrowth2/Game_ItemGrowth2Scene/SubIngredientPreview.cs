@@ -16,7 +16,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 	[DesignTimeVisible(false)]
 	public partial class SubIngredientPreview : Panel
 	{
-		#region 事件与委托
+		#region Events & Delegates
 		public delegate void RecipeChangedHandle(RecipeChangedEventArgs e);
 
 		public event RecipeChangedHandle RecipeChanged;
@@ -25,7 +25,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 		public event EmptyHandler DataLoaded;
 		#endregion
 
-		#region 方法
+		#region Functions
 		private FeedItemIconCell CreateNew(BaseRecord ObjectRef, Bitmap Image, int StackCount, ref int LocX)
 		{
 			var ItemIcon = new FeedItemIconCell
@@ -79,7 +79,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			//清理资源
 			this.Controls.Remove<FeedItemIconCell>();
 
-			#region 加载控件
+			#region Load 控件
 			int LocX = 0;
 			foreach (var Recipe in ResultRecipes)
 			{
@@ -106,7 +106,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 				}
 				#endregion
 
-				//绑定事件
+				//绑定Event
 				this.CreateNew(SubIngredient1, Image, SubIngredientStackCount1, ref LocX).Click +=
 					new((s, e) => this.RecipeChanged?.Invoke(new RecipeChangedEventArgs(Recipe)));
 			}
@@ -120,7 +120,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			//清理资源
 			this.Controls.Remove<FeedItemIconCell>();
 
-			#region 加载控件
+			#region Load 控件
 			int LocX = 0;
 			for (byte idx = 1; idx <= 5; idx++)
 			{
@@ -143,7 +143,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			//清理资源
 			this.Controls.Remove<FeedItemIconCell>();
 
-			#region 加载控件
+			#region Load 控件
 			int LocX = 0;
 			for (byte idx = 1; idx <= 4; idx++)
 			{
@@ -152,7 +152,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 
 				var DrawCostMainItemCount = ItemImproveOptionList.Attributes["draw-cost-main-item-count-" + idx].ToShort();
 
-				//绑定事件
+				//绑定Event
 				byte CurIdx = idx;
 				this.CreateNew(DrawCostMainItem, DrawCostMainItem.Icon, DrawCostMainItemCount, ref LocX).Click +=
 					new((s, e) => this.RecipeChanged?.Invoke(new RecipeChangedEventArgs(ItemImproveOptionList, CurIdx)));
@@ -174,7 +174,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 	}
 
 	/// <summary>
-	/// 成长路径变更事件
+	/// 成长路径变更Event
 	/// </summary>
 	public sealed class RecipeChangedEventArgs : EventArgs
 	{

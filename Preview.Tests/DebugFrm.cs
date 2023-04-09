@@ -8,7 +8,21 @@ namespace Xylia.Preview.Tests
 {
 	public partial class DebugFrm : Form
 	{
+		#region Constructor
+		[STAThread]
+		static void Main()
+		{
+			Application.EnableVisualStyles();
+			Application.SetHighDpiMode(HighDpiMode.SystemAware);
+			Application.SetCompatibleTextRenderingDefault(false);
+
+			Application.Run(new GameUI.Scene.Game_Auction.Game_AuctionScene());
+			Application.Run(new DebugFrm());
+		}
+
 		public DebugFrm() => InitializeComponent();
+		#endregion
+
 
 		private async void DebugFrm_Load(object sender, EventArgs e)
 		{
@@ -16,8 +30,6 @@ namespace Xylia.Preview.Tests
 			PakData.Initialize();
 
 			pictureBox1.Image = "/Game/Art/UI/GameUI/Resource/GameUI_Icon5th/Weapon_BA_180028_col1.Weapon_BA_180028_col1".GetUObject().GetImage();
-
-
 
 			TestTooltip2.SetTooltip(this.contentPanel2, "<p justification=\"true\" justificationtype=\"linefeedbywidgetarea\"><link id=\"none\"/> </p><p horizontalalignment=\"center\"><br/><image enablescale=\"false\" imagesetpath=\"00027918.InterD_ChungGakjiBu\"/><br/><image enablescale=\"true\" imagesetpath=\"00009499.Field_Boss\" scalerate=\"1.4\"/>铁傀王<br/><br/>中原的海盗组织——冲角团的平南舰队支部。<br/>支部长是啸四海。</p>");
 

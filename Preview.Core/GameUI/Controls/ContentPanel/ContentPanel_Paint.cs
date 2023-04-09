@@ -20,7 +20,7 @@ namespace Xylia.Preview.GameUI.Controls
 {
 	public partial class ContentPanel
 	{
-		#region 宽度控制
+		#region Width
 		/// <summary>
 		/// 允许的最大宽度
 		/// </summary>
@@ -67,7 +67,7 @@ namespace Xylia.Preview.GameUI.Controls
 					autoSizeMode = form.AutoSizeMode;
 				}
 
-				//如果上级控件启用缩放，会导致大量计算。因此此时不应进行宽度处理
+				//如果上级控件启用缩放, 会导致大量计算。因此此时不应进行宽度处理
 				if (!autoSize || autoSizeMode != AutoSizeMode.GrowAndShrink)
 				{
 					if (autoSize && e.MaximumSize.Width != 0) MaxWidth = e.MaximumSize.Width;
@@ -87,17 +87,16 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		List<ExecuteUnit> _utils;
+		List<ExecuteUnit> _units;
 
 		private void PanelContent_Paint(object sender, PaintEventArgs e)
 		{
-			//初始化
 			this.MaxWidth = GetMaxWidth(this);
 			this.ExpectWidth = _useMaxWidth ? this.MaxWidth : 0;
 			float LocX = 0, LocY = 0;
 
 
-			_utils = new();
+			_units = new();
 			this.Execute(new ExecuteParam(this).GetFont(FontName, _useHeight), this.Text?.Replace("\n", "<br/>"), ref LocX, ref LocY, true);
 
 			//变更大小
@@ -108,9 +107,7 @@ namespace Xylia.Preview.GameUI.Controls
 				this.Height = (int)Math.Floor(LocY);
 			}
 
-
-			//临时方法
-			var temp = new List<ExecuteUnit>(_utils);
+			var temp = new List<ExecuteUnit>(_units);
 			foreach (var o in temp)
 			{
 				var p = o.param;
@@ -125,31 +122,22 @@ namespace Xylia.Preview.GameUI.Controls
 			}
 		}
 
-		/// <summary>
-		/// 执行绘制
-		/// </summary>
-		/// <param name="param"></param>
-		/// <param name="InfoHtml"></param>
-		/// <param name="LocX"></param>
-		/// <param name="LocY"></param>
-		/// <param name="Status">是否由主入口方法调用</param>
-		/// <returns></returns>
 		private void Execute(ExecuteParam param, string InfoHtml, ref float LocX, ref float LocY, bool Status = false)
 		{
 			int BasicHeight = param.Font.Height;
-			int FinalHeight = BasicHeight;
+			float FinalHeight = BasicHeight;
 
 			if (Status && this.Icon != null)
 			{
-				DrawImage(param, this.Icon, BasicHeight, ref LocX, ref LocY);
+				DrawImage(param, this.Icon,                                                                                                                                                                   BasicHeight, ref LocX, ref LocY);
 				LocX += 5;
 			}
 
-			#region 初始化
+			#region Initialize
 			var doc = new HtmlAgilityPack.HtmlDocument();
 			doc.LoadHtml(InfoHtml);
 
-			#region 移除开头的连续空行
+			// Remove invalid line
 			var Idx = new List<int>();
 			for (int i = 0; i < doc.DocumentNode.ChildNodes.Count; i++)
 			{
@@ -157,21 +145,17 @@ namespace Xylia.Preview.GameUI.Controls
 				else break;
 			}
 
-			//倒序执行
 			Idx.Reverse();
 			Idx.ForEach(i => doc.DocumentNode.ChildNodes.RemoveAt(i));
-			#endregion
 
-			#region 移除最后的连续空行
 			for (int i = doc.DocumentNode.ChildNodes.Count - 1; i >= 0; i--)
 			{
 				if (doc.DocumentNode.ChildNodes[i].Name.MyEquals("br")) doc.DocumentNode.ChildNodes.RemoveAt(i);
 				else break;
 			}
 			#endregion
-			#endregion
 
-			#region 处理内容
+			#region Tag Data
 			foreach (var Node in doc.DocumentNode.ChildNodes)
 			{
 				string attr(string name) => Node.Attributes[name]?.Value;
@@ -187,7 +171,7 @@ namespace Xylia.Preview.GameUI.Controls
 					{
 						TryExtendWidth(LocX);
 
-						//增加对应的行高并重置为基本行高
+						//new line
 						LocX = 0;
 						LocY += FinalHeight + this.HeightPadding;
 						FinalHeight = param.Font.Height;
@@ -196,28 +180,31 @@ namespace Xylia.Preview.GameUI.Controls
 
 					case "p":
 					{
+						LocX += attr("leftmargin").ToFloat() / 2;
+						LocY += HeightPadding = attr("topmargin").ToFloat() / 2;
+
+						FinalHeight += attr("bottommargin").ToFloat() / 2;
+
 						var Justification = attr("justification").ToBool();
 						var JustificationType = attr("justificationtype").ToEnum<JustificationType>();
 
-						var BottomMargin = attr("bottommargin");
+						param.HorizontalAlignment = attr("horizontalalignment").ToEnum<HorizontalAlignment>();
 
+						//Bullet																			                                                             
 						var Bullets = attr("bullets");
-						var BulletsFontset = attr("bulletsfontset");
-
-						var HorizontalAlignment = attr("horizontalalignment").ToEnum<HorizontalAlignment>();
-						param.HorizontalAlignment = HorizontalAlignment;
-
-						//绘制符号图标
 						if (Bullets != null)
 						{
+							var BulletsFontset = attr("bulletsfontset");
+
 							this.DrawString(param.GetFont(BulletsFontset, _useHeight), ref LocX, ref LocY, Bullets);
 							LocX += 2;
 						}
 
-						//绘制文本内容
 						this.Execute(param, Node.InnerHtml, ref LocX, ref LocY);
 
-						//创建新行
+
+						//new line
+						//var RightMargin = attr("rightmargin");
 						LocX = 0;
 						LocY += FinalHeight + this.HeightPadding;
 						FinalHeight = param.Font.Height;
@@ -235,7 +222,7 @@ namespace Xylia.Preview.GameUI.Controls
 						}
 						catch (Exception ex)
 						{
-							Debug.WriteLine($"处理失败: {Node.OuterHtml}\n\t{ex.Message}");
+							Debug.WriteLine($"handle arg failed: {Node.OuterHtml}\n\t{ex.Message}");
 							this.Execute(param, "???", ref LocX, ref LocY);
 						}
 					}
@@ -243,7 +230,7 @@ namespace Xylia.Preview.GameUI.Controls
 
 					case "font":
 					{
-						//转到 text 节点进行处理
+						//Get FontSet
 						var param2 = param.GetFont(attr("name"), _useHeight);
 
 						FinalHeight = param2.Font.Height;
@@ -255,7 +242,7 @@ namespace Xylia.Preview.GameUI.Controls
 					{
 						if (DesignMode) break;
 
-						#region	获取图标
+						#region	Get Image
 						Bitmap bitmap = null;
 						var ImagesetPath = Node.Attributes["imagesetpath"]?.Value;
 						if (ImagesetPath != null) bitmap = ImagesetPath.GetUObject().GetImage();
@@ -278,7 +265,7 @@ namespace Xylia.Preview.GameUI.Controls
 						if (bitmap is null) break;
 						#endregion
 
-						#region 获取缩放设置
+						#region Get Scale
 						bool EnableScale = attr("enablescale").ToBool();
 						if (!EnableScale || !float.TryParse(attr("scalerate"), out float ScaleRate)) ScaleRate = 1.0F;
 						#endregion
@@ -311,7 +298,7 @@ namespace Xylia.Preview.GameUI.Controls
 						var id = (uint)attr("id").ToInt();
 						if (Timers is null || !Timers.TryGetValue(id, out var timer))
 						{
-							Debug.WriteLine("目标计时器不存在: " + id);
+							Debug.WriteLine("invalid timer: " + id);
 							break;
 						}
 
@@ -322,7 +309,7 @@ namespace Xylia.Preview.GameUI.Controls
 
 					default:
 					{
-						Debug.WriteLine("未知标签: " + Node.Name);
+						Debug.WriteLine("unknown tag: " + Node.Name);
 						this.DrawString(param, ref LocX, ref LocY, Node.OuterHtml);
 					}
 					break;
@@ -331,14 +318,12 @@ namespace Xylia.Preview.GameUI.Controls
 			#endregion
 
 
-			//如果由主入口函数调用，增加最后一行对应的行高
+			//如果由主入口函数调用, 增加最后一行对应的行高
 			if (Status) LocY += FinalHeight + this.HeightPadding;
 
 			//处理普通标签的最终宽度
 			TryExtendWidth(LocX);
 		}
-
-
 
 		private int DrawImage(ExecuteParam param, Bitmap bitmap, int CurLineHeight, ref float LocX, ref float LocY, bool EnableScale = true, float ScaleRate = 1.0F)
 		{
@@ -354,7 +339,7 @@ namespace Xylia.Preview.GameUI.Controls
 
 			//绘制图像
 			var point = new PointF((int)Math.Ceiling(LocX), (int)Math.Ceiling(LocY - 2));
-			_utils.Add(new ExecuteUnit(param, point, bitmap.Thumbnail(ratio)));
+			_units.Add(new ExecuteUnit(param, point, bitmap.Thumbnail(ratio)));
 
 			//计算新的位置
 			LocX += CurWidth;
@@ -366,25 +351,16 @@ namespace Xylia.Preview.GameUI.Controls
 			if (string.IsNullOrWhiteSpace(Text)) return;
 
 			var lines = SplitMultiLine(param, Text, this.MaxWidth, ref LocX, ref LocY);
-			_utils.AddRange(lines);
+			_units.AddRange(lines);
 
 			if (lines.Count > 1) TryExtendWidth(this.MaxWidth);
 		}
 
-		/// <summary>
-		/// 根据最大宽度拆分文本行
-		/// </summary>
-		/// <param name="Txt"></param>
-		/// <param name="MaxWidth"></param>
-		/// <param name="Font"></param>
-		/// <param name="LocX"></param>
-		/// <param name="LocY"></param>
-		/// <returns></returns>
 		public static List<ExecuteUnit> SplitMultiLine(ExecuteParam param, string Txt, int MaxWidth, ref float LocX, ref float LocY)
 		{
 			var LineTxts = new List<ExecuteUnit>();
 
-			//起始坐标，用于处理绘制位置
+			//起始坐标, 用于处理绘制位置
 			float StartLocX = LocX;
 			float StartLocY = LocY;
 
@@ -404,7 +380,7 @@ namespace Xylia.Preview.GameUI.Controls
 						//截断之前的文本
 						LineTxts.Add(new ExecuteUnit(param, new PointF(StartLocX, StartLocY), CurTxt.ToString()));
 
-						//初始化文本生成器
+						//Initialize文本生成器
 						CurTxt.Clear();
 
 						//获取换行之后的新的位置信息

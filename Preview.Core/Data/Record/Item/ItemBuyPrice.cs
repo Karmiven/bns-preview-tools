@@ -6,7 +6,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class ItemBuyPrice : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		public int Money;
 
 		[Signal("required-itembrand")]

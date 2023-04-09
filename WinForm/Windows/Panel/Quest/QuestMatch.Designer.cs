@@ -10,7 +10,7 @@
         /// <summary> 
         /// 清理所有正在使用的资源。
         /// </summary>
-        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        /// <param name="disposing">如果应释放托管资源, 为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,8 +23,8 @@
         #region 组件设计器生成的代码
 
         /// <summary> 
-        /// 设计器支持所需的方法 - 不要修改
-        /// 使用代码编辑器修改此方法的内容。
+        /// 设计器支持所需的Functions - 不要修改
+        /// 使用代码编辑器修改此Functions的内容。
         /// </summary>
         private void InitializeComponent()
         {
@@ -96,7 +96,7 @@
 			this.Button1.Name = "Button1";
 			this.Button1.Size = new System.Drawing.Size(69, 33);
 			this.Button1.TabIndex = 40;
-			this.Button1.Text = "加载";
+			this.Button1.Text = "Load ";
 			this.Button1.Click += new System.EventHandler(this.Button1_Click);
 			// 
 			// Num

@@ -1,9 +1,7 @@
-﻿
-using Xylia.Extension;
+﻿using Xylia.Extension;
 using Xylia.Files.Excel;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.GameUI.Controls;
 
 namespace Xylia.Preview.Output
 {

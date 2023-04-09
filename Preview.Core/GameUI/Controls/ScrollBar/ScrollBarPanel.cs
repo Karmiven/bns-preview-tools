@@ -8,13 +8,13 @@ namespace Xylia.Preview.GameUI.Controls.PanelEx.ScrollBar
 	[DesignTimeVisible(false)]
 	public partial class ScrollBarPanel : Panel
 	{
-		#region 字段
+		#region Fields
 		public ScrollBar ScrollBar = null;
 
 		public HideScrollBarPanel ContentPanel = null;
 		#endregion
 
-		#region 构造
+		#region Constructor
 		public ScrollBarPanel()
 		{
 			InitializeComponent();

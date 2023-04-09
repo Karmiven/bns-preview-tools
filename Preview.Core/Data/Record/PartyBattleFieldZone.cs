@@ -18,7 +18,7 @@ namespace Xylia.Preview.Data.Record
 		public string ArenaMinimap;
 
 
-		#region 接口方法
+		#region Interface Functions
 		public string GetName() => this.ZoneName2.GetText();
 
 		public string GetDescribe() => this.ZoneDesc.GetText();

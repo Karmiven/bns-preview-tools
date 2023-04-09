@@ -11,12 +11,11 @@ using Xylia.Preview.GameUI.Controls.Forms;
 
 using BNSTag = Xylia.Preview.Common.Tag;
 
-
 namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 {
 	public partial class Game_ChallengeTodayScene : PreviewFrm
 	{
-		#region 字段
+		#region Fields
 		public static Dictionary<ChallengeList.ChallengeTypeSeq, string> TodayChallengeType = new()
 		{
 			{ ChallengeList.ChallengeTypeSeq.Mon, "UI.DayOfWeek.Monday".GetText() },
@@ -37,7 +36,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 		#endregion
 
 
-		#region 构造
+		#region Constructor
 		public Game_ChallengeTodayScene()
 		{
 			InitializeComponent();
@@ -65,12 +64,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 		}
 		#endregion
 
-		#region 界面方法
+		#region Functions (UI)
 		private void OutputList_Click(object sender, EventArgs e) => Execute.StartOutput<Output.ChallengeList>();
 		#endregion
 
 
-		#region 课题处理
+		#region Task
 		private void DaySelect_SelectedChangedEvent(object sender, EventArgs e)
 		{
 			if (DaySelect.TextValue == "UI.QuestQuickSlot.ChallengeThisWeek.QuestGuide".GetText())
@@ -114,7 +113,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 			var ChallengeList = FileCache.Data.ChallengeList.FirstOrDefault(o => o.ChallengeType == ChallengeType);
 			if (ChallengeList is null) return;
 
-			#region 加载任务课题
+			#region Task
 			int LocY = 0;
 
 			List<ChallengeCell> ChallengeCells = new();
@@ -156,7 +155,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 			});
 			#endregion
 
-			#region 加载奖励
+			#region Reward
 			this.ChallengeListReward = new();
 			this.ChallengeCountForReward = new();
 			for (byte Idx = 1; Idx <= 20; Idx++)
@@ -173,15 +172,11 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 		}
 		#endregion
 
-
-		#region 奖励处理
+		#region Reward
 		private List<ChallengeListReward> ChallengeListReward;
 
 		private List<byte> ChallengeCountForReward;
 
-		/// <summary>
-		/// 奖励索引
-		/// </summary>
 		private byte SeletedIndex;
 
 		private void RewardPreview_PrevSeleted(object sender, EventArgs e) => SelectReward(this.SeletedIndex - 1);

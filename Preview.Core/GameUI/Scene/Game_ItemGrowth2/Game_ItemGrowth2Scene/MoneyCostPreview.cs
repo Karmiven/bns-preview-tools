@@ -14,7 +14,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			this.priceCell2.SetToolTip($"应用中的折扣率 { 1 - DiscountRate:P0}");
 		}
 
-		#region 字段
+		#region Fields
 		public int MoneyCost
 		{
 			get => this.priceCell1.CurrencyCount;

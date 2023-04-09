@@ -16,7 +16,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	[DesignTimeVisible(false)]
 	public partial class MissionStepPanel : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public MissionStepPanel()
 		{
 			InitializeComponent();
@@ -27,7 +27,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		#endregion
 
 
-		#region 字段
+		#region Fields
 		public void LoadData(MissionStep MissionStep, WaveOut SoundOut)
 		{
 			this.Content_StepID.Text = "● ";
@@ -47,7 +47,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 				else if (MissionStep.CompletionType == OpCheck.and)
 				{
 					this.MissionDemand.Text += $"完成下列所有课题";
-					this.MissionDemand.SetToolTip("对于同步骤中的不同课题，进度同时计算");
+					this.MissionDemand.SetToolTip("对于同步骤中的不同课题, 进度同时计算");
 				}
 			}
 			#endregion
@@ -67,10 +67,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public override void Refresh()
 		{
-			#region 初始化
+			#region Initialize
 			base.Refresh();
 			int LocY = 0;
 

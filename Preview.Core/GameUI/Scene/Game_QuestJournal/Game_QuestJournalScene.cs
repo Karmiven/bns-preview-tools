@@ -18,7 +18,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 	/// </summary>
 	public partial class Game_QuestJournalScene : PreviewFrm
 	{
-		#region 构造
+		#region Constructor
 		public Game_QuestJournalScene(Quest QuestData) : this() => this.LoadData(QuestData);
 
 		public Game_QuestJournalScene()
@@ -30,7 +30,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		public WaveOut SoundOut = new() { Latency = 100 };
 
 		/// <summary>
@@ -40,8 +40,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		#endregion
 
 
-
-		#region 界面方法
+		#region Functions (UI)
 		private void SwitchTestMode_Click(object sender, EventArgs e) => TestMode = this.SwitchTestMode.Checked;
 
 		private void QuestPreview_Load(object sender, EventArgs e)
@@ -86,8 +85,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 		#endregion
 
-
-		#region 方法
+		#region Functions
 		Quest _data;
 
 		public void LoadData(Quest value)

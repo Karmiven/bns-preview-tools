@@ -10,7 +10,7 @@ namespace Xylia.Preview.Data.Record
 {
 	public sealed class KeyCommand : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		[Signal("key-command")]
 		public KeyCommandSeq keyCommand;
 
@@ -48,7 +48,7 @@ namespace Xylia.Preview.Data.Record
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 获取组合键
 		/// </summary>
@@ -60,7 +60,7 @@ namespace Xylia.Preview.Data.Record
 			#region 处理默认组合键
 			if(this.DefaultKeycap != null)
 			{
-				//逗号分隔多个快捷键，实际未支持处理
+				//逗号分隔多个快捷键, 实际未支持处理
 				foreach (var o in this.DefaultKeycap.Split(','))
 				{
 					if (string.IsNullOrWhiteSpace(o) || o == "none") continue;

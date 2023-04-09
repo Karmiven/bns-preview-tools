@@ -19,7 +19,7 @@ namespace Xylia.Preview.GameUI.Controls
 {
 	public sealed class ContentParams
 	{
-		#region 构造
+		#region Constructor
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		readonly List<object> Params = new();
 
@@ -34,8 +34,7 @@ namespace Xylia.Preview.GameUI.Controls
 		}
 		#endregion
 
-
-		#region 参数组
+		#region Params
 		/// <summary>
 		/// Gets or sets the element at the specified index.
 		/// </summary>
@@ -66,31 +65,35 @@ namespace Xylia.Preview.GameUI.Controls
 		public void Clear() => this.Params.Clear();
 		#endregion
 
-		#region 处理数据
+		#region Functions
 		public object Handle(HtmlNode ArgNode)
 		{
-			#region 初始化
-			//获取参数
+			#region Initialize
 			string p = ArgNode.Attributes["p"]?.Value;
 
 			if (!p.Contains(':')) return null;
 			var ps = p.Split(':');
 			string ArgType = ps[0], ArgValue = ps[1];
 
-			//创建目标树
-			var args = new List<ArgItem>();
-			foreach (var node in ArgValue.Split('.'))
-				args.Add(new ArgItem(node, args.LastOrDefault()));
+			//arg tree
+			var args = ArgValue.Split('.').Select(o => new ArgItem(o)).ToArray();
+			for (int x = 0; x < args.Length; x++)
+			{
+				if (x != 0) 
+					args[x].Prev = args[x - 1];
+
+				if (x != args.Length - 1) 
+					args[x].Next = args[x + 1];
+			}
 			#endregion
 
-			#region 逐级处理
+
 			object ExecObj = null;
-			for (int x = 0; x < args.Count; x++)
+			for (int x = 0; x < args.Length; x++)
 			{
 				var item = args[x];
 				if (x == 0)
 				{
-					//枚举
 					if (ArgType == "seq")
 					{
 						var seq = ArgNode.Attributes["seq"]?.Value;
@@ -100,7 +103,6 @@ namespace Xylia.Preview.GameUI.Controls
 						ExecObj = value.CastSeq(name);
 					}
 
-					//特定对象
 					else if (ArgType == "id")
 					{
 						var id = ArgNode.Attributes["id"]?.Value;
@@ -109,10 +111,9 @@ namespace Xylia.Preview.GameUI.Controls
 						item.ValidType(ref ExecObj);
 					}
 
-					//动态对象
 					else
 					{
-						if (!byte.TryParse(ArgType, out var index)) throw new InvalidCastException("非法参数，应为数值类型: " + ArgType);
+						if (!byte.TryParse(ArgType, out var index)) throw new InvalidCastException("非法参数, 应为数值类型: " + ArgType);
 
 						ArgumentNullException.ThrowIfNull(Params);
 						if (Params.Count < index) throw new ArgumentOutOfRangeException(nameof(Params));
@@ -123,7 +124,6 @@ namespace Xylia.Preview.GameUI.Controls
 				}
 				else
 				{
-					//获取当前层级对象信息
 					var CurObj = item.GetObject(ExecObj);
 					if (CurObj is null) break;
 					else ExecObj = CurObj;
@@ -131,7 +131,6 @@ namespace Xylia.Preview.GameUI.Controls
 			}
 
 			return ExecObj;
-			#endregion
 		}
 
 		public string Handle(string Text)
@@ -151,7 +150,7 @@ namespace Xylia.Preview.GameUI.Controls
 				}
 				catch (Exception ex)
 				{
-					Debug.WriteLine($"处理失败: {html}\n\t{ex.Message}");
+					Debug.WriteLine($"handle arg failed: {html}\n\t{ex.Message}");
 				}
 			}
 
@@ -164,25 +163,21 @@ namespace Xylia.Preview.GameUI.Controls
 
 	public sealed class ArgItem
 	{
-		#region 构造
-		public ArgItem(string target, ArgItem parent = null)
-		{
-			this.Target = target;
-			this.Parent = parent;
-		}
-
+		#region Constructor
+		public ArgItem(string target) => this.Target = target;
 
 		private readonly string Target;
 
-		private readonly ArgItem Parent;
+		public ArgItem Prev;
+
+		public ArgItem Next;
 		#endregion
 
-		#region 方法
-		/// <summary>
-		/// 验证对象
-		/// </summary>
-		/// <param name="value"></param>
-		/// <exception cref="InvalidCastException"></exception>
+
+		#region Functions
+		public override string ToString() => this.Target;
+
+
 		public void ValidType(ref object value)
 		{
 			if (value is null) return;
@@ -227,32 +222,22 @@ namespace Xylia.Preview.GameUI.Controls
 			throw new InvalidCastException($"Valid Failed: {Target} > {value.GetType()}");
 		}
 
-		/// <summary>
-		/// 获得对象
-		/// </summary>
-		/// <param name="value"></param>
-		/// <returns></returns>
 		public object GetObject(object value)
 		{
 			if (value is null) return null;
 
-
-			// 文本数据
 			if (value is string @string) return @string;
-			// 图片数据
-			if (value is Bitmap @bitmap)
+			else if (value is Bitmap @bitmap)
 			{
-				//图片缩放到比例
 				if (this.Target == "scale") return value;
-				if (this.Parent.Target == "scale")
+				if (this.Prev.Target == "scale")
 				{
-					return value;
-
-					int Scale = int.Parse(this.Target);
-					return new Bitmap(bitmap, Scale, Scale);
+					float Scale = 0.01F * int.Parse(this.Target);
+					return new Bitmap(bitmap,
+						(int)(Scale * bitmap.Width),
+						(int)(Scale * bitmap.Height));
 				}
 			}
-			// 枚举数据
 			else if (value is Enum @enum)
 			{
 				if (value is KeyCommandSeq KeyCommond) return GetObject(KeyCommond.GetKeyCommand());
@@ -261,21 +246,18 @@ namespace Xylia.Preview.GameUI.Controls
 
 				return $"[{ @enum.GetDescription() }]";
 			}
-			// 接口数据
 			else if (value is IArgParam @ArgParam)
 			{
 				var result = ArgParam.ParamTarget(this.Target);
 				if (result != null) return result;
 			}
-			// 实例数据
 			else
 			{
 				var result = value.GetInfo(this.Target, true);
 				if (result != null) return result.GetValue(value);
 			}
 
-
-			Debug.WriteLine($"未支持 { value } ({ value.GetType().Name } > { this.Target })");
+			Debug.WriteLine($"NOT SUPPORTED { value } ({ value.GetType().Name } > { this.Target })");
 			return null;
 		}
 		#endregion

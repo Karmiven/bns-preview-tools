@@ -5,41 +5,41 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 	public enum EventType
 	{
 		/// <summary>
-		/// 活动结束事件
+		/// 活动结束
 		/// </summary>
 		[Signal("act-finished")]
 		ActFinished,
 
 		/// <summary>
-		/// 活动暂停事件
+		/// 活动暂停
 		/// </summary>
 		[Signal("act-paused")]
 		ActPaused,
 
 
 		/// <summary>
-		/// 攻击事件
+		/// 攻击Event
 		/// </summary>
 		Attack,
 
 		/// <summary>
-		/// 被攻击事件
+		/// 被攻击Event
 		/// </summary>
 		Attacked,
 
 		/// <summary>
-		/// 护送失败事件
+		/// 护送失败Event
 		/// </summary>
 		[Signal("convoy-failed")]
 		ConvoyFailed,
 
 		/// <summary>
-		/// 造成伤害事件
+		/// 造成伤害Event
 		/// </summary>
 		Damage,
 
 		/// <summary>
-		/// 被伤害事件
+		/// 被伤害Event
 		/// </summary>
 		Damaged,
 
@@ -52,30 +52,30 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 
 
 		/// <summary>
-		/// 获得效果后事件
+		/// 获得效果后Event
 		/// </summary>
 		[Signal("invoked-effect")]
 		InvokedEffect,
 
 		/// <summary>
-		/// 获得效果时事件
+		/// 获得效果时Event
 		/// </summary>
 		[Signal("invoke-effect")]
 		InvokeEffect,
 
 
 		/// <summary>
-		/// 击杀事件
+		/// 击杀Event
 		/// </summary>
 		Kill,
 
 		/// <summary>
-		/// 被击杀事件
+		/// 被击杀Event
 		/// </summary>
 		Killed,
 
 		/// <summary>
-		/// 连线结束事件
+		/// 连线结束Event
 		/// </summary>
 		[Signal("link-laser-target-terminate")]
 		LinkLaserTargetTerminate,
@@ -87,7 +87,7 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 		BossBleeding,
 
 		/// <summary>
-		/// 仇恨列表清空事件
+		/// 仇恨列表清空Event
 		/// </summary>
 		[Signal("boss-hate-list-emptied")]
 		BossHateListEmptied,
@@ -98,13 +98,13 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 		NpcBleeding,
 
 		/// <summary>
-		/// 战斗开始事件
+		/// 战斗开始Event
 		/// </summary>
 		[Signal("npc-combat-start")]
 		NpcCombatStart,
 
 		/// <summary>
-		/// NPC战斗结束事件（包含死亡）
+		/// NPC战斗结束Event（包含死亡）
 		/// </summary>
 		[Signal("npc-combat-end")]
 		NpcCombatEnd,
@@ -122,13 +122,13 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 		NpcManipulateEnd,
 
 		/// <summary>
-		/// NPC刷新事件
+		/// NPC刷新Event
 		/// </summary>
 		[Signal("npc-spawn")]
 		NpcSpawn,
 
 		/// <summary>
-		/// NPC消除事件
+		/// NPC消除Event
 		/// </summary>
 		[Signal("npc-despawn")]
 		NpcDespawn,
@@ -137,7 +137,7 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 
 
 		/// <summary>
-		/// NPC特殊事件<br/>通过Combat中的 event-step 触发
+		/// NPC特殊Event<br/>通过Combat中的 event-step 触发
 		/// </summary>
 		[Signal("npc-special")]
 		NpcSpecial,
@@ -151,7 +151,7 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 		PatternFinish,
 
 		/// <summary>
-		/// 停止动画事件
+		/// 停止动画Event
 		/// </summary>
 		[Signal("stop-cinematic")]
 		StopCinematic,
@@ -185,19 +185,19 @@ namespace Xylia.Preview.Data.Record.ScriptData.Decision
 		EnterZone,
 
 		/// <summary>
-		/// 离开区域事件
+		/// 离开区域Event
 		/// </summary>
 		[Signal("leave-zone")]
 		LeaveZone,
 
 		/// <summary>
-		/// 区域模式改变事件
+		/// 区域模式改变Event
 		/// </summary>
 		[Signal("zone-mode-changed")]
 		ZoneModeChanged,
 
 		/// <summary>
-		/// 区域开启事件
+		/// 区域开启Event
 		/// </summary>
 		[Signal("zone-open")]
 		ZoneOpen,

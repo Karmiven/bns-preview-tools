@@ -10,7 +10,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class SkillTooltipPreview : PreviewControl
 	{
-		#region 构造
+		#region Constructor
 		public SkillTooltipPreview()
 		{
 			InitializeComponent();
@@ -20,12 +20,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 		#endregion
 
-		#region 方法
+		#region Functions
 		readonly Dictionary<byte, ItemCombat> ItemCombat = new();
 
 		public override void LoadData(BaseRecord record)
 		{
-			#region 初始化
+			#region Initialize
 			var Item = record as Item;
 			for (byte idx = 1; idx <= 10; idx++) ItemCombat[idx] = FileCache.Data.ItemCombat[Item.Attributes["item-combat-" + idx]];
 
@@ -38,7 +38,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 
 		private void SelectStyle(JobStyleSeq JobStyle = JobStyleSeq.Advanced1)
 		{
-			#region 初始化
+			#region Initialize
 			this.ContentPanel.Text = null;
 
 			var ItemCombat = this.ItemCombat[(byte)(1 + (byte)JobStyle)];

@@ -9,7 +9,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 {
 	public partial class ItemGrowth2Page : EquipmentGuidePage
 	{
-		#region	构造
+		#region	Constructor
 		public IEnumerable<ItemTransformRecipe> Recipes;
 
 		public ItemGrowth2Page() => InitializeComponent();

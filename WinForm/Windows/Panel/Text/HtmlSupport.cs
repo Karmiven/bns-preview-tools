@@ -50,7 +50,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 									FontCreat() +
 
 
-								   //为突出Font，未设置时显示为灰色
+								   //为突出Font, 未设置时显示为灰色
 								   ".Text {\n" +
 								   "    color:#C3916A;\n" +
 								   "    font-size: ;\n" +
@@ -156,7 +156,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 				case "arg":
 				{
-					#region 初始化
+					#region Initialize
 					var p = Node.Attributes["p"]?.Value;
 					var id = Node.Attributes["id"]?.Value;
 					var link = Node.Attributes["link"]?.Value;
@@ -177,7 +177,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 				case "image":
 				{
-					#region	初始化
+					#region	Initialize
 					var EnablesScale = Node.Attributes["enablescale"]?.Value.ToBool() ?? false;
 					var Imagesetpath = Node.Attributes["imagesetpath"]?.Value;
 					var Path = Node.Attributes["path"]?.Value;
@@ -209,7 +209,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 					//获得字体名称
 					string FontName = Node.Attributes["name"]?.Value;
 
-					//仅读取颜色信息
+					//仅Load 颜色信息
 					if (!string.IsNullOrWhiteSpace(FontName))
 					{
 						//去除掉包名

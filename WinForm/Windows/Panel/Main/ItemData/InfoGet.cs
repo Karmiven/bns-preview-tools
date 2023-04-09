@@ -24,7 +24,7 @@ namespace Xylia.Match.Util
 
 
 
-		#region 加载方法
+		#region Load Functions
 		public string GetName2(string ItemAlias)
 		{
 			string NameText = TextData[$"Item.Name2.{ItemAlias}"].GetText();

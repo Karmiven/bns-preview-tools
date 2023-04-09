@@ -19,7 +19,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 	/// </summary>
 	public partial class RewardPreview : TitlePanel
 	{
-		#region 构造
+		#region Constructor
 		public RewardPreview()
 		{
 			InitializeComponent();
@@ -33,17 +33,17 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 		#endregion
 
-		#region 委托事件
+		#region 委托Event
 		//定义委托
 		public delegate void RewardChangedHandle(object sender, RewardChangedEvent e);
 
 		/// <summary>
-		/// 奖励组选择事件
+		/// 奖励组选择Event
 		/// </summary>
 		public event RewardChangedHandle SelRewardChanged;
 		#endregion
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 是否有奖励
 		/// </summary>
@@ -67,7 +67,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 
-		#region 分页控制用字段
+		#region 分页控制用Fields
 		/// <summary>
 		/// 奖励分页数据集合
 		/// </summary>
@@ -91,13 +91,13 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		readonly int PicScale = 32;
 		#endregion
 
-		#region 方法
+		#region Functions
 		/// <summary>
 		/// 创建界面
 		/// </summary>
 		public new void CreateControl()
 		{
-			#region 初始化
+			#region Initialize
 			if (!HasReward) return;
 
 			bool ShowPicBox = false;      //显示道具图标
@@ -110,7 +110,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			#region 遍历奖励分页
 			foreach (var page in this.RewardPages)
 			{
-				//初始化
+				//Initialize
 				int LoY = 21;
 
 				#region 处理 RewardCell 
@@ -124,7 +124,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 					this.ExecuteExtra(c);
 					LoY += c.Height;
 
-					//有效奖励组数量为1时，直接添加
+					//有效奖励组数量为1时, 直接添加
 					if (OnlyOnePage) this.Controls.Add(c);
 				}
 				#endregion
@@ -137,7 +137,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 					var OpenItem2 = FileCache.Data.Item[page.OpenItem2?.Item];
 
 					#region 控件处理
-					//读取物品图标
+					//Load 物品图标
 					Bitmap Icon = OpenItem2?.Icon;
 
 					//图片按键
@@ -160,10 +160,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 					}
 					#endregion
 
-					//有效奖励组数量为1时，不需要处理点击事件
+					//有效奖励组数量为1时, 不需要处理点击Event
 					if (!OnlyOnePage)
 					{
-						//绑定点击事件
+						//绑定点击Event
 						IconBtn.Click += (s, e) => this.SelectReward((ItemIconCell)s);
 						IconBtn.BringToFront();
 
@@ -182,7 +182,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			if (ShowPicBox) this.RewardPreview_SizeChanged(null, null);
 
 
-			#region 仅有单页时，直接触发点击事件
+			#region 仅有单页时, 直接触发点击Event
 			if (!OnlyOnePage) this.SelectReward(this.ItemIconCells.First());
 			else SelRewardChanged?.Invoke(null, new RewardChangedEvent(this.RewardPages.First()));
 			#endregion
@@ -222,10 +222,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		/// <param name="CurPic"></param>
 		private void SelectReward(ItemIconCell CurPic)
 		{
-			#region 初始化
+			#region Initialize
 			this.SuspendLayout();
 
-			//如果选择相同奖励，直接返回
+			//如果选择相同奖励, 直接返回
 			if (this.SelPicBox != null && CurPic == this.SelPicBox) return;
 			else this.SelPicBox = CurPic;
 
@@ -237,7 +237,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			if (this.SelPicBox != null && this.SelPicBox.Image is null) this.SelPicBox.Image = IniImage;
 
 			//变更选择后的颜色
-			if (CurPic is null) throw new Exception("CurPic点击事件中发生控件为空错误");
+			if (CurPic is null) throw new Exception("CurPic点击Event中发生控件为空错误");
 			else if (CurPic.Image is null) CurPic.Image = SelImage;
 			#endregion
 
@@ -284,19 +284,19 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 		#endregion
 
-		#region 接口方法
+		#region Interface Functions
 		public override bool INVALID() => !this.HasReward;
 
 		public override void LoadData(BaseRecord record)
 		{
-			//初始化
+			//Initialize
 			//清理分页数据
 			this.RewardPages?.Clear();
 			this.RewardPageLink?.Clear();
 
 			var Item = record as Item;
 
-			//读取奖励信息
+			//Load 奖励信息
 			var DecomposeInfo = new DecomposeInfo(Item);
 			this.RewardPages = RewardPage.GetPages(DecomposeInfo);
 

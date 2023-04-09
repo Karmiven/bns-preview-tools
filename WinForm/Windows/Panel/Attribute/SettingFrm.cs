@@ -8,7 +8,7 @@ namespace Xylia.Match.Windows.Attribute
 {
 	public partial class SettingFrm : Form
 	{
-		#region 构造
+		#region Constructor
 		public SettingFrm()
 		{
 			InitializeComponent();
@@ -18,7 +18,7 @@ namespace Xylia.Match.Windows.Attribute
 		#region Page1
 		private void Button1_Click(object sender, EventArgs e)
 		{
-			#region 初始化
+			#region Initialize
 			var Value1 = Page1_Value1.Text.ToDouble();
 			var Value2 = Page1_Value2.Text.ToDouble();
 

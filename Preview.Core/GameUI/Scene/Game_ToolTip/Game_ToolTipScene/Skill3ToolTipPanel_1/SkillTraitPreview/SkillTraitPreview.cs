@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
-using System.Windows.Forms;
 
-using Xylia.Preview.Common.Seq;
 using Xylia.Extension;
+using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Controls.Forms;
 
@@ -14,7 +13,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 {
 	public partial class SkillTraitPreview : PreviewFrm
 	{
-		#region 构造
+		#region Constructor
 		public SkillTraitPreview()
 		{
 			InitializeComponent();
@@ -48,8 +47,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 		#endregion
 
 
-
-		#region 方法
+		#region Functions
 		SkillTrait Default;
 
 		Dictionary<byte, TraitTier> TraitTiers;
@@ -146,8 +144,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 		}
 		#endregion
 
-
-		#region 控件方法
+		#region Functions (UI)
 		private void ucBtnExt1_BtnClick(object sender, EventArgs e) => new Thread(o => new SkillBook3_IconView(this.GetSkills()).ShowDialog()).Start();
 
 		public override void Refresh()

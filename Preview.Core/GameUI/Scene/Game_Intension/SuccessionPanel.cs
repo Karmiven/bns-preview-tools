@@ -6,7 +6,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Intension
 {
 	public partial class SuccessionPanel : ItemGrowth2Page
 	{
-		#region	构造
+		#region	Constructor
 		public ItemImproveSuccession ItemImproveSuccession;
 
 		public SuccessionPanel() => InitializeComponent();  

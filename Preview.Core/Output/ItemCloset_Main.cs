@@ -26,15 +26,15 @@ namespace Xylia.Preview.Output
 
 			FileCache.Data.Item.ForEach(ItemInfo =>
 			{
-				#region 初始化
+				#region Initialize
 				//指示是否需要输出
 				bool Flag = false;
 
-				//对于服装类型，不需要额外判断
+				//对于服装类型, 不需要额外判断
 				if (ItemInfo.Type == ItemType.Costume) Flag = true;
-				//对于武器类型，需要判断是否存在衣柜关联
+				//对于武器类型, 需要判断是否存在衣柜关联
 				else if (ItemInfo.Type == ItemType.Weapon && ItemInfo.ClosetGroupId != 0) Flag = true;
-				//对于饰品，需要判断其饰品类型
+				//对于饰品, 需要判断其饰品类型
 				else if (ItemInfo.Type == ItemType.Accessory &&
 					(ItemInfo.AccessoryType == AccessoryTypeSeq.CostumeAttach || ItemInfo.AccessoryType == AccessoryTypeSeq.Vehicle)) Flag = true;
 

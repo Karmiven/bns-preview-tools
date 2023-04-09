@@ -13,7 +13,7 @@ namespace Xylia.Preview.GameUI.Scene.ItemGrowth.Scene
 {
 	public partial class EquipmentGuideScene : PreviewFrm
 	{
-		#region 构造
+		#region Constructor
 		readonly Item ItemInfo;
 
 		public EquipmentGuideScene(Item MyWeapon)

@@ -7,9 +7,6 @@ namespace Xylia.Preview.Properties
 {
 	public static class CommonPath
 	{
-		/// <summary>
-		/// 输出文件夹
-		/// </summary>
 		public static string OutputFolder
 		{
 			get => Ini.ReadValue("Folder", "Output");
@@ -20,9 +17,6 @@ namespace Xylia.Preview.Properties
 			}
 		}
 
-		/// <summary>
-		/// 游戏目录
-		/// </summary>
 		public static string GameFolder
 		{
 			get => Ini.ReadValue("Folder", "Game_Bns");

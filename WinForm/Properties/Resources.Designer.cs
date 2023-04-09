@@ -3,8 +3,8 @@
 //     此代码由工具生成。
 //     运行时版本:4.0.30319.42000
 //
-//     对此文件的更改可能会导致不正确的行为，并且如果
-//     重新生成代码，这些更改将会丢失。
+//     对此文件的更改可能会导致不正确的行为, 并且如果
+//     重新生成代码, 这些更改将会丢失。
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -13,12 +13,12 @@ namespace Xylia.Match.Properties {
     
     
     /// <summary>
-    ///   一个强类型的资源类，用于查找本地化的字符串等。
+    ///   一个强类型的资源类, 用于查找本地化的字符串等。
     /// </summary>
     // 此类是由 StronglyTypedResourceBuilder
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
-    // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
-    // (以 /str 作为命令选项)，或重新生成 VS 项目。
+    // 若要添加或移除成员, 请编辑 .ResX 文件, 然后重新运行 ResGen
+    // (以 /str 作为命令选项), 或重新生成 VS 项目。
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -47,7 +47,7 @@ namespace Xylia.Match.Properties {
         }
         
         /// <summary>
-        ///   重写当前线程的 CurrentUICulture 属性，对
+        ///   重写当前线程的 CurrentUICulture 属性, 对
         ///   使用此强类型资源类的所有资源查找执行重写。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -88,7 +88,7 @@ namespace Xylia.Match.Properties {
         /// <summary>
         ///   查找类似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;Game&gt;
-        ///	&lt;!-- 手动添加名称缺失道具，仅ID与alias项会被读取。--&gt;
+        ///	&lt;!-- 手动添加名称缺失道具, 仅ID与alias项会被Load 。--&gt;
         ///	&lt;record alias=&quot;Test_N-ShopAccountShippingItem&quot; name2=&quot;N-Shop帐号配送物品&quot; /&gt;
         ///	&lt;record alias=&quot;Test_N-ShopCharacterShippingItem&quot; name2=&quot;N-Shop角色配送物品&quot; /&gt;
         ///	&lt;record alias=&quot;BabaB2_0146&quot; name2=&quot;哈迪斯&quot; /&gt;
@@ -118,14 +118,14 @@ namespace Xylia.Match.Properties {
         ///   查找类似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;table release-module=&quot;LocalData&quot; release-side=&quot;client&quot; type=&quot;tips&quot; version=&quot;1.2&quot;&gt;
         ///  &lt;!-- 这是用于MainPage的提示文本 --&gt;
-        ///  &lt;record text=&quot;按住Ctrl并滚动鼠标滚轮，可以放缩输出信息框&quot;/&gt;
+        ///  &lt;record text=&quot;按住Ctrl并滚动鼠标滚轮, 可以放缩输出信息框&quot;/&gt;
         ///  &lt;record text=&quot;小知识：任务名称为红色代表无法执行&quot;/&gt; 
-        ///  &lt;record text=&quot;小知识：自身等级大于推荐等级10级时，任务将显示为灰色&quot;/&gt;
-        ///  &lt;record text=&quot;小知识：自身等级大于推荐等级20级时，任务将变为低等级任务&quot;/&gt; 
+        ///  &lt;record text=&quot;小知识：自身等级大于推荐等级10级时, 任务将显示为灰色&quot;/&gt;
+        ///  &lt;record text=&quot;小知识：自身等级大于推荐等级20级时, 任务将变为低等级任务&quot;/&gt; 
         ///
         ///  &lt;!-- prop 模块 --&gt;
-        ///  &lt;record module=&quot;prop&quot; text=&quot;在物品预览中，首次查询将会建立内存数据，耗时约需半分钟。此后会极大加速。&quot; proweight=&quot;100&quot; /&gt;
-        ///  &lt;record module=&quot;prop&quot; text=&quot;在物品预览中，双击物品名称可复制物品信息&quot; /&gt;
+        ///  &lt;record module=&quot;prop&quot; text=&quot;在物品预览中, 首次查询将会建立内存数据, 耗时约需半分钟。此后会极大加速。&quot; proweight=&quot;100&quot; /&gt;
+        ///  &lt;record module=&quot;prop&quot; text=&quot;在物品预览中, 双击物品名称可复制物品信息&quot; /&gt;
         ///  &lt;record  [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string Tips {

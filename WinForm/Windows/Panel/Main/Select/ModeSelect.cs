@@ -4,7 +4,7 @@ namespace Xylia.Match
 {
 	public partial class ModeSelect : HZH_Controls.Forms.FrmBack
 	{
-		#region 构造
+		#region Constructor
 		public enum State
 		{
 			None,
@@ -22,7 +22,7 @@ namespace Xylia.Match
 		}
 		#endregion
 
-		#region 控件方法
+		#region Functions (UI)
 
 		private void Select_Load(object sender, EventArgs e)
 		{

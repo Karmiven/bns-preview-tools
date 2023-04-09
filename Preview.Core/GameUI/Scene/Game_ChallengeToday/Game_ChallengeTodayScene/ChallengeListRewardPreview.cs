@@ -12,11 +12,11 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 	[DesignTimeVisible(false)]
 	public partial class ChallengeListRewardPreview : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public ChallengeListRewardPreview() => InitializeComponent();
 		#endregion
 
-		#region 事件与委托
+		#region Events & Delegates
 		public event EventHandler PrevSeleted;
 
 		public event EventHandler NextSeleted;
@@ -27,12 +27,12 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public void LoadData(ChallengeListReward Reward)
 		{
 			this.Controls.Remove<ItemIconCell>();
 
-			#region 加载控件
+			#region Load 控件
 			int LocX = this.Btn_Prev.Right + 20;
 			for (int i = 1; i <= 8; i++)
 			{

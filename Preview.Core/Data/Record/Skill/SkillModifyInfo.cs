@@ -9,7 +9,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class SkillModifyInfo : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		public TypeSeq Type;
 		public enum TypeSeq
 		{
@@ -66,9 +66,7 @@ namespace Xylia.Preview.Data.Record
 		public int ParentSkill3Id4;
 		#endregion
 
-
-
-		#region 处理信息
+		#region Functions
 		private enum TextType
 		{
 			Percent,
@@ -120,7 +118,7 @@ namespace Xylia.Preview.Data.Record
 			{
 				var Skill = new List<int>() { ParentSkill3Id1, ParentSkill3Id2, ParentSkill3Id3, ParentSkill3Id4 }.Where(a => a != 0)
 				  .Select(skill => FileCache.Data.Skill3[skill, 1]?.Name2.GetText())
-				  .Aggregate((sum, now) => sum + "，" + now);
+				  .Aggregate((sum, now) => sum + ", " + now);
 
 				SkillPart = $"<font name=\"00008130.UI.Vital_LightBlue\">{Skill}</font> ";
 			}

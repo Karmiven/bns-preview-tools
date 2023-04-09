@@ -4,7 +4,7 @@ namespace Xylia.Preview.Data.Record
 {
 	public sealed class SkillTooltip : BaseRecord
 	{
-		#region 属性字段
+		#region Fields
 		public string Skill;
 
 		[Signal("tooltip-group")]
@@ -58,7 +58,7 @@ namespace Xylia.Preview.Data.Record
 		#endregion
 
 
-		#region 枚举
+		#region Enums
 		public enum TooltipGroup
 		{
 			M1,

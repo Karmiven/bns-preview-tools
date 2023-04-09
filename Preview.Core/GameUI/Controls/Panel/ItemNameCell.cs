@@ -15,7 +15,7 @@ namespace Xylia.Preview.GameUI.Controls
 	[Designer(typeof(FixedDesigner))]
 	public partial class ItemNameCell : Panel
 	{
-		#region 构造
+		#region Constructor
 		public ItemNameCell()
 		{
 			InitializeComponent();
@@ -31,14 +31,14 @@ namespace Xylia.Preview.GameUI.Controls
 		}
 		#endregion
 
-		#region 事件
+		#region Event
 		/// <summary>
-		/// 名称改变事件
+		/// 名称改变Event
 		/// </summary>
 		public event EventHandler NameChanged;
 		#endregion
 
-		#region 字段
+		#region Fields
 		[Browsable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		[EditorBrowsable(EditorBrowsableState.Always)]
@@ -52,7 +52,7 @@ namespace Xylia.Preview.GameUI.Controls
 				base.Text = value;
 				this.Refresh();
 
-				//委托事件
+				//委托Event
 				this.NameChanged?.Invoke(null, null);
 			}
 		}
@@ -97,12 +97,12 @@ namespace Xylia.Preview.GameUI.Controls
 		public BaseRecord ObjectRef;
 		#endregion
 
-		#region 方法
+		#region Functions
 		float ExpectHeight, ExpectWidth;
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			#region 初始化
+			#region Initialize
 			ExpectWidth = ExpectHeight = 0;
 
 			int MaxWidth = 0;
@@ -157,7 +157,7 @@ namespace Xylia.Preview.GameUI.Controls
 		{
 			base.Refresh();
 
-			//如果没有load，则使用空指针方式计算控件大小信息
+			//如果没有load, 则使用空指针方式计算控件大小信息
 			this.OnPaint(new PaintEventArgs(this.CreateGraphics(), new Rectangle()));
 		}
 

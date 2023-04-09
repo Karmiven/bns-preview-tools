@@ -11,7 +11,7 @@ namespace Xylia.Preview.Common.Interface.RecordAttribute
 {
 	public sealed class DbData : IAttributeCollection
 	{
-		#region 构造
+		#region Constructor
 		private readonly DatafileToXmlConverterHelper convert;
 
 		public readonly Record record;
@@ -35,15 +35,14 @@ namespace Xylia.Preview.Common.Interface.RecordAttribute
 		#endregion
 
 
-
-		#region 方法
+		#region Functions
 		private void ProcessObject() => defName.Values.Where(o => !data.ContainsKey(o)).ForEach(attr => ProcessObject(attr));
 
 		public string ProcessObject(AttributeDefinition attr) => this.data[attr] = convert.ConvertRecord(record, attr) ?? attr.DefaultValue;
 		#endregion
 
 
-		#region 属性
+		#region Attribute
 		public string this[string param] => ContainsKey(param, out var Value) ? Value : null;
 
 		public bool ContainsKey(string Name, out string Value)
@@ -51,7 +50,7 @@ namespace Xylia.Preview.Common.Interface.RecordAttribute
 			// 如果存在定义
 			if (defName.TryGetValue(Name, out var attrDef))
 			{
-				// 如果没有对应值，说明没有读取属性
+				// 如果没有对应值, 说明没有Load 属性
 				if (!this.data.TryGetValue(attrDef, out Value))
 				{
 					Value = ProcessObject(attrDef);

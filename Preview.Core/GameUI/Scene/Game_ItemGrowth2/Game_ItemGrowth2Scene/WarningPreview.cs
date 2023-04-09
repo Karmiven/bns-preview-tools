@@ -9,11 +9,11 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 {
 	public partial class WarningPreview : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public WarningPreview() => InitializeComponent();
 		#endregion
 
-		#region 字段
+		#region Fields
 		[Browsable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		[EditorBrowsable(EditorBrowsableState.Always)]

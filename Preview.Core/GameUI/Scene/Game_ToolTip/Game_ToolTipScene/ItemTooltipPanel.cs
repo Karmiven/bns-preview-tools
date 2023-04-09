@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -25,14 +24,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
 	public partial class ItemTooltipPanel : Form
 	{
-		#region 构造 
+		#region Constructor 
 		public readonly Item ItemInfo;
 
 		private readonly bool Loading;
 
 		public ItemTooltipPanel(Item ItemInfo)
 		{
-			#region 初始化
+			#region Initialize
 			Loading = true;
 
 			InitializeComponent();
@@ -41,7 +40,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			this.ItemInfo = ItemInfo;
 
 
-			//初始化可配置内容
+			//Initialize可配置内容
 			if (bool.TryParse(Ini.ReadValue("Preview", "item#option_UseUserOperPanel"), out bool f1))
 				this.MenuItem_SwitchUserOperPanel.Checked = f1;
 
@@ -56,7 +55,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			{
 				var ScreenPoint = this.PointToScreen(new Point(0, 0));
 
-				//必须等开始加载了才能进行定位
+				//必须等开始Load 了才能进行定位
 				UserOperScene.Left = ScreenPoint.X - UserOperScene.Width;
 				UserOperScene.Top = ScreenPoint.Y;
 			});
@@ -83,10 +82,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 		#endregion
 
-		#region 界面交互
+		#region Functions (UI)
 		private void ItemFrm_Shown(object sender, EventArgs e)
 		{
-			//初始化显示状态
+			//Initialize显示状态
 			this.UserOperScene.Refresh();
 			if (this.UserOperScene.BtnCount == 0) this.MenuItem_SwitchUserOperPanel.Visible = false;
 			else this.UserOperScene.Visible = this.MenuItem_SwitchUserOperPanel.Checked;
@@ -267,7 +266,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 					if (o.Value == 0) continue;
 					var val = new MyInfo(o.Key.GetName(o.Value));
 
-					//实际上直接 MainAbility转为此枚举是不正确的，只是简便方法
+					//实际上直接 MainAbility转为此枚举是不正确的, 只是简便Functions
 					if (o.Key == this.ItemInfo.MainAbility1 || o.Key == this.ItemInfo.MainAbility2) ValidMainInfo.Add(val);
 					else ValidSubInfo.Add(val);
 				}
@@ -299,7 +298,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			}
 
 
-			#region 加载控件列表
+			#region Load 控件列表
 			int PosY = Math.Max(ItemIcon.Bottom, Info_Top);
 			foreach (var c in PreviewList)
 			{
@@ -353,8 +352,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 
 
 
-
-
 		#region 控件
 		/// <summary>
 		/// 操作按钮
@@ -382,7 +379,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 
 		#region 载入控件
 		/// <summary>
-		/// 加载描述
+		/// Load 描述
 		/// </summary>
 		/// <param name="info"></param>
 		/// <returns></returns>
@@ -434,7 +431,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 
 		/// <summary>
-		/// 控件控制方法
+		/// 控件控制Functions
 		/// </summary>
 		/// <param name="Preview"></param>
 		public void LoadPreview(Control Preview)
@@ -449,7 +446,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 		#endregion
 
-		#region 载入数据
+		#region Load Data
 		private Dictionary<MainAbility, long> ItemAbility { get; set; } = new();
 
 		/// <summary>
@@ -459,7 +456,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		{
 			Dictionary<MainAbility, long> result = new();
 
-			#region 读取攻击力
+			#region Load 攻击力
 			var AttackPowerEquipMin = this.ItemInfo.Attributes["attack-power-equip-min"].ToInt();
 			var AttackPowerEquipMax = this.ItemInfo.Attributes["attack-power-equip-max"].ToInt();
 			result[MainAbility.AttackPowerEquipMinAndMax] = (AttackPowerEquipMin + AttackPowerEquipMax) / 2;
@@ -473,7 +470,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			result[MainAbility.PvpAttackPowerEquipMinAndMax] = (PvpAttackPowerEquipMin + PvpAttackPowerEquipMax) / 2;
 			#endregion
 
-			#region 读取其他属性
+			#region Load 其他属性
 			foreach (var ability in Enum.GetValues<MainAbility>())
 			{
 				if (ability == MainAbility.None) continue;
@@ -491,7 +488,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 
 		/// <summary>
-		/// 读取宝石类的Buff属性信息
+		/// Load 宝石类的Buff属性信息
 		/// </summary>
 		private void LoadEffectInfo()
 		{
@@ -511,7 +508,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 
 		/// <summary>
-		/// 加载奖励信息
+		/// Load 奖励信息
 		/// </summary>
 		private void LoadReward()
 		{
@@ -519,7 +516,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			var title = (this.ItemInfo.Type == ItemType.Grocery && this.ItemInfo.UnsealAcquireItem1 is null) ? "奖励" : "分解";
 			var preview = new RewardPreview(title);
 
-			#region 绑定修改奖励分页事件
+			#region 绑定修改奖励分页Event
 			preview.SelRewardChanged += (o, s) =>
 			{
 				//清理先前提示
@@ -551,13 +548,13 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 
 		/// <summary>
-		/// 加载额外信息
+		/// Load 额外信息
 		/// </summary>
 		private ContentPanel LoadExtraInfo()
 		{
 			string ExtraInfo = null;
 
-			#region 加载辉石信息
+			#region Load 辉石信息
 			var BadgeInfo = new List<string>();
 
 			if (this.ItemInfo.BadgeGearScore != 0) BadgeInfo.Add("徽章套装点数 " + this.ItemInfo.BadgeGearScore);
@@ -566,14 +563,14 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			if (BadgeInfo.Any()) this.LoadPreview(new ContentPanel(BadgeInfo.Aggregate((sum, now) => sum + "<br/>" + now)));
 			#endregion
 
-			#region 加载邮寄费用
+			#region Load 邮寄费用
 			if (this.ItemInfo.DecomposeInfo.DecomposeMoneyCost != 0)
 				this.MainInfo.Insert(0, new MyInfo("需要" + new MoneyConvert(this.ItemInfo.DecomposeInfo.DecomposeMoneyCost)));
 
-			//判断是否可以邮寄，限制5铜以上邮费价格道具才能显示追加信息
+			//判断是否可以邮寄, 限制5铜以上邮费价格道具才能显示追加信息
 			if (this.ItemInfo.BaseFee > 5 && (this.ItemInfo.AccountUsed || !this.ItemInfo.CannotTrade))
 			{
-				string Info = $"邮寄时，每个需要 { new MoneyConvert(this.ItemInfo.BaseFee) }<br/>";
+				string Info = $"邮寄时, 每个需要 { new MoneyConvert(this.ItemInfo.BaseFee) }<br/>";
 				ExtraInfo += Info;
 			}
 
@@ -587,7 +584,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 				{
 					if (ChargeItem1 != null && ChargeItem2 != null)
 					{
-						ExtraInfo += $"账号交易时，需要" +
+						ExtraInfo += $"账号交易时, 需要" +
 						 $"{ ChargeItem1.ItemName }<ga/> { AccountPostCharge.ChargeItemAmount1 }个、<wa/> " +
 						 $"{ ChargeItem2.ItemName }<ga/> { AccountPostCharge.ChargeItemAmount2 }个。";
 					}
@@ -602,7 +599,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 							ItemCount = AccountPostCharge.ChargeItemAmount2;
 						}
 
-						ExtraInfo += $"账号交易时，需要{ ChargeItem.ItemName }</font><ga/> { ItemCount }个。";
+						ExtraInfo += $"账号交易时, 需要{ ChargeItem.ItemName }</font><ga/> { ItemCount }个。";
 					}
 				}
 			}
@@ -638,7 +635,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			else if (this.ItemInfo.EquipUsed && ItemInfo.Type != ItemType.Grocery)
 			{
 				//支持无目标封印状态
-				TradeInfo = this.ItemInfo.CannotTrade ? "封印状态时，解除封印后无法交易" : "装备后无法交易";
+				TradeInfo = this.ItemInfo.CannotTrade ? "封印状态时, 解除封印后无法交易" : "装备后无法交易";
 			}
 			else if (this.ItemInfo.AcquireUsed) TradeInfo = "无法交易";  //拾取后无法交易
 			else if (this.ItemInfo.Auctionable) TradeInfo = null;
@@ -685,12 +682,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#endregion
 
 
-		/// <summary>
-		/// 载入数据
-		/// </summary>
 		private void LoadData()
 		{
-			#region 加载信息
+			#region Load 信息
 			this.Text = $"[{ this.ItemInfo.Key() }] { this.ItemInfo.Name2 }";
 
 			this.ItemIcon.Image = this.ItemInfo.IconExtra;
@@ -728,7 +722,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			var JobInfo = this.ItemInfo.JobInfo;
 			if (JobInfo != null) this.LoadBottomControl("JobLimit", JobInfo + ", 专用");
 
-			//加载交易信息
+			//Load 交易信息
 			this.LoadTrade();
 			#endregion
 
@@ -736,40 +730,40 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			this.LoadPreview(new ExchangePreview().LoadInfo(this.ItemInfo));
 			this.LoadEffectInfo();
 
-			//加载绿字部分信息
+			//Load 绿字部分信息
 			this.LoadPreview(LoadDescription7(this.ItemInfo.Description7));
 			this.LoadPreview(new SkillTooltipPreview().LoadInfo(this.ItemInfo));
 
-			//加载套装信息
+			//Load 套装信息
 			this.LoadPreview(new SetItemPreview().LoadInfo(this.ItemInfo));
 
-			//加载技能变更信息
+			//Load 技能变更信息
 			this.LoadPreview(new SkillByEquipmentTooltip().LoadInfo(this.ItemInfo.SkillByEquipment));
 
-			//加载奖励信息
+			//Load 奖励信息
 			this.LoadReward();
 
-			//加载封印&解印信息
+			//Load 封印&解印信息
 			this.LoadPreview(new SealPreview().LoadInfo(this.ItemInfo));
 
-			//加载刻印书信息
+			//Load 刻印书信息
 			this.LoadPreview(new SlateScrollTooltip().LoadInfo(this.ItemInfo.SlateScroll));
 
-			//加载描述4~6
+			//Load 描述4~6
 			this.LoadPreview(LoadDescription(this.ItemInfo.Description4Title, this.ItemInfo.Description4));
 			this.LoadPreview(LoadDescription(this.ItemInfo.Description5Title, this.ItemInfo.Description5));
 			this.LoadPreview(LoadDescription(this.ItemInfo.Description6Title, this.ItemInfo.Description6));
 
-			//加载描述信息
+			//Load 描述信息
 			this.LoadPreview(LoadDescription2(this.ItemInfo.Description2, this.ItemInfo.IdentifyDescription));
 
-			//加载额外信息
+			//Load 额外信息
 			this.LoadPreview(this.LoadExtraInfo());
 
-			//加载事件信息
+			//Load Event信息
 			this.LoadPreview(new EventTimePreview().LoadInfo(this.ItemInfo.EventInfo));
 
-			//加载可成长八卦牌属性信息
+			//Load 可成长八卦牌属性信息
 			this.AttributePreview.LoadInfo(this.ItemInfo);
 			#endregion
 

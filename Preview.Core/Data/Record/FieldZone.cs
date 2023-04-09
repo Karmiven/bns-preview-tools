@@ -48,7 +48,7 @@ namespace Xylia.Preview.Data.Record
 		public int MinFixedChannel;
 
 
-		#region 接口字段
+		#region Interface
 		public string GetName() => this.Name2.GetText();
 
 		public string GetDescribe() => this.Desc.GetText();

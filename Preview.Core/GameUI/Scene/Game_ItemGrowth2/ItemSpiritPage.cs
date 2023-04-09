@@ -6,7 +6,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 {
 	public partial class ItemSpiritPage : EquipmentGuidePage
 	{
-		#region	构造
+		#region	Constructor
 		public ItemSpirit ItemSpirit;
 
 		public ItemSpiritPage() => InitializeComponent();

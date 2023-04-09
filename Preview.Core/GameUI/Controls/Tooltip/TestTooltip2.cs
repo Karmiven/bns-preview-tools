@@ -7,7 +7,7 @@ namespace Xylia.Preview.GameUI.Controls
 {
 	public partial class TestTooltip2 : Form
 	{
-		#region 构造
+		#region Constructor
 		private readonly Dictionary<Control, string> _tools = new();
 
 		private readonly Size defaultSize;
@@ -20,7 +20,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public override string Text { get => contentPanel?.Text; set => contentPanel.Text = value; }
 
 		private void Frm_VisibleChanged(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 静态方法
+		#region Static Functions
 		public static void SetTooltip(Control control, string info) => new TestTooltip2().SetToolTip(control, info);
 		#endregion
 	}

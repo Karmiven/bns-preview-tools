@@ -9,7 +9,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed partial class Skill3 : BaseRecord, IPicture
 	{
-		#region 数据字段
+		#region 数据Fields
 		[Signal("variation-id")]
 		public byte VariationId = 1;
 
@@ -51,7 +51,7 @@ namespace Xylia.Preview.Data.Record
 		public short IconIndex;
 		#endregion
 
-		#region 结构字段
+		#region 结构Fields
 		/// <summary>
 		/// 当前快捷键
 		/// </summary>
@@ -59,7 +59,7 @@ namespace Xylia.Preview.Data.Record
 		#endregion
 
 
-		#region 接口方法
+		#region Interface Functions
 		public Bitmap MainIcon() => this.IconTexture.GetIcon(this.IconIndex);
 		#endregion
 	}

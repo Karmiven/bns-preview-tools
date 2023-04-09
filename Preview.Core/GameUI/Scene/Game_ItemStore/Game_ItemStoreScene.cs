@@ -18,7 +18,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 	/// </summary>
 	public sealed partial class Game_ItemStoreScene : StoreScene
 	{
-		#region 构造
+		#region Constructor
 		public Dictionary<Store2Type, TreeNode> Nodes = new();
 
 		public Game_ItemStoreScene() : base()
@@ -50,7 +50,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		}
 		#endregion
 
-		#region 处理方法
+		#region Functions
 		protected override void LoadData()
 		{
 			#region UnlocatedStore
@@ -65,18 +65,16 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			#endregion
 
 
-			#region 读取数据
+			#region Load Data
 			var StoreInfoList = new List<StoreInfo>();
 			foreach (var Store2 in FileCache.Data.Store2)
 			{
-				#region 初始化
 				var Store2Alias = Store2.alias;
 				string Name2 = Store2.Name2.GetText();
 				string CurName = Name2 is null ? Store2Alias : $"[{ Name2 }] " + Store2Alias;
 
 				int? Order = null;
 
-				//远程商店设定
 				var StoreType = Store2Type.Normal;
 				if (UnlocatedStores.TryGetValue(Store2, out var UnlocatedStore))
 				{
@@ -94,10 +92,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 					else StoreType = Store2Type.UnlocatedStore;
 					#endregion
 
-					//读取顺序编号
 					Order = UnlocatedStore.Key();
 				}
-				#endregion
+
 
 				StoreInfoList.Add(new StoreInfo()
 				{
@@ -109,7 +106,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			}
 			#endregion
 
-			#region 插入节点
+			#region Insert Node
 			foreach (var Info in StoreInfoList.OrderBy(a => a.Order))
 			{
 				if (Nodes.ContainsKey(Info.StoreType))
@@ -124,9 +121,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		}
 
 		protected override void Show(string StoreAlias)
-		{	
-			//初始化
-			this.ListPreview.Invoke(() => this.ListPreview.Cells = null);
+		{
+			//Initialize
+			this.ListPreview.Cells = null;
 
 			var Store2 = FileCache.Data.Store2[StoreAlias];
 			if (Store2 is null) return;
@@ -134,10 +131,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			//获取当前选择的职业
 			JobSeq SelectedJob = Job.GetJob(this.JobSelector.TextValue);
 
-			this.Text = $"商店 { Store2.GetName() } ，加载数据中...";
+			this.Text = $"商店 { Store2.GetName() } , Load Data中...";
 			this.ListPreview.Name = Store2.alias;
 
-			//读取数据
+			//Load Data
 			var Cells = new List<ListCell>();
 			for (int i = 1; i <= 127; i++)
 			{
@@ -154,9 +151,8 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 				this.ListPreview.Invoke(() => Cells.Add(new Store2ItemCell(ItemInfo, ItemBuyPrice)));
 			}
 
-			this.Text = $"商店 { Store2.GetName() } ，共计 { Cells.Count }个兑换内容";
-			this.ListPreview.Invoke(() => this.ListPreview.Cells = Cells);
-
+			this.Text = $"商店 { Store2.GetName() } , 共计 { Cells.Count }个兑换内容";
+			this.ListPreview.Cells = Cells;
 
 			//获取是否存在出售NPC
 			this.npcs = FileCache.Data.Npc.Where(npc => GetNpc(Store2, npc));
@@ -195,7 +191,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		}
 		#endregion
 
-		#region 界面方法
+		#region Functions (UI)
 		private void Store2Scene_Load(object sender, EventArgs e)
 		{
 			Store2Scene_SizeChanged(null, null);

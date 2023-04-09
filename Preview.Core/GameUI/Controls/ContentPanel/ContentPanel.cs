@@ -16,7 +16,7 @@ namespace Xylia.Preview.GameUI.Controls
 	[Designer(typeof(FixedDesigner))]
 	public partial class ContentPanel : Panel
 	{
-		#region 构造
+		#region Constructor
 		public ContentPanel(string Text) : this() => base.Text = Text;
 
 		public ContentPanel()
@@ -33,7 +33,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-		#region 重写字段
+		#region Override Fields
 		[DefaultValue(true)]
 		[Browsable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -44,7 +44,7 @@ namespace Xylia.Preview.GameUI.Controls
 		public new Size Size { get => base.Size; set => base.Size = value; }
 		#endregion
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 参数组
 		/// </summary>
@@ -66,12 +66,12 @@ namespace Xylia.Preview.GameUI.Controls
 				/*if (Loaded)*/
 
 				//TODO: 界面显示以后后再触发刷新
-				this.Refresh(); 
+				this.Refresh();
 			}
 		}
 
 		public string FontName { get; set; }
-		
+
 
 		/// <summary>
 		/// Signal 图标
@@ -81,14 +81,14 @@ namespace Xylia.Preview.GameUI.Controls
 
 		/// <summary>
 		/// 高度填充
-		/// </summary>
+		/// </summary>											                                                    
 		[Browsable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		[EditorBrowsable(EditorBrowsableState.Always)]
-		public int HeightPadding = 0;
+		public float HeightPadding = 0;
 
 
-		/// <summary>
+		/// <summary>																							                                                                                                      
 		/// 使用字体高度
 		/// </summary>
 		public bool _useHeight = true;
@@ -97,9 +97,7 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 
-
-
-		#region 界面处理方法
+		#region Functions (UI)
 		/// <summary>
 		/// 通知界面重绘
 		/// </summary>

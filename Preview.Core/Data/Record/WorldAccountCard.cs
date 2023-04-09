@@ -18,7 +18,7 @@ namespace Xylia.Preview.Data.Record
 		public string CardImage;
 
 
-		#region 接口方法
+		#region Interface Functions
 		public string GetName() => FileCache.Data.Item[Item]?.Name2;
 		#endregion
 	}

@@ -6,7 +6,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 {
 	public partial class DescPanel : GroupBase
 	{
-		#region 构造
+		#region Constructor
 		public DescPanel()
 		{
 			InitializeComponent();
@@ -14,7 +14,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 		#endregion
 
-		#region 字段
+		#region Fields
 		[Browsable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		[EditorBrowsable(EditorBrowsableState.Always)]
@@ -29,12 +29,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 				this.Refresh();
 			}
 		}
-
-		//public override void Refresh()
-		//{
-		//	base.Refresh();
-		//	this.Height = this.Content.Bottom;
-		//}
 		#endregion
 	}
 }

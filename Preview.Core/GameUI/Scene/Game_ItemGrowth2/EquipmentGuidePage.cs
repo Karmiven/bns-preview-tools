@@ -11,7 +11,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 	[DesignTimeVisible(false)]
 	public partial class EquipmentGuidePage : UserControl
 	{
-		#region 构造
+		#region Constructor
 		public EquipmentGuidePage() => InitializeComponent();
 
 

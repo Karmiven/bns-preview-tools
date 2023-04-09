@@ -1189,7 +1189,7 @@
 		
 		
 		
-		<!-- ====================================== 服务端字段 ====================================== -->
+		<!-- ====================================== 服务端Fields ====================================== -->
 		<record alias="broadcast-type" type="Seq" client="n" apply="must" >
 			<case alias="normal" default="y" />
 			<case alias="self" />
@@ -1199,7 +1199,7 @@
 		<record alias="detach-by-dispel-effect" client="n" ref="Effect" repeat="4" />
 		<!-- ======================================================================================== -->
 
-		<!-- 专用字段 -->
+		<!-- 专用Fields -->
 		<!-- ======================================================================================== -->
 		<record alias="max-accumulate-damage" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" type="Int64" />
 		<record alias="accumulated-damage-type" type="Seq" client="n" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" />

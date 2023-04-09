@@ -18,7 +18,7 @@ namespace Xylia.Match.Windows
 {
 	public partial class MainForm : FrmWithTitle
 	{
-		#region 构造
+		#region Constructor
 		readonly TipMessage TipMessage = new();
 
 		readonly List<ControlPage> pages = new();
@@ -73,7 +73,7 @@ namespace Xylia.Match.Windows
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			var result = MessageBox.Show("您正在关闭应用程序，是否确认这么做吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+			var result = MessageBox.Show("您正在关闭应用程序, 是否确认这么做吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 			if (result != DialogResult.OK)
 			{
 				e.Cancel = true;

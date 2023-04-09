@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 {
 	public sealed partial class Game_RandomStoreScene : StoreScene
 	{
-		#region 字段
+		#region Fields
 		readonly Dictionary<string, Dictionary<int, RandomStoreItem>> RandomStoreItemGroups = new();
 
 		readonly Dictionary<GroupType, TreeNode> MainNode = new();
@@ -41,7 +41,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		protected override void LoadData()
 		{
 			//先进行分组
@@ -98,10 +98,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 			var Cells = new List<ListCell>();
 			foreach (var RandomStoreItem in CurRandomStoreItems.Values)
 			{
-				#region 加载实例数据
+				#region Load 实例数据
 				var ItemInfo = FileCache.Data.Item[RandomStoreItem.Item];
 
-				//加载物品购买价格（聚灵阁只有 金币 & 第一个物品)
+				//Load 物品购买价格（聚灵阁只有 金币 & 第一个物品)
 				var BuyPrice = new ItemBuyPrice()
 				{
 					RequiredItem1 = RandomStoreItem.ItemPriceItem,
@@ -123,7 +123,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 				}));
 			}
 
-			this.ListPreview.Invoke(() => this.ListPreview.Cells = Cells);
+			this.ListPreview.Cells = Cells;
 		}
 
 		protected override bool Filter(NodeInfo NodeInfo, List<BaseRecord> FilterRule)

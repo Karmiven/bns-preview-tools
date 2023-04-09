@@ -17,7 +17,7 @@ namespace Xylia.Preview.Data.Record
 
 
 
-		#region 接口字段
+		#region Interface
 		public string GetName() => this.DungeonName2.GetText();
 
 		public string GetDescribe() => this.DungeonDesc.GetText();

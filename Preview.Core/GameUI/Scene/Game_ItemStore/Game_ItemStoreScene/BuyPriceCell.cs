@@ -19,11 +19,11 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 	[DesignTimeVisible(false)]
 	public partial class BuyPriceCell : Panel
 	{
-		#region 构造
+		#region Constructor
 		public BuyPriceCell() => InitializeComponent();
 		#endregion
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 图片规格
 		/// </summary>
@@ -31,10 +31,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		#endregion
 
 
-		#region 方法
+		#region Functions
 		public void LoadData(ItemBuyPrice ItemBuyPrice)
 		{
-			#region 初始化
+			#region Initialize
 			if (ItemBuyPrice is null)
 				return;
 
@@ -185,7 +185,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 				ObjectRef = ItemData,
 			};
 
-			//设置信息，告知用户物品名称
+			//设置信息, 告知用户物品名称
 			ItemIconCell.SetToolTip(ItemData.Name2 + (Count == 1 ? null : $" -{ Count}"));
 			ItemIconCell.BringToFront();
 

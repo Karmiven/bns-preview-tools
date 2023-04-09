@@ -31,7 +31,7 @@ namespace HZH_Controls.Controls
 	[DefaultEvent("SelectedChangedEvent")]
 	public partial class Combox : UCControlBase
 	{
-		#region 构造
+		#region Constructor
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UCCombox" /> class.
 		/// </summary>
@@ -46,7 +46,7 @@ namespace HZH_Controls.Controls
 
 
 
-		#region 字段
+		#region Fields
 		/// <summary>
 		/// 文字颜色
 		/// </summary>
@@ -68,15 +68,15 @@ namespace HZH_Controls.Controls
 		}
 
 		/// <summary>
-		/// 选中事件
+		/// 选中Event
 		/// </summary>
-		[Description("选中事件"), Category("自定义")]
+		[Description("选中Event"), Category("自定义")]
 		public event EventHandler SelectedChangedEvent;
 
 		/// <summary>
-		/// 文本改变事件
+		/// 文本改变Event
 		/// </summary>
-		[Description("文本改变事件"), Category("自定义")]
+		[Description("文本改变Event"), Category("自定义")]
 		public event EventHandler TextChangedEvent;
 
 		/// <summary>
@@ -144,7 +144,7 @@ namespace HZH_Controls.Controls
 
 
 		/// <summary>
-		/// 当使用边框时填充颜色，当值为背景色或透明色或空值则不填充
+		/// 当使用边框时填充颜色, 当值为背景色或透明色或空值则不填充
 		/// </summary>
 		/// <value>The color of the fill.</value>
 		[Obsolete("不再可用的属性")]

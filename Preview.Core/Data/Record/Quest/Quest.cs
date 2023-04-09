@@ -19,7 +19,7 @@ namespace Xylia.Preview.Data.Record
 	[AliasRecord]
 	public sealed class Quest : BaseRecord
 	{
-		#region 字段
+		#region Fields
 		public Lazy<List<Acquisition>> Acquisition;
 
 		public Lazy<List<MissionStep>> MissionStep;
@@ -393,7 +393,7 @@ namespace Xylia.Preview.Data.Record
 
 
 
-		#region 方法
+		#region Functions
 		public override void LoadData(XmlElement data)
 		{
 			base.LoadData(data);

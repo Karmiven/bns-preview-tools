@@ -12,12 +12,10 @@ namespace Xylia.Preview.Data.Record
 
 		public Text Name2;
 
-
-		#region 方法字段
-		/// <summary>
-		/// 指示是否已经过期
-		/// </summary>
+		
+		#region Functions
 		public bool IsExpiration => this.EventExpirationTime < DateTime.Now;
 		#endregion
+
 	}
 }
