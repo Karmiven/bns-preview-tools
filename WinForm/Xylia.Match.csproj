@@ -48,9 +48,6 @@
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<Optimize>True</Optimize>
-		<DefineConstants>
-			TRACE;
-		</DefineConstants>
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 	</PropertyGroup>
@@ -119,10 +116,10 @@
 		<WCFMetadata Include="Connected Services\" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="CUE4Parse" Version="1.0.4" />
+		<PackageReference Include="CUE4Parse" Version="1.0.5" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-		<PackageReference Include="HZH_Controls" Version="1.0.14" />
-		<PackageReference Include="Xylia" Version="1.0.3.13" />
+		<PackageReference Include="HZH_Controls" Version="2.0.0.3" />
+		<PackageReference Include="Xylia" Version="1.0.3.14" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />

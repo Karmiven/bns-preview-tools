@@ -40,6 +40,9 @@
 		<Deterministic>False</Deterministic>
 		<DefineConstants>$(DefineConstants)</DefineConstants>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="C:\Users\10565\.nuget\packages\naudio.vorbis\1.5.0\contentFiles\any\netstandard2.0\README.md" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Reference Include="BnsBinTool.Core">
@@ -283,11 +286,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
-		<PackageReference Include="CUE4Parse-Conversion" Version="1.0.4" />
+		<PackageReference Include="CUE4Parse-Conversion" Version="1.0.5" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-		<PackageReference Include="HZH_Controls" Version="1.0.14" />
+		<PackageReference Include="HZH_Controls" Version="2.0.0.3" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
-		<PackageReference Include="Xylia" Version="1.0.3.13" />
+		<PackageReference Include="Xylia" Version="1.0.3.14" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="GameUI\Controls\Tooltip\TestTooltip2.cs" />

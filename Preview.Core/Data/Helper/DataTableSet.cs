@@ -50,7 +50,7 @@ namespace Xylia.Preview.Data.Helper
 
 		public virtual void LoadData(bool UseDB = true, string Folder = null)
 		{
-			#region Load 文件
+			#region File
 			if (Tables is not null) return;
 			var tableDef = DefinitionHelper.LoadTableDefinition();
 
@@ -64,7 +64,7 @@ namespace Xylia.Preview.Data.Helper
 			#endregion
 
 
-			#region Load  bnsDB
+			#region bnsDB
 			if (!UseDB) return;
 
 

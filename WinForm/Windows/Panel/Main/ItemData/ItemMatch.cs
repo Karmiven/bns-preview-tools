@@ -3,10 +3,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using NPOI.SS.UserModel;
 
 using Xylia.Extension;
 using Xylia.Files.Excel;
@@ -29,8 +28,6 @@ namespace Xylia.Match.Util.ItemList
 			this.GetOutput = action;
 		}
 		#endregion
-
-
 
 		#region Cache
 		/// <summary>
@@ -72,15 +69,12 @@ namespace Xylia.Match.Util.ItemList
 			this.Failures = new();
 			#endregion
 
-			#region 处理数据
+			#region Data
 			var Result = new BlockingCollection<ItemDataInfo>();
 			Parallel.ForEach(set.Item, item =>
 			{
-				//使用原始属性
 				var record = ((DbData)item.Attributes).record;
 
-
-				//Load Data编号
 				var MainID = record.RecordId;
 				if (CacheList != null && CacheList.Contains(MainID)) return;
 
@@ -109,6 +103,7 @@ namespace Xylia.Match.Util.ItemList
 		}
 		#endregion
 
+
 		#region Output
 		public bool UseExcel = false;
 
@@ -126,7 +121,7 @@ namespace Xylia.Match.Util.ItemList
 
 			File.CacheList = Path.Combine(outdir, $@"{time:yyyy-MM-dd HH-mm}.chv");
 			File.Failure = Path.Combine(outdir, @"未汉化道具.txt");
-			File.PlainTXT = Path.Combine(outdir, @"导出数据." + (UseExcel ? "xlsx" : "txt"));
+			File.PlainTXT = Path.Combine(outdir, @"output." + (UseExcel ? "xlsx" : "txt"));
 
 
 			ChvLoad cache = new();
@@ -139,11 +134,13 @@ namespace Xylia.Match.Util.ItemList
 
 
 
-			#region 输出信息
+			#region Output
 			if (UseExcel) this.CreateExcel(this.ItemDatas);
-			else this.CreateText(this.ItemDatas);   //以普通文本形式生成
+			else this.CreateText(this.ItemDatas);
 
-			//异常信息
+			Application.DoEvents();
+
+
 			if (this.Failures.Any())
 			{
 				using StreamWriter Out_Failure = new(File.Failure);
@@ -151,7 +148,7 @@ namespace Xylia.Match.Util.ItemList
 			}
 			#endregion
 
-			#region 最后处理
+			#region END
 			TimeSpan ts = DateTime.Now - StartTime;
 			GetOutput($"本次拉取数据共计{ this.ItemDatas.Count }条, 总耗{ ts.Minutes }分{ ts.Seconds }秒。");
 
@@ -162,88 +159,58 @@ namespace Xylia.Match.Util.ItemList
 			#endregion
 		}
 
-		/// <summary>
-		/// 生成表格格式文件
-		/// </summary>
-		public void CreateExcel(IEnumerable<ItemDataInfo> Info)
+
+		private void CreateExcel(IEnumerable<ItemDataInfo> Info)
 		{
-			IWorkbook workbook = new NPOI.XSSF.UserModel.XSSFWorkbook();
-			ISheet sheet = workbook.CreateSheet("道具数据");
-			ICellStyle style = workbook.CreateStyle();
+			#region Title
+			var info = new ExcelInfo("道具数据");
+			info.SetColumn("代码", 10);
+			info.SetColumn("名称", 30);
+			info.SetColumn("标识", 30);
+			info.SetColumn("key", 10);
 
-			try
+			info.SetColumn("专用", 20);
+			info.SetColumn("描述", 80);
+			info.SetColumn("信息", 80);
+			#endregion
+
+			foreach (var Item in Info)
 			{
-				#region 标题
-				IRow TitleRow = sheet.CreateRow(0);
-				TitleRow.CreateCell(0).SetCellValue("物品代码");
-				TitleRow.CreateCell(1).SetCellValue("物品名称");
-				TitleRow.CreateCell(2).SetCellValue("物品标识");
-				TitleRow.CreateCell(3).SetCellValue("专用职业");
-				TitleRow.CreateCell(4).SetCellValue("物品描述");
-				TitleRow.CreateCell(5).SetCellValue("物品信息");
+				var row = info.CreateRow();
+				row.AddCell(Item.id);
+				row.AddCell(Item.Name2);
+				row.AddCell(Item.Alias);
+				row.AddCell(Convert.ToBase64String(BitConverter.GetBytes(IPAddress.HostToNetworkOrder(Item.id))));
 
-				//设置单元格字体
-				for (int i = 0; i <= 5; i++) TitleRow.GetCell(i).CellStyle = style;
-
-				sheet.SetColumnWidth(0, 256 * 10);
-				sheet.SetColumnWidth(1, 256 * 30);
-				sheet.SetColumnWidth(2, 256 * 30);
-				sheet.SetColumnWidth(3, 256 * 20);
-				sheet.SetColumnWidth(4, 256 * 80);
-				sheet.SetColumnWidth(5, 256 * 80);
-				#endregion
-
-				int Row = 1;
-				foreach (var Item in Info)
-				{
-					IRow rowData = sheet.CreateRow(Row++);
-
-					rowData.CreateCell(0).SetCellValue(Item.id);
-					rowData.CreateCell(1).SetCellValue(Item.Name2);
-					rowData.CreateCell(2).SetCellValue(Item.Alias);
-					rowData.CreateCell(3).SetCellValue(Item.Job);
-					rowData.CreateCell(4).SetCellValue(Item.Desc);
-					rowData.CreateCell(5).SetCellValue(Item.Info);
-
-					for (int i = 0; i <= 5; i++) rowData.GetCell(i).CellStyle = style;
-				}
-
-				Application.DoEvents();
-
-				//保存为Excel文件
-				workbook.Save(File.PlainTXT);
+				row.AddCell(Item.Job);
+				row.AddCell(Item.Desc);
+				row.AddCell(Item.Info);
 			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
+
+			info.Save(File.PlainTXT);
 		}
 
-		/// <summary>
-		/// 生成文本格式文件
-		/// </summary>
-		/// <param name="Info"></param>
-		public void CreateText(IEnumerable<ItemDataInfo> Info)
+		private void CreateText(IEnumerable<ItemDataInfo> Info)
 		{
 			using var Out_Main = new StreamWriter(new FileStream(File.PlainTXT, FileMode.Create));
 
 			foreach (var Item in Info)
 			{
 				string Message = null;
-				string IdTxt = $"{ Item.id,-15 }";
+				string IdTxt = $"{ Item.id, -15 }";
 				if (IdTxt.Length > 15) IdTxt += "    ";
 
 
 				if (Item.Name2 is null) Message = $"{ IdTxt }  暂无汉化 ({ Item.Alias })";
 				else
 				{
-					string ResultTxt = $"{ Item.Name2,-20 }";
+					string ResultTxt = $"{ Item.Name2, -20 }";
 					if (ResultTxt.Length > 15) ResultTxt += "    ";
 
 					Message = $"{ IdTxt }{ ResultTxt }{ "别名：" + Item.Alias }";
 				}
 
-				#region 获取道具的标识和文本
+				#region info
 				var ExtraInfo = new List<KeyValuePair<string, string>>()
 				{
 					 new KeyValuePair<string, string>("职业" ,Item.Job),

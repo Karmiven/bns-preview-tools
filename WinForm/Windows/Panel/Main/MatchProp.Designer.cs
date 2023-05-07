@@ -194,7 +194,7 @@
 			this.Btn_StartMatch.TabStop = false;
 			this.Btn_StartMatch.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.Btn_StartMatch.TipsText = "";
-			this.Btn_StartMatch.BtnClick += new System.EventHandler(this.Btn_StartMatch_BtnClick);
+			this.Btn_StartMatch.Click += new System.EventHandler(this.Btn_StartMatch_BtnClick);
 			// 
 			// GRoot_Path
 			// 
@@ -269,7 +269,7 @@
 			this.File_Searcher.RectWidth = 1;
 			this.File_Searcher.Size = new System.Drawing.Size(96, 37);
 			this.File_Searcher.TabIndex = 93;
-			this.File_Searcher.BtnClick += new System.EventHandler(this.File_Searcher_BtnClick);
+			this.File_Searcher.Click += new System.EventHandler(this.File_Searcher_BtnClick);
 			this.File_Searcher.MouseEnter += new System.EventHandler(this.File_Searcher_MouseEnter);
 			//this.File_Searcher.MouseLeave += new System.EventHandler(this.CloseTip);
 			// 
@@ -290,7 +290,7 @@
 			this.ucBtnFillet1.RectWidth = 1;
 			this.ucBtnFillet1.Size = new System.Drawing.Size(94, 37);
 			this.ucBtnFillet1.TabIndex = 94;
-			this.ucBtnFillet1.BtnClick += new System.EventHandler(this.ucBtnFillet1_BtnClick);
+			this.ucBtnFillet1.Click += new System.EventHandler(this.ucBtnFillet1_BtnClick);
 			// 
 			// PreviewPage_Item
 			// 
@@ -432,7 +432,7 @@
 			this.ucBtnExt5.TabStop = false;
 			this.ucBtnExt5.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt5.TipsText = "";
-			this.ucBtnExt5.BtnClick += new System.EventHandler(this.ucBtnExt5_BtnClick);
+			this.ucBtnExt5.Click += new System.EventHandler(this.ucBtnExt5_BtnClick);
 			this.ucBtnExt5.MouseEnter += new System.EventHandler(this.ucBtnExt5_MouseEnter);
 			//this.ucBtnExt5.MouseLeave += new System.EventHandler(this.CloseTip);
 			// 
@@ -445,7 +445,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(249, 21);
 			this.label1.TabIndex = 107;
-			this.label1.Text = "搜索条件 (多个条件使用逗号分隔)";
+			this.label1.Text = "搜索条件 (空白时唤醒高级搜索)";
 			// 
 			// PreviewPage_Else
 			// 
@@ -502,7 +502,7 @@
 			this.ucBtnExt11.TabStop = false;
 			this.ucBtnExt11.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt11.TipsText = "";
-			this.ucBtnExt11.BtnClick += new System.EventHandler(this.ucBtnExt11_BtnClick);
+			this.ucBtnExt11.Click += new System.EventHandler(this.ucBtnExt11_BtnClick);
 			// 
 			// ucBtnExt1
 			// 
@@ -528,7 +528,7 @@
 			this.ucBtnExt1.TabStop = false;
 			this.ucBtnExt1.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt1.TipsText = "";
-			this.ucBtnExt1.BtnClick += new System.EventHandler(this.ucBtnExt1_BtnClick);
+			this.ucBtnExt1.Click += new System.EventHandler(this.ucBtnExt1_BtnClick);
 			// 
 			// ucBtnExt20
 			// 
@@ -554,7 +554,7 @@
 			this.ucBtnExt20.TabStop = false;
 			this.ucBtnExt20.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt20.TipsText = "";
-			this.ucBtnExt20.BtnClick += new System.EventHandler(this.ucBtnExt20_BtnClick);
+			this.ucBtnExt20.Click += new System.EventHandler(this.ucBtnExt20_BtnClick);
 			// 
 			// ucBtnExt9
 			// 
@@ -580,7 +580,7 @@
 			this.ucBtnExt9.TabStop = false;
 			this.ucBtnExt9.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt9.TipsText = "";
-			this.ucBtnExt9.BtnClick += new System.EventHandler(this.ucBtnExt9_BtnClick);
+			this.ucBtnExt9.Click += new System.EventHandler(this.ucBtnExt9_BtnClick);
 			// 
 			// ucBtnExt8
 			// 
@@ -606,7 +606,7 @@
 			this.ucBtnExt8.TabStop = false;
 			this.ucBtnExt8.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt8.TipsText = "";
-			this.ucBtnExt8.BtnClick += new System.EventHandler(this.ucBtnExt8_BtnClick);
+			this.ucBtnExt8.Click += new System.EventHandler(this.ucBtnExt8_BtnClick);
 			// 
 			// ucBtnExt13
 			// 
@@ -632,7 +632,7 @@
 			this.ucBtnExt13.TabStop = false;
 			this.ucBtnExt13.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt13.TipsText = "";
-			this.ucBtnExt13.BtnClick += new System.EventHandler(this.ucBtnExt13_BtnClick);
+			this.ucBtnExt13.Click += new System.EventHandler(this.ucBtnExt13_BtnClick);
 			// 
 			// groupBox1
 			// 
@@ -678,7 +678,7 @@
 			this.ucBtnExt3.TabStop = false;
 			this.ucBtnExt3.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt3.TipsText = "";
-			this.ucBtnExt3.BtnClick += new System.EventHandler(this.ucBtnExt3_BtnClick);
+			this.ucBtnExt3.Click += new System.EventHandler(this.ucBtnExt3_BtnClick);
 			// 
 			// ucBtnExt2
 			// 
@@ -704,7 +704,7 @@
 			this.ucBtnExt2.TabStop = false;
 			this.ucBtnExt2.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt2.TipsText = "";
-			this.ucBtnExt2.BtnClick += new System.EventHandler(this.ucBtnExt2_BtnClick);
+			this.ucBtnExt2.Click += new System.EventHandler(this.ucBtnExt2_BtnClick);
 			// 
 			// ucBtnExt10
 			// 
@@ -730,7 +730,7 @@
 			this.ucBtnExt10.TabStop = false;
 			this.ucBtnExt10.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt10.TipsText = "";
-			this.ucBtnExt10.BtnClick += new System.EventHandler(this.ucBtnExt10_BtnClick);
+			this.ucBtnExt10.Click += new System.EventHandler(this.ucBtnExt10_BtnClick);
 			// 
 			// ucBtnExt18
 			// 
@@ -756,7 +756,7 @@
 			this.ucBtnExt18.TabStop = false;
 			this.ucBtnExt18.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt18.TipsText = "";
-			this.ucBtnExt18.BtnClick += new System.EventHandler(this.ucBtnExt18_BtnClick);
+			this.ucBtnExt18.Click += new System.EventHandler(this.ucBtnExt18_BtnClick);
 			// 
 			// ucBtnExt12
 			// 
@@ -782,7 +782,7 @@
 			this.ucBtnExt12.TabStop = false;
 			this.ucBtnExt12.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt12.TipsText = "";
-			this.ucBtnExt12.BtnClick += new System.EventHandler(this.ucBtnExt12_BtnClick);
+			this.ucBtnExt12.Click += new System.EventHandler(this.ucBtnExt12_BtnClick);
 			// 
 			// ucBtnExt14
 			// 
@@ -808,7 +808,7 @@
 			this.ucBtnExt14.TabStop = false;
 			this.ucBtnExt14.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt14.TipsText = "";
-			this.ucBtnExt14.BtnClick += new System.EventHandler(this.ucBtnExt14_BtnClick);
+			this.ucBtnExt14.Click += new System.EventHandler(this.ucBtnExt14_BtnClick);
 			// 
 			// ucBtnExt16
 			// 
@@ -834,7 +834,7 @@
 			this.ucBtnExt16.TabStop = false;
 			this.ucBtnExt16.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt16.TipsText = "";
-			this.ucBtnExt16.BtnClick += new System.EventHandler(this.ucBtnExt16_BtnClick);
+			this.ucBtnExt16.Click += new System.EventHandler(this.ucBtnExt16_BtnClick);
 			// 
 			// Timer
 			// 

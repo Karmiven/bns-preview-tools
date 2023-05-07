@@ -36,7 +36,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 			this.OutputList = new System.Windows.Forms.ToolStripMenuItem();
 			this.ModifyFilterRule = new System.Windows.Forms.ToolStripMenuItem();
 			this.CancelFilter = new System.Windows.Forms.ToolStripMenuItem();
-			this.DaySelect = new HZH_Controls.Controls.Combox();
+			this.DaySelect = new HZH_Controls.Controls.UCCombox();
 			this.ChallengeToday_ChallengeRewardGuide = new System.Windows.Forms.Label();
 			this.RewardPreview = new ChallengeListRewardPreview();
 			this.TaskPanel = new System.Windows.Forms.Panel();
@@ -246,7 +246,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday
 		private System.Windows.Forms.ContextMenuStrip MenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem ModifyFilterRule;
 		private System.Windows.Forms.ToolStripMenuItem CancelFilter;
-		private HZH_Controls.Controls.Combox DaySelect;
+		private HZH_Controls.Controls.UCCombox DaySelect;
 		private System.Windows.Forms.ToolStripMenuItem OutputList;
 		private System.Windows.Forms.Label ChallengeToday_ChallengeRewardGuide;
 		private ChallengeListRewardPreview RewardPreview;

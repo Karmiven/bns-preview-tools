@@ -91,7 +91,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			this.Width = MaxWidth += 2;
 			#endregion
 
-			#region 重新设定位置
+			#region UI
 			PriceCtls.ForEach(c => c.Location = new Point(this.Width - c.Width, c.Location.Y));
 
 			//计算出物品图标的起始点

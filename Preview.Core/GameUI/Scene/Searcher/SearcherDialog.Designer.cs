@@ -66,7 +66,7 @@
 			this.Confirm.TabStop = false;
 			this.Confirm.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.Confirm.TipsText = "";
-			this.Confirm.BtnClick += new System.EventHandler(this.Confirm_BtnClick);
+			this.Confirm.Click += new System.EventHandler(this.Confirm_BtnClick);
 			// 
 			// label1
 			// 

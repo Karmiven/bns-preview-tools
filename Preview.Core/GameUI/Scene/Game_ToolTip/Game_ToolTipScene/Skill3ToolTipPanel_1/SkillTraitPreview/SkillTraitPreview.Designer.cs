@@ -33,8 +33,8 @@
 			this.TooltipEffectDescription = new Xylia.Preview.GameUI.Controls.ContentPanel();
 			this.TooltipTrainDescription = new Xylia.Preview.GameUI.Controls.ContentPanel();
 			this.TooltipTrainName = new Xylia.Preview.GameUI.Controls.ContentPanel();
-			this.Select_Job = new HZH_Controls.Controls.Combox();
-			this.Select_JobStyle = new HZH_Controls.Controls.Combox();
+			this.Select_Job = new HZH_Controls.Controls.UCCombox();
+			this.Select_JobStyle = new HZH_Controls.Controls.UCCombox();
 			this.SuspendLayout();
 			// 
 			// traitTier1
@@ -75,7 +75,7 @@
 			this.ucBtnExt1.TabStop = false;
 			this.ucBtnExt1.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt1.TipsText = "";
-			this.ucBtnExt1.BtnClick += new System.EventHandler(this.ucBtnExt1_BtnClick);
+			this.ucBtnExt1.Click += new System.EventHandler(this.ucBtnExt1_BtnClick);
 			// 
 			// TooltipEffectDescription
 			// 
@@ -195,8 +195,8 @@
 		public Controls.ContentPanel TooltipEffectDescription;
 		public Controls.ContentPanel TooltipTrainDescription;
 		public Controls.ContentPanel TooltipTrainName;
-		private HZH_Controls.Controls.Combox Select_Job;
-		private HZH_Controls.Controls.Combox Select_JobStyle;
+		private HZH_Controls.Controls.UCCombox Select_Job;
+		private HZH_Controls.Controls.UCCombox Select_JobStyle;
 	}
 }
 

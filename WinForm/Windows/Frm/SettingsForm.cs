@@ -10,6 +10,7 @@ namespace Xylia.Match.Windows.Forms
 {
 	public partial class SettingsForm : Form
 	{
+		#region Constructor
 		public SettingsForm()
 		{
 			InitializeComponent();
@@ -19,7 +20,7 @@ namespace Xylia.Match.Windows.Forms
 			Faster_Folder_Path.Text = CommonPath.OutputFolder;
 			Preview_DataTest.Value = CommonPath.Test;
 		}
-
+		#endregion
 
 
 		#region From Events 
@@ -38,9 +39,6 @@ namespace Xylia.Match.Windows.Forms
 			this.DialogResult = DialogResult.OK;
 		}
 		#endregion
-
-
-
 
 		#region Folders
 		private void Faster_Folder_Btn_Click(object sender, EventArgs e)

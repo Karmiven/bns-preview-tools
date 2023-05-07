@@ -40,7 +40,7 @@ namespace Xylia.Match.Windows.Panel
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.Switch_Mode = new HZH_Controls.Controls.UCSwitch();
 			this.Label5 = new System.Windows.Forms.Label();
-			this.FormatSelect = new HZH_Controls.Controls.Combox();
+			this.FormatSelect = new HZH_Controls.Controls.UCCombox();
 			this.Button1 = new System.Windows.Forms.Button();
 			this.Button2 = new System.Windows.Forms.Button();
 			this.Btn_Search_3 = new System.Windows.Forms.Button();
@@ -54,9 +54,9 @@ namespace Xylia.Match.Windows.Panel
 			this.Path_GameFolder = new System.Windows.Forms.TextBox();
 			this.Footer = new HZH_Controls.Controls.UCSplitLabel();
 			this.TabPage2 = new System.Windows.Forms.TabPage();
-			this.ComboBox3 = new HZH_Controls.Controls.Combox();
-			this.ComboBox2 = new HZH_Controls.Controls.Combox();
-			this.ComboBox1 = new HZH_Controls.Controls.Combox();
+			this.ComboBox3 = new HZH_Controls.Controls.UCCombox();
+			this.ComboBox2 = new HZH_Controls.Controls.UCCombox();
+			this.ComboBox1 = new HZH_Controls.Controls.UCCombox();
 			this.Radio_128px = new HZH_Controls.Controls.UCRadioButton();
 			this.Radio_64px = new HZH_Controls.Controls.UCRadioButton();
 			this.ucCheckBox1 = new HZH_Controls.Controls.UCCheckBox();
@@ -674,13 +674,13 @@ namespace Xylia.Match.Windows.Panel
 		private System.Windows.Forms.Button Button7;
 		private System.Windows.Forms.Label Label6;
 		private HZH_Controls.Controls.UCSwitch ucSwitch1;
-		private HZH_Controls.Controls.Combox FormatSelect;
+		private HZH_Controls.Controls.UCCombox FormatSelect;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button Button9;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.CheckBox checkBox1;
-		private HZH_Controls.Controls.Combox ComboBox3;
-		private HZH_Controls.Controls.Combox ComboBox2;
-		private HZH_Controls.Controls.Combox ComboBox1;
+		private HZH_Controls.Controls.UCCombox ComboBox3;
+		private HZH_Controls.Controls.UCCombox ComboBox2;
+		private HZH_Controls.Controls.UCCombox ComboBox1;
 	}
 }

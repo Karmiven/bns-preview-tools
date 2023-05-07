@@ -122,7 +122,6 @@ namespace Xylia.Match.Windows
 		private void ListBox1_DrawItem(object sender, DrawItemEventArgs e)
 		{
 			#region Initialize
-			//防止渲染时异常
 			if (e.Index == -1 || e.Index >= listBox1.Items.Count) return;
 			if (listBox1.Items[e.Index] is not Quest CurQuest) return;
 

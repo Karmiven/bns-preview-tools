@@ -26,9 +26,9 @@ namespace Xylia.Match.Windows
 		public MainForm()
 		{
 			this.InitializeComponent();
-			this.Title = $"{ AssemblyEx.Title} ({ AssemblyEx.BuildTime:yyyyMMdd})";
+			this.Title = $"{AssemblyEx.Title} ({AssemblyEx.BuildTime:yyyyMMdd})";
 
-			#region 载入页签
+			#region Pages
 			pages.Add(new("道具获取", new MatchProp()));
 			pages.Add(new("任务查询", new QuestMatch()));
 			pages.Add(new("图标生成", new IconOperator()));
@@ -37,7 +37,7 @@ namespace Xylia.Match.Windows
 			pages.Add(new("属性计算", new Attribute.MainFrm()));
 			//pages.Add(new("Pak功能", subGroup.Youdao));
 
-			pages.ForEach(p => this.tvMenu.Nodes.Add(p.Key, "        " + p.Text));
+			pages.ForEach(p => this.tvMenu.Nodes.Add(p.Key, p.Text));
 			this.tvMenu.AfterSelect += new TreeViewEventHandler((o, e) =>
 			{
 				var page = pages.Find(page => page.Key == e.Node.Name.Trim());
@@ -105,7 +105,7 @@ namespace Xylia.Match.Windows
 		{
 			string Msg = lib.GetProcessUsedMemory();
 			Memory.ForeColor = Msg.Contains("GB") ? Color.Red : Color.MediumAquamarine;
-			Memory.Text = $"   内存 { Msg }";
+			Memory.Text = $"   内存 {Msg}";
 		}
 
 		private void Set_Click(object sender, EventArgs e)

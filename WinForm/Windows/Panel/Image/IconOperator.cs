@@ -178,7 +178,7 @@ namespace Xylia.Match.Windows.Panel
 						if (!Directory.Exists(FolderPath))
 						{
 							FolderPath = Path_ResultPath.Text;
-							this.Invoke(new Action(() => FrmTips.ShowTips(null, "由于不存在目标子文件夹, 已变更为扫描所选的<输出目录>")));
+							this.Invoke(new Action(() => FrmTips.ShowTips("由于不存在目标子文件夹, 已变更为扫描所选的<输出目录>")));
 						}
 
 						var Files = new DirectoryInfo(FolderPath).GetFiles();
@@ -202,7 +202,7 @@ namespace Xylia.Match.Windows.Panel
 					this.Invoke(new Action(() =>
 					{
 						Footer.Text = $"输出配置文件已完成";
-						FrmTips.ShowTips(null, "输出配置文件已完成！");
+						FrmTips.ShowTips("输出配置文件已完成！");
 					}));
 				});
 

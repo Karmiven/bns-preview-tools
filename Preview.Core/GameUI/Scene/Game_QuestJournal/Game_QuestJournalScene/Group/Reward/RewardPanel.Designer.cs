@@ -29,7 +29,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.RewardSelect = new HZH_Controls.Controls.Combox();
+			this.RewardSelect = new HZH_Controls.Controls.UCCombox();
 			this.SuspendLayout();
 			// 
 			// RewardSelect
@@ -72,6 +72,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 		}
 
 		#endregion
-		private HZH_Controls.Controls.Combox RewardSelect;
+		private HZH_Controls.Controls.UCCombox RewardSelect;
 	}
 }

@@ -68,7 +68,7 @@
 			this.Btn_QusetEpic.RectWidth = 1;
 			this.Btn_QusetEpic.Size = new System.Drawing.Size(117, 38);
 			this.Btn_QusetEpic.TabIndex = 113;
-			this.Btn_QusetEpic.BtnClick += new System.EventHandler(this.Btn_QusetEpic_Click);
+			this.Btn_QusetEpic.Click += new System.EventHandler(this.Btn_QusetEpic_Click);
 			// 
 			// Btn_QuestList
 			// 
@@ -87,7 +87,7 @@
 			this.Btn_QuestList.RectWidth = 1;
 			this.Btn_QuestList.Size = new System.Drawing.Size(117, 38);
 			this.Btn_QuestList.TabIndex = 112;
-			this.Btn_QuestList.BtnClick += new System.EventHandler(this.Btn_QuestList_Click);
+			this.Btn_QuestList.Click += new System.EventHandler(this.Btn_QuestList_Click);
 			// 
 			// Button1
 			// 

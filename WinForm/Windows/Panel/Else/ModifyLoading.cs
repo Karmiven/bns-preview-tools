@@ -12,7 +12,7 @@ namespace Xylia.Match.Windows.Panel
 {
 	[DesignTimeVisible(false)]
 	public partial class ModifyLoading : UserControl
-	{			
+	{
 		readonly bool isRun = false;
 
 		public static string pwd = "abcde12#";
@@ -46,15 +46,15 @@ namespace Xylia.Match.Windows.Panel
 
 			if (!File.Exists(filePath.Text))
 			{
-				FrmTips.ShowTipsError(null, "未选择文件");
+				FrmTips.ShowTipsError("未选择文件");
 				return;
 			}
 			else if (Directory.Exists(TextBox1.Text) && new DirectoryInfo(TextBox1.Text).GetFiles("*.jpg").Length != 0)
 			{
 				var result = MessageBox.Show("继续操作会覆盖数据, 请备份数据！如已完成, 请点击确认。", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				if (result != DialogResult.OK) 
+				if (result != DialogResult.OK)
 				{
-					FrmTips.ShowTipsSuccess(null, "用户结束操作");
+					FrmTips.ShowTipsSuccess("用户结束操作");
 					return;
 				}
 			}
@@ -67,7 +67,7 @@ namespace Xylia.Match.Windows.Panel
 				//Xylia.Compress.Zip.UnCompressFile(filePath.Text, TextBox1.Text, Static.pwd);
 
 				GC.Collect();
-				this.Invoke(() => FrmTips.ShowTipsSuccess(null, "已结束输出"));
+				this.Invoke(() => FrmTips.ShowTipsSuccess("已结束输出"));
 
 			}).Start();
 		}
@@ -86,7 +86,7 @@ namespace Xylia.Match.Windows.Panel
 			new Thread(o =>
 			{
 				//Xylia.Compress.Zip.ZipDirectory(TextBox1.Text, filePath.Text, Static.pwd);
-				this.Invoke(() => FrmTips.ShowTipsSuccess(null, "封包完成"));
+				this.Invoke(() => FrmTips.ShowTipsSuccess("封包完成"));
 			}).Start();
 		}
 

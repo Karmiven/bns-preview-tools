@@ -147,7 +147,6 @@
             -2147483648});
 			this.ItemPreview_Search.Name = "ItemPreview_Search";
 			this.ItemPreview_Search.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
-			this.ItemPreview_Search.PasswordChar = '\0';
 			this.ItemPreview_Search.PromptColor = System.Drawing.Color.Gray;
 			this.ItemPreview_Search.PromptFont = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
 			this.ItemPreview_Search.PromptText = "";

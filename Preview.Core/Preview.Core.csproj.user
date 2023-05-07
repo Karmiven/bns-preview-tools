@@ -71,9 +71,6 @@
     <Compile Update="GameUI\Controls\Treeview.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="GameUI\Controls\Combox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="GameUI\Scene2\Editor\CustomRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

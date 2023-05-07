@@ -34,17 +34,17 @@ namespace Xylia.Preview.Output
 			if (Save.ShowDialog() != DialogResult.OK) return;
 
 			Ini.WriteValue("Folder", "OutputExcel", Path.GetDirectoryName(Save.FileName));
-			FrmTips.ShowTipsSuccess(null, "开始执行, 请等待结束提示");
+			FrmTips.ShowTipsSuccess("开始执行, 请等待结束提示");
 			DateTime dt = DateTime.Now;
 			#endregion
 
-			#region 核心Functions
+			#region Functions
 			this.ExcelInfo = new ExcelInfo(Name);
 			this.CreateData();
 			this.ExcelInfo.Save(Save.FileName);
 
 
-			FrmTips.ShowTipsWarning(null, $"执行已完成, 耗时{(int)(DateTime.Now - dt).TotalSeconds}s");
+			FrmTips.ShowTipsWarning($"执行已完成, 耗时{(int)(DateTime.Now - dt).TotalSeconds}s");
 
 			this.ExcelInfo.Dispose();
 			this.ExcelInfo = null;
@@ -72,7 +72,7 @@ namespace Xylia.Preview.Output
 			#region Config
 
 
-			
+
 			#endregion
 
 

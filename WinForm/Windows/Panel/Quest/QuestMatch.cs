@@ -25,11 +25,7 @@ namespace Xylia.Match.Windows.Panel
 		#endregion
 
 
-		#region 重做Functions
-		/// <summary>
-		/// 绑定快捷键
-		/// </summary>
-		/// <param name="keys"></param>
+		#region Functions
 		public void MatchQuest_KeyDown(Keys keys)
 		{
 			switch (keys)

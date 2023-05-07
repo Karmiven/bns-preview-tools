@@ -190,7 +190,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 					CompareThread.Interrupt();
 					CompareThread = null;
 
-					FrmTips.ShowTips(null, "操作已强制终止!");
+					FrmTips.ShowTips("操作已强制终止!");
 					ucBtnFillet1.Enabled = ucBtnFillet4.Enabled = pictureBox1.Enabled = true;
 					Btn_StartWithEnd.BtnText = "开始";
 				}));
@@ -208,19 +208,19 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 		{
 			if (!Directory.Exists(CommonPath.OutputFolder))
 			{
-				FrmTips.ShowTipsWarning(null, "请先设置导出文件夹路径！");
+				FrmTips.ShowTipsWarning("请先设置导出文件夹路径！");
 				return;
 			}
 
 			if (!File.Exists(Path_Local1.Text))
 			{
-				FrmTips.ShowTipsError(null, "旧版本的汉化文件不存在！");
+				FrmTips.ShowTipsError("旧版本的汉化文件不存在！");
 				return;
 			}
 
 			if (!File.Exists(Path_Local2.Text))
 			{
-				FrmTips.ShowTipsError(null, "新版本的汉化文件不存在！");
+				FrmTips.ShowTipsError("新版本的汉化文件不存在！");
 				return;
 			}
 
@@ -349,7 +349,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 					}
 					#endregion
 
-					#region 最后处理
+					#region END
 					Step1.StepIndex = 4;
 					Sin_Old.Clear();
 					Sin_New.Clear();
@@ -368,8 +368,8 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 					CompareThread = null;
 
 					GC.Collect();
-	
-					this.Invoke(() => FrmTips.ShowTipsSuccess(null, HasChanged ? "执行已经结束,请在输出目录查看" : "执行已结束, 但是未发现任何变更"));
+
+					this.Invoke(() => FrmTips.ShowTipsSuccess(HasChanged ? "执行已经结束,请在输出目录查看" : "执行已结束, 但是未发现任何变更"));
 				}
 				catch (Exception ee)
 				{
@@ -433,15 +433,15 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			};
 
 			if (OpenFile.ShowDialog() == DialogResult.OK) TextBox2.Text = OpenFile.FileName;
-			else FrmTips.ShowTipsError(null, "用户退出操作");
+			else FrmTips.ShowTipsError("用户退出操作");
 		}
-		
+
 		private void ucBtnFillet6_BtnClick(object sender, EventArgs e)
 		{
 			#region Initialize
 			if (!File.Exists(filePath.Text))
 			{
-				FrmTips.ShowTipsError(null, "未选择local.dat文件");
+				FrmTips.ShowTipsError("未选择local.dat文件");
 				return;
 			}
 			else if (File.Exists(TextBox1.Text))
@@ -449,7 +449,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 				var result = MessageBox.Show("继续操作会覆盖数据, 请更名或备份数据！", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				if (result != DialogResult.OK)
 				{
-					FrmTips.ShowTipsSuccess(null, "用户结束操作");
+					FrmTips.ShowTipsSuccess("用户结束操作");
 					return;
 				}
 			}
@@ -457,7 +457,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 
 			Extract(filePath.Text, TextBox1.Text);
-			FrmTips.ShowTipsSuccess(null, "输出已完成");
+			FrmTips.ShowTipsSuccess("输出已完成");
 		}
 
 		private void ucBtnFillet8_BtnClick(object sender, EventArgs e)
@@ -488,7 +488,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 
 			if (Dialog.ShowDialog() == DialogResult.OK) TextBox1.Text = Dialog.FileName;
-			else FrmTips.ShowTipsError(null, "用户退出操作");
+			else FrmTips.ShowTipsError("用户退出操作");
 		}
 
 		private void ucBtnFillet11_BtnClick(object sender, EventArgs e)

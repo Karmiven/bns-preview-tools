@@ -208,7 +208,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			#endregion
 			#endregion
 
-			#region 最后处理
+			#region END
 			if (BasicQuota != null)
 			{
 				this.WarningPreview.Location = new Point(this.WarningPreview.Left, ContentY + 20);

@@ -113,7 +113,7 @@ namespace Xylia.Match.Windows.Panel
 			// Program.Taskbar.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
 			#endregion
 
-			#region 选择生成模式
+			#region Select Mode
 			ModeSelect select2 = new();
 			select2.ShowDialog();
 
@@ -130,7 +130,7 @@ namespace Xylia.Match.Windows.Panel
 
 			var thread = new Thread(act =>
 			{
-				#region 准备开始
+				#region Initialize
 				var match = new ItemMatch(Str => SendMessage(Str))
 				{
 					UseExcel = select2.Result == ModeSelect.State.Xlsx,
@@ -141,7 +141,7 @@ namespace Xylia.Match.Windows.Panel
 				this.Step1.StepIndex = 1;
 				#endregion
 
-				#region Load 资源
+				#region Load
 				match.LoadCache(CacheList);
 				var noEmpty = match.GetData();
 				if (!noEmpty)
@@ -153,7 +153,7 @@ namespace Xylia.Match.Windows.Panel
 				Step1.StepIndex = 2;
 				#endregion
 
-				#region 执行输出
+				#region Output
 				Step1.StepIndex = 3;
 				match.Start(StartTime);
 				match = null;
@@ -173,8 +173,8 @@ namespace Xylia.Match.Windows.Panel
 
 		private void SendMessage(string Msg, bool IsError = false) => this.Invoke(() =>
 		{
-			if (IsError) FrmTips.ShowTipsError(null, Msg);
-			else FrmTips.ShowTipsSuccess(null, Msg);
+			if (IsError) FrmTips.ShowTipsError(Msg);
+			else FrmTips.ShowTipsSuccess(Msg);
 		});
 
 		private void TabControl_KeyDown(object sender, KeyEventArgs e)
@@ -214,7 +214,7 @@ namespace Xylia.Match.Windows.Panel
 
 
 
-		#region 物品预览
+		#region Item
 		private void ItemPreview_Search_SearchClick(object sender, EventArgs e)
 		{
 			var rule = ItemPreview_Search.InputText;
@@ -236,7 +236,7 @@ namespace Xylia.Match.Windows.Panel
 
 		private void ucBtnExt5_MouseEnter(object sender, EventArgs e)
 		{
-			FrmAnchorTips.ShowTips((Control)sender, "在已经Load 了数据后, 需要重新Load 时使用", AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500, false);
+			FrmAnchorTips.ShowTips((Control)sender, "初始化已载入的数据", AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500, false);
 		}
 
 		private void ucBtnExt5_BtnClick(object sender, EventArgs e)
@@ -271,7 +271,7 @@ namespace Xylia.Match.Windows.Panel
 		}
 		#endregion
 
-		#region 其他预览
+		#region Else
 		private void ucBtnExt1_BtnClick(object sender, EventArgs e) => Execute.MyShowDialog<Game_RandomStoreExhibitionScene>();
 		private void ucBtnExt8_BtnClick(object sender, EventArgs e) => Execute.MyShowDialog<Game_RandomStoreScene>();
 		private void ucBtnExt9_BtnClick(object sender, EventArgs e) => Execute.MyShowDialog<Game_ChallengeTodayScene>();

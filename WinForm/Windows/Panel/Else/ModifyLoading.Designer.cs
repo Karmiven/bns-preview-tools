@@ -56,7 +56,7 @@
 			this.ucBtnFillet1.RectWidth = 1;
 			this.ucBtnFillet1.Size = new System.Drawing.Size(81, 26);
 			this.ucBtnFillet1.TabIndex = 109;
-			this.ucBtnFillet1.BtnClick += new System.EventHandler(this.ucBtnFillet1_BtnClick);
+			this.ucBtnFillet1.Click += new System.EventHandler(this.ucBtnFillet1_BtnClick);
 			// 
 			// Note_GRoot
 			// 
@@ -104,7 +104,7 @@
 			this.ucBtnFillet2.RectWidth = 1;
 			this.ucBtnFillet2.Size = new System.Drawing.Size(81, 26);
 			this.ucBtnFillet2.TabIndex = 110;
-			this.ucBtnFillet2.BtnClick += new System.EventHandler(this.ucBtnFillet2_BtnClick);
+			this.ucBtnFillet2.Click += new System.EventHandler(this.ucBtnFillet2_BtnClick);
 			// 
 			// ucBtnFillet3
 			// 
@@ -123,7 +123,7 @@
 			this.ucBtnFillet3.RectWidth = 1;
 			this.ucBtnFillet3.Size = new System.Drawing.Size(81, 26);
 			this.ucBtnFillet3.TabIndex = 111;
-			this.ucBtnFillet3.BtnClick += new System.EventHandler(this.ucBtnFillet3_BtnClick);
+			this.ucBtnFillet3.Click += new System.EventHandler(this.ucBtnFillet3_BtnClick);
 			// 
 			// TextBox1
 			// 
@@ -160,7 +160,7 @@
 			this.ucBtnFillet4.RectWidth = 1;
 			this.ucBtnFillet4.Size = new System.Drawing.Size(81, 26);
 			this.ucBtnFillet4.TabIndex = 114;
-			this.ucBtnFillet4.BtnClick += new System.EventHandler(this.ucBtnFillet4_BtnClick);
+			this.ucBtnFillet4.Click += new System.EventHandler(this.ucBtnFillet4_BtnClick);
 			// 
 			// metroLabel2
 			// 

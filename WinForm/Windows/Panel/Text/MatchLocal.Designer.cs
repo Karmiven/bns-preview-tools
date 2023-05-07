@@ -143,7 +143,7 @@
 			this.Btn_StartWithEnd.TabStop = false;
 			this.Btn_StartWithEnd.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.Btn_StartWithEnd.TipsText = "";
-			this.Btn_StartWithEnd.BtnClick += new System.EventHandler(this.Btn_End_BtnClick);
+			this.Btn_StartWithEnd.Click += new System.EventHandler(this.Btn_End_BtnClick);
 			// 
 			// Step1
 			// 
@@ -184,7 +184,7 @@
 			this.ucBtnFillet2.RectWidth = 1;
 			this.ucBtnFillet2.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet2.TabIndex = 112;
-			this.ucBtnFillet2.BtnClick += new System.EventHandler(this.Btn_OutLocal_1_Click);
+			this.ucBtnFillet2.Click += new System.EventHandler(this.Btn_OutLocal_1_Click);
 			// 
 			// ucBtnFillet1
 			// 
@@ -203,7 +203,7 @@
 			this.ucBtnFillet1.RectWidth = 1;
 			this.ucBtnFillet1.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet1.TabIndex = 111;
-			this.ucBtnFillet1.BtnClick += new System.EventHandler(this.Button2_Click);
+			this.ucBtnFillet1.Click += new System.EventHandler(this.Button2_Click);
 			// 
 			// ucBtnFillet3
 			// 
@@ -222,7 +222,7 @@
 			this.ucBtnFillet3.RectWidth = 1;
 			this.ucBtnFillet3.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet3.TabIndex = 114;
-			this.ucBtnFillet3.BtnClick += new System.EventHandler(this.Btn_OutLocal_2_Click);
+			this.ucBtnFillet3.Click += new System.EventHandler(this.Btn_OutLocal_2_Click);
 			// 
 			// ucBtnFillet4
 			// 
@@ -241,7 +241,7 @@
 			this.ucBtnFillet4.RectWidth = 1;
 			this.ucBtnFillet4.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet4.TabIndex = 113;
-			this.ucBtnFillet4.BtnClick += new System.EventHandler(this.Button1_Click);
+			this.ucBtnFillet4.Click += new System.EventHandler(this.Button1_Click);
 			// 
 			// tabControl1
 			// 
@@ -340,7 +340,7 @@
 			this.ucBtnFillet5.RectWidth = 1;
 			this.ucBtnFillet5.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet5.TabIndex = 141;
-			this.ucBtnFillet5.BtnClick += new System.EventHandler(this.ucBtnFillet5_BtnClick);
+			this.ucBtnFillet5.Click += new System.EventHandler(this.ucBtnFillet5_BtnClick);
 			// 
 			// ucBtnFillet7
 			// 
@@ -424,7 +424,7 @@
 			this.ucBtnFillet6.RectWidth = 1;
 			this.ucBtnFillet6.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet6.TabIndex = 130;
-			this.ucBtnFillet6.BtnClick += new System.EventHandler(this.ucBtnFillet6_BtnClick);
+			this.ucBtnFillet6.Click += new System.EventHandler(this.ucBtnFillet6_BtnClick);
 			// 
 			// ucBtnFillet8
 			// 
@@ -443,7 +443,7 @@
 			this.ucBtnFillet8.RectWidth = 1;
 			this.ucBtnFillet8.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet8.TabIndex = 129;
-			this.ucBtnFillet8.BtnClick += new System.EventHandler(this.ucBtnFillet8_BtnClick);
+			this.ucBtnFillet8.Click += new System.EventHandler(this.ucBtnFillet8_BtnClick);
 			// 
 			// Note_GRoot
 			// 
@@ -482,7 +482,7 @@
 			this.ucBtnFillet9.RectWidth = 1;
 			this.ucBtnFillet9.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet9.TabIndex = 136;
-			this.ucBtnFillet9.BtnClick += new System.EventHandler(this.ucBtnFillet9_BtnClick);
+			this.ucBtnFillet9.Click += new System.EventHandler(this.ucBtnFillet9_BtnClick);
 			// 
 			// ucBtnFillet10
 			// 
@@ -530,7 +530,7 @@
 			this.ucBtnFillet11.RectWidth = 1;
 			this.ucBtnFillet11.Size = new System.Drawing.Size(94, 30);
 			this.ucBtnFillet11.TabIndex = 131;
-			this.ucBtnFillet11.BtnClick += new System.EventHandler(this.ucBtnFillet11_BtnClick);
+			this.ucBtnFillet11.Click += new System.EventHandler(this.ucBtnFillet11_BtnClick);
 			// 
 			// MatchLocal
 			// 

@@ -88,7 +88,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal
 			}
 			#endregion
 
-			#region 最后处理
+			#region END
 			if (RewardSelect.Source.Count == 0)
 			{
 				RewardSelect.Visible = false;

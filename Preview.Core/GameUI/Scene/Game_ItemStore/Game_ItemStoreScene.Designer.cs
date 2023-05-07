@@ -33,7 +33,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game_ItemStoreScene));
 			this.ucBtnExt1 = new HZH_Controls.Controls.UCBtnExt();
 			this.ControlPanel = new System.Windows.Forms.Panel();
-			this.JobSelector = new HZH_Controls.Controls.Combox();
+			this.JobSelector = new HZH_Controls.Controls.UCCombox();
 			this.ControlPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -75,7 +75,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			this.ucBtnExt1.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
 			this.ucBtnExt1.TipsText = "";
 			this.ucBtnExt1.Visible = false;
-			this.ucBtnExt1.BtnClick += new System.EventHandler(this.ucBtnExt1_BtnClick);
+			this.ucBtnExt1.Click += new System.EventHandler(this.ucBtnExt1_BtnClick);
 			// 
 			// ControlPanel
 			// 
@@ -139,6 +139,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 		private HZH_Controls.Controls.UCBtnExt ucBtnExt9;
 		private HZH_Controls.Controls.UCBtnExt ucBtnExt1;
 		private System.Windows.Forms.Panel ControlPanel;
-		private HZH_Controls.Controls.Combox JobSelector;
+		private HZH_Controls.Controls.UCCombox JobSelector;
 	}
 }

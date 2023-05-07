@@ -44,6 +44,7 @@ namespace Xylia.Preview.GameUI.Controls.Designer
 	/// <summary>
 	/// 指示设计器规则是否只在 <see cref="Control.AutoSize"/> 为 <see langword="true"/> 时生效
 	/// </summary>
+	[System.AttributeUsage(System.AttributeTargets.Class)]
 	public class OnlyAutoSize : System.Attribute
 	{
 		public OnlyAutoSize(bool Value = false)
