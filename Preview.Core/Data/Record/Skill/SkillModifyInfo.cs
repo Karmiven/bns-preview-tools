@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using Xylia.Preview.Common.Attribute;
@@ -77,15 +78,15 @@ namespace Xylia.Preview.Data.Record
 
 		public override string ToString()
 		{
-			#region 获取信息
+			#region text
 			List<string> Text = new();
-			void AddText(string name, int value, TextType type)
+			void AddText(string name, float value, TextType type)
 			{
 				if (value == 0) return;
 
 				var param = new ContentParams();
 				param[2] = name.GetText();
-				param[3] = type == TextType.Percent ? ((float)value / 10) : value;
+				param[3] = Math.Abs(type == TextType.Percent ? (value / 10) : value);
 
 				Text.Add(param.Handle((type switch
 				{
@@ -112,7 +113,7 @@ namespace Xylia.Preview.Data.Record
 			if (!Text.Any()) return null;
 			#endregion
 
-			#region 获取技能
+			#region skills
 			string SkillPart = null;
 			if (this.Type == TypeSeq.Skill)
 			{

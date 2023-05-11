@@ -176,7 +176,9 @@ namespace Xylia.Preview.Data.Helper
 		public DataTable<RandomStoreItemDisplay> RandomStoreItemDisplay { get; } = new();
 		public DataTable<Reward> Reward { get; } = new();
 		public DataTable<SetItem> SetItem { get; } = new();
-		public DataTable<Skill3> Skill3 { get; } = new();
+
+		public DataTable<_Skill> Skill { get; } = new();
+		public DataTable<Skill> Skill3 { get; } = new();
 		public DataTable<SkillByEquipment> SkillByEquipment { get; } = new();
 		public DataTable<SkillCastCondition3> SkillCastCondition3 { get; } = new();
 		public DataTable<SkillGatherRange3> SkillGatherRange3 { get; } = new();

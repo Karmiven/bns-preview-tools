@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <table>
-	<list module="ItemData" type="item" version="39.0" check-version="y" >
+	<list module="ItemData" type="item" version="40.2" check-version="y" >
 		<record alias="type" name="类型" type="type" >
 			<case alias="weapon" />
 			<case alias="costume" />
@@ -472,7 +472,7 @@
 		<record alias="use-recycle-group" seq="recycle-group" type="Seq" />
 		<record alias="use-recycle-group-id" type="Int8" />
 		<record alias="use-recycle-group-duration" type="Msec" />
-		<!-- ======================================  奖励  ===================================== -->
+		<!-- ========================================================================================= -->
 		<record alias="decompose-reward-by-consume-index" type="Bool" />
 		<record alias="decompose-reward" name="奖励" ref="Reward" repeat="7" />
 		<record alias="decompose-event-reward" name="事件奖励" ref="Reward" />
@@ -503,8 +503,8 @@
 		<record alias="faction" ref="Faction" />
 		<record alias="equip-faction" ref="Faction" />
 		<record alias="equip-faction-level" type="Int16" />
-		<record alias="new-product" name="新品" type="Bool" server="n" />
-		<record alias="hot-product" name="热品" type="Bool" server="n" />
+		<record alias="new-product" name="" type="Bool" server="n" />
+		<record alias="hot-product" name="" type="Bool" server="n" />
 		<record alias="pouch-appearance-priority" name="掉落物外观优先级" type="Int16" default="1" />
 		<record alias="pouch-appearance" name="掉落物外观" type="Seq" >
 			<case alias="none" default="y" />
@@ -567,9 +567,8 @@
 		<record alias="cases" type="Int8" server="n" repeat="64" />
 		<record alias="case-subtypes" type="Int16" server="n" repeat="64" />
 		<!-- ========================================================================================= -->
-		<!-- ========================================= 属性 ========================================== -->
-		<record alias="attack-power-equip-min" name="最小攻击" type="Int16" />
-		<record alias="attack-power-equip-max" name="最大攻击" type="Int16" />
+		<record alias="attack-power-equip-min" name="" type="Int16" />
+		<record alias="attack-power-equip-max" name="" type="Int16" />
 		<record alias="defend-power-equip-value" type="Int16" />
 		<record alias="defend-resist-power-equip-value" type="Int16" />
 		<record alias="attack-hit-base-percent" type="Int16" />
@@ -628,6 +627,25 @@
 		<record alias="pvp-attack-power-equip-min" name="最小PVP攻击力" type="Int16" />
 		<record alias="pvp-attack-power-equip-max" name="最大PVP攻击力" type="Int16" />
 		<record alias="pvp-defend-power-equip-value" name="PVP防御力" type="Int16" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />		
+		<record alias="unk-" type="Int32" />
 		<record alias="r-attack-stiff-duration-equip-value" type="Int16" />
 		<record alias="r-defend-stiff-duration-equip-value" type="Int16" />
 		<record alias="r-aoe-defend-power-value-equip" type="Int16" />
@@ -640,8 +658,8 @@
 		<record alias="r-support-power-equip-value" type="Int16" />
 		<record alias="r-hypermove-power-equip-value" type="Int16" />
 		<record alias="defend-difficulty-type-damage-reduce-percent" type="Int16" />
-
-
+		
+		
 		<record alias="potential-attack-power-equip-min" type="Int16" />
 		<record alias="potential-attack-power-equip-max" type="Int16" />
 		<record alias="potential-defend-power-equip-value" type="Int16" />
@@ -673,14 +691,12 @@
 		<record alias="potential-attack-concentrate-value" type="Int16" />
 		<record alias="potential-defend-perfect-parry-reduce-percent" type="Int16" />
 		<record alias="potential-defend-counter-reduce-percent" type="Int16" />
-		<record alias="potential-max-hp" type="Int32" name="[潜力] 生命" />
-		<record alias="potential-hp-regen" type="Int32" name="[潜力] 治疗" />
-		<record alias="potential-hp-regen-combat" type="Int32" name="[潜力] 战斗中治疗" />
+		<record alias="potential-max-hp" type="Int32" name="" />
+		<record alias="potential-hp-regen" type="Int32" name="" />
+		<record alias="potential-hp-regen-combat" type="Int32" name="" />
 		<record alias="potential-max-guard-gauge" type="Int32" />
-		<record alias="potential-pve-boss-level-npc-attack-power-equip-min" name="[潜力] 最小降魔" type="Int16" />
-		<record alias="potential-pve-boss-level-npc-attack-power-equip-max" name="[潜力] 最大降魔" type="Int16" />
-
-
+		<record alias="potential-pve-boss-level-npc-attack-power-equip-min" name="" type="Int16" />
+		<record alias="potential-pve-boss-level-npc-attack-power-equip-max" name="" type="Int16" />
 		<record alias="unk-" type="Int32" />
 		<record alias="unk-" type="Int32" />
 		<record alias="unk-" type="Int16" />
@@ -688,7 +704,6 @@
 		<record alias="unk-" type="Int16" />
 		<record alias="unk-" type="Int16" />
 		<record alias="unk-" type="Int16" />
-
 		<record alias="job-ability" type="Int16" repeat="2" />
 		<record alias="unk-" type="Int16" />
 		<record alias="heal-power-base-percent" type="Int16" />
@@ -704,6 +719,7 @@
 		<record alias="hate-power-equip-value" name="嘲讽" type="Int16" />
 		<record alias="additional-exp-diff-by-kill" type="Int16" />
 		<record alias="additional-exp-percent-by-kill" type="Int16" />
+		<!-- ========================================================================================= -->
 		<record alias="item-sound-move" name="移动音效" server="n" type="String" />
 		<record alias="item-sound-dragstart" name="拖拽音效" server="n" type="String" />
 		<record alias="item-sound-itemdrop" name="丢弃音效" server="n" type="String" />

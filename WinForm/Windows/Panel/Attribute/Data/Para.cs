@@ -138,5 +138,21 @@ namespace Xylia.Match.Windows.Attribute.Data
 			double ConvertPercent = ((double)value * (0.01 * K) / (value + factor));
 			return ConvertPercent + 0.01 * C;
 		}
+
+
+
+
+
+
+		#region Static Functions
+		public static List<ParaEntity> LoadParas(XmlDocument doc)
+		{
+			var data = new List<ParaEntity>();
+			foreach (XmlElement xmlNode in doc.SelectNodes("*/record"))
+				data.Add(new ParaEntity(xmlNode));
+
+			return data;
+		}
+		#endregion
 	}
 }

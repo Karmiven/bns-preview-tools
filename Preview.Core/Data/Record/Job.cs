@@ -21,7 +21,7 @@ namespace Xylia.Preview.Data.Record
 
 
 		#region Functions
-		public KeyCommand CurrentActionKey => KeyCommandSeq.Action3.GetKeyCommand();
+		public KeyCommand CurrentActionKey => KeyCommand.Cast(KeyCommandSeq.Action3);
 
 		/// <summary>
 		/// 获得派系名称

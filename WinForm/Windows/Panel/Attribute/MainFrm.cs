@@ -19,6 +19,11 @@ namespace Xylia.Match.Windows.Attribute
 		{
 			InitializeComponent();
 			//this.contextMenuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomToolStripColorTable());
+
+			int i = 150;
+			this.ucWaveChart1.AddSource(i.ToString(), i);
+			this.ucWaveChart1.AddSource(i.ToString(), i);
+			this.ucWaveChart1.AddSource(i.ToString(), i);
 		}
 		#endregion
 
@@ -47,9 +52,9 @@ namespace Xylia.Match.Windows.Attribute
 
 				category[alias] = this.newTreeView1.Nodes[0].Nodes.Add(text);
 			}
-		
 
-			foreach (var para in ParaLoad.LoadParas(doc))
+
+			foreach (var para in ParaEntity.LoadParas(doc))
 			{
 				if (string.IsNullOrEmpty(para.category) || !category.TryGetValue(para.category, out TreeNode parentNode))
 					parentNode = this.newTreeView1.Nodes[0];

@@ -35,8 +35,17 @@ namespace Xylia.Preview.Common.Seq
 		[Signal("abnormal-attack-power-value")]
 		AbnormalAttackPowerValue,
 
+
+
+
+
+
+		
+
+
+
 		[Signal("max-hp")]
-		MaxHp,
+		MaxHp = 29,
 
 		[Signal("defend-power-creature-value")]
 		DefendPowerCreatureValue,

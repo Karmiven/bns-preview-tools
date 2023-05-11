@@ -113,7 +113,7 @@ namespace Xylia.Preview.Common.Extension
 				#region	GetPreview
 				Form ResultFrm = null;
 				if (obj is Item item) ResultFrm = new ItemTooltipPanel(item);
-				else if (obj is Skill3 skill) ResultFrm = new SkillFrm(skill);
+				else if (obj is Skill skill) ResultFrm = new SkillFrm(skill);
 				else
 				{
 					Trace.WriteLine($"窗体无效 ({ obj })");

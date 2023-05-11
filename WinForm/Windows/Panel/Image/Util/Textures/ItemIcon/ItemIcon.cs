@@ -9,11 +9,20 @@ using static Xylia.Preview.Data.Record.Item;
 
 namespace Xylia.Match.Util.Paks.Textures
 {
-	/// <summary>
-	/// 物品图标
-	/// </summary>
 	public sealed class ItemIcon : IconOutBase
 	{
+		#region Define
+		public static int GRADE => 221;
+
+		public static int NAME2 => 2248;
+
+		public static int ICON_ID => 2292;
+
+		public static int GROCEERY_TYPE => 2844;
+		#endregion
+
+
+
 		#region Constructor
 		public ItemIcon(string GameFolder) : base(GameFolder) { }
 
@@ -33,7 +42,6 @@ namespace Xylia.Match.Util.Paks.Textures
 		/// </summary>
 		public string ChvPath = null;
 		#endregion
-
 
 		#region Functions
 		protected override void AnalyseSourceData()
@@ -64,14 +72,13 @@ namespace Xylia.Match.Util.Paks.Textures
 				#region 获取数据
 				var Data = record.Data;
 
-				var Grade = Data[LocDefine.Grade];
-				var Name2 = set.TextData[BitConverter.ToInt32(Data, LocDefine.Name2)].GetText();
-				var IconId = BitConverter.ToInt32(Data, LocDefine.IconId);
-				var IconIdx = BitConverter.ToInt16(Data, LocDefine.IconId + 8);
+				var Grade = Data[@GRADE];
+				var Name2 = set.TextData[BitConverter.ToInt32(Data, @NAME2)].GetText();
+				var IconId = BitConverter.ToInt32(Data, @ICON_ID);
+				var IconIdx = BitConverter.ToInt16(Data, @ICON_ID + 8);
 
-				//获取 GroceryType
 				byte GroceryType = 0;
-				if (record.SubclassType == 2) GroceryType = Data[LocDefine.GroceryType];
+				if (record.SubclassType == 2) GroceryType = Data[@GROCEERY_TYPE];
 				#endregion
 
 

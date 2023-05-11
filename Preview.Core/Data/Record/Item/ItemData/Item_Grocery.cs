@@ -75,8 +75,8 @@ namespace Xylia.Preview.Data.Record
 		/// </summary>
 		public short StackCount => this.Attributes["stack-count"].ToShort();
 
-		public Skill3 Skill3 => FileCache.Data.Skill3[this.Attributes["skill3"]];
-		public Skill3 DuelSkill3 => FileCache.Data.Skill3[this.Attributes["duel-skill3"]];
+		public Skill Skill3 => FileCache.Data.Skill3[this.Attributes["skill3"]];
+		public Skill DuelSkill3 => FileCache.Data.Skill3[this.Attributes["duel-skill3"]];
 
 
 

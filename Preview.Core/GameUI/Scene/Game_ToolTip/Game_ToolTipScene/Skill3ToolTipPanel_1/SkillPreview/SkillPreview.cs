@@ -35,7 +35,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 
 
 		#region Functions
-		public void LoadData(Skill3 Skill)
+		public void LoadData(Data.Record.Skill Skill)
 		{
 			#region Initialize
 			this.M1_Panel.Tooltips.Clear();

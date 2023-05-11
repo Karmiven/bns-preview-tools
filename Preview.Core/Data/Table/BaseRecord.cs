@@ -168,7 +168,7 @@ namespace Xylia.Preview.Data.Record
 			NodeName ??= T.GetAttribute<Signal>()?.Description ?? T.GetType().Name.ToLower();
 			var Node = doc.CreateElement(NodeName);
 
-			//实例化节点和Fields名
+
 			foreach (var field in T.GetType().GetFields(ClassExtension.Flags))
 			{
 				if (field.FieldType.GetGenericTypeDefinition() == typeof(List<>))
@@ -195,7 +195,7 @@ namespace Xylia.Preview.Data.Record
 				}
 				else
 				{
-					//去除服务端专用Fields
+					//remove server fields
 					if (field.ContainAttribute(out Side fside))
 					{
 						if (side == ReleaseSide.Client && fside.SideType == Side.Type.Server) continue;
@@ -205,7 +205,7 @@ namespace Xylia.Preview.Data.Record
 					var ObjVal = field.GetValue(T);
 					if (ObjVal is null) continue;
 
-					#region 默认值判断
+					#region deault
 					//默认值为 Null, 则表示任何值都应该显示
 					if (field.ContainAttribute(out DefaultValueAttribute DefVal))
 					{
@@ -233,7 +233,7 @@ namespace Xylia.Preview.Data.Record
 					}
 					#endregion
 
-					#region 获得对象值
+					#region value
 					string Value = ObjVal.ToString();
 					if (field.FieldType == typeof(bool)) Value = (bool)ObjVal ? "y" : "n";
 					else if (field.FieldType == typeof(float)) Value = ((float)ObjVal).ToString("0.0001");
@@ -246,7 +246,7 @@ namespace Xylia.Preview.Data.Record
 					}
 					#endregion
 
-					#region 获得对象名
+					#region name
 					string Key = field.Name.ToLower();
 					if (field.ContainAttribute(out Signal descA) && !string.IsNullOrWhiteSpace(descA.Description))
 						Key = descA.Description;

@@ -1,10 +1,9 @@
-﻿
-using Xylia.Preview.Common.Attribute;
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record
 {
-	public sealed partial class Skill3
+	public sealed partial class Skill
 	{
 		public FlowTypeSeq FlowType;
 		public enum FlowTypeSeq

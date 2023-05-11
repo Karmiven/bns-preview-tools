@@ -13,7 +13,7 @@ namespace Xylia.Preview.Data.Record
 		public bool UiFilterAttractionQuestOnly;
 
 		[Signal("respawn-confirm-text")]
-		public string RespawnConfirmText;
+		public Text RespawnConfirmText;
 
 		[Signal("required-level")]
 		public byte RequiredLevel;

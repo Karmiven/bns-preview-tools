@@ -9,12 +9,12 @@ namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 		[Signal("sp-2")] public byte Sp2;
 		[Signal("sp-3")] public byte Sp3;
 
-		[Signal("skill-1")] public Skill Skill1;
-		[Signal("skill-2")] public Skill Skill2;
-		[Signal("skill-3")] public Skill Skill3;
+		[Signal("skill-1")] public _Skill Skill1;
+		[Signal("skill-2")] public _Skill Skill2;
+		[Signal("skill-3")] public _Skill Skill3;
 
-		[Signal("skill3-1")] public Skill3 Skill3_1;
-		[Signal("skill3-2")] public Skill3 Skill3_2;
-		[Signal("skill3-3")] public Skill3 Skill3_3;
+		[Signal("skill3-1")] public Skill Skill3_1;
+		[Signal("skill3-2")] public Skill Skill3_2;
+		[Signal("skill3-3")] public Skill Skill3_3;
 	}
 }

@@ -66,69 +66,86 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 
 		#region Functions
+		public static void ValidType(string target, ref object value)
+		{
+			if (value is null) return;
+			if (value is Integer || value is Enum) return;
+
+			var type = value.GetType();
+			if (target == "string")
+			{
+				if (type != typeof(string)) value = value.ToString();
+				return;
+			}
+			else if (target == "integer")
+			{
+				if (type == typeof(int)) value = new Integer((int)value);
+				else if (type == typeof(float)) value = new Integer((float)value);
+				else if (type == typeof(short)) value = new Integer((short)value);
+				else if (type == typeof(byte)) value = new Integer((byte)value);
+
+				return;
+			}
+			else if (target.Replace("-", null).MyEquals(type.Name)) return;
+
+			throw new InvalidCastException($"Valid Failed: {target} > {type}");
+		}
+
+
+
 		public object Handle(HtmlNode ArgNode)
 		{
-			#region Initialize
-			string p = ArgNode.Attributes["p"]?.Value;
+			#region get source object 
+			var p = ArgNode.Attributes["p"]?.Value?.Split(':');
 
-			if (!p.Contains(':')) return null;
-			var ps = p.Split(':');
-			string ArgType = ps[0], ArgValue = ps[1];
+			object ExecObj;
 
-			//arg tree
-			var args = ArgValue.Split('.').Select(o => new ArgItem(o)).ToArray();
-			for (int x = 0; x < args.Length; x++)
+			var ArgType = p[0];
+			if (ArgType is null) return null;
+			else if (ArgType == "id") ExecObj = ArgNode.Attributes["id"]?.Value.CastObject();
+			else if (ArgType == "seq")
 			{
-				if (x != 0) 
-					args[x].Prev = args[x - 1];
-
-				if (x != args.Length - 1) 
-					args[x].Next = args[x + 1];
+				var seq = ArgNode.Attributes["seq"]?.Value.Split(':');
+				ExecObj = seq[1].CastSeq(seq[0]);
 			}
+			else
+			{
+				if (!byte.TryParse(ArgType, out var index)) throw new InvalidCastException("非法参数, 应为数值类型: " + ArgType);
+
+				ArgumentNullException.ThrowIfNull(Params);
+				if (Params.Count < index) throw new ArgumentOutOfRangeException(nameof(Params));
+				ExecObj = Params[index - 1];
+			}
+
+
+			if (ExecObj is null)
+				return null;
 			#endregion
 
 
-			object ExecObj = null;
-			for (int x = 0; x < args.Length; x++)
+			#region get child object
+			foreach (var type in p.Skip(1))
 			{
-				var item = args[x];
-				if (x == 0)
+				ValidType(type.Split('.')[0], ref ExecObj);
+
+				//args
+				if (type.Contains('.'))
 				{
-					if (ArgType == "seq")
+					var args = ArgItem.GetArgs(type);
+					for (int x = 1; x < args.Length; x++)
 					{
-						var seq = ArgNode.Attributes["seq"]?.Value;
-						var name = seq.Split(':')[0];
-						var value = seq.Split(':')[1];
+						var tmp = args[x].GetObject(ExecObj);
+						if (tmp is null) break;
 
-						ExecObj = value.CastSeq(name);
-					}
-
-					else if (ArgType == "id")
-					{
-						var id = ArgNode.Attributes["id"]?.Value;
-
-						ExecObj = id.CastObject();
-						item.ValidType(ref ExecObj);
-					}
-
-					else
-					{
-						if (!byte.TryParse(ArgType, out var index)) throw new InvalidCastException("非法参数, 应为数值类型: " + ArgType);
-
-						ArgumentNullException.ThrowIfNull(Params);
-						if (Params.Count < index) throw new ArgumentOutOfRangeException(nameof(Params));
-
-						ExecObj = Params[index - 1];
-						item.ValidType(ref ExecObj);
+						ExecObj = tmp;
 					}
 				}
-				else
-				{
-					var CurObj = item.GetObject(ExecObj);
-					if (CurObj is null) break;
-					else ExecObj = CurObj;
-				}
+
+				//convert
+				else ExecObj = ExecObj.GetInfo(type, true)?.GetValue(ExecObj) ?? ExecObj;
 			}
+			#endregion
+
 
 			return ExecObj;
 		}
@@ -159,8 +176,6 @@ namespace Xylia.Preview.GameUI.Controls
 		#endregion
 	}
 
-
-
 	public sealed class ArgItem
 	{
 		#region Constructor
@@ -175,58 +190,26 @@ namespace Xylia.Preview.GameUI.Controls
 
 
 		#region Functions
-		public override string ToString() => this.Target;
-
-
-		public void ValidType(ref object value)
+		public static ArgItem[] GetArgs(string text)
 		{
-			if (value is null) return;
-
-			var type = value.GetType();
-			if (Target == "string")
+			var args = text.Split('.').Select(o => new ArgItem(o)).ToArray();
+			for (int x = 0; x < args.Length; x++)
 			{
-				if (type != typeof(string)) value = value.ToString();
-				return;
-			}
-			else if (Target == "integer")
-			{
-				if (type == typeof(int))
-				{
-					value = new Integer((int)value);
-					return;
-				}
+				if (x != 0)
+					args[x].Prev = args[x - 1];
 
-				else if (type == typeof(short))
-				{
-					value = new Integer((short)value);
-					return;
-				}
-
-				else if (type == typeof(byte))
-				{
-					value = new Integer((byte)value);
-					return;
-				}
-
-				else if (type == typeof(float))
-				{
-					value = new Integer((float)value);
-					return;
-				}
+				if (x != args.Length - 1)
+					args[x].Next = args[x + 1];
 			}
 
-			//实例类型
-			else if (Target == "skill" && value is Skill3) return;
-			else if (Target.MyEquals(value.GetType().Name)) return;
-
-			throw new InvalidCastException($"Valid Failed: {Target} > {value.GetType()}");
+			return args;
 		}
+
 
 		public object GetObject(object value)
 		{
 			if (value is null) return null;
-
-			if (value is string @string) return @string;
+			else if (value is string @string) return @string;
 			else if (value is Bitmap @bitmap)
 			{
 				if (this.Target == "scale") return value;
@@ -237,14 +220,6 @@ namespace Xylia.Preview.GameUI.Controls
 						(int)(Scale * bitmap.Width),
 						(int)(Scale * bitmap.Height));
 				}
-			}
-			else if (value is Enum @enum)
-			{
-				if (value is KeyCommandSeq KeyCommond) return GetObject(KeyCommond.GetKeyCommand());
-				else if (value is KeyCode KeyCode) return GetObject(KeyCode.GetKeyCap());
-
-
-				return $"[{ @enum.GetDescription() }]";
 			}
 			else if (value is IArgParam @ArgParam)
 			{
@@ -257,9 +232,11 @@ namespace Xylia.Preview.GameUI.Controls
 				if (result != null) return result.GetValue(value);
 			}
 
-			Debug.WriteLine($"NOT SUPPORTED { value } ({ value.GetType().Name } > { this.Target })");
+			Debug.WriteLine($"NOT SUPPORTED {value} ({value.GetType().Name} > {this.Target})");
 			return null;
 		}
+
+		public override string ToString() => this.Target;
 		#endregion
 	}
 }

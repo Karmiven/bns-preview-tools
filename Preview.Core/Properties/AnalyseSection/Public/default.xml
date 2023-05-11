@@ -12,6 +12,25 @@
 			<case alias="attack-attribute-value" name="功力" />
 			<case alias="attack-pierce-value" name="穿刺" />
 			<case alias="abnormal-attack-power-value" name="状态异常伤害" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
+			<case alias="" name="" />
 			<case alias="max-hp" name="生命" />
 			<case alias="defend-power-creature-value" name="防御" />
 			<case alias="pve-boss-level-npc-defend-power-creature-value" name="降魔防御力" />

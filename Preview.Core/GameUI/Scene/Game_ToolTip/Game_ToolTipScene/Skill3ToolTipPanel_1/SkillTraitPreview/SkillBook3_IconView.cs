@@ -10,13 +10,13 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 {
 	public partial class SkillBook3_IconView : Form
 	{
-		public SkillBook3_IconView(List<Skill3> Skills)
+		public SkillBook3_IconView(List<Data.Record.Skill> Skills)
 		{
 			InitializeComponent();
 			this.LoadData(Skills);
 		}
 
-		public void LoadData(List<Skill3> data)
+		public void LoadData(List<Data.Record.Skill> data)
 		{
 			if (data is null) return;
 
@@ -30,7 +30,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 				#region	Title
 				ContentPanel Title = new()
 				{
-					Text = pair.Key.GetKeyCommand()?.GetImage() ?? "无",
+					Text = KeyCommand.Cast(pair.Key)?.GetImage() ?? "无",
 
 					AutoSize = true,
 					ForeColor = Color.White,

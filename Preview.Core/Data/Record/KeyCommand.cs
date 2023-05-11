@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
-using Xylia.Preview.Common.Interface;
-using System.Linq;
 
 namespace Xylia.Preview.Data.Record
 {
@@ -24,7 +23,7 @@ namespace Xylia.Preview.Data.Record
 		//[Signal("joypad-category")]
 		//public Seq JoypadCategory;
 
-		public string Name;
+		public Text Name;
 
 		[Signal("default-keycap")]
 		public string DefaultKeycap;
@@ -47,7 +46,6 @@ namespace Xylia.Preview.Data.Record
 		public bool JoypadCustomizeEnabled;
 		#endregion
 
-
 		#region Functions
 		/// <summary>
 		/// 获取组合键
@@ -67,15 +65,15 @@ namespace Xylia.Preview.Data.Record
 
 					if (o.StartsWith("^"))
 					{
-						result.Add(KeyCap.GetKeyCap(KeyCode.Control));
-						result.Add(KeyCap.GetKeyCap(o[1..]));
+						result.Add(KeyCap.Cast(KeyCode.Control));
+						result.Add(KeyCap.Cast(o[1..]));
 					}
 					else if (o.StartsWith("~"))
 					{
-						result.Add(KeyCap.GetKeyCap(KeyCode.Alt));
-						result.Add(KeyCap.GetKeyCap(o[1..]));
+						result.Add(KeyCap.Cast(KeyCode.Alt));
+						result.Add(KeyCap.Cast(o[1..]));
 					}
-					else result.Add(KeyCap.GetKeyCap(o));
+					else result.Add(KeyCap.Cast(o));
 				}
 			}
 			#endregion
@@ -93,12 +91,8 @@ namespace Xylia.Preview.Data.Record
 		public string GetImage() => this.Key1?.Image;  
 
 		public Bitmap GetIcon() => this.Key1?.Icon;
-	}
 
-	public static partial class Extension
-	{
-		public static KeyCommand GetKeyCommand(this KeyCommandSeq KeyCommand) => FileCache.Data.KeyCommand.FirstOrDefault(o => o.keyCommand == KeyCommand);
 
-		public static KeyCap GetKeyCap(this KeyCode KeyCode) => FileCache.Data.KeyCap.FirstOrDefault(o => o.KeyCode == KeyCode);
+		public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.KeyCommand.FirstOrDefault(o => o.keyCommand == KeyCommand);
 	}
 }

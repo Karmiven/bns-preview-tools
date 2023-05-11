@@ -42,7 +42,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 
 					//物品实例化
 					_preview.ForEach(c => c.ItemInstace());
-					_preview.Sort(new RewardCellSort());
+					_preview.Sort();
 				}
 
 				return _preview;

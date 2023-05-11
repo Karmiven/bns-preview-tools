@@ -12,18 +12,18 @@ namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 		[Signal("target-area")]
 		public ZoneArea TargetArea;
 
-		[Signal("multi-skill3-1")] public Skill3 Multi_Skill3_1;
-		[Signal("multi-skill3-2")] public Skill3 Multi_Skill3_2;
-		[Signal("multi-skill3-3")] public Skill3 Multi_Skill3_3;
-		[Signal("multi-skill3-4")] public Skill3 Multi_Skill3_4;
-		[Signal("multi-skill3-5")] public Skill3 Multi_Skill3_5;
-		[Signal("multi-skill3-6")] public Skill3 Multi_Skill3_6;
-		[Signal("multi-skill3-7")] public Skill3 Multi_Skill3_7;
-		[Signal("multi-skill3-8")] public Skill3 Multi_Skill3_8;
-		[Signal("multi-skill3-9")] public Skill3 Multi_Skill3_9;
-		[Signal("multi-skill3-10")] public Skill3 Multi_Skill3_10;
-		[Signal("multi-skill3-11")] public Skill3 Multi_Skill3_11;
-		[Signal("multi-skill3-12")] public Skill3 Multi_Skill3_12;
+		[Signal("multi-skill3-1")] public Skill Multi_Skill3_1;
+		[Signal("multi-skill3-2")] public Skill Multi_Skill3_2;
+		[Signal("multi-skill3-3")] public Skill Multi_Skill3_3;
+		[Signal("multi-skill3-4")] public Skill Multi_Skill3_4;
+		[Signal("multi-skill3-5")] public Skill Multi_Skill3_5;
+		[Signal("multi-skill3-6")] public Skill Multi_Skill3_6;
+		[Signal("multi-skill3-7")] public Skill Multi_Skill3_7;
+		[Signal("multi-skill3-8")] public Skill Multi_Skill3_8;
+		[Signal("multi-skill3-9")] public Skill Multi_Skill3_9;
+		[Signal("multi-skill3-10")] public Skill Multi_Skill3_10;
+		[Signal("multi-skill3-11")] public Skill Multi_Skill3_11;
+		[Signal("multi-skill3-12")] public Skill Multi_Skill3_12;
 
 		[Signal("multi-target-1")] public Script_obj MultiTarget1;
 		[Signal("multi-target-2")] public Script_obj MultiTarget2;

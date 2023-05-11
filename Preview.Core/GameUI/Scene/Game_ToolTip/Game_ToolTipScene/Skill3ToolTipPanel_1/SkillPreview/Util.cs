@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 {
 	public static class Util
 	{
-		public static IEnumerable<SkillTooltip> GetSkillTooltips(this Skill3 Skill)
+		public static IEnumerable<SkillTooltip> GetSkillTooltips(this Data.Record.Skill Skill)
 		{
 			//返回结果较慢
 			if (false) return FileCache.Data.SkillTooltip.Where(tooltip => tooltip.Skill == Skill.alias);

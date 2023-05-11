@@ -9,9 +9,9 @@ namespace Xylia.Preview.Data.Record.CombatSequenceData.Action
 	public abstract class SkillBase : IAction
 	{
 		[Obsolete]
-		public Skill Skill;
+		public _Skill Skill;
 
-		public Skill3 Skill3;
+		public Skill Skill3;
 
 
 		public Script_obj Target;

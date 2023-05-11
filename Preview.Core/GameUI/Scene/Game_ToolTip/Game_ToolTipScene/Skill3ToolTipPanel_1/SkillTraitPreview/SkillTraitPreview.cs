@@ -102,7 +102,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 		/// 获取当前所有技能
 		/// </summary>
 		/// <returns></returns>
-		public List<Skill3> GetSkills()
+		public List<Xylia.Preview.Data.Record.Skill> GetSkills()
 		{
 			if (this.TraitTiers is null) return null;
 

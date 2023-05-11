@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 
-using Xylia.Preview.Common.Attribute;
 using Xylia.Extension;
+using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record
@@ -12,10 +12,10 @@ namespace Xylia.Preview.Data.Record
 		[Signal("key-code")]
 		public KeyCode KeyCode;
 
-		public string Name;
+		public Text Name;
 
 		[Signal("short-name")]
-		public string ShortName;
+		public Text ShortName;
 
 		[Signal("scroll-imageset")]
 		public string ScrollImageset;
@@ -31,9 +31,6 @@ namespace Xylia.Preview.Data.Record
 		public string Image => this.Attributes["image"].GetText();
 
 
-		public static KeyCap GetKeyCap(KeyCode KeyCode) => FileCache.Data.KeyCap[(short)KeyCode];
-
-		public static KeyCap GetKeyCap(string o) => GetKeyCap(GetKeyCode(o));
 
 		public static KeyCode GetKeyCode(string o)
 		{
@@ -41,6 +38,10 @@ namespace Xylia.Preview.Data.Record
 
 			return o.ToEnum<KeyCode>();
 		}
+
+		public static KeyCap Cast(string KeyCode) => Cast(GetKeyCode(KeyCode));
+
+		public static KeyCap Cast(KeyCode KeyCode) => FileCache.Data.KeyCap[(short)KeyCode];
 		#endregion
 	}
 }

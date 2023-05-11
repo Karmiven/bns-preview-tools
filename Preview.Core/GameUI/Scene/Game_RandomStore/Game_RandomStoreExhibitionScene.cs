@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using static Xylia.Preview.Data.Record.RandomStoreItemDisplay;
@@ -21,10 +20,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 		{
 			if (this.DesignMode) return;
 
-			if (this.TabControl.SelectedTab == this.tabPage3)
-			{
-
-			}
 			else if (this.TabControl.SelectedTab == this.tabPage1)
 			{
 				if (Loaded1) return;
@@ -41,6 +36,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 				RandomStoreItemDisplayList_2.MaxCellNum = 0;
 				RandomStoreItemDisplayList_2.Cells = GetCells(RandomStoreTypeSeq.Free);
 			}
+			else if (this.TabControl.SelectedTab == this.tabPage3)
+			{
+
+			}
 		}
 
 
@@ -54,7 +53,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 				.Where(o => o.RandomStoreType == RandomStoreType)
 				.Select(o => new ItemDisplayListCell(o)).ToList();
 
-			StoreItems.Sort(new DisplayListCellSort());
+			StoreItems.Sort();
 			return StoreItems;
 		}
 	}

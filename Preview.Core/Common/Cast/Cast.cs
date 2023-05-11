@@ -4,22 +4,24 @@ using Xylia.Extension;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record;
 
+
 namespace Xylia.Preview.Common.Cast
 {
 	public static class Cast
 	{
 		#region Seq
-		public static T CastSeq<T>(this string SeqValue) where T : Enum => SeqValue.ToEnum<T>();
+		public static T CastSeq<T>(this string value) where T : Enum => value.ToEnum<T>();
 
-		public static object CastSeq(this string SeqValue, string SeqName)
+		public static object CastSeq(this string value, string name)
 		{
-			if (!SeqName.TryParseToEnum<SeqType>(out var SeqType)) return null;
-			else if (SeqType == SeqType.KeyCap) return CastSeq<KeyCode>(SeqValue);
-			else if (SeqType == SeqType.KeyCommand) return CastSeq<KeyCommandSeq>(SeqValue);
-
-			throw new InvalidCastException($"Cast Failed: {SeqName} > {SeqValue}");
+			if (!name.TryParseToEnum<SeqType>(out var SeqType)) return null;
+			else if (SeqType == SeqType.KeyCap) return KeyCap.Cast(KeyCap.GetKeyCode(value));
+			else if (SeqType == SeqType.KeyCommand) return KeyCommand.Cast(CastSeq<KeyCommandSeq>(value));
+	
+			throw new InvalidCastException($"Cast Failed: {name} > {value}");
 		}
 		#endregion
+
 
 		#region Object
 		public static BaseRecord CastObject(this string ObjInfo)

@@ -1,15 +1,15 @@
 ﻿using System.Drawing;
 
 using Xylia.Preview.Common.Attribute;
-using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Common.Interface;
+using Xylia.Preview.Common.Seq;
 
 namespace Xylia.Preview.Data.Record
 {
 	[AliasRecord]
-	public sealed partial class Skill3 : BaseRecord, IPicture
+	public sealed partial class Skill : BaseRecord, IPicture
 	{
-		#region 数据Fields
+		#region Fields
 		[Signal("variation-id")]
 		public byte VariationId = 1;
 
@@ -55,7 +55,7 @@ namespace Xylia.Preview.Data.Record
 		/// <summary>
 		/// 当前快捷键
 		/// </summary>
-		public KeyCommand CurrentShortCutKey => this.ShortCutKey.GetKeyCommand();
+		public KeyCommand CurrentShortCutKey => KeyCommand.Cast(this.ShortCutKey);
 		#endregion
 
 

@@ -445,7 +445,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(249, 21);
 			this.label1.TabIndex = 107;
-			this.label1.Text = "搜索条件 (空白时唤醒高级搜索)";
+			this.label1.Text = "搜索条件 (空白时打开高级搜索)";
 			// 
 			// PreviewPage_Else
 			// 

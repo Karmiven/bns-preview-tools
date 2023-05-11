@@ -33,7 +33,7 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("killed-difficulty-type")]
 		public DifficultyType KilledDifficultyType;
 
-		public Skill3 Skill3;
+		public Skill Skill3;
 
 
 		#region Functions

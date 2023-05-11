@@ -1,6 +1,12 @@
-﻿namespace Xylia.Preview.Data.Record
+﻿using System;
+
+using Xylia.Preview.Common.Attribute;
+
+namespace Xylia.Preview.Data.Record
 {
-	public sealed class Skill : BaseRecord
+	[Obsolete]
+	[AliasRecord]
+	public sealed class _Skill : BaseRecord
 	{
 		
 	}

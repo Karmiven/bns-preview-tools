@@ -12,7 +12,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 	/// 奖励单元
 	/// </summary>
 	[DesignTimeVisible(false)]
-	public partial class RewardCell : UserControl
+	public partial class RewardCell : UserControl, IComparable<RewardCell>
 	{
 		#region 类型声明
 		/// <summary>
@@ -84,6 +84,33 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 			}
 		}
 		#endregion
+
+		public int CompareTo(RewardCell other)
+		{
+			#region Fixed 组
+			if (this.Group == CellGroup.Fixed && other.Group != CellGroup.Fixed) return -1;
+			else if (other.Group == CellGroup.Fixed && this.Group != CellGroup.Fixed) return 1;
+			#endregion
+
+			#region Selected 组
+			else if (this.Group == CellGroup.Selected && other.Group != CellGroup.Selected) return -1;
+			else if (other.Group == CellGroup.Selected && this.Group != CellGroup.Selected) return 1;
+			#endregion
+
+
+			#region 同类型道具再按品质排序
+			var GradeA = this.ItemGrade;
+			var GradeB = other.ItemGrade;
+
+			if (GradeA == GradeB) return this.CellIdx - other.CellIdx;
+			return GradeA - GradeB;
+			#endregion
+		}
+
+
+
+
+
 
 		#region 数量
 		private int m_countmin;

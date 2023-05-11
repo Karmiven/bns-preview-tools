@@ -29,8 +29,8 @@ namespace Xylia.Preview.Data.Record.QuestData.Case
 		[Signal("object2-16")] public string Object2_16;
 
 		[Obsolete]
-		public Record.Skill skill;
+		public _Skill skill;
 
-		public Record.Skill3 Skill3;
+		public Record.Skill Skill3;
 	}
 }

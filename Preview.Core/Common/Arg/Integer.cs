@@ -9,11 +9,11 @@ namespace Xylia.Preview.Common.Arg
 
 
 
-		public string FloatDot0 => $"#{Value} FloatDot0";
+		public string FloatDot0 => (Value / 10).ToString("#0");
 
-		public string FloatDot1 => $"#{Value} FloatDot1";
+		public string FloatDot1 => (Value / 10).ToString("#0.0");
 
-		public string FloatDot2 => $"#{Value} FloatDot2";
+		public string FloatDot2 => (Value / 10).ToString("#0.00");
 
 		public string Dategmtime24 => $"#{Value} dategmtime24";
 

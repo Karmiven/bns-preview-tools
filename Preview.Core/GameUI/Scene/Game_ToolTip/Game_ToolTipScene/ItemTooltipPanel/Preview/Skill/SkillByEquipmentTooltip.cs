@@ -26,9 +26,9 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			var Record = record as SkillByEquipment;
 
 			List<SkillModifyCell> cells = new();
-			void CreateCell(int Skill3ID, Text Tooltip, out Skill3 Skill)
+			void CreateCell(int SkillID, Text Tooltip, out Data.Record.Skill Skill)
 			{
-				Skill = FileCache.Data.Skill3[Skill3ID, 1];
+				Skill = FileCache.Data.Skill3[SkillID, 1];
 				if (Skill is null) return;
 
 				cells.Add(new SkillModifyCell()

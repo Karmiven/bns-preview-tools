@@ -17,7 +17,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 			this.SkillPreview.Refresh();
 		}
 
-		public SkillFrm(Skill3 Skill)
+		public SkillFrm(Data.Record.Skill Skill)
 		{
 			InitializeComponent();
 			this.Controls.Add(this.SkillPreview);
@@ -41,7 +41,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 				FileCache.Data.Skill3[rule]);
 		}
 
-		public void LoadData(Skill3 Skill)
+		public void LoadData(Data.Record.Skill Skill)
 		{
 			this.Text = "查看技能 " + Skill?.alias;
 

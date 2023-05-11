@@ -143,7 +143,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 
 
 	/// <summary>
-	/// 目标物品变更Event
+	/// 目标物品变更
 	/// </summary>
 	public class ResultItemChangedEventArgs : EventArgs
 	{
