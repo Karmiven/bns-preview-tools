@@ -132,7 +132,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Rewar
 
 
 
-			#region 遍历属性
+			#region 遍历Property
 			foreach (var attribute in this.DecomposeReward.Attributes)
 			{
 				DateTime dt = DateTime.Now;

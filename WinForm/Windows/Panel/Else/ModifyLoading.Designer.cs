@@ -43,7 +43,7 @@
 			// 
 			this.ucBtnFillet1.BackColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet1.BtnImage = ((System.Drawing.Image)(resources.GetObject("ucBtnFillet1.BtnImage")));
-			this.ucBtnFillet1.BtnText = "选择";
+			this.ucBtnFillet1.Text = "选择";
 			this.ucBtnFillet1.ConerRadius = 10;
 			this.ucBtnFillet1.FillColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet1.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -91,7 +91,7 @@
 			// 
 			this.ucBtnFillet2.BackColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet2.BtnImage = ((System.Drawing.Image)(resources.GetObject("ucBtnFillet2.BtnImage")));
-			this.ucBtnFillet2.BtnText = "输出";
+			this.ucBtnFillet2.Text = "输出";
 			this.ucBtnFillet2.ConerRadius = 10;
 			this.ucBtnFillet2.FillColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet2.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -110,7 +110,7 @@
 			// 
 			this.ucBtnFillet3.BackColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet3.BtnImage = ((System.Drawing.Image)(resources.GetObject("ucBtnFillet3.BtnImage")));
-			this.ucBtnFillet3.BtnText = "封包";
+			this.ucBtnFillet3.Text = "封包";
 			this.ucBtnFillet3.ConerRadius = 10;
 			this.ucBtnFillet3.FillColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet3.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -147,7 +147,7 @@
 			// 
 			this.ucBtnFillet4.BackColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet4.BtnImage = ((System.Drawing.Image)(resources.GetObject("ucBtnFillet4.BtnImage")));
-			this.ucBtnFillet4.BtnText = "选择";
+			this.ucBtnFillet4.Text = "选择";
 			this.ucBtnFillet4.ConerRadius = 10;
 			this.ucBtnFillet4.FillColor = System.Drawing.Color.Transparent;
 			this.ucBtnFillet4.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);

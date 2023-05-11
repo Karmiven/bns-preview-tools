@@ -20,13 +20,13 @@
     <Compile Update="Windows\Frm\Logger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Windows\Frm\MainForm.cs">
+    <Compile Update="Windows\Frm\MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\Frm\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Windows\Panel\Attribute\MainFrm.cs">
+    <Compile Update="Windows\Panel\Attribute\AttributePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Windows\Panel\Attribute\SettingFrm.cs">
@@ -35,7 +35,7 @@
     <Compile Update="Windows\Panel\Main\Select\ModeSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Windows\Panel\Quest\QuestSelect.cs">
+    <Compile Update="Windows\Panel\Quest\QuestSelector.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

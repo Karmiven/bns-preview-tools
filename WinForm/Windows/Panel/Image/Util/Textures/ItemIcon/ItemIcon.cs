@@ -61,7 +61,7 @@ namespace Xylia.Match.Util.Paks.Textures
 			//Load 物品数据
 			Parallel.ForEach(set.Item, pOptions, (item) =>
 			{
-				//使用原始属性
+				//使用原始Property
 				var record = ((DbData)item.Attributes).record;
 
 				int MainID = record.RecordId;

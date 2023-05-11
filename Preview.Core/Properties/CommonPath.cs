@@ -40,12 +40,6 @@ namespace Xylia.Preview.Properties
 		/// </summary>
 		public static string DataFiles => Ini.ReadValue("Folder", "PreviewFiles") ?? (OutputFolder + @"\data");
 
-		public static bool DataLoadMode
-		{
-			get => Ini.ReadValue("Preview", "LoadMode").ToBoolOrNull() ?? true;
-			set => Ini.WriteValue("Preview", "LoadMode", value);
-		}
-
 		public static int Test
 		{
 			get => Ini.ReadValue("Preview", "Test").ToInt();

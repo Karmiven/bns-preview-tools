@@ -50,7 +50,7 @@ namespace Xylia.Preview.Common.Interface.RecordAttribute
 			// 如果存在定义
 			if (defName.TryGetValue(Name, out var attrDef))
 			{
-				// 如果没有对应值, 说明没有Load 属性
+				// 如果没有对应值, 说明没有Load Property
 				if (!this.data.TryGetValue(attrDef, out Value))
 				{
 					Value = ProcessObject(attrDef);

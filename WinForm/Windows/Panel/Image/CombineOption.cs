@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 
 using Xylia.Extension;
@@ -52,44 +53,46 @@ namespace Xylia.Match.Windows.Panel
 		#endregion
 	}
 
-	/// <summary>
-	/// 合成选项
-	/// </summary>
 	public class CombineOption
 	{
+		static ComponentResourceManager resources = new(typeof(IconPage));
+
+
 		public static List<GradeInfo> Grades = new()
 		{
-			{ new(1, "粗糙级") },
-			{ new(2, "凡品级") },
-			{ new(3, "奇巧级") },
-			{ new(4, "精粹级") },
-			{ new(5, "至尊级") },
-			{ new(6, "进化级") },
-			{ new(7, "传说级") },
-			{ new(8, "古代级") },
-			{ new(9, "神话级") },
+			{ new(1, resources.GetString("Grade_1")) },
+			{ new(2, resources.GetString("Grade_2")) },
+			{ new(3, resources.GetString("Grade_3")) },
+			{ new(4, resources.GetString("Grade_4")) },
+			{ new(5, resources.GetString("Grade_5")) },
+			{ new(6, resources.GetString("Grade_6")) },
+			{ new(7, resources.GetString("Grade_7")) },
+			{ new(8, resources.GetString("Grade_8")) },
+			{ new(9, resources.GetString("Grade_9")) },
 		};
 
 		public static List<ImageInfo> BLImage = new()
 		{
-			{ new("无附加属性", null) },
-			{ new("封印", Weapon_Lock_04) },
-			{ new("旧物", Weapon_Lock_05) },
-			{ new("蓝色锁", unuseable_lock) },
-			{ new("绿色锁", unuseable_lock_2) },
-			{ new("绿色锁", Weapon_Lock_03) },
-			{ new("橘色锁", Weapon_Lock_06) },
-			{ new("禁止使用", Weapon_Lock_01) },
-			{ new("无法使用", Weapon_Lock_02) },
+			{ new(resources.GetString("NONE"), null) },
+			{ new(resources.GetString("BL_1"), Weapon_Lock_04) },
+			{ new(resources.GetString("BL_2"), Weapon_Lock_05) },
+			{ new(resources.GetString("BL_3"),  unuseable_lock) },
+			{ new(resources.GetString("BL_4"),  unuseable_lock_2) },
+			{ new(resources.GetString("BL_5"), Weapon_Lock_03) },
+			{ new(resources.GetString("BL_6"), Weapon_Lock_06) },
+			{ new(resources.GetString("BL_7"),  Weapon_Lock_01) },
+			{ new(resources.GetString("BL_8"),  Weapon_Lock_02) },
 		};
 
 		public static List<ImageInfo> TRImage = new()
 		{
-			{ new("无交易属性", null) },
-			{ new("拍卖行交易", SlotItem_marketBusiness) },
-			{ new("账号通用", SlotItem_privateSale) },
+			{ new(resources.GetString("NONE"), null) },
+			{ new(resources.GetString("Trade_Market"), SlotItem_marketBusiness) },
+			{ new(resources.GetString("Trade_Private"), SlotItem_privateSale) },
 		};
 	}
+
+
 
 
 

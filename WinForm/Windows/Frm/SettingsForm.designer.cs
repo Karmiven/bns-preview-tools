@@ -78,7 +78,7 @@
 			ucBtnFillet2.BackColor = System.Drawing.Color.Transparent;
 			ucBtnFillet2.BtnFont = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
 			ucBtnFillet2.BtnImage = (System.Drawing.Image)resources.GetObject("ucBtnFillet2.BtnImage");
-			ucBtnFillet2.BtnText = "选择";
+			ucBtnFillet2.Text = "选择";
 			ucBtnFillet2.ConerRadius = 10;
 			ucBtnFillet2.FillColor = System.Drawing.Color.Transparent;
 			ucBtnFillet2.IsRadius = true;
@@ -127,7 +127,7 @@
 			ucBtnFillet1.BackColor = System.Drawing.Color.Transparent;
 			ucBtnFillet1.BtnFont = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
 			ucBtnFillet1.BtnImage = (System.Drawing.Image)resources.GetObject("ucBtnFillet1.BtnImage");
-			ucBtnFillet1.BtnText = "选择";
+			ucBtnFillet1.Text = "选择";
 			ucBtnFillet1.ConerRadius = 10;
 			ucBtnFillet1.FillColor = System.Drawing.Color.Transparent;
 			ucBtnFillet1.IsRadius = true;

@@ -12,10 +12,10 @@ using Xylia.Preview.Resources;
 namespace Xylia.Match.Windows.Attribute
 {
 	[DesignTimeVisible(false)]
-	public partial class MainFrm : UserControl
+	public partial class AttributePage : UserControl
 	{
 		#region Constructor
-		public MainFrm()
+		public AttributePage()
 		{
 			InitializeComponent();
 			//this.contextMenuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomToolStripColorTable());
@@ -100,7 +100,7 @@ namespace Xylia.Match.Windows.Attribute
 
 			byte level = (byte)(Level.Visible ? Level.Value : 60);       //计算基于的目标等级
 			double extra = (double)numericUpDown1.Value * 0.01;          //额外百分比
-			double percent = TarPara.GetPercent(Value, level) + extra;   //属性百分比
+			double percent = TarPara.GetPercent(Value, level) + extra;   //Property百分比
 
 
 

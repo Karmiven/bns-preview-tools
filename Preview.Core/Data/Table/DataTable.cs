@@ -42,6 +42,16 @@ namespace Xylia.Preview.Data
 
 		protected readonly Dictionary<string, Ref> ByAlias = new(StringComparer.OrdinalIgnoreCase);
 
+		protected void AddAlias(string Alias, Ref Ref)
+		{
+			if (Alias is not null && !this.ByAlias.ContainsKey(Alias))
+				this.ByAlias[Alias] = Ref;
+		}
+
+
+
+
+
 
 		private Lazy<T>[] _data;
 
@@ -58,20 +68,16 @@ namespace Xylia.Preview.Data
 
 
 		#region Load Functions
-		protected bool LoadFromGame => CommonPath.DataLoadMode;
+		public FileInfo[] TestPath;
 
-		/// <summary>
-		/// 尝试Load Data
-		/// 用于需要事先Load Data的场景
-		/// </summary>
-		public void TryLoad() => this.Load();
+		protected bool LoadFromGame => true && TestPath is null;
 
 
 
-		/// <summary>
-		/// 正在Load 状态中
-		/// </summary>
+
 		private bool InLoading = false;
+
+		public void TryLoad() => this.Load();
 
 		/// <summary>
 		/// Load 资源
@@ -80,11 +86,10 @@ namespace Xylia.Preview.Data
 		private void Load(bool Reload = false)
 		{
 			#region Initialize
-			//正在Load 状态, 等待到数据Load 完成
+			//等待到数据载入完成
+			//可能的异常原因：结束后不解除标志、在同一线程上多次请求Load 
 			if (this.InLoading)
 			{
-				//等待到Load 完成, 所以要注意这个等待标志值不能发生异常
-				//可能的异常原因：结束后不解除标志、在同一线程上多次请求Load 
 				while (this.InLoading) Thread.Sleep(100);
 				return;
 			}
@@ -95,12 +100,11 @@ namespace Xylia.Preview.Data
 
 			//如果是设计器模式, 则不进行处理
 			if (Program.IsDesignMode) return;
-			#endregion
 
 
-			//进入Load 状态
 			this.InLoading = true;
 			this._data = null;
+			#endregion
 
 			lock (this)
 			{
@@ -108,19 +112,25 @@ namespace Xylia.Preview.Data
 				{
 					try
 					{
-						if (!LoadFromGame) this.LoadXml();
-						else this.LoadData();
+						if (LoadFromGame) this.LoadData();
+						else
+						{
+							var Files = TestPath ?? new DirectoryInfo(CommonPath.WorkingDirectory).GetFiles(TypeName + "Data*");
+							if (!Files.Any()) throw new FileNotFoundException("数据不存在");
 
-						InLoading = false;
-						Trace.WriteLine($"[{ DateTime.Now }] 完成信息载入: { TypeName } ({ this._data.Length }项)");
+							LoadXml2(Files.Select(o => o.FullName.GetXmlDocument().DocumentElement));
+						}
+
+						Trace.WriteLine($"[{DateTime.Now}] 信息载入完成: {TypeName} ({this._data.Length}项)");
 					}
 					catch (Exception ex)
 					{
-						//载入失败的处理
 						this._data = Array.Empty<Lazy<T>>();
-
+						Trace.WriteLine($"[{DateTime.Now}] 信息载入失败: {TypeName} -> {ex}");
+					}
+					finally
+					{
 						InLoading = false;
-						Trace.WriteLine($"[{ DateTime.Now }] Load 失败: { TypeName } -> {ex}");
 					}
 				});
 
@@ -129,82 +139,30 @@ namespace Xylia.Preview.Data
 			}
 		}
 
-		/// <summary>
-		/// Load 外部配置文件
-		/// </summary>
-		/// <exception cref="FileNotFoundException"></exception>
-		private void LoadXml()
+		private void LoadXml2(IEnumerable<XmlElement> rootNode)
 		{
-			var Files = new DirectoryInfo(CommonPath.WorkingDirectory).GetFiles(TypeName + "Data*");
-			if (!Files.Any()) throw new FileNotFoundException("数据不存在");
+			uint TableIndex = 0;
+			var tables = rootNode.SelectMany(o => o.ReadFile<T>(ref TableIndex)).ToList();
 
-
-
-			var objs = Files.SelectMany(o => o.FullName.GetXmlDocument().DocumentElement.ChildNodes.OfType<XmlElement>()).ToArray();
-
-			this._data = new Lazy<T>[objs.Length];
+			this._data = new Lazy<T>[tables.Count];
 			for (var x = 0; x < this._data.Length; x++)
 			{
-				int index = x;
-				var record = objs[index];
-				var obj = this._data[index] = new(() =>
-				{
-					var o = new T();
-					o.TableIndex = (uint)index;
-					o.LoadData(record);
+				var data = tables[x];
+				var Ref = new Ref(data.Key());
 
-					return o;
-				});
-
-
-				if (!int.TryParse(record.Attributes["id"]?.Value, out int RecordId)) RecordId = index + 1;
-
-				var Ref = new Ref(RecordId);
-				this.ByRef[Ref] = obj;
-
-				string alias = record.Attributes["alias"]?.Value;
-				if (alias != null) this.ByAlias[alias] = Ref;
+				this.ByRef[Ref] = this._data[x] = new(data);
+				AddAlias(data.alias, Ref);
 			}
 		}
 
-		/// <summary>
-		/// Load 游戏数据
-		/// </summary>
-		/// <exception cref="FileNotFoundException"></exception>
-		/// <exception cref="ArgumentNullException"></exception>
 		private void LoadData()
 		{
-			if (LoadFromGame)
-				lock (DataTableSet) DataTableSet.LoadData(XmlDataPath is null);
-
 			//获取数据结构
+			lock (DataTableSet) DataTableSet.LoadData(XmlDataPath is null);
 			var helper = DataTableSet.GetHelper(TypeName, false);
 
 
-			if (XmlDataPath != null)
-			{
-				uint TableIndex = 0;
-				List<T> tables = DataTableSet.XmlData
-					.EnumerateFiles(XmlDataPath)
-					.SelectMany(o =>
-					{
-						o.Decrypt();
-						return o.Xml.Nodes.ReadFile<T>(ref TableIndex);
-					})
-					.ToList();
-
-
-				this._data = new Lazy<T>[tables.Count];
-				for (var x = 0; x < this._data.Length; x++)
-				{
-					var data = tables[x];
-					var Ref = new Ref(data.Key());
-
-					this.ByRef[Ref] = this._data[x] = new(data);
-					if (data.alias != null) this.ByAlias[data.alias] = Ref;
-				}
-			}
-			else
+			if (XmlDataPath is null)
 			{
 				ArgumentNullException.ThrowIfNull(helper);
 
@@ -213,7 +171,6 @@ namespace Xylia.Preview.Data
 				var Table = DataTableSet.Tables.FirstOrDefault(table => table.Type == helper.Definition.Type);
 				ArgumentNullException.ThrowIfNull(Table);
 
-				//校验版本信息
 				helper.CheckVersion(Table);
 				_processTable += new ProcessTableHandle((o) => DataTableSet.datafileToXml.ProcessTable(Table, helper.Definition, o));
 
@@ -227,11 +184,11 @@ namespace Xylia.Preview.Data
 				this._data = new Lazy<T>[Table.Records.Count];
 				for (var x = 0; x < this._data.Length; x++)
 				{
-					int index = x;
-					var data = Table.Records[index];
+					var data = Table.Records[x];
 					if (data is null) continue;
 
-					var o = this._data[index] = new(() =>
+					int index = x;
+					this.ByRef[data.RecordRef] = this._data[x] = new(() =>
 					{
 						var Object = new T();
 						Object.TableIndex = (uint)index;
@@ -239,19 +196,31 @@ namespace Xylia.Preview.Data
 
 						return Object;
 					});
-
-					this.ByRef[new Ref(data.RecordId, data.RecordVariationId)] = o;
 				}
 
 
-				if (helper.Aliases != null)
+
+
+
+				if (helper.Aliases is not null)
+				{
 					foreach (var o in helper.Aliases)
-						this.ByAlias[o.Alias] = new Ref((int)o.MainID, (int)o.Variation);
+						AddAlias(o.Alias, new Ref((int)o.MainID, (int)o.Variation));
+				}
+
+				//仅读取汉化时的替代处理
+				else if (typeof(T) == typeof(Text))
+				{
+					foreach (var data in Table.Records)
+						AddAlias(data.StringLookup.GetString(0), data.RecordRef);
+				}
 			}
+			
+			else LoadXml2(DataTableSet.XmlData.EnumerateFiles(XmlDataPath).Select(o => o.Xml.Nodes.DocumentElement));
 		}
 		#endregion
 
-		#region 获取对象信息
+		#region Get Info
 		public T this[string Alias] => this.GetLazyInfo(Alias)?.Value;
 
 		public T this[int Id, int Variant = 0] => this.GetLazyInfo(new Ref(Id, Variant))?.Value;
@@ -272,7 +241,7 @@ namespace Xylia.Preview.Data
 
 			this.TryLoad();
 			if (this.ByAlias.TryGetValue(Alias, out var item)) return GetLazyInfo(item);
-			if (this._data.Length != 0 && ShowDebugInfo) Debug.WriteLine($"[{ TypeName }] get failed ,alias: {Alias}");
+			if (this._data.Length != 0 && ShowDebugInfo) Debug.WriteLine($"[{TypeName}] get failed ,alias: {Alias}");
 			return null;
 		}
 
@@ -283,13 +252,13 @@ namespace Xylia.Preview.Data
 
 			this.TryLoad();
 			if (this.ByRef.TryGetValue(Ref, out var item)) return item;
-			if (this._data.Length != 0) Debug.WriteLine($"[{ TypeName }] get failed,id: {Ref.Id} variation: {Ref.Variant}");
+			if (this._data.Length != 0) Debug.WriteLine($"[{TypeName}] get failed,id: {Ref.Id} variation: {Ref.Variant}");
 			return null;
 		}
 		#endregion
 
 
-		#region 处理类Functions
+		#region Process Functions
 		public void ProcessTable(string _outputPath) => this._processTable?.Invoke(_outputPath);
 
 		private delegate void ProcessTableHandle(string _outputPath);

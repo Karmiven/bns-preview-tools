@@ -46,11 +46,25 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 
 
 		#region ReadFile
+		/// <summary>
+		/// 将指定文件的所有 <see langword="节点"/> 读取为 <see cref="TableNode"/> 实例
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="FilePath"></param>
+		/// <param name="TableIndex"></param>
+		/// <param name="NodeName"></param>
+		/// <returns></returns>
+		public static List<T> ReadFile<T>(this string FilePath, ref uint TableIndex, string NodeName = null) where T : BaseRecord, new()
+			 => FilePath.GetXmlDocument().ReadFile<T>(ref TableIndex, NodeName);
+
 		public static List<T> ReadFile<T>(this XmlDocument XmlDoc, ref uint TableIndex, string NodeName = null) where T : BaseRecord, new()
+	        => XmlDoc.DocumentElement.ReadFile<T>(ref TableIndex, NodeName);
+
+		public static List<T> ReadFile<T>(this XmlElement DocElement, ref uint TableIndex, string NodeName = null) where T : BaseRecord, new()
 		{
 			List<T> tables = new();
 			NodeName ??= typeof(T).Name.ToLower();
-			foreach (XmlElement table in XmlDoc.DocumentElement.SelectNodes("./" + NodeName))
+			foreach (XmlElement table in DocElement.SelectNodes("./" + NodeName))
 			{
 				var o = new T();
 				o.TableIndex = TableIndex++;
@@ -62,21 +76,11 @@ namespace Xylia.Preview.Data.Table.XmlRecord
 			return tables;
 		}
 
-		/// <summary>
-		/// 将指定文件的所有 <see langword="节点"/> Load 为 <see cref="TableNode"/> 实例
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="FilePath"></param>
-		/// <param name="TableIndex"></param>
-		/// <param name="NodeName"></param>
-		/// <returns></returns>
-		public static List<T> ReadFile<T>(this string FilePath, ref uint TableIndex, string NodeName = null) where T : BaseRecord, new()
-		{
-			XmlDocument XmlDoc = new();
-			XmlDoc.Load(FilePath);
+		
 
-			return ReadFile<T>(XmlDoc, ref TableIndex, NodeName);
-		}
+
+
+
 
 		/// <summary>
 		/// 将指定文件夹下特定的所有文件的 <see langword="T"/> 节点Load 为 <see cref="TableNode"/> 实例

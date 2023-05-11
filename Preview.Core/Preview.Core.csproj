@@ -46,10 +46,10 @@
 
 	<ItemGroup>
 		<Reference Include="BnsBinTool.Core">
-		  <HintPath>..\BnsBinTool\Src\BnsBinTool.Core\bin\Release\net6.0\win-x64\BnsBinTool.Core.dll</HintPath>
+		  <HintPath>..\BNSDAT\BnsDatTool\bin\Debug\net6.0-windows\BnsBinTool.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="Xylia.bns">
-		  <HintPath>..\..\DatTool\BnsDatTool\bin\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
+		  <HintPath>..\BNSDAT\BnsDatTool\bin\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>

@@ -392,7 +392,6 @@ namespace Xylia.Preview.Data.Record
 		#endregion
 
 
-
 		#region Functions
 		public override void LoadData(XmlElement data)
 		{
@@ -419,7 +418,7 @@ namespace Xylia.Preview.Data.Record
 		}
 		#endregion
 
-		#region	属性
+		#region	Property
 		/// <summary>
 		/// 获取图标
 		/// </summary>

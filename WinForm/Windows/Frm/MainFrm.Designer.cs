@@ -1,6 +1,6 @@
 ﻿namespace Xylia.Match.Windows
 {
-	partial class MainForm
+	partial class MainFrm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
 			tvMenu = new HZH_Controls.Controls.TreeViewEx();
 			Memory = new System.Windows.Forms.Label();
 			Panel = new System.Windows.Forms.Panel();
@@ -62,20 +62,17 @@
 			tvMenu.LstTips = null;
 			tvMenu.Name = "tvMenu";
 			tvMenu.NodeBackgroundColor = System.Drawing.Color.FromArgb(40, 43, 51);
-			tvMenu.NodeDownPic = (System.Drawing.Image)resources.GetObject("tvMenu.NodeDownPic");
 			tvMenu.NodeForeColor = System.Drawing.Color.White;
 			tvMenu.NodeHeight = 50;
 			tvMenu.NodeIsShowSplitLine = true;
 			tvMenu.NodeSelectedColor = System.Drawing.Color.FromArgb(57, 61, 73);
 			tvMenu.NodeSelectedForeColor = System.Drawing.Color.White;
 			tvMenu.NodeSplitLineColor = System.Drawing.Color.FromArgb(57, 61, 73);
-			tvMenu.NodeUpPic = (System.Drawing.Image)resources.GetObject("tvMenu.NodeUpPic");
 			tvMenu.ParentNodeCanSelect = true;
 			tvMenu.ShowLines = false;
 			tvMenu.ShowPlusMinus = false;
 			tvMenu.ShowRootLines = false;
 			tvMenu.TipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			tvMenu.TipImage = (System.Drawing.Image)resources.GetObject("tvMenu.TipImage");
 			// 
 			// Memory
 			// 
@@ -139,7 +136,7 @@
 			Btn_AboutUs.TabStop = false;
 			Btn_AboutUs.Click += Btn_AboutUs_Click;
 			// 
-			// MainForm
+			// MainFrm
 			// 
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -152,8 +149,9 @@
 			Controls.Add(tvMenu);
 			IsShowCloseBtn = true;
 			KeyPreview = true;
-			Name = "MainForm";
+			Name = "MainFrm";
 			ShowIcon = true;
+			Title = "Title";
 			FormClosing += MainForm_FormClosing;
 			Shown += MainForm_Shown;
 			SizeChanged += MainForm_SizeChanged;

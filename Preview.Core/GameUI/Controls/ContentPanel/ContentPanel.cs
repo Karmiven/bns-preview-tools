@@ -24,7 +24,6 @@ namespace Xylia.Preview.GameUI.Controls
 			InitializeComponent();
 			CheckForIllegalCrossThreadCalls = false;
 
-			//初始状态
 			this.BackColor = Color.Transparent;
 			this.DoubleBuffered = true;
 			this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor, true);

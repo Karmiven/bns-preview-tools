@@ -57,7 +57,7 @@ public static partial class Program
 		}
 
 
-		Application.Run(new Xylia.Match.Windows.MainForm() 
+		Application.Run(new Xylia.Match.Windows.MainFrm() 
 		{ 
 		
 		});

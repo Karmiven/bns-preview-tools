@@ -55,10 +55,10 @@
 	
 	<ItemGroup>
 		<Reference Include="BnsBinTool.Core">
-		  <HintPath>..\BnsBinTool\Src\BnsBinTool.Core\bin\Release\net6.0\win-x64\BnsBinTool.Core.dll</HintPath>
+		  <HintPath>..\BNSDAT\BnsDatTool\bin\Debug\net6.0-windows\BnsBinTool.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="Xylia.bns">
-		  <HintPath>..\..\DatTool\BnsDatTool\bin\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
+		  <HintPath>..\BNSDAT\BnsDatTool\bin\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
@@ -67,7 +67,7 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Windows\Panel\Attribute\MainFrm.cs">
+		<Compile Update="Windows\Panel\Attribute\AttributePage.cs">
 		  <SubType>Form</SubType>
 		</Compile>
 		<Compile Update="Windows\Panel\Attribute\GetPara.cs">
@@ -76,22 +76,22 @@
 		<Compile Update="Windows\Panel\Else\Youdao.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Windows\Panel\Text\MatchLocal.cs">
+		<Compile Update="Windows\Panel\Text\TextPage.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Windows\Panel\Image\PakExtract.cs">
+		<Compile Update="Windows\Panel\Image\UE4Page.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Windows\Panel\Main\MatchProp.cs">
+		<Compile Update="Windows\Panel\Main\ItemPage.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Windows\Panel\Quest\QuestMatch.cs">
+		<Compile Update="Windows\Panel\Quest\QuestPage.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
 		<Compile Update="Windows\Panel\Else\ModifyLoading.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Windows\Panel\Image\IconOperator.cs">
+		<Compile Update="Windows\Panel\Image\IconPage.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
 	</ItemGroup>

@@ -47,7 +47,7 @@ namespace Xylia.Preview.Resources {
         }
         
         /// <summary>
-        ///   重写当前线程的 CurrentUICulture 属性, 对
+        ///   重写当前线程的 CurrentUICulture Property, 对
         ///   使用此强类型资源类的所有资源查找执行重写。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]

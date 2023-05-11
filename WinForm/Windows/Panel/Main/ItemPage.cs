@@ -28,23 +28,15 @@ using Output = Xylia.Preview.Output;
 namespace Xylia.Match.Windows.Panel
 {
 	[DesignTimeVisible(false)]
-	public partial class MatchProp : UserControl
+	public partial class ItemPage : UserControl
 	{
 		#region Constructor
-		readonly bool IsInitialization = true;
-
-		public MatchProp()
+		public ItemPage()
 		{
 			InitializeComponent();
 			this.TabControl.SelectedIndex = 0;
-
-
-			this.Switch_Mode.Checked = CommonPath.DataLoadMode;
 			this.GRoot_Path.Text = CommonPath.GameFolder;
 			this.ItemPreview_Search.InputText = Ini.ReadValue("Preview", "item#searchrule");
-
-			//Logger.Write($"启用物品数据模块");
-			IsInitialization = false;
 		}
 		#endregion
 
@@ -130,18 +122,10 @@ namespace Xylia.Match.Windows.Panel
 
 			var thread = new Thread(act =>
 			{
-				#region Initialize
-				var match = new ItemMatch(Str => SendMessage(Str))
-				{
-					UseExcel = select2.Result == ModeSelect.State.Xlsx,
-					Folder_Output = CommonPath.OutputFolder,
-
-					Chk_OnlyNew = this.Chk_OnlyNew.Checked,
-				};
-				this.Step1.StepIndex = 1;
-				#endregion
-
 				#region Load
+				var match = new ItemMatch(Str => SendMessage(Str)) { Chk_OnlyNew = this.Chk_OnlyNew.Checked, };
+				Step1.StepIndex = 1;
+
 				match.LoadCache(CacheList);
 				var noEmpty = match.GetData();
 				if (!noEmpty)
@@ -153,9 +137,10 @@ namespace Xylia.Match.Windows.Panel
 				Step1.StepIndex = 2;
 				#endregion
 
+
 				#region Output
 				Step1.StepIndex = 3;
-				match.Start(StartTime);
+				match.Start(StartTime, select2.Result == ModeSelect.State.Xlsx);
 				match = null;
 				#endregion
 
@@ -260,15 +245,6 @@ namespace Xylia.Match.Windows.Panel
 		}
 
 		private void ItemPreview_Search_TextChanged(object sender, EventArgs e) => Ini.WriteValue("Preview", "item#searchrule", this.ItemPreview_Search.InputText);
-
-		private void Switch_Mode_CheckedChanged(object sender, EventArgs e)
-		{
-			this.Switch_Mode.Visible = this.label4.Visible = this.ucBtnExt7.Visible = !Switch_Mode.Checked;
-
-			if (IsInitialization) return;
-			CommonPath.DataLoadMode = Switch_Mode.Checked;
-			FrmAnchorTips.ShowTips(Switch_Mode, "* 刷新缓存后生效", AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 800, false);
-		}
 		#endregion
 
 		#region Else

@@ -20,7 +20,10 @@ namespace Xylia.Preview.Data.Helper
 		public TableDefinition Definition;
 
 
-
+		/// <summary>
+		/// 校验版本信息
+		/// </summary>
+		/// <param name="Table"></param>
 		public void CheckVersion(BnsBinTool.Core.Models.Table Table)
 		{
 			if (Table.MajorVersion != Definition.MajorVersion || Table.MinorVersion != Definition.MinorVersion)

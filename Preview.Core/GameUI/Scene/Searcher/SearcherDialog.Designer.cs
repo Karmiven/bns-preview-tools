@@ -47,7 +47,7 @@
 			this.Confirm.BtnBackColor = System.Drawing.Color.Empty;
 			this.Confirm.BtnFont = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.Confirm.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.Confirm.BtnText = "确定";
+			this.Confirm.Text = "确定";
 			this.Confirm.ConerRadius = 8;
 			this.Confirm.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.Confirm.EnabledMouseEffect = false;

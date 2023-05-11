@@ -19,10 +19,10 @@ using Xylia.Preview.Properties;
 namespace Xylia.Match.Windows.Panel
 {
 	[DesignTimeVisible(false)]
-	public partial class IconOperator : UserControl
+	public partial class IconPage : UserControl
 	{
 		#region Constructor
-		public IconOperator()
+		public IconPage()
 		{
 			this.DoubleBuffered = true;
 			CheckForIllegalCrossThreadCalls = false;
@@ -34,7 +34,7 @@ namespace Xylia.Match.Windows.Panel
 			IsInitialization = true;
 			InitializeComponent();
 
-			#region Initialize道具属性选择框
+			#region Initialize道具Property选择框
 			ComboBox1.Source = new();
 			ComboBox2.Source = new();
 			ComboBox3.Source = new();
@@ -184,7 +184,7 @@ namespace Xylia.Match.Windows.Panel
 						var Files = new DirectoryInfo(FolderPath).GetFiles();
 						foreach (FileInfo fileInfo in Files)
 						{
-							this.Invoke(new Action(() => Footer.Text = $"正在生成配置文件  { 100 * Count++ / Files.Length  }%"));
+							this.Invoke(new Action(() => Footer.Text = $"正在生成配置文件  {100 * Count++ / Files.Length}%"));
 
 							if (fileInfo.Name.Contains('_'))
 							{
@@ -531,7 +531,7 @@ namespace Xylia.Match.Windows.Panel
 		{
 			string PartName = GemCircle.PartConvert.ContainsKey(this.GemCircle.PartSel) ? GemCircle.PartConvert[this.GemCircle.PartSel] : this.GemCircle.PartSel.ToString();
 
-			Label6.Text = $"需要更改部位时, 请点击对应的区域\n\n当前选择：{ PartName }";
+			Label6.Text = $"需要更改部位时, 请点击对应的区域\n\n当前选择：{PartName}";
 		}
 
 		private void ucSwitch1_CheckedChanged(object sender, EventArgs e)
@@ -542,7 +542,7 @@ namespace Xylia.Match.Windows.Panel
 		private void Radio_64px_CheckedChangeEvent(object sender, EventArgs e)
 		{
 			this.pictureBox1.Size = new Size(
-				Radio_64px.Checked ? 64 : 128, 
+				Radio_64px.Checked ? 64 : 128,
 				Radio_64px.Checked ? 64 : 128);
 
 			this.ImageCompose.Refresh();

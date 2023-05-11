@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using System.Xml;
 
 using HZH_Controls.Forms;
 
@@ -15,7 +14,8 @@ using NPOI.SS.UserModel;
 using Xylia.Configure;
 using Xylia.Extension;
 using Xylia.Files.Excel;
-
+using Xylia.Match.Util.ItemList;
+using Xylia.Preview.Data;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.Properties;
@@ -23,9 +23,9 @@ using Xylia.Preview.Properties;
 namespace Xylia.Match.Windows.Panel.TextInfo
 {
 	[DesignTimeVisible(false)]
-	public partial class MatchLocal : UserControl
+	public partial class TextPage : UserControl
 	{
-		public MatchLocal()
+		public TextPage()
 		{
 			InitializeComponent();
 
@@ -178,9 +178,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			else if (FrmDialog.ShowDialog(this, "是否确认终止操作？", blnShowCancel: true) == DialogResult.OK) CompareEnd();
 		}
 
-		/// <summary>
-		/// 强制终止操作
-		/// </summary>
+
 		public void CompareEnd()
 		{
 			try
@@ -192,7 +190,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 					FrmTips.ShowTips("操作已强制终止!");
 					ucBtnFillet1.Enabled = ucBtnFillet4.Enabled = pictureBox1.Enabled = true;
-					Btn_StartWithEnd.BtnText = "开始";
+					Btn_StartWithEnd.Text = "开始";
 				}));
 			}
 			catch
@@ -201,9 +199,6 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			}
 		}
 
-		/// <summary>
-		/// 匹配开始执行
-		/// </summary>
 		public void CompareExec()
 		{
 			if (!Directory.Exists(CommonPath.OutputFolder))
@@ -224,91 +219,64 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 				return;
 			}
 
-			ucBtnFillet1.Enabled = ucBtnFillet4.Enabled = pictureBox1.Enabled = false;
-			Btn_StartWithEnd.BtnText = "终止";
 
-			CompareThread = new Thread((ThreadStart)delegate
+			Step1.StepIndex = 1;
+			ucBtnFillet1.Enabled = ucBtnFillet4.Enabled = pictureBox1.Enabled = false;
+			Btn_StartWithEnd.Text = "终止";
+
+			CompareThread = new Thread(() =>
 			{
+				string OutPath = Path.Combine(ItemMatch.OUTDIR, $@"text\{ItemMatch.OUTTIME()}.html");
+				Directory.CreateDirectory(Path.GetDirectoryName(OutPath));
+
+				var sw = OutPath.CreateWriter();
+
 				try
 				{
-					Step1.StepIndex++;
+					var Text1 = GetText(Path_Local1.Text);
+					var Text2 = GetText(Path_Local2.Text);
 
-					string OutPath = CommonPath.OutputFolder + $@"\信息导出\汉化数据\{ DateTime.Now:yyyy年MM月\\dd日\\HH时mm分}.html";
-					if (!Directory.Exists(Path.GetDirectoryName(OutPath)))
-						Directory.CreateDirectory(Path.GetDirectoryName(OutPath));
-
-
-
-					#region Initialize
 					Step1.StepIndex = 2;
 
-					var sw = OutPath.CreateWriter();
 
-					var Sin_Old = new Dictionary<string, Text>();  //旧汉化文件
-					var Sin_New = new Dictionary<string, Text>();  //新汉化文件
-
-					foreach (var info in GetLocalInfo(Path_Local1.Text))
-					{
-						if (string.IsNullOrWhiteSpace(info.alias)) continue;
-						Sin_Old[info.alias] = info;
-					}
-
-					foreach (var info in GetLocalInfo(Path_Local2.Text))
-					{
-						if (string.IsNullOrWhiteSpace(info.alias)) continue;
-						Sin_New[info.alias] = info;
-					}
-					#endregion
-
-					#region 进行比对
-					Step1.StepIndex = 3;
-
+					#region Compare
 					bool HasChanged = false;
-					foreach (var Item in Sin_New)
+					foreach (var item in Text2.Values)
 					{
-						//如果旧汉化中没有, 判断为新增
-						if (!Sin_Old.ContainsKey(Item.Key))
+						var other = Text1[item.alias];
+						if (other is null)
 						{
 							HasChanged = true;
 
 							sw.Write(HtmlSupport.HtmlConvert($"<div class=\"Content\">" +
 													$"<div class=\"Content_Title\">" +
 													$"<span class=\"Sign\" >[新增] 特征值：</span>" +
-													$"<span class=\"Text\" >{ Item.Value.alias }</span>" +
+													$"<span class=\"Text\" >{item.alias}</span>" +
 												 $"</div>" +
 												 $"<div class=\"Content_New\" >" +
 													$"<span class=\"Sign\" >文本：</span>" +
-													$"<span class=\"Text\" >{ HtmlSupport.ToHTML(Item.Value.text, out _) }</span>" +
+													$"<span class=\"Text\" >{HtmlSupport.ToHTML(item.text, out _)}</span>" +
 												 $"</div>" +
 
-												 $"<div class=\"Separator\" >{  MatchLocal.Line  }</div>" +
+												 $"<div class=\"Separator\" >{NewLine}</div>" +
 												 $"</div>"));
-
-
-							//Debug.WriteLine(Item.Value.alias + "$" + Item.Value.Text);
 						}
-
-
-						//如果旧汉化中有, 但是不相同
-						else
+						else if (item.text != other.text)
 						{
-							if (Sin_Old[Item.Key].text == Item.Value.text) continue;
-
 							HasChanged = true;
 
-							string Txt1 = HtmlSupport.ToHTML(Sin_Old[Item.Key].text, out bool IsMultiLine1);
-							string Txt2 = HtmlSupport.ToHTML(Item.Value.text, out bool IsMultiLine2);
-
+							string Txt1 = HtmlSupport.ToHTML(other.text, out bool IsMultiLine1);
+							string Txt2 = HtmlSupport.ToHTML(item.text, out bool IsMultiLine2);
 
 							sw.Write(HtmlSupport.HtmlConvert($"<div class=\"Content\">" +
 													$"<div class=\"Content_Title\">" +
 													$"<span class=\"Sign\" >[修改] 特征值：</span>" +
-													$"<span class=\"Text\" >{ Item.Key }</span>" +
+													$"<span class=\"Text\" >{item.alias}</span>" +
 												$"</div>" +
 
 												$"<div class=\"Content_Old\" >" +
 													$"<span class=\"Sign\" >旧版本：</span>" +
-													$"<span class=\"Text\" >{ Txt1 }</span>" +
+													$"<span class=\"Text\" >{Txt1}</span>" +
 												$"</div>" +
 
 												//当文本信息大于单行时进行换行显示
@@ -316,64 +284,59 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 												$"<div class=\"Content_New\">" +
 													$"<span class=\"Sign\" >新版本：</span>" +
-													$"<span class=\"Text\" >{ Txt2 }</span>" +
+													$"<span class=\"Text\" >{Txt2}</span>" +
 												$"</div>" +
 
-												$"<div class=\"Separator\" >{ MatchLocal.Line }</div>" +
+												$"<div class=\"Separator\" >{NewLine}</div>" +
 
 												$"</div>"));
 						}
 					}
 
-					//遍历旧汉化文件并与新文件比对值
-					foreach (var Item in Sin_Old)
+					foreach (var item in Text1.Values)
 					{
-						if (!Sin_New.ContainsKey(Item.Key))
+						var other = Text2[item.alias];
+						if (other is null)
 						{
 							HasChanged = true;
-
 							sw.Write(HtmlSupport.HtmlConvert($"<div class=\"Content\">" +
 													$"<div class=\"Content_Title\">" +
 													$"<span class=\"Sign\" >[删除] 特征值：</span>" +
-													$"<span class=\"Text\" >{ Item.Key }</span>" +
+													$"<span class=\"Text\" >{item.alias}</span>" +
 												 $"</div>" +
 
 												 $"<div class=\"Content_Old\" >" +
 													$"<span class=\"Sign\" >文本：</span>" +
-													$"<span class=\"Text\" >{ HtmlSupport.ToHTML(Item.Value.text, out _) }</span>" +
+													$"<span class=\"Text\" >{HtmlSupport.ToHTML(item.text, out _)}</span>" +
 												 $"</div>" +
 
-												 $"<div class=\"Separator\" >{  MatchLocal.Line  }</div>" +
+												 $"<div class=\"Separator\" >{NewLine}</div>" +
 												 $"</div>"));
 						}
 					}
 					#endregion
 
-					#region END
-					Step1.StepIndex = 4;
-					Sin_Old.Clear();
-					Sin_New.Clear();
-
+					#region End
+					Step1.StepIndex = 3;
+					Text1.Clear();
+					Text2.Clear();
 
 					sw.Flush();
 					sw.Close();
 					sw.Dispose();
-					GC.Collect();
-					#endregion
-
 
 
 					ucBtnFillet1.Enabled = ucBtnFillet4.Enabled = pictureBox1.Enabled = true;
-					Btn_StartWithEnd.BtnText = "开始";
+					Btn_StartWithEnd.Text = "开始";
 					CompareThread = null;
 
 					GC.Collect();
-
 					this.Invoke(() => FrmTips.ShowTipsSuccess(HasChanged ? "执行已经结束,请在输出目录查看" : "执行已结束, 但是未发现任何变更"));
+					#endregion
 				}
 				catch (Exception ee)
 				{
-					if (CompareThread != null && CompareThread.IsAlive) Xylia.Tip.Message(ee.ToString());
+					if (CompareThread != null && CompareThread.IsAlive) Tip.Message(ee.ToString());
 					CompareEnd();
 				}
 			});
@@ -383,29 +346,17 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 		}
 
 
+		public static string NewLine => "﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊";
 
-		public static string Line => "﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊";
+		private static Dictionary<string, Text> GetText(string file) => GetText(new FileInfo(file));
 
-		/// <summary>
-		/// 获取汉化数据
-		/// </summary>
-		/// <param name="FilePath"></param>
-		/// <returns></returns>
-		public static List<Text> GetLocalInfo(string FilePath)
+		private static Dictionary<string, Text> GetText(FileInfo file)
 		{
-			if (Path.GetExtension(FilePath) == ".xml")
-			{
-				XmlDocument XmlDoc = new();
-				XmlDoc.Load(FilePath);
+			DataTable<Text> Table;
+			if (file.Extension == ".xml") Table = new() { ShowDebugInfo = false, TestPath = new[] { file } };
+			else Table = new LocalDataTableSet(file.FullName).TextData;
 
-				return (from XmlNode reccord in XmlDoc.SelectNodes("table/record")
-						let Alias = reccord.Attributes["alias"]?.Value
-						let Text = reccord.Attributes["text"]?.Value ?? reccord.InnerText
-						select new Text() { alias = Alias, text = Text })
-						.ToList();
-			}
-
-			else return new LocalDataTableSet(FilePath).TextData.ToList();
+			return Table.Where(o => o.alias is not null).GroupBy(o => o.alias).Select(o => o.First()).ToDictionary(o => o.alias);
 		}
 		#endregion
 
@@ -514,7 +465,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 			if (SaveAsBin.Checked)
 			{
-				SavePath = Path.GetDirectoryName(DatPath) + $@"\localfile{ (is64 ? "64" : null) }.bin";
+				SavePath = Path.GetDirectoryName(DatPath) + $@"\localfile{(is64 ? "64" : null)}.bin";
 			}
 			#endregion
 
@@ -574,13 +525,13 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 			if (ucCheckBox1.Checked)
 			{
-				this.ucBtnFillet3.BtnText = "替换";
+				this.ucBtnFillet3.Text = "替换";
 				this.Label1.Text = "替换来源";
 				this.TextBox1.Text = null;
 			}
 			else
 			{
-				this.ucBtnFillet3.BtnText = "封包";
+				this.ucBtnFillet3.Text = "封包";
 				this.Label1.Text = "汉化文件";
 				this.filePath_TextChanged(null, null);
 			}

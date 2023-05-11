@@ -70,7 +70,7 @@ namespace Xylia.Preview.Data.Record
 			//获取效果类型部分提示
 			if (!string.IsNullOrWhiteSpace(this.EffectDescription)) return $"{this.EffectDescription.GetText()}{AdditionalText}";
 
-			//获取属性加成部分提示
+			//获取Property加成部分提示
 			if (this.Ability != MainAbility.None) return this.Ability.GetName(this.AbilityValue) + AdditionalText;
 
 

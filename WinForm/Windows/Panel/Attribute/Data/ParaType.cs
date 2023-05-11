@@ -3,7 +3,7 @@
 namespace Xylia.Match.Windows.Attribute.Data
 {
 	/// <summary>
-	/// 属性类型
+	/// Property类型
 	/// </summary>
 	public enum ParaType
 	{

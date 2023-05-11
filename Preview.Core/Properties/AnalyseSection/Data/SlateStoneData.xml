@@ -10,9 +10,9 @@
 		<record alias="unk-" type="Int8" name=""/>
 		<record alias="modify-ability" type="Seq" repeat="4" seq="attach-ability" />
 		<record alias="duplication-permission" type="Bool" showzero="y" />
-		<record alias="init-ability-value" type="Int32" name="属性最小值" repeat="4" />
-		<record alias="unit-ability-value" type="Int32" name="属性系数" repeat="4" />
-		<record alias="max-ability-value" type="Int32" name="属性最大值" repeat="4" />
+		<record alias="init-ability-value" type="Int32" name="Property最小值" repeat="4" />
+		<record alias="unit-ability-value" type="Int32" name="Property系数" repeat="4" />
+		<record alias="max-ability-value" type="Int32" name="Property最大值" repeat="4" />
 		<record alias="icon" type="Icon" />
 		<record alias="icon-case" type="Icon" />
 	</list>

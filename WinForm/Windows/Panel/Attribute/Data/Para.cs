@@ -84,7 +84,7 @@ namespace Xylia.Match.Windows.Attribute.Data
 		}
 
 		/// <summary>
-		/// 已知变化率、常数项、属性数值与属性比率时, 获取特定的等级修正系数
+		/// 已知变化率、常数项、Property数值与Property比率时, 获取特定的等级修正系数
 		/// </summary>
 		/// <param name="value"></param>
 		/// <param name="percent"></param>

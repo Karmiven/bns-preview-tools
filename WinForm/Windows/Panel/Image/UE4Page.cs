@@ -12,10 +12,10 @@ using Xylia.Preview.Data.Package.Pak;
 namespace Xylia.Match.Windows.Panel
 {
 	[DesignTimeVisible(false)]
-	public partial class PakExtract : UserControl
+	public partial class UE4Page : UserControl
 	{
 		#region Constructor
-		public PakExtract()
+		public UE4Page()
 		{
 			InitializeComponent();
 

@@ -14,6 +14,7 @@ using Xylia.Match.Util.ItemMatch.Util;
 using Xylia.Preview.Common.Interface.RecordAttribute;
 using Xylia.Preview.Data;
 using Xylia.Preview.Data.Helper;
+using Xylia.Preview.Properties;
 
 namespace Xylia.Match.Util.ItemList
 {
@@ -105,18 +106,19 @@ namespace Xylia.Match.Util.ItemList
 
 
 		#region Output
-		public bool UseExcel = false;
-
-		public string Folder_Output = null;
-
-		public FilePath File = new();
+		public static string OUTDIR => Path.Combine(CommonPath.OutputFolder, "output");
+		public static string OUTTIME(DateTime? dt = null) => $"{dt ?? DateTime.Now:yyyy年M月/d日 HH时mm分}"
+			.Replace("/", "\\");
 
 
 
-		public void Start(DateTime StartTime)
+
+		private FilePath File = new();
+
+		public void Start(DateTime StartTime, bool UseExcel)
 		{
 			var time = CreatedAt == default ? StartTime : CreatedAt;
-			var outdir = Folder_Output + $@"\信息导出\物品列表\{ time:yyyy年MM月\\dd日 HH时mm分}";
+			var outdir = Path.Combine(OUTDIR, $@"item\{OUTTIME(time)}");
 			Directory.CreateDirectory(outdir);
 
 			File.CacheList = Path.Combine(outdir, $@"{time:yyyy-MM-dd HH-mm}.chv");
@@ -144,13 +146,13 @@ namespace Xylia.Match.Util.ItemList
 			if (this.Failures.Any())
 			{
 				using StreamWriter Out_Failure = new(File.Failure);
-				foreach (var Item in this.Failures) Out_Failure.WriteLine($"{ Item.id,-20 }   { Item.Alias}");
+				foreach (var Item in this.Failures) Out_Failure.WriteLine($"{Item.id,-20}   {Item.Alias}");
 			}
 			#endregion
 
 			#region END
 			TimeSpan ts = DateTime.Now - StartTime;
-			GetOutput($"本次拉取数据共计{ this.ItemDatas.Count }条, 总耗{ ts.Minutes }分{ ts.Seconds }秒。");
+			GetOutput($"本次拉取数据共计{this.ItemDatas.Count}条, 总耗{ts.Minutes}分{ts.Seconds}秒。");
 
 			this.ItemDatas.Clear();
 			this.ItemDatas = null;
@@ -158,7 +160,6 @@ namespace Xylia.Match.Util.ItemList
 			this.Failures = null;
 			#endregion
 		}
-
 
 		private void CreateExcel(IEnumerable<ItemDataInfo> Info)
 		{
@@ -197,17 +198,17 @@ namespace Xylia.Match.Util.ItemList
 			foreach (var Item in Info)
 			{
 				string Message = null;
-				string IdTxt = $"{ Item.id, -15 }";
+				string IdTxt = $"{Item.id,-15}";
 				if (IdTxt.Length > 15) IdTxt += "    ";
 
 
-				if (Item.Name2 is null) Message = $"{ IdTxt }  暂无汉化 ({ Item.Alias })";
+				if (Item.Name2 is null) Message = $"{IdTxt}  暂无汉化 ({Item.Alias})";
 				else
 				{
-					string ResultTxt = $"{ Item.Name2, -20 }";
+					string ResultTxt = $"{Item.Name2,-20}";
 					if (ResultTxt.Length > 15) ResultTxt += "    ";
 
-					Message = $"{ IdTxt }{ ResultTxt }{ "别名：" + Item.Alias }";
+					Message = $"{IdTxt}{ResultTxt}{"别名：" + Item.Alias}";
 				}
 
 				#region info

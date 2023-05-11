@@ -234,8 +234,8 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 				chk_compare.Enabled = true;
 				return;
 			}
-			else if (!chk_compare.Checked) 
-			{ 
+			else if (!chk_compare.Checked)
+			{
 				lst = null;
 			}
 			else

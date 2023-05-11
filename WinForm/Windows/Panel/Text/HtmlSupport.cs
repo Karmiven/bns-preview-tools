@@ -122,13 +122,11 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 			try
 			{
-
-				HtmlAgilityPack.HtmlDocument doc = new();
+				HtmlDocument doc = new();
 				doc.LoadHtml(Text);
 
-
 				string Result = null;
-				foreach (var Node in doc.DocumentNode.ChildNodes.ToList().Where(Node => !string.IsNullOrWhiteSpace(Node.Name)))
+				foreach (var Node in doc.DocumentNode.ChildNodes.Where(Node => !string.IsNullOrWhiteSpace(Node.Name)))
 				{
 					Result += HandleProperty(Node);
 				}
@@ -138,7 +136,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			}
 			catch (Exception ee)
 			{
-				Debug.WriteLine("[ToHTML]" + ee.Message);
+				Debug.WriteLine("[ToHTML] " + ee.Message);
 				return Text;
 			}
 		}

@@ -28,162 +28,116 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.TreeView = new Xylia.Windows.Controls.TreeView();
-			this.ItemList = new Xylia.Preview.GameUI.Controls.ListPreview();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.chk_Auctionable = new System.Windows.Forms.CheckBox();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.ItemPreview_Search = new HZH_Controls.Controls.UCTextBoxEx();
-			this.chk_compare = new System.Windows.Forms.CheckBox();
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game_AuctionScene));
+			TreeView = new Windows.Controls.TreeView();
+			ItemList = new Controls.ListPreview();
+			panel1 = new System.Windows.Forms.Panel();
+			chk_compare = new System.Windows.Forms.CheckBox();
+			checkBox1 = new System.Windows.Forms.CheckBox();
+			chk_Auctionable = new System.Windows.Forms.CheckBox();
+			panel2 = new System.Windows.Forms.Panel();
+			ItemPreview_Search = new HZH_Controls.Controls.UCTextBoxEx();
+			panel1.SuspendLayout();
+			panel2.SuspendLayout();
+			SuspendLayout();
 			// 
 			// TreeView
 			// 
-			this.TreeView.BackColor = System.Drawing.Color.White;
-			this.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.TreeView.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.TreeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-			this.TreeView.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.TreeView.HotTracking = true;
-			this.TreeView.Indent = 20;
-			this.TreeView.ItemHeight = 30;
-			this.TreeView.Location = new System.Drawing.Point(0, 49);
-			this.TreeView.Margin = new System.Windows.Forms.Padding(4);
-			this.TreeView.Name = "TreeView";
-			this.TreeView.ShowLines = false;
-			this.TreeView.Size = new System.Drawing.Size(260, 551);
-			this.TreeView.TabIndex = 3;
-			this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.LoadData);
+			resources.ApplyResources(TreeView, "TreeView");
+			TreeView.BackColor = System.Drawing.Color.White;
+			TreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			TreeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+			TreeView.HotTracking = true;
+			TreeView.ItemHeight = 30;
+			TreeView.Name = "TreeView";
+			TreeView.ShowLines = false;
+			TreeView.AfterSelect += LoadData;
 			// 
 			// ItemList
 			// 
-			this.ItemList.AutoScroll = true;
-			this.ItemList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(26)))), ((int)(((byte)(35)))));
-			this.ItemList.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ItemList.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.ItemList.Location = new System.Drawing.Point(0, 49);
-			this.ItemList.Margin = new System.Windows.Forms.Padding(4);
-			this.ItemList.Name = "ItemList";
-			this.ItemList.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-			this.ItemList.Size = new System.Drawing.Size(549, 551);
-			this.ItemList.TabIndex = 4;
+			resources.ApplyResources(ItemList, "ItemList");
+			ItemList.BackColor = System.Drawing.Color.FromArgb(20, 26, 35);
+			ItemList.Name = "ItemList";
 			// 
 			// panel1
 			// 
-			this.panel1.Controls.Add(this.chk_compare);
-			this.panel1.Controls.Add(this.checkBox1);
-			this.panel1.Controls.Add(this.chk_Auctionable);
-			this.panel1.Controls.Add(this.ItemList);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel1.Location = new System.Drawing.Point(265, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(549, 600);
-			this.panel1.TabIndex = 2;
-			// 
-			// checkBox1
-			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(483, 23);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(51, 21);
-			this.checkBox1.TabIndex = 6;
-			this.checkBox1.Text = "倒序";
-			this.checkBox1.UseVisualStyleBackColor = true;
-			this.checkBox1.CheckedChanged += new System.EventHandler(this.LoadData);
-			// 
-			// chk_Auctionable
-			// 
-			this.chk_Auctionable.AutoSize = true;
-			this.chk_Auctionable.Location = new System.Drawing.Point(483, 3);
-			this.chk_Auctionable.Name = "chk_Auctionable";
-			this.chk_Auctionable.Size = new System.Drawing.Size(63, 21);
-			this.chk_Auctionable.TabIndex = 5;
-			this.chk_Auctionable.Text = "可拍卖";
-			this.chk_Auctionable.UseVisualStyleBackColor = true;
-			this.chk_Auctionable.CheckedChanged += new System.EventHandler(this.LoadData);
-			// 
-			// panel2
-			// 
-			this.panel2.Controls.Add(this.ItemPreview_Search);
-			this.panel2.Controls.Add(this.TreeView);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-			this.panel2.Location = new System.Drawing.Point(0, 0);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(260, 600);
-			this.panel2.TabIndex = 5;
-			// 
-			// ItemPreview_Search
-			// 
-			this.ItemPreview_Search.BackColor = System.Drawing.Color.Transparent;
-			this.ItemPreview_Search.ConerRadius = 5;
-			this.ItemPreview_Search.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.ItemPreview_Search.DecLength = 2;
-			this.ItemPreview_Search.FillColor = System.Drawing.Color.Empty;
-			this.ItemPreview_Search.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-			this.ItemPreview_Search.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-			this.ItemPreview_Search.InputText = "";
-			this.ItemPreview_Search.InputType = HZH_Controls.TextInputType.NotControl;
-			this.ItemPreview_Search.IsFocusColor = true;
-			this.ItemPreview_Search.IsRadius = true;
-			this.ItemPreview_Search.IsShowClearBtn = true;
-			this.ItemPreview_Search.IsShowKeyboard = false;
-			this.ItemPreview_Search.IsShowRect = true;
-			this.ItemPreview_Search.IsShowSearchBtn = true;
-			this.ItemPreview_Search.KeyBoardType = HZH_Controls.Controls.KeyBoardType.Null;
-			this.ItemPreview_Search.Location = new System.Drawing.Point(3, 4);
-			this.ItemPreview_Search.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-			this.ItemPreview_Search.MaxValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-			this.ItemPreview_Search.MinValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-			this.ItemPreview_Search.Name = "ItemPreview_Search";
-			this.ItemPreview_Search.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
-			this.ItemPreview_Search.PromptColor = System.Drawing.Color.Gray;
-			this.ItemPreview_Search.PromptFont = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-			this.ItemPreview_Search.PromptText = "";
-			this.ItemPreview_Search.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-			this.ItemPreview_Search.RectWidth = 1;
-			this.ItemPreview_Search.RegexPattern = "";
-			this.ItemPreview_Search.Size = new System.Drawing.Size(254, 39);
-			this.ItemPreview_Search.TabIndex = 116;
-			this.ItemPreview_Search.SearchClick += new System.EventHandler(this.LoadData);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Controls.Add(chk_compare);
+			panel1.Controls.Add(checkBox1);
+			panel1.Controls.Add(chk_Auctionable);
+			panel1.Controls.Add(ItemList);
+			panel1.Name = "panel1";
 			// 
 			// chk_compare
 			// 
-			this.chk_compare.AutoSize = true;
-			this.chk_compare.Location = new System.Drawing.Point(3, 4);
-			this.chk_compare.Name = "chk_compare";
-			this.chk_compare.Size = new System.Drawing.Size(51, 21);
-			this.chk_compare.TabIndex = 101;
-			this.chk_compare.Text = "新物品";
-			this.chk_compare.UseVisualStyleBackColor = true;
-			this.chk_compare.CheckedChanged += new System.EventHandler(this.chk_compare_CheckedChanged);
+			resources.ApplyResources(chk_compare, "chk_compare");
+			chk_compare.Name = "chk_compare";
+			chk_compare.UseVisualStyleBackColor = true;
+			chk_compare.CheckedChanged += chk_compare_CheckedChanged;
+			// 
+			// checkBox1
+			// 
+			resources.ApplyResources(checkBox1, "checkBox1");
+			checkBox1.Name = "checkBox1";
+			checkBox1.UseVisualStyleBackColor = true;
+			checkBox1.CheckedChanged += LoadData;
+			// 
+			// chk_Auctionable
+			// 
+			resources.ApplyResources(chk_Auctionable, "chk_Auctionable");
+			chk_Auctionable.Name = "chk_Auctionable";
+			chk_Auctionable.UseVisualStyleBackColor = true;
+			chk_Auctionable.CheckedChanged += LoadData;
+			// 
+			// panel2
+			// 
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Controls.Add(ItemPreview_Search);
+			panel2.Controls.Add(TreeView);
+			panel2.Name = "panel2";
+			// 
+			// ItemPreview_Search
+			// 
+			resources.ApplyResources(ItemPreview_Search, "ItemPreview_Search");
+			ItemPreview_Search.BackColor = System.Drawing.Color.Transparent;
+			ItemPreview_Search.ConerRadius = 5;
+			ItemPreview_Search.Cursor = System.Windows.Forms.Cursors.IBeam;
+			ItemPreview_Search.DecLength = 2;
+			ItemPreview_Search.FillColor = System.Drawing.Color.Empty;
+			ItemPreview_Search.FocusBorderColor = System.Drawing.Color.FromArgb(255, 77, 59);
+			ItemPreview_Search.InputText = "";
+			ItemPreview_Search.InputType = HZH_Controls.TextInputType.NotControl;
+			ItemPreview_Search.IsFocusColor = true;
+			ItemPreview_Search.IsRadius = true;
+			ItemPreview_Search.IsShowClearBtn = true;
+			ItemPreview_Search.IsShowKeyboard = false;
+			ItemPreview_Search.IsShowRect = true;
+			ItemPreview_Search.IsShowSearchBtn = true;
+			ItemPreview_Search.KeyBoardType = HZH_Controls.Controls.KeyBoardType.Null;
+			ItemPreview_Search.MaxValue = new decimal(new int[] { 1000000, 0, 0, 0 });
+			ItemPreview_Search.MinValue = new decimal(new int[] { 1000000, 0, 0, int.MinValue });
+			ItemPreview_Search.Name = "ItemPreview_Search";
+			ItemPreview_Search.PromptColor = System.Drawing.Color.Gray;
+			ItemPreview_Search.PromptFont = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+			ItemPreview_Search.PromptText = "";
+			ItemPreview_Search.RectColor = System.Drawing.Color.FromArgb(220, 220, 220);
+			ItemPreview_Search.RectWidth = 1;
+			ItemPreview_Search.RegexPattern = "";
+			ItemPreview_Search.SearchClick += LoadData;
 			// 
 			// Game_AuctionScene
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(814, 600);
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.MaximizeBox = false;
-			this.Name = "Game_AuctionScene";
-			this.Text = "查找物品";
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.ResumeLayout(false);
-
+			resources.ApplyResources(this, "$this");
+			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			Controls.Add(panel2);
+			Controls.Add(panel1);
+			FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			MaximizeBox = false;
+			Name = "Game_AuctionScene";
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			panel2.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 
 		#endregion

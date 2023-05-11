@@ -257,7 +257,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 				}
 				#endregion
 
-				#region 获取属性
+				#region 获取Property
 				List<MyInfo> ValidMainInfo = new(this.MainInfo);
 				List<MyInfo> ValidSubInfo = new(this.SubInfo);
 
@@ -369,7 +369,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		readonly AttributePreview AttributePreview = new();
 		#endregion
 
-		#region 控件属性
+		#region 控件Property
 		public Bitmap CardImage;
 
 		private List<MyInfo> MainInfo { get; set; } = new();
@@ -450,7 +450,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		private Dictionary<MainAbility, long> ItemAbility { get; set; } = new();
 
 		/// <summary>
-		/// 白字属性部分
+		/// 白字Property部分
 		/// </summary>
 		private void LoadAbility()
 		{
@@ -470,7 +470,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			result[MainAbility.PvpAttackPowerEquipMinAndMax] = (PvpAttackPowerEquipMin + PvpAttackPowerEquipMax) / 2;
 			#endregion
 
-			#region Load 其他属性
+			#region Load 其他Property
 			foreach (var ability in Enum.GetValues<MainAbility>())
 			{
 				if (ability == MainAbility.None) continue;
@@ -488,7 +488,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		}
 
 		/// <summary>
-		/// Load 宝石类的Buff属性信息
+		/// Load 宝石类的BuffProperty信息
 		/// </summary>
 		private void LoadEffectInfo()
 		{
@@ -626,7 +626,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			#region 处理前端文本
 			string TradeInfo;
 
-			//交易属性显示
+			//交易Property显示
 			if (this.ItemInfo.CannotTrade)
 			{
 				if (this.ItemInfo.Auctionable) TradeInfo = "无法个人交易";
@@ -763,7 +763,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			//Load Event信息
 			this.LoadPreview(new EventTimePreview().LoadInfo(this.ItemInfo.EventInfo));
 
-			//Load 可成长八卦牌属性信息
+			//Load 可成长八卦牌Property信息
 			this.AttributePreview.LoadInfo(this.ItemInfo);
 			#endregion
 

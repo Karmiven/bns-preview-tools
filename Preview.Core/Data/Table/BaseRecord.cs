@@ -57,7 +57,6 @@ namespace Xylia.Preview.Data.Record
 							var records = Activator.CreateInstance(field.FieldType);
 							var add = records.GetType().GetMethod("Add", ClassExtension.Flags);
 
-
 							var NodeName = field.GetAttribute<Signal>()?.Description ?? type.Name.ToLower();
 							foreach (XmlElement data in xe.data.SelectNodes("./" + NodeName))
 							{

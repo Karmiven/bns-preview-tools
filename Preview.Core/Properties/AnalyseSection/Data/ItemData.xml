@@ -1320,7 +1320,7 @@
 		<record alias="second-attack-effect-caster-effect-flag" filter="gem" seq="flag" type="Seq16" repeat="4" />
 		<record alias="detach-gem-money-cost" filter="gem" type="Int32" />
 
-		<!-- 可成长八卦牌副属性 -->
+		<!-- 可成长八卦牌副Property -->
 		<record alias="main-ability-fixed" filter="gem" ref="ItemRandomAbilitySlot" />
 		<record alias="sub-ability-fixed" filter="gem" ref="ItemRandomAbilitySlot" />
 		<record alias="sub-ability-random-count" filter="gem" type="Int8" />

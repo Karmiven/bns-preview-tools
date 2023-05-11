@@ -57,7 +57,7 @@ namespace Xylia.Windows.Controls
 			}
 			else
 			{
-				//如果子节点的Bounds属性不为空(Empty）, 绘制该节点
+				//如果子节点的BoundsProperty不为空(Empty）, 绘制该节点
 				if (!e.Bounds.IsEmpty)
 				{
 					e.Graphics.FillRectangle(Brushes.White, e.Bounds);

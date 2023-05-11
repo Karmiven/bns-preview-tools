@@ -27,15 +27,15 @@ namespace Xylia.Preview.GameUI.Controls
 		}
 		#endregion
 
-		#region 隐藏不需要的属性
+		#region 隐藏不需要的Property
 		[Browsable(false)]
-		[Obsolete("不再可用的属性")]
+		[Obsolete("不再可用的Property")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public new int Width => base.Width;
 
 		[Browsable(false)]
-		[Obsolete("不再可用的属性")]
+		[Obsolete("不再可用的Property")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public new int Height => base.Height;

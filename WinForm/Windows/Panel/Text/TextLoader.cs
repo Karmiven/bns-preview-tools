@@ -115,6 +115,5 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 			System.Diagnostics.Trace.WriteLine("总Load 数量：" + this.Data.Count);
 		}
-
 	}
 }

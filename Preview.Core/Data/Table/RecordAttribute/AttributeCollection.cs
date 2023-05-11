@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Xylia.Preview.Common.Interface.RecordAttribute
 {
 	/// <summary>
-	/// 对象属性集合
+	/// 对象Property集合
 	/// </summary>
 	public interface IAttributeCollection : IEnumerable
 	{

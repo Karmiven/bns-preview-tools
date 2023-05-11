@@ -72,7 +72,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(56, 17);
 			this.label4.TabIndex = 28;
-			this.label4.Text = "传授属性";
+			this.label4.Text = "传授Property";
 			// 
 			// AbilityInfo
 			// 
@@ -83,7 +83,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			this.AbilityInfo.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
 			this.AbilityInfo.Name = "AbilityInfo";
 			this.AbilityInfo.TabIndex = 28;
-			this.AbilityInfo.Text = "属性1 1~999\r\n属性2 1~999";
+			this.AbilityInfo.Text = "Property1 1~999\r\nProperty2 1~999";
 			// 
 			// GrowthState
 			// 

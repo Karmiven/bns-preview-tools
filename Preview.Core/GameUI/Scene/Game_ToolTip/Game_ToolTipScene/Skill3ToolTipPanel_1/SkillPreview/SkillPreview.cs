@@ -129,7 +129,7 @@ namespace Xylia.Preview.GameUI.Scene.Skill
 				#endregion
 
 
-				#region 获取属性 
+				#region 获取Property 
 				Bitmap icon = null;
 				string text = Tooltip.DefaultText?.GetText();
 				

@@ -12,15 +12,15 @@ using Output = Xylia.Preview.Output;
 namespace Xylia.Match.Windows.Panel
 {
 	[DesignTimeVisible(false)]
-	public partial class QuestMatch : UserControl
+	public partial class QuestPage : UserControl
 	{
 		#region Constructor
-		public QuestMatch()
+		public QuestPage()
 		{
 			InitializeComponent();
 			CheckForIllegalCrossThreadCalls = false;
 
-			Num.Num = Math.Max(1, QuestSelect.LastRule);
+			Num.Num = Math.Max(1, QuestSelector.LastRule);
 		}
 		#endregion
 
@@ -54,10 +54,10 @@ namespace Xylia.Match.Windows.Panel
 			thread.Start();
 		}
 
-		private void Num_NumChanged(object sender, EventArgs e) => QuestSelect.LastRule = (int)this.Num.Num;
+		private void Num_NumChanged(object sender, EventArgs e) => QuestSelector.LastRule = (int)this.Num.Num;
 
 
-		private void Btn_QuestList_Click(object sender, EventArgs e) => Execute.MyShowDialog<QuestSelect>();
+		private void Btn_QuestList_Click(object sender, EventArgs e) => Execute.MyShowDialog<QuestSelector>();
 
 		private void Btn_QusetEpic_Click(object sender, EventArgs e) => Execute.MyShowDialog<Completed>();
 

@@ -22,15 +22,15 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 		#region Interface Functions
 		public override void LoadData(BaseRecord record)
 		{
-			#region Load 属性
-			//Load 主属性
+			#region Load Property
+			//Load 主Property
 			var MainAbilityFixed = FileCache.Data.ItemRandomAbilitySlot[record.Attributes["main-ability-fixed"]];
 
-			//Load 子属性
+			//Load 子Property
 			var SubAbilityFixed = FileCache.Data.ItemRandomAbilitySlot[record.Attributes["sub-ability-fixed"]];
 
 
-			//获取随机子属性
+			//获取随机子Property
 			var SubAbilityRandomCount = record.Attributes["sub-ability-random-count"].ToByte();
 			var SubAbilityRandoms = new List<ItemRandomAbilitySlot>();
 			for (int i = 1; i <= 5; i++)
@@ -61,7 +61,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			AddAbilitySlot(SubAbilityFixed);
 			if (SubAbilityRandomCount > 0)
 			{
-				AddControl(new ContentPanel($"从以下属性中随机获得{SubAbilityRandomCount}个"));
+				AddControl(new ContentPanel($"从以下Property中随机获得{SubAbilityRandomCount}个"));
 
 				SubAbilityRandoms.ForEach(o => AddAbilitySlot(o));
 			}

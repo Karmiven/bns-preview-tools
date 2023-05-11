@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
@@ -9,6 +10,7 @@ using HZH_Controls.Forms;
 
 using Xylia.Extension;
 using Xylia.Match.Util;
+using Xylia.Match.Windows.Attribute;
 using Xylia.Match.Windows.Forms;
 using Xylia.Match.Windows.Panel;
 using Xylia.Match.Windows.Panel.TextInfo;
@@ -16,26 +18,26 @@ using Xylia.Preview.Properties;
 
 namespace Xylia.Match.Windows
 {
-	public partial class MainForm : FrmWithTitle
+	public partial class MainFrm : FrmWithTitle
 	{
 		#region Constructor
 		readonly TipMessage TipMessage = new();
 
 		readonly List<ControlPage> pages = new();
 
-		public MainForm()
+		public MainFrm()
 		{
 			this.InitializeComponent();
 			this.Title = $"{AssemblyEx.Title} ({AssemblyEx.BuildTime:yyyyMMdd})";
 
 			#region Pages
-			pages.Add(new("道具获取", new MatchProp()));
-			pages.Add(new("任务查询", new QuestMatch()));
-			pages.Add(new("图标生成", new IconOperator()));
-			pages.Add(new("汉化功能", new MatchLocal()));
-			pages.Add(new("Pak功能", new PakExtract()));
-			pages.Add(new("属性计算", new Attribute.MainFrm()));
-			//pages.Add(new("Pak功能", subGroup.Youdao));
+			var resources = new ComponentResourceManager(typeof(MainFrm));
+			pages.Add(new(resources.GetString("ItemPage"), new ItemPage()));
+			pages.Add(new(resources.GetString("QuestPage"), new QuestPage()));
+			pages.Add(new(resources.GetString("IconPage"), new IconPage()));
+			pages.Add(new(resources.GetString("TextPage"), new TextPage()));
+			pages.Add(new(resources.GetString("UE4Page"), new UE4Page()));
+			pages.Add(new(resources.GetString("AttributePage"), new AttributePage()));
 
 			pages.ForEach(p => this.tvMenu.Nodes.Add(p.Key, p.Text));
 			this.tvMenu.AfterSelect += new TreeViewEventHandler((o, e) =>
@@ -114,7 +116,7 @@ namespace Xylia.Match.Windows
 			if (Set.ShowDialog() != DialogResult.OK) return;
 
 			// 同步显示
-			var page = (MatchProp)pages.Find(page => page.Control is MatchProp).Control;
+			var page = (ItemPage)pages.Find(page => page.Control is ItemPage).Control;
 			page.GRoot_Path.Text = CommonPath.GameFolder;
 		}
 		#endregion

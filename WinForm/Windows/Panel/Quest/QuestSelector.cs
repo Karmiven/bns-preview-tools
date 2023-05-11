@@ -14,10 +14,10 @@ using Xylia.Windows.Forms;
 
 namespace Xylia.Match.Windows
 {
-	public partial class QuestSelect : Form
+	public partial class QuestSelector : Form
 	{
 		#region Constructor
-		public QuestSelect()
+		public QuestSelector()
 		{
 			InitializeComponent();
 
@@ -153,7 +153,7 @@ namespace Xylia.Match.Windows
 
 			//获取任务名称
 			string SourceText = CurQuest.Name2.GetText();
-			string QuestName = $"[{ CurQuest.id }] " + SourceText.CutText();
+			string QuestName = $"[{CurQuest.id}] " + SourceText.CutText();
 
 
 			var Font = new Font(e.Font.FontFamily, e.Font.Size, FontStyle.Bold);

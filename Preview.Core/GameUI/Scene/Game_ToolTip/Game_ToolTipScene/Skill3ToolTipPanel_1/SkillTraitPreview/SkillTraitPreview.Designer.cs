@@ -56,7 +56,7 @@
 			this.ucBtnExt1.BtnBackColor = System.Drawing.Color.Empty;
 			this.ucBtnExt1.BtnFont = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.ucBtnExt1.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.ucBtnExt1.BtnText = "技能图标";
+			this.ucBtnExt1.Text = "技能图标";
 			this.ucBtnExt1.ConerRadius = 8;
 			this.ucBtnExt1.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ucBtnExt1.EnabledMouseEffect = false;
